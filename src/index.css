@@ -1,3 +1,91 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Helvetica";
+  src: local("Helvetica"), url(./fonts/helvetica.ttf) format("truetype");
+}
+
+.font-helvetica {
+  font-family: "Helvetica";
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url(./fonts/Montserrat-Medium.ttf) format("truetype");
+}
+
+.font-montserrat {
+  font-family: "Montserrat";
+}
+
+.bg-linear-top-left {
+  background: linear-gradient(
+      90deg,
+      rgba(17, 16, 26, 1) 5%,
+      rgba(17, 16, 26, 0.9) 10%,
+      rgba(17, 16, 26, 0.8) 13%,
+      rgba(17, 16, 26, 0) 29%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(17, 16, 26, 1) 0%,
+      rgba(129, 129, 129, 0) 39%,
+      rgba(255, 255, 255, 0) 100%
+    );
+}
+.media-bg-linear-top-left {
+  background: linear-gradient(
+    90deg,
+    rgba(17, 16, 26, 1) 0%,
+    rgba(17, 16, 26, 0.9) 6%,
+    rgba(17, 16, 26, 0.6) 20%,
+    rgba(17, 16, 26, 0.2) 50%,
+    rgba(17, 16, 26, 0.1) 60%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+@media screen and (min-width: 768px) {
+  .media-bg-linear-top-left {
+    background: linear-gradient(
+        90deg,
+        rgba(17, 16, 26, 1) 5%,
+        rgba(17, 16, 26, 0.9) 10%,
+        rgba(17, 16, 26, 0.8) 13%,
+        rgba(17, 16, 26, 0) 29%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(17, 16, 26, 1) 0%,
+        rgba(129, 129, 129, 0) 39%,
+        rgba(255, 255, 255, 0) 100%
+      );
+  }
+}
+
+.bg-linear-left {
+  background: linear-gradient(
+    90deg,
+    rgba(17, 16, 26, 1) 0%,
+    rgba(17, 16, 26, 0.9) 6%,
+    rgba(17, 16, 26, 0.6) 20%,
+    rgba(17, 16, 26, 0.2) 50%,
+    rgba(17, 16, 26, 0.1) 60%,
+
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.bg-linear-top {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 16, 26, 1) 0%,
+    rgba(129, 129, 129, 0) 39%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
