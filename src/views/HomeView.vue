@@ -11,9 +11,9 @@ import BaseBackgroundImg from "@/components/UI/landing-page/BaseBackgroundImg.vu
       <the-header />
       <div class="flex justify-center items-center gap-6 flex-col h-[60vh]">
         <h1
-          class="text-2xl md:text-[4.3rem] text-center font-bold leading-normal"
+          class="w- text-2xl md:text-[4.3rem] text-center font-bold leading-normal whitespace-pre-wrap"
         >
-          Find any quote in <br />millions of movie lines
+          {{ $t("welcomeMessage") }}
         </h1>
         <base-button :orange="true" class="md:text-xl">
           Get started

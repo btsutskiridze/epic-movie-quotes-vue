@@ -1,28 +1,49 @@
 <script setup>
 import DropdownArrowIcon from "@/components/icons/DropdownArrowIcon.vue";
-import { ref } from "vue";
+import { ref, computed, onMounted } from "vue";
+import i18n from "@/i18n.js";
+
+onMounted(() => {
+  i18n.global.locale = localStorage.getItem("locale");
+});
+
 let show = ref(false);
+
+const activeLang = computed(() => {
+  return i18n.global.locale === "en" ? "Eng" : "ქარ";
+});
+
+const inactiveLang = computed(() =>
+  i18n.global.locale === "en" ? "Geo" : "ინგ"
+);
+
+let locale = computed(() => (i18n.global.locale === "en" ? "ka" : "en"));
 
 const toggleMenu = () => {
   show.value = !show.value;
+};
+
+const setLocale = (val) => {
+  localStorage.setItem("locale", val);
+  i18n.global.locale = val;
 };
 </script>
 
 <template>
   <ul id="dropdown" class="relative text-center hidden md:block z-30">
     <li
-      class="gap-3 cursor-pointer relative flex flex-row justify-between mr-2 items-center mb-1"
+      class="gap-3 cursor-pointer relative flex flex-row justify-between mr-2 items-center mb-2"
       @click="toggleMenu"
     >
-      Eng
+      {{ activeLang }}
       <DropdownArrowIcon />
     </li>
     <li
       v-if="show"
-      @click="toggleMenu"
-      class="px-2 py-1 -left-2 gap-3 absolute cursor-pointer flex flex-row justify-between mr-2 items-center bg-[#2a263d] rounded-xl hover:bg-[#322b57] active:bg-[#473f6e]"
+      @click="toggleMenu(), setLocale(locale)"
+      class="pl-2 pr-1 py-1 -left-2 gap-3 absolute cursor-pointer flex flex-row justify-between mr-2 items-center bg-[#2a263d] rounded-xl hover:bg-[#322b57] active:bg-[#473f6e]"
     >
-      Geo
+      {{ inactiveLang }}
       <DropdownArrowIcon class="invisible" />
     </li>
   </ul>
