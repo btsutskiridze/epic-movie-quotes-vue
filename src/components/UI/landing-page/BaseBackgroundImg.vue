@@ -32,7 +32,9 @@ defineProps({
     >
       <div class="w-[72%] md:w-[70%] -top-5 md:-top-20 relative mx-auto">
         <div>
-          <article class="text-xl md:text-[3.1rem] relative leading-normal">
+          <article
+            class="text-xl md:text-[3.1rem] relative leading-normal whitespace-pre-wrap"
+          >
             <slot name="quote"></slot>
             <div
               class="h-[2px] bg-white w-4 md:w-14 absolute top-4 md:top-10 -left-6 md:left-[-4.2rem]"

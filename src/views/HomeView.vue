@@ -11,13 +11,13 @@ import BaseBackgroundImg from "@/components/UI/landing-page/BaseBackgroundImg.vu
       <the-header />
       <div class="flex justify-center items-center gap-6 flex-col h-[60vh]">
         <h1
-          class="w- text-2xl md:text-[4.3rem] text-center font-bold leading-normal whitespace-pre-wrap"
+          class="w- text-2xl lg:text-[4.3rem] text-center font-bold leading-normal whitespace-pre-wrap"
         >
-          {{ $t("welcomeMessage") }}
+          {{ $t("landingView.welcome_msg") }}
         </h1>
-        <base-button :orange="true" class="md:text-xl">
-          Get started
-        </base-button>
+        <base-button :orange="true" class="lg:text-2xl">
+          {{ $t("landingView.get_started") }}</base-button
+        >
       </div>
     </div>
     <base-background-img
@@ -26,34 +26,24 @@ import BaseBackgroundImg from "@/components/UI/landing-page/BaseBackgroundImg.vu
       :first="true"
       :fixed="false"
     >
-      <template #quote>
-        “You have to leave somethig <br />
-        behind to go forward”
-      </template>
-      <template #movieName>Interstellar, 2014</template>
+      <template #quote> “{{ $t("quotes.n1.text") }}” </template>
+      <template #movieName>{{ $t("quotes.n1.movie") }}</template>
     </base-background-img>
 
     <base-background-img
       url="bg-[url('@/assets/images/landing-page/the-royal-tenenbaums.png')]"
       position="center"
     >
-      <template #quote>
-        I think we're just gonna have <br />
-        to be secretly in love with earch other <br />
-        and leave it that
-      </template>
-      <template #movieName> The Royal Tenenbaums,2001 </template>
+      <template #quote> “{{ $t("quotes.n2.text") }}” </template>
+      <template #movieName> {{ $t("quotes.n2.movie") }}</template>
     </base-background-img>
 
     <base-background-img
       url="bg-[url('@/assets/images/landing-page/lord-of-rings.jpg')]"
       position="top"
     >
-      <template #quote>
-        All we have to decide is what to do <br />
-        with the time that is given to us.
-      </template>
-      <template #movieName> The Lord of the Rings, 2001 </template>
+      <template #quote> “{{ $t("quotes.n3.text") }}” </template>
+      <template #movieName> {{ $t("quotes.n3.movie") }} </template>
     </base-background-img>
     <the-footer />
   </div>

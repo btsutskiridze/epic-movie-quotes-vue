@@ -7,13 +7,15 @@ import BaseButton from "@/components/UI/BaseButton.vue";
 <template>
   <header class="w-4/5 m-auto">
     <div class="flex justify-between items-center py-6 text-base">
-      <h2 class="uppercase">movie quotes</h2>
+      <h2 class="font-bold uppercase">{{ $t("landingView.movie_quotes") }}</h2>
       <div class="flex justify-center items-center gap-4">
         <language-dropdown />
         <base-button :orange="true" class="hidden md:block">
-          Sign Up
+          {{ $t("landingView.sign_up") }}
         </base-button>
-        <base-button :outline="true"> Log In </base-button>
+        <base-button :outline="true"
+          >{{ $t("landingView.log_in") }}
+        </base-button>
       </div>
     </div>
   </header>
