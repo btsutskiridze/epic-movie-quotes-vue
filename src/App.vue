@@ -3,3 +3,22 @@
 <template>
   <router-view />
 </template>
+
+<style>
+html {
+  overflow-y: scroll;
+  overflow-y: overlay;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(90, 90, 90);
+}
+</style>
