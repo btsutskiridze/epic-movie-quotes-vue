@@ -1,13 +1,41 @@
 <script setup>
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import RegistrationForm from "@/components/layout/auth/RegistrationForm.vue";
-import BaseButton from "@/components/UI/BaseButton.vue";
-import { ref } from "vue";
+import LoginForm from "@/components/layout/auth/LoginForm.vue";
+import BaseButton from "@/components/UI/form/BaseButton.vue";
+import { onMounted, ref } from "vue";
 
-const showDialog = ref(false);
+const showRegister = ref(false);
+const showLogin = ref(false);
+onMounted(() => {
+  showRegister.value = JSON.parse(localStorage.getItem("showRegister"));
+  showLogin.value = JSON.parse(localStorage.getItem("showLogin"));
+});
 
-const toggleRegistration = () => {
-  showDialog.value = !showDialog.value;
+const modify = (options) => {
+  options.forEach((option) => {
+    switch (option) {
+      case "closeRegister":
+        showRegister.value = false;
+        localStorage.setItem("showRegister", showRegister.value);
+        break;
+
+      case "openRegister":
+        showRegister.value = true;
+        localStorage.setItem("showRegister", showRegister.value);
+        break;
+
+      case "closeLogin":
+        showLogin.value = false;
+        localStorage.setItem("showLogin", showLogin.value);
+        break;
+
+      case "openLogin":
+        showLogin.value = true;
+        localStorage.setItem("showLogin", showLogin.value);
+        break;
+    }
+  });
 };
 </script>
 
@@ -20,15 +48,24 @@ const toggleRegistration = () => {
         <base-button
           :orange="true"
           class="hidden md:block"
-          @click="toggleRegistration"
+          @click="modify(['openRegister'])"
         >
           {{ $t("landingView.sign_up") }}
         </base-button>
-        <base-button :outline="true"
+        <base-button :outline="true" @click="modify(['openLogin'])"
           >{{ $t("landingView.log_in") }}
         </base-button>
       </div>
     </div>
   </header>
-  <RegistrationForm v-if="showDialog" @close="toggleRegistration" />
+  <RegistrationForm
+    v-if="showRegister"
+    @close="modify(['closeRegister'])"
+    @showLogin="modify(['closeRegister', 'openLogin'])"
+  />
+  <LoginForm
+    v-if="showLogin"
+    @close="modify(['closeLogin'])"
+    @showRegister="modify(['closeLogin', 'openRegister'])"
+  />
 </template>
