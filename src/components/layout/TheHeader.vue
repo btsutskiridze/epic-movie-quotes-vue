@@ -1,14 +1,14 @@
 <script setup>
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
-import RegistrationForm from "@/components/layout/form/RegistrationForm.vue";
+import RegistrationForm from "@/components/layout/auth/RegistrationForm.vue";
 import BaseButton from "@/components/UI/BaseButton.vue";
-import { provide, ref } from "vue";
+import { ref } from "vue";
 
-const show = ref(false);
-const openRegistration = () => {
-  show.value = true;
+const showDialog = ref(false);
+
+const toggleRegistration = () => {
+  showDialog.value = !showDialog.value;
 };
-provide("show", show);
 </script>
 
 <template>
@@ -20,7 +20,7 @@ provide("show", show);
         <base-button
           :orange="true"
           class="hidden md:block"
-          @click="openRegistration"
+          @click="toggleRegistration"
         >
           {{ $t("landingView.sign_up") }}
         </base-button>
@@ -30,5 +30,5 @@ provide("show", show);
       </div>
     </div>
   </header>
-  <RegistrationForm />
+  <RegistrationForm v-if="showDialog" @close="toggleRegistration" />
 </template>
