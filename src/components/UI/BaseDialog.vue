@@ -14,11 +14,11 @@ const closeDialog = (e) => {
       <div
         @click="closeDialog"
         id="container"
-        class="h-screen w-screen fixed top-0 left-0 z-30 overflow-hidden backdrop-blur-sm bg-[#00000089] flex justify-center items-center"
+        class="h-screen w-screen fixed top-0 left-0 z-30 backdrop-blur-sm bg-[#00000089] flex justify-center items-center"
       >
         <dialog
           open
-          class="bg-[#222030] w-screen h-screen md:max-w-[34%] md:h-[64%] md:rounded-xl z-40"
+          class="bg-[#222030] w-screen h-screen sm:min-w-[600px] overflow-x-hidden sm:max-w-[32%] sm:h-min sm:rounded-xl z-40 px-9 pt-10 md:pt-2 sm:px-[7rem]"
         >
           <slot></slot>
         </dialog>
