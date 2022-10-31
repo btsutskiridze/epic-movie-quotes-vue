@@ -4,7 +4,9 @@ import { ref, computed, onMounted } from "vue";
 import i18n from "@/i18n.js";
 
 onMounted(() => {
-  i18n.global.locale = localStorage.getItem("locale");
+  if (localStorage.locale) {
+    i18n.global.locale = localStorage.locale;
+  }
 });
 
 let show = ref(false);
