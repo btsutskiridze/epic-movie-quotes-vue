@@ -5,7 +5,7 @@ import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 import { Form as VeeForm } from "vee-validate";
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
-defineEmits(["close", "showLogin"]);
+defineEmits(["close", "showRegister"]);
 
 const onSubmit = (values) => {
   console.log(values);
@@ -16,7 +16,7 @@ const onSubmit = (values) => {
   <div>
     <base-dialog @close="$emit('close')">
       <VeeForm @submit="onSubmit" class="font-helvetica">
-        <div class="text-center mt-14 sm:mt-8 mb-10">
+        <div class="text-center mt-14 mb-10">
           <div
             @click="$emit('close')"
             class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
@@ -24,18 +24,14 @@ const onSubmit = (values) => {
             <back-arrow-icon />
           </div>
           <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3">
-            Create an account
+            Log in to your account
           </h1>
-          <p class="text-[#6C757D] font-normal">Start your journey!</p>
+          <p class="text-[#6C757D] font-normal">
+            Welcome back! Please enter your details
+          </p>
         </div>
-        <base-input name="name" placeholder="Enter your name" />
-        <base-input name="email" placeholder="Enter your email" type="email" />
+        <base-input name="email" placeholder="Enter your email" />
         <base-input name="password" placeholder="Password" type="password" />
-        <base-input
-          name="confirm_password"
-          placeholder="Password"
-          type="password"
-        />
 
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
@@ -46,12 +42,12 @@ const onSubmit = (values) => {
           ><google-icon /><span>Sign up with Google</span></base-button
         >
         <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >Already have an account?
+          >Don't have an account?
           <span
-            @click="$emit('showLogin')"
+            @click="$emit('showRegister')"
             class="text-[#0D6EFD] underline cursor-pointer pl-1"
           >
-            Log in</span
+            Sign up</span
           ></span
         >
       </VeeForm>
