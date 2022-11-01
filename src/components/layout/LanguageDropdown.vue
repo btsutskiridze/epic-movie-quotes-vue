@@ -2,10 +2,12 @@
 import DropdownArrowIcon from "@/components/icons/DropdownArrowIcon.vue";
 import { ref, computed, onMounted } from "vue";
 import i18n from "@/i18n.js";
+import { setLocale } from "@vee-validate/i18n";
 
 onMounted(() => {
   if (localStorage.locale) {
     i18n.global.locale = localStorage.locale;
+    setLocale(localStorage.locale);
   }
 });
 
@@ -25,9 +27,11 @@ const toggleMenu = () => {
   show.value = !show.value;
 };
 
-const setLocale = (val) => {
-  localStorage.setItem("locale", val);
+const setTextLocale = (val) => {
   i18n.global.locale = val;
+  setLocale(val);
+
+  localStorage.setItem("locale", val);
 };
 </script>
 
@@ -42,7 +46,7 @@ const setLocale = (val) => {
     </li>
     <li
       v-if="show"
-      @click="toggleMenu(), setLocale(locale)"
+      @click="toggleMenu(), setTextLocale(locale)"
       class="pl-2 pr-1 py-1 -left-2 gap-3 absolute cursor-pointer flex flex-row justify-between mr-2 items-center bg-[#2a263d] rounded-xl hover:bg-[#322b57] active:bg-[#473f6e]"
     >
       {{ inactiveLang }}

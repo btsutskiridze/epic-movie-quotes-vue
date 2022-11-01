@@ -36,12 +36,14 @@ const onSubmit = (values) => {
           name="email"
           labelName="form.email"
           placeholder="form.enter_your_email"
+          rules="required|email"
           type="email"
         />
         <base-input
           name="password"
           labelName="form.password"
           placeholder="form.password"
+          rules="required|min:8|max:15"
           type="password"
         />
 
