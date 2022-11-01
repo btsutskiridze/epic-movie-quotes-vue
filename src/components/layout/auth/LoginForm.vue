@@ -23,15 +23,27 @@ const onSubmit = (values) => {
           >
             <back-arrow-icon />
           </div>
-          <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3">
-            Log in to your account
+          <h1
+            class="text-white text-2xl sm:text-4xl font-medium mb-3 leading-9"
+          >
+            {{ $t("landingView.login_to_your_account") }}
           </h1>
           <p class="text-[#6C757D] font-normal">
-            Welcome back! Please enter your details
+            {{ $t("landingView.welcome_back_please_enter_your_details") }}
           </p>
         </div>
-        <base-input name="email" placeholder="Enter your email" />
-        <base-input name="password" placeholder="Password" type="password" />
+        <base-input
+          name="email"
+          labelName="form.email"
+          placeholder="enter_your_email"
+          type="email"
+        />
+        <base-input
+          name="password"
+          labelName="form.password"
+          placeholder="password"
+          type="password"
+        />
 
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
@@ -39,16 +51,18 @@ const onSubmit = (values) => {
         <base-button
           :outline="true"
           class="text-white w-full flex justify-center items-center gap-2"
-          ><google-icon /><span>Sign up with Google</span></base-button
+          ><google-icon /><span>{{
+            $t("landingView.sign_up_with_google")
+          }}</span></base-button
         >
         <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >Don't have an account?
+          >{{ $t("landingView.dont_have_account") }}
           <span
             @click="$emit('showRegister')"
             class="text-[#0D6EFD] underline cursor-pointer pl-1"
           >
-            Sign up</span
-          ></span
+            {{ $t("landingView.sign_up") }}
+          </span></span
         >
       </VeeForm>
     </base-dialog>

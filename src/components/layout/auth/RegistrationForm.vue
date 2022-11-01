@@ -24,16 +24,33 @@ const onSubmit = (values) => {
             <back-arrow-icon />
           </div>
           <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3">
-            Create an account
+            {{ $t("landingView.create_account") }}
           </h1>
-          <p class="text-[#6C757D] font-normal">Start your journey!</p>
+          <p class="text-[#6C757D] font-normal">
+            {{ $t("landingView.start_your_journey") }}
+          </p>
         </div>
-        <base-input name="name" placeholder="Enter your name" />
-        <base-input name="email" placeholder="Enter your email" type="email" />
-        <base-input name="password" placeholder="Password" type="password" />
+        <base-input
+          name="name"
+          labelName="form.name"
+          placeholder="enter_your_name"
+        />
+        <base-input
+          name="email"
+          labelName="form.email"
+          placeholder="enter_your_email"
+          type="email"
+        />
+        <base-input
+          name="password"
+          labelName="form.password"
+          placeholder="password"
+          type="password"
+        />
         <base-input
           name="confirm_password"
-          placeholder="Password"
+          labelName="form.confirm_password"
+          placeholder="password"
           type="password"
         />
 
@@ -43,15 +60,17 @@ const onSubmit = (values) => {
         <base-button
           :outline="true"
           class="text-white w-full flex justify-center items-center gap-2"
-          ><google-icon /><span>Sign up with Google</span></base-button
+          ><google-icon /><span>{{
+            $t("landingView.sign_up_with_google")
+          }}</span></base-button
         >
         <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >Already have an account?
+          >{{ $t("landingView.already_have_an_account") }}
           <span
             @click="$emit('showLogin')"
             class="text-[#0D6EFD] underline cursor-pointer pl-1"
           >
-            Log in</span
+            {{ $t("landingView.log_in") }}</span
           ></span
         >
       </VeeForm>

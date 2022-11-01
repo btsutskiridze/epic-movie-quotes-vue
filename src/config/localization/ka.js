@@ -6,6 +6,14 @@ export default {
       movie_quotes: "ციტატები ფილმებიდან",
       sign_up: "რეგისტრაცია",
       log_in: "შესვლა",
+      sign_up_with_google: "დარეგისტრირდით Google-ით",
+      already_have_an_account: "უკვე გაქვთ ანგარიში?",
+      create_account: "შექმენი ანგარიში",
+      start_your_journey: "დაიწყეთ თქვენი მოგზაურობა!",
+      dont_have_account: "არ გაქვს ანგარიში?",
+      login_to_your_account: "შედით თქვენს ანგარიშზე",
+      welcome_back_please_enter_your_details:
+        "მოგესალმებით! გთხოვთ შეიყვანოთ დეტალები",
     },
     quotes: {
       n1: {
@@ -20,6 +28,14 @@ export default {
         text: "ჩვენ, მხოლოდ ის უნდა გადავწყვიტოთ, \n რა ვუყოთ იმ დროს, რომელიც გვერგო",
         movie: "ბეჭდების მბრძანებელი, 2001",
       },
+    },
+    form: {
+      name: "სახელი",
+      enter_your_name: "შეიყვანეთ თქვენი სახელი",
+      email: "ელ-ფოსტა",
+      enter_your_email: "შეიყვანეთ თქვენი ელ-ფოსტა",
+      password: "პაროლი",
+      confirm_password: "პაროლის დადასტურება",
     },
   },
 };

@@ -2,9 +2,14 @@
 import { Field } from "vee-validate";
 import OpenedEye from "@/components/icons/OpenedEyeIcon.vue";
 import ClosedEye from "@/components/icons/ClosedEyeIcon.vue";
-import { ref } from "vue";
-defineProps({
+import { ref, computed, onMounted } from "vue";
+import i18n from "@/i18n";
+const props = defineProps({
   name: {
+    type: String,
+    required: true,
+  },
+  labelName: {
     type: String,
     required: true,
   },
@@ -19,13 +24,20 @@ defineProps({
   },
   placeholder: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
+const locale = i18n.global.locale;
 const show = ref(false);
 const passwordType = ref("password");
-
+const localizedPlaceholder = computed(() => {
+  return i18n.global.messages[locale].form[props.placeholder];
+});
+onMounted(() => {
+  console.log();
+  // console.log(locale);
+});
 const eye = (option) => {
   switch (option) {
     case "open":
@@ -42,14 +54,13 @@ const eye = (option) => {
 <template>
   <div class="my-4 relative">
     <label for="name" class="text-white relative capitalize"
-      >{{ name.replace(/_/g, " ") }}
-      <span class="text-[#DC3545]">*</span></label
+      >{{ $t(labelName) }} <span class="text-[#DC3545]">*</span></label
     >
     <Field
       :id="name"
       :name="name"
       :type="type === 'password' ? passwordType : type"
-      :placeholder="placeholder"
+      :placeholder="localizedPlaceholder"
       :rules="rules"
       class="w-full placeholder-[#6C757D] text-[#212529] bg-[#CED4DA] px-3 py-2 my-2 rounded-[4px] disabled:bg-white disabled:placeholder-[#B7BBC0] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
     />
