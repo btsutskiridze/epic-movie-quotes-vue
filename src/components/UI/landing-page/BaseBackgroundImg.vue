@@ -28,7 +28,7 @@ defineProps({
   >
     <div
       class="h-full flex justify-center flex-row items-center text-white font-montserrat font-bold"
-      :class="[first ? 'bg-linear-top-left' : ' media-bg-linear-top-left']"
+      :class="first ? 'bg-linear-top-left' : ' media-bg-linear-top-left'"
     >
       <div class="w-[72%] md:w-[70%] -top-5 md:-top-20 relative mx-auto">
         <div>
