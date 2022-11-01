@@ -35,13 +35,13 @@ const onSubmit = (values) => {
         <base-input
           name="email"
           labelName="form.email"
-          placeholder="enter_your_email"
+          placeholder="form.enter_your_email"
           type="email"
         />
         <base-input
           name="password"
           labelName="form.password"
-          placeholder="password"
+          placeholder="form.password"
           type="password"
         />
 

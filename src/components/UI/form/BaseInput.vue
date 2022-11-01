@@ -2,9 +2,8 @@
 import { Field } from "vee-validate";
 import OpenedEye from "@/components/icons/OpenedEyeIcon.vue";
 import ClosedEye from "@/components/icons/ClosedEyeIcon.vue";
-import { ref, computed, onMounted } from "vue";
-import i18n from "@/i18n";
-const props = defineProps({
+import { ref } from "vue";
+defineProps({
   name: {
     type: String,
     required: true,
@@ -28,16 +27,9 @@ const props = defineProps({
   },
 });
 
-const locale = i18n.global.locale;
 const show = ref(false);
 const passwordType = ref("password");
-const localizedPlaceholder = computed(() => {
-  return i18n.global.messages[locale].form[props.placeholder];
-});
-onMounted(() => {
-  console.log();
-  // console.log(locale);
-});
+
 const eye = (option) => {
   switch (option) {
     case "open":
@@ -60,7 +52,7 @@ const eye = (option) => {
       :id="name"
       :name="name"
       :type="type === 'password' ? passwordType : type"
-      :placeholder="localizedPlaceholder"
+      :placeholder="$t(placeholder)"
       :rules="rules"
       class="w-full placeholder-[#6C757D] text-[#212529] bg-[#CED4DA] px-3 py-2 my-2 rounded-[4px] disabled:bg-white disabled:placeholder-[#B7BBC0] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
     />
