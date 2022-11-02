@@ -7,15 +7,33 @@ import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
 defineEmits(["close", "showLogin"]);
 
-const onSubmit = (values) => {
-  console.log(values);
+const handleSubmit = async (values) => {
+  fetch("http://127.0.0.1:8000/api/register", {
+    method: "post",
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+    }),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      return console.log(error);
+    });
 };
 </script>
 
 <template>
   <div>
     <base-dialog @close="$emit('close')">
-      <VeeForm @submit="onSubmit" class="font-helvetica">
+      <VeeForm @submit="handleSubmit" class="font-helvetica">
         <div class="text-center mt-14 sm:mt-8 mb-10">
           <div
             @click="$emit('close')"
