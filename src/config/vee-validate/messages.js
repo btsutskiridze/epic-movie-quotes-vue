@@ -1,18 +1,8 @@
 import { configure } from "vee-validate";
-// import { localize, setLocale } from "@vee-validate/i18n";
 import { localize } from "@vee-validate/i18n";
 import en from "@vee-validate/i18n/dist/locale/en.json ";
 import ka from "@vee-validate/i18n/dist/locale/ka.json ";
 
-// // If we dont need to write custom messages we would simply configure it like this
-// configure({
-//   generateMessage: localize({
-//     en,
-//     ka,
-//   }),
-// });
-
-// If we want to write Custom Error Messages then we have to overwrite some properties like this:
 configure({
   generateMessage: localize({
     en: {
@@ -53,5 +43,3 @@ configure({
     },
   }),
 });
-
-// setLocale("ka"); // with this function we can change the locale
