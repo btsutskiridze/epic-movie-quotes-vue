@@ -34,24 +34,28 @@ const onSubmit = (values) => {
           name="name"
           labelName="form.name"
           placeholder="form.enter_your_name"
+          rules="required|min:3|max:15|lowercase"
         />
         <base-input
           name="email"
           labelName="form.email"
           placeholder="form.enter_your_email"
           type="email"
+          rules="required|email"
         />
         <base-input
           name="password"
           labelName="form.password"
           placeholder="form.password"
           type="password"
+          rules="required|min:8|max:15|lowercase"
         />
         <base-input
-          name="confirm_password"
+          name="password_confirmation"
           labelName="form.confirm_password"
           placeholder="form.password"
           type="password"
+          rules="required|confirmed:@password"
         />
 
         <base-button :orange="true" class="text-white w-full mb-4">{{

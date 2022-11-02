@@ -36,15 +36,29 @@ const onSubmit = (values) => {
           name="email"
           labelName="form.email"
           placeholder="form.enter_your_email"
+          rules="required|email"
           type="email"
         />
         <base-input
           name="password"
           labelName="form.password"
           placeholder="form.password"
+          rules="required|min:8|max:15|lowercase"
           type="password"
         />
-
+        <div class="mb-2 -top-1 relative flex flex-row justify-between">
+          <div>
+            <input type="checkbox" name="remember_me" id="remember_me" />
+            <label for="remember_me" class="text-white relative capitalize ml-1"
+              >{{ $t("form.remember_me") }}
+            </label>
+          </div>
+          <div>
+            <p class="text-[#0D6EFD] underline cursor-pointer pl-1">
+              {{ $t("form.forgot_password") }}
+            </p>
+          </div>
+        </div>
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
         }}</base-button>
