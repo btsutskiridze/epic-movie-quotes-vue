@@ -36,6 +36,8 @@ export default {
       enter_your_email: "Enter your email",
       password: "Password",
       confirm_password: "Confirm password",
+      forgot_password: "Forgot password",
+      remember_me: "Remember me",
     },
   },
 };

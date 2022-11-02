@@ -34,7 +34,7 @@ const onSubmit = (values) => {
           name="name"
           labelName="form.name"
           placeholder="form.enter_your_name"
-          rules="required|min:3|max:15|alpha|lowercase"
+          rules="required|min:3|max:15|lowercase"
         />
         <base-input
           name="email"
@@ -48,7 +48,7 @@ const onSubmit = (values) => {
           labelName="form.password"
           placeholder="form.password"
           type="password"
-          rules="required|min:8|max:15"
+          rules="required|min:8|max:15|lowercase"
         />
         <base-input
           name="password_confirmation"

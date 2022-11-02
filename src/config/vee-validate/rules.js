@@ -16,7 +16,7 @@ defineRule("confirmed", confirmed);
 defineRule("alpha", alpha);
 
 defineRule("lowercase", (value) => {
-  if (!/^[a-z]+$/.test(value)) {
+  if (!/^[a-z0-9]+$/.test(value)) {
     return false;
   }
   return true;

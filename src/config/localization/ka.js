@@ -36,6 +36,8 @@ export default {
       enter_your_email: "შეიყვანეთ თქვენი ელ-ფოსტა",
       password: "პაროლი",
       confirm_password: "პაროლის დადასტურება",
+      forgot_password: "დაგავიწყდა პაროლი",
+      remember_me: "დამიმახსოვრე",
     },
   },
 };
