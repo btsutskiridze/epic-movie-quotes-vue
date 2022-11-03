@@ -1,32 +1,56 @@
 <script setup>
+import axios from "@/config/axios/index.js";
+import { Form as VeeForm } from "vee-validate";
+import i18n from "@/i18n";
+import BaseButton from "@/components/UI/form/BaseButton.vue";
+import BaseInput from "@/components/UI/form/BaseInput.vue";
+
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 import GoogleIcon from "@/components/icons/GoogleIcon.vue";
-import { Form as VeeForm } from "vee-validate";
-import BaseButton from "@/components/UI/form/BaseButton.vue";
-import BaseInput from "@/components/UI/form/BaseInput.vue";
+
 defineEmits(["close", "showLogin"]);
 
-const handleSubmit = async (values) => {
-  fetch("http://127.0.0.1:8000/api/register", {
-    method: "post",
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+const handleSubmit = async (values, actions) => {
+  axios
+    .post("register", {
       name: values.name,
       email: values.email,
       password: values.password,
       password_confirmation: values.password_confirmation,
-    }),
-  })
-    .then((response) => {
-      return response.json();
+    })
+    .then(() => {
+      alert("Registration Successful!");
     })
     .catch((error) => {
-      return console.log(error);
+      const errorsObj = error.response.data.errors;
+      for (const errorName in errorsObj) {
+        set_locale_error_msg(errorName, actions);
+      }
     });
+};
+
+//set error message according to locale
+const set_locale_error_msg = (field, actions) => {
+  if (i18n.global.locale == "en") {
+    switch (field) {
+      case "name":
+        actions.setFieldError("name", "Name is already taken");
+        break;
+      case "email":
+        actions.setFieldError("email", "Email is already taken");
+        break;
+    }
+  } else {
+    switch (field) {
+      case "name":
+        actions.setFieldError("name", "მომხმარებლის სახელი უკვე არსებობს");
+        break;
+      case "email":
+        actions.setFieldError("email", "ელ-ფოსტა უკვე არსებობს");
+        break;
+    }
+  }
 };
 </script>
 
