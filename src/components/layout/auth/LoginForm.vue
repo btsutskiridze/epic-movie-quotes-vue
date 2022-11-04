@@ -1,21 +1,49 @@
 <script setup>
-import BaseDialog from "@/components/UI/BaseDialog.vue";
-import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
-import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 import { Form as VeeForm } from "vee-validate";
+import axios from "@/config/axios/index.js";
+import { setJwtToken } from "@/helpers/jwt/index.js";
+import router from "@/router/index.js";
+
+import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
+
+import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
+import GoogleIcon from "@/components/icons/GoogleIcon.vue";
+import { setLoginApiError } from "@/helpers/api-error-message";
+
 defineEmits(["close", "showRegister"]);
 
-const onSubmit = (values) => {
-  console.log(values);
+const handleLogin = (values, actions) => {
+  console.log({
+    email: values.email,
+    password: values.password,
+  });
+  axios
+    .post("login", {
+      email: values.email,
+      password: values.password,
+    })
+    .then((response) => {
+      alert("Login Successful!");
+
+      setJwtToken(response.data.access_token, response.data.expires_in);
+
+      router.push("/news-feed");
+    })
+    .catch((error) => {
+      const errorsObj = error.response.data.errors;
+      for (const errorName in errorsObj) {
+        setLoginApiError(errorName, actions);
+      }
+    });
 };
 </script>
 
 <template>
   <div>
     <base-dialog @close="$emit('close')">
-      <VeeForm @submit="onSubmit" class="font-helvetica">
+      <VeeForm @submit="handleLogin" class="font-helvetica">
         <div class="text-center mt-14 mb-10">
           <div
             @click="$emit('close')"
