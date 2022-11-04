@@ -2,14 +2,31 @@
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import RegistrationForm from "@/components/layout/auth/RegistrationForm.vue";
 import LoginForm from "@/components/layout/auth/LoginForm.vue";
+
 import BaseButton from "@/components/UI/form/BaseButton.vue";
+import BaseDialog from "@/components/UI/BaseDialog.vue";
+
 import { onMounted, ref } from "vue";
+import router from "@/router";
+import axios from "@/config/axios/index.js";
+import { useRoute } from "vue-router";
 
 const showRegister = ref(false);
 const showLogin = ref(false);
+const verificationSuccess = ref(false);
 onMounted(() => {
-  showRegister.value = JSON.parse(localStorage.getItem("showRegister"));
-  showLogin.value = JSON.parse(localStorage.getItem("showLogin"));
+  if (useRoute().query.token) {
+    axios
+      .post("verification", {
+        token: useRoute().query.token,
+      })
+      .then(() => {
+        verificationSuccess.value = true;
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
 });
 
 const modify = (options) => {
@@ -36,6 +53,11 @@ const modify = (options) => {
         break;
     }
   });
+};
+
+const closeVerificationMessage = () => {
+  verificationSuccess.value = false;
+  router.replace("/");
 };
 </script>
 
@@ -68,4 +90,7 @@ const modify = (options) => {
     @close="modify(['closeLogin'])"
     @showRegister="modify(['closeLogin', 'openRegister'])"
   />
+  <base-dialog v-if="verificationSuccess" @close="closeVerificationMessage">
+    <h1>email is verified</h1>
+  </base-dialog>
 </template>
