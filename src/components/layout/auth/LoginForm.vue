@@ -25,8 +25,6 @@ const handleLogin = (values, actions) => {
       password: values.password,
     })
     .then((response) => {
-      alert("Login Successful!");
-
       setJwtToken(response.data.access_token, response.data.expires_in);
 
       router.push("/news-feed");

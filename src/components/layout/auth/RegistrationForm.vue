@@ -1,18 +1,23 @@
 <script setup>
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
+import { ref } from "vue";
+import { setRegisterApiError } from "@/helpers/api-error-message";
 
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
-
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 import GoogleIcon from "@/components/icons/GoogleIcon.vue";
-import { setRegisterApiError } from "@/helpers/api-error-message";
+import LoadingCircle from "@/components/LoadingCircle.vue";
+
+import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
 
 defineEmits(["close", "showLogin"]);
 
+const loading = ref(null);
 const handleSubmit = async (values, actions) => {
+  loading.value = true;
   axios
     .post("register", {
       name: values.name,
@@ -21,7 +26,7 @@ const handleSubmit = async (values, actions) => {
       password_confirmation: values.password_confirmation,
     })
     .then(() => {
-      alert("Registration Successful!");
+      loading.value = false;
     })
     .catch((error) => {
       const errorsObj = error.response.data.errors;
@@ -35,7 +40,11 @@ const handleSubmit = async (values, actions) => {
 <template>
   <div>
     <base-dialog @close="$emit('close')">
-      <VeeForm @submit="handleSubmit" class="font-helvetica">
+      <VeeForm
+        @submit="handleSubmit"
+        class="font-helvetica"
+        v-if="loading === null"
+      >
         <div class="text-center mt-14 sm:mt-8 mb-10">
           <div
             @click="$emit('close')"
@@ -98,6 +107,8 @@ const handleSubmit = async (values, actions) => {
           ></span
         >
       </VeeForm>
+      <loading-circle v-if="loading === true" />
+      <verify-email v-else-if="loading === false" />
     </base-dialog>
   </div>
 </template>
