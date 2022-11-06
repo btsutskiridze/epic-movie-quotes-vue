@@ -39,5 +39,14 @@ export default {
       forgot_password: "დაგავიწყდა პაროლი",
       remember_me: "დამიმახსოვრე",
     },
+    verification: {
+      thank_you: "გმადლობთ",
+      failed: "აქტივაცია ვერ მოხერხდა",
+      verification_sent:
+        "გთხოვთ ნახოთ თქვენი ელ-ფოსტა, რათა გაიაქტიუროთ ანგარიში",
+      go_to_email: "ელ-ფოსტაზე გადასვლა",
+      account_activated: "ანგარიში გაგიაქტიურდათ",
+      go_to_news_feed: "News feed-ზე გადასვლა",
+    },
   },
 };

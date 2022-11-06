@@ -59,12 +59,16 @@ onMounted(() => {
         <div class="flex flex-col items-center gap-6">
           <message-sent />
           <h1 class="font-medium text-4xl text-white">
-            {{ getVerified ? "Thank You" : "Verification Failed" }}
+            {{
+              getVerified
+                ? $t("verification.thank_you")
+                : $t("verification.failed")
+            }}
           </h1>
         </div>
         <div v-if="getVerified">
           <p class="font-normal text-base text-white">
-            Your Account has been activated
+            {{ $t("verification.account_activated") }}
           </p>
         </div>
         <base-button
@@ -72,8 +76,9 @@ onMounted(() => {
           class="w-full text-white"
           @click="autoLogin"
           v-if="getVerified"
-          >Go to my news feed</base-button
         >
+          {{ $t("verification.go_to_news_feed") }}
+        </base-button>
       </div>
     </div>
   </base-dialog>
