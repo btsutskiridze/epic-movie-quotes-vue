@@ -7,6 +7,7 @@ export default {
       sign_up: "Sign Up",
       log_in: "Log In",
       sign_up_with_google: "Sign up with Google",
+      log_in_with_google: "Log in with google",
       already_have_an_account: "Already have an account?",
       create_account: "Create an account",
       start_your_journey: "Start your journey!",

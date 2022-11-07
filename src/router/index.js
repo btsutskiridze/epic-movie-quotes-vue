@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import landingView from "@/views/landingView/IndexView.vue";
 import newsFeed from "@/views/newsFeedView/IndexView.vue";
+import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
 
 const router = createRouter({
@@ -23,6 +24,7 @@ const router = createRouter({
       },
     },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
+    { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
   ],
 });
 

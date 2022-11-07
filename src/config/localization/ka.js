@@ -7,6 +7,7 @@ export default {
       sign_up: "დარეგისტრირდი",
       log_in: "შესვლა",
       sign_up_with_google: "დარეგისტრირდით Google-ით",
+      log_in_with_google: "შესვლა Google-ით",
       already_have_an_account: "უკვე გაქვთ ანგარიში?",
       create_account: "შექმენი ანგარიში",
       start_your_journey: "დაიწყეთ თქვენი მოგზაურობა!",

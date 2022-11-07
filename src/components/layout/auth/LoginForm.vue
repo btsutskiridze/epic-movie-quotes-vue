@@ -14,6 +14,8 @@ import { setLoginApiError } from "@/helpers/api-error-message";
 
 defineEmits(["close", "showRegister"]);
 
+const url = import.meta.env.VITE_API_BASE_URL + "redirect";
+
 const handleLogin = (values, actions) => {
   console.log({
     email: values.email,
@@ -88,11 +90,13 @@ const handleLogin = (values, actions) => {
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
         }}</base-button>
+      </VeeForm>
+      <form :action="url">
         <base-button
           :outline="true"
           class="text-white w-full flex justify-center items-center gap-2"
           ><google-icon /><span>{{
-            $t("landingView.sign_up_with_google")
+            $t("landingView.log_in_with_google")
           }}</span></base-button
         >
         <span class="text-[#6C757D] text-base flex justify-center py-8"
@@ -104,7 +108,7 @@ const handleLogin = (values, actions) => {
             {{ $t("landingView.sign_up") }}
           </span></span
         >
-      </VeeForm>
+      </form>
     </base-dialog>
   </div>
 </template>

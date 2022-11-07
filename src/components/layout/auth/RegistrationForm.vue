@@ -16,6 +16,7 @@ import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
 defineEmits(["close", "showLogin"]);
 
 const loading = ref(null);
+const url = import.meta.env.VITE_API_BASE_URL + "redirect";
 const handleSubmit = async (values, actions) => {
   loading.value = true;
   axios
@@ -35,6 +36,10 @@ const handleSubmit = async (values, actions) => {
       }
     });
 };
+
+// const googleRegister = () => {
+//   axios.get("auth/google");
+// };
 </script>
 
 <template>
@@ -90,6 +95,8 @@ const handleSubmit = async (values, actions) => {
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
         }}</base-button>
+      </VeeForm>
+      <form :action="url" v-if="loading === null">
         <base-button
           :outline="true"
           class="text-white w-full flex justify-center items-center gap-2"
@@ -104,9 +111,10 @@ const handleSubmit = async (values, actions) => {
             class="text-[#0D6EFD] underline cursor-pointer pl-1"
           >
             {{ $t("landingView.log_in") }}</span
-          ></span
-        >
-      </VeeForm>
+          >
+        </span>
+      </form>
+
       <loading-circle v-if="loading === true" />
       <verify-email v-else-if="loading === false" />
     </base-dialog>
