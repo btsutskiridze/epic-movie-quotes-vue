@@ -29,6 +29,7 @@ const handleSubmit = async (values, actions) => {
       loading.value = false;
     })
     .catch((error) => {
+      loading.value = null;
       const errorsObj = error.response.data.errors;
       for (const errorName in errorsObj) {
         setRegisterApiError(errorName, actions);
@@ -47,7 +48,7 @@ const handleSubmit = async (values, actions) => {
       <VeeForm
         @submit="handleSubmit"
         class="font-helvetica"
-        v-if="loading === null"
+        v-show="loading === null"
       >
         <div class="text-center mt-14 sm:mt-8 mb-10">
           <div
@@ -96,6 +97,17 @@ const handleSubmit = async (values, actions) => {
         }}</base-button>
       </VeeForm>
       <google-authorisation v-if="loading === null" />
+      <span
+        class="text-[#6C757D] text-base flex justify-center py-8"
+        v-if="loading === null"
+        >{{ $t("landingView.already_have_an_account") }}
+        <span
+          @click="$emit('showLogin')"
+          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+        >
+          {{ $t("landingView.log_in") }}</span
+        >
+      </span>
       <loading-circle v-if="loading === true" />
       <verify-email v-else-if="loading === false" />
     </base-dialog>

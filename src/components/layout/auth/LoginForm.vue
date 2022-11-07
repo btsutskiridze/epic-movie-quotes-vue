@@ -11,9 +11,10 @@ import BaseInput from "@/components/UI/form/BaseInput.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
+import { ref } from "vue";
 
 defineEmits(["close", "showRegister"]);
-
+const remember = ref(null);
 const handleLogin = (values, actions) => {
   console.log({
     email: values.email,
@@ -25,7 +26,15 @@ const handleLogin = (values, actions) => {
       password: values.password,
     })
     .then((response) => {
-      setJwtToken(response.data.access_token, response.data.expires_in);
+      if (remember.value) {
+        setJwtToken(
+          response.data.access_token,
+          response.data.expires_in,
+          365 * 24 * 60 * 60
+        );
+      } else {
+        setJwtToken(response.data.access_token, response.data.expires_in);
+      }
 
       router.push("/news-feed");
     })
@@ -74,7 +83,12 @@ const handleLogin = (values, actions) => {
         />
         <div class="mb-2 -top-1 relative flex flex-row justify-between">
           <div>
-            <input type="checkbox" name="remember_me" id="remember_me" />
+            <input
+              type="checkbox"
+              name="remember_me"
+              v-model="remember"
+              id="remember_me"
+            />
             <label for="remember_me" class="text-white relative capitalize ml-1"
               >{{ $t("form.remember_me") }}
             </label>
@@ -90,6 +104,15 @@ const handleLogin = (values, actions) => {
         }}</base-button>
       </VeeForm>
       <google-authorisation />
+      <span class="text-[#6C757D] text-base flex justify-center py-8"
+        >{{ $t("landingView.already_have_an_account") }}
+        <span
+          @click="$emit('showRegister')"
+          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+        >
+          {{ $t("landingView.sign_up") }}</span
+        >
+      </span>
     </base-dialog>
   </div>
 </template>
