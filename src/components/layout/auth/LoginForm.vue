@@ -2,19 +2,17 @@
 import { Form as VeeForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 import { setJwtToken } from "@/helpers/jwt/index.js";
+import { setLoginApiError } from "@/helpers/api-error-message";
 import router from "@/router/index.js";
 
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
-
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
-import GoogleIcon from "@/components/icons/GoogleIcon.vue";
-import { setLoginApiError } from "@/helpers/api-error-message";
+
+import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
 
 defineEmits(["close", "showRegister"]);
-
-const url = import.meta.env.VITE_API_BASE_URL + "redirect";
 
 const handleLogin = (values, actions) => {
   console.log({
@@ -91,24 +89,7 @@ const handleLogin = (values, actions) => {
           $t("landingView.get_started")
         }}</base-button>
       </VeeForm>
-      <form :action="url">
-        <base-button
-          :outline="true"
-          class="text-white w-full flex justify-center items-center gap-2"
-          ><google-icon /><span>{{
-            $t("landingView.log_in_with_google")
-          }}</span></base-button
-        >
-        <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >{{ $t("landingView.dont_have_account") }}
-          <span
-            @click="$emit('showRegister')"
-            class="text-[#0D6EFD] underline cursor-pointer pl-1"
-          >
-            {{ $t("landingView.sign_up") }}
-          </span></span
-        >
-      </form>
+      <google-authorisation />
     </base-dialog>
   </div>
 </template>

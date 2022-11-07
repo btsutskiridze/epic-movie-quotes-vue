@@ -8,15 +8,14 @@ import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
-import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 import LoadingCircle from "@/components/LoadingCircle.vue";
 
 import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
+import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
 
 defineEmits(["close", "showLogin"]);
 
 const loading = ref(null);
-const url = import.meta.env.VITE_API_BASE_URL + "redirect";
 const handleSubmit = async (values, actions) => {
   loading.value = true;
   axios
@@ -96,25 +95,7 @@ const handleSubmit = async (values, actions) => {
           $t("landingView.get_started")
         }}</base-button>
       </VeeForm>
-      <form :action="url" v-if="loading === null">
-        <base-button
-          :outline="true"
-          class="text-white w-full flex justify-center items-center gap-2"
-          ><google-icon /><span>{{
-            $t("landingView.sign_up_with_google")
-          }}</span></base-button
-        >
-        <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >{{ $t("landingView.already_have_an_account") }}
-          <span
-            @click="$emit('showLogin')"
-            class="text-[#0D6EFD] underline cursor-pointer pl-1"
-          >
-            {{ $t("landingView.log_in") }}</span
-          >
-        </span>
-      </form>
-
+      <google-authorisation v-if="loading === null" />
       <loading-circle v-if="loading === true" />
       <verify-email v-else-if="loading === false" />
     </base-dialog>
