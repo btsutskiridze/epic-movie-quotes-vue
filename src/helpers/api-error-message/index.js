@@ -43,3 +43,19 @@ export const setLoginApiError = (field, actions) => {
     }
   }
 };
+
+export const setResetPasswordError = (field, actions) => {
+  if (i18n.global.locale == "en") {
+    switch (field) {
+      case "email":
+        actions.setFieldError("email", "Email does not exist");
+        break;
+    }
+  } else {
+    switch (field) {
+      case "email":
+        actions.setFieldError("email", "ელ-ფოსტა არ არსებობს");
+        break;
+    }
+  }
+};
