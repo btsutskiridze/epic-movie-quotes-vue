@@ -11,10 +11,18 @@ import BaseInput from "@/components/UI/form/BaseInput.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
-import { ref } from "vue";
+
+import ForgetPassword from "@/components/layout/password/ForgetPassword.vue";
+import MessageSent from "@/components/layout/password/MessageSent.vue";
+
+import { computed, ref } from "vue";
+import { useForgetPassword } from "@/stores/forgetPassword";
+const store = useForgetPassword();
 
 defineEmits(["close", "showRegister"]);
 const remember = ref(null);
+const emailSent = computed(() => store.emailSent);
+
 const handleLogin = (values, actions) => {
   console.log({
     email: values.email,
@@ -50,7 +58,11 @@ const handleLogin = (values, actions) => {
 <template>
   <div>
     <base-dialog @close="$emit('close')">
-      <VeeForm @submit="handleLogin" class="font-helvetica">
+      <VeeForm
+        @submit="handleLogin"
+        class="font-helvetica"
+        v-if="emailSent === null"
+      >
         <div class="text-center mt-14 mb-10">
           <div
             @click="$emit('close')"
@@ -94,7 +106,10 @@ const handleLogin = (values, actions) => {
             </label>
           </div>
           <div>
-            <p class="text-[#0D6EFD] underline cursor-pointer pl-1">
+            <p
+              class="text-[#0D6EFD] underline cursor-pointer pl-1"
+              @click="store.$patch({ emailSent: false })"
+            >
               {{ $t("form.forgot_password") }}
             </p>
           </div>
@@ -103,8 +118,10 @@ const handleLogin = (values, actions) => {
           $t("landingView.get_started")
         }}</base-button>
       </VeeForm>
-      <google-authorisation />
-      <span class="text-[#6C757D] text-base flex justify-center py-8"
+      <google-authorisation v-if="emailSent === null" />
+      <span
+        class="text-[#6C757D] text-base flex justify-center py-8"
+        v-if="emailSent === null"
         >{{ $t("landingView.already_have_an_account") }}
         <span
           @click="$emit('showRegister')"
@@ -113,6 +130,8 @@ const handleLogin = (values, actions) => {
           {{ $t("landingView.sign_up") }}</span
         >
       </span>
+      <forget-password v-if="emailSent === false" />
+      <message-sent v-if="emailSent === true" />
     </base-dialog>
   </div>
 </template>
