@@ -29,11 +29,13 @@ const handlePasswordReset = (values, actions) => {
         v-show="loading === false"
       >
         <div class="flex flex-col items-center">
-          <h1 class="font-medium text-4xl text-white">Create new password</h1>
+          <h1 class="font-medium text-4xl text-white text-center">
+            {{ $t("passwordReset.create_new_password") }}
+          </h1>
         </div>
         <div>
           <p class="font-normal text-base text-[#6C757D] text-center">
-            Your new password must be different from previous used passwords
+            {{ $t("passwordReset.password_must_be_different") }}
           </p>
         </div>
         <VeeForm class="w-full" @submit="handlePasswordReset">
@@ -53,7 +55,7 @@ const handlePasswordReset = (values, actions) => {
           />
 
           <base-button :orange="true" class="w-full text-white">
-            Reset Password
+            {{ $t("passwordReset.reset_password") }}
           </base-button>
         </VeeForm>
       </div>

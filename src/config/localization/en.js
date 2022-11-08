@@ -49,5 +49,22 @@ export default {
       account_activated: "Your Account has been activated",
       go_to_news_feed: "Go to my news feed",
     },
+    passwordReset: {
+      forgot_password: "Forgot password",
+      enter_details:
+        "Enter the email and we'll send an email with instructions to reset your password",
+      send_instructions: "Send Instructions",
+      back_to_login: "Back to Login",
+      check_email: "Check your email",
+      instruction_sent:
+        "We have sent a password recover instructions to your email",
+      create_new_password: "Create new Password",
+      password_must_be_different:
+        "Your new password must be different from previous used passwords",
+      reset_password: "Reset Password",
+      success: "Success",
+      your_password_changed_successfully: "Your password changed successfully",
+      go_to_news_feed: "Go to news feed",
+    },
   },
 };

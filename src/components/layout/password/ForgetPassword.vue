@@ -22,12 +22,13 @@ const handlePasswordReset = (values, actions) => {
       v-show="loading == false"
     >
       <div class="flex flex-col items-center">
-        <h1 class="font-medium text-4xl text-white">Forgot password?</h1>
+        <h1 class="font-medium text-4xl text-white text-center">
+          {{ $t("passwordReset.forgot_password") }}?
+        </h1>
       </div>
       <div>
         <p class="font-normal text-base text-[#6C757D] text-center">
-          Enter the email and we'll send an email with instructions to reset
-          your password
+          {{ $t("passwordReset.enter_details") }}
         </p>
       </div>
       <VeeForm class="w-full" @submit="handlePasswordReset">
@@ -39,14 +40,14 @@ const handlePasswordReset = (values, actions) => {
           type="email"
         />
         <base-button :orange="true" class="w-full text-white">
-          Send instructions
+          {{ $t("passwordReset.send_instructions") }}
         </base-button>
       </VeeForm>
       <p
         @click="store.$patch({ emailSent: null })"
         class="font-normal text-base text-[#6C757D] text-center mt-4"
       >
-        Back to log in
+        {{ $t("passwordReset.back_to_login") }}
       </p>
     </div>
     <LoadingCircle v-if="loading === true" />

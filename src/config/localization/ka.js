@@ -49,5 +49,21 @@ export default {
       account_activated: "ანგარიში გაგიაქტიურდათ",
       go_to_news_feed: "News feed-ზე გადასვლა",
     },
+    passwordReset: {
+      forgot_password: "დაგავიწყდა პაროლი",
+      enter_details:
+        "შეიყვანე ელ-ფოსტა და ჩვენ გამოგიგზავნით ინსტრუცქიას, რათა შეცვალოთ პაროლი",
+      send_instructions: "ინსტრუქციის გაგზავნა",
+      back_to_login: "შესვლაზე დაბრუნება",
+      check_email: "შეამოწმე ელ-ფოსტა",
+      instruction_sent: "გამოგიგზავნეთ აღდგენის ინსტრუქცია ელ-ფოსტაზე",
+      create_new_password: "შექმენი ახალი პაროლი",
+      password_must_be_different:
+        "თქვენი ახალი პაროლი უნდა განსხვავდებოდეს წინა გამოყენებული პაროლებისგან",
+      reset_password: "შეცვალე პაროლი",
+      success: "წარმატება",
+      your_password_changed_successfully: "პაროლი შეიცვალა წარმატებით",
+      go_to_news_feed: "News feed-ზე გადასვლა",
+    },
   },
 };

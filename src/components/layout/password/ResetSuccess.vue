@@ -20,11 +20,13 @@ const handleAutoLogin = () => {
     <div class="flex flex-col items-center justify-center py-16 gap-8">
       <div class="flex flex-col items-center gap-6">
         <big-success />
-        <h1 class="font-medium text-4xl text-white">Success!</h1>
+        <h1 class="font-medium text-4xl text-white">
+          {{ $t("passwordReset.success") }}!
+        </h1>
       </div>
       <div>
         <p class="font-normal text-base text-white">
-          Your password changed successfully
+          {{ $t("passwordReset.your_password_changed_successfully") }}!
         </p>
       </div>
       <base-button
@@ -32,7 +34,7 @@ const handleAutoLogin = () => {
         class="w-full text-white"
         @click="handleAutoLogin"
       >
-        Go to my news feed
+        {{ $t("passwordReset.go_to_news_feed") }}
       </base-button>
     </div>
   </base-dialog>
