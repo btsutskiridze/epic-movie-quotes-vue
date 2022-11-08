@@ -11,11 +11,11 @@ import { computed, onMounted, ref } from "vue";
 import router from "@/router";
 import { useRoute } from "vue-router";
 
-import { useResetPassword } from "@/stores/resetPassword";
-import { useForgetPassword } from "@/stores/forgetPassword";
+import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
+import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
 
-const store = useResetPassword();
-const forgetPassword = useForgetPassword();
+const store = useResetPasswordStore();
+const forgetPassword = useForgetPasswordStore();
 
 const showRegister = ref(false);
 const showLogin = ref(false);

@@ -1,6 +1,4 @@
 <script setup>
-// import axios from "@/config/axios/index.js";
-// import { setLoginApiError } from "@/helpers/api-error-message";
 import { Form as VeeForm } from "vee-validate";
 
 import LoadingCircle from "@/components/LoadingCircle.vue";
@@ -8,8 +6,8 @@ import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
 import { computed } from "vue";
 
-import { useForgetPassword } from "@/stores/forgetPassword";
-const store = useForgetPassword();
+import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
+const store = useForgetPasswordStore();
 const loading = computed(() => store.loading);
 
 const handlePasswordReset = (values, actions) => {

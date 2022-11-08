@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { setResetPasswordError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 
-export const useForgetPassword = defineStore("forgetPassword", {
+export const useForgetPasswordStore = defineStore("ForgetPassword", {
   // arrow function recommended for full type inference
   state: () => {
     return {

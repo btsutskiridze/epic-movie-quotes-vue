@@ -4,8 +4,8 @@ import BigSuccess from "@/components/icons/BigSuccessIcon.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import { onBeforeMount } from "vue";
 
-import { useAutoLogin } from "@/stores/autoLogin";
-const store = useAutoLogin();
+import { useAutoLoginStore } from "@/stores/useAutoLoginStore";
+const store = useAutoLoginStore();
 onBeforeMount(() => {
   store.getEmail();
 });
