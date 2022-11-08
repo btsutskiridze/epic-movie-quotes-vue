@@ -2,14 +2,33 @@
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import RegistrationForm from "@/components/layout/auth/RegistrationForm.vue";
 import LoginForm from "@/components/layout/auth/LoginForm.vue";
+import VerifiedEmail from "@/components/layout/verification/VerifiedEmail.vue";
+import ResetSuccess from "@/components/layout/password/ResetSuccess.vue";
+import ResetPassword from "@/components/layout/password/ResetPassword.vue";
+
 import BaseButton from "@/components/UI/form/BaseButton.vue";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import router from "@/router";
+import { useRoute } from "vue-router";
+
+import { useResetPassword } from "@/stores/resetPassword";
+import { useForgetPassword } from "@/stores/forgetPassword";
+
+const store = useResetPassword();
+const forgetPassword = useForgetPassword();
 
 const showRegister = ref(false);
 const showLogin = ref(false);
+const verificationSuccess = ref(false);
+const resetPassword = computed(() => store.resetPassword);
+const token = ref(null);
+
 onMounted(() => {
-  showRegister.value = JSON.parse(localStorage.getItem("showRegister"));
-  showLogin.value = JSON.parse(localStorage.getItem("showLogin"));
+  if (useRoute().query.token) {
+    verificationSuccess.value = true;
+    token.value = useRoute().query.token;
+  }
+  store.getResetToken();
 });
 
 const modify = (options) => {
@@ -27,6 +46,7 @@ const modify = (options) => {
 
       case "closeLogin":
         showLogin.value = false;
+        forgetPassword.$patch({ emailSent: null });
         localStorage.setItem("showLogin", showLogin.value);
         break;
 
@@ -36,6 +56,15 @@ const modify = (options) => {
         break;
     }
   });
+};
+
+const closeEmailPopup = () => {
+  verificationSuccess.value = false;
+  router.replace({ name: "home" });
+};
+const closePasswordPopup = () => {
+  store.$patch({ resetPassword: null });
+  router.replace({ name: "home" });
 };
 </script>
 
@@ -67,5 +96,15 @@ const modify = (options) => {
     v-if="showLogin"
     @close="modify(['closeLogin'])"
     @showRegister="modify(['closeLogin', 'openRegister'])"
+  />
+  <verified-email
+    v-if="verificationSuccess"
+    @close="closeEmailPopup"
+    :token="token"
+  />
+  <ResetPassword v-if="resetPassword === false" @close="closePasswordPopup" />
+  <reset-success
+    v-if="resetPassword === true"
+    @close="store.$patch({ resetPassword: null })"
   />
 </template>

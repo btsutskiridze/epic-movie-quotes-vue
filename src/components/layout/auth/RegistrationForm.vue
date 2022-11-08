@@ -1,21 +1,55 @@
 <script setup>
-import BaseDialog from "@/components/UI/BaseDialog.vue";
-import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
-import GoogleIcon from "@/components/icons/GoogleIcon.vue";
+import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
+import { ref } from "vue";
+import { setRegisterApiError } from "@/helpers/api-error-message";
+
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
+import BaseDialog from "@/components/UI/BaseDialog.vue";
+import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
+import LoadingCircle from "@/components/LoadingCircle.vue";
+
+import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
+import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
+
 defineEmits(["close", "showLogin"]);
 
-const onSubmit = (values) => {
-  console.log(values);
+const loading = ref(null);
+const handleSubmit = async (values, actions) => {
+  loading.value = true;
+  axios
+    .post("register", {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+    })
+    .then(() => {
+      loading.value = false;
+    })
+    .catch((error) => {
+      loading.value = null;
+      const errorsObj = error.response.data.errors;
+      for (const errorName in errorsObj) {
+        setRegisterApiError(errorName, actions);
+      }
+    });
 };
+
+// const googleRegister = () => {
+//   axios.get("auth/google");
+// };
 </script>
 
 <template>
   <div>
     <base-dialog @close="$emit('close')">
-      <VeeForm @submit="onSubmit" class="font-helvetica">
+      <VeeForm
+        @submit="handleSubmit"
+        class="font-helvetica"
+        v-show="loading === null"
+      >
         <div class="text-center mt-14 sm:mt-8 mb-10">
           <div
             @click="$emit('close')"
@@ -61,23 +95,21 @@ const onSubmit = (values) => {
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
         }}</base-button>
-        <base-button
-          :outline="true"
-          class="text-white w-full flex justify-center items-center gap-2"
-          ><google-icon /><span>{{
-            $t("landingView.sign_up_with_google")
-          }}</span></base-button
-        >
-        <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >{{ $t("landingView.already_have_an_account") }}
-          <span
-            @click="$emit('showLogin')"
-            class="text-[#0D6EFD] underline cursor-pointer pl-1"
-          >
-            {{ $t("landingView.log_in") }}</span
-          ></span
-        >
       </VeeForm>
+      <google-authorisation v-if="loading === null" />
+      <span
+        class="text-[#6C757D] text-base flex justify-center py-8"
+        v-if="loading === null"
+        >{{ $t("landingView.already_have_an_account") }}
+        <span
+          @click="$emit('showLogin')"
+          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+        >
+          {{ $t("landingView.log_in") }}</span
+        >
+      </span>
+      <loading-circle v-if="loading === true" />
+      <verify-email v-else-if="loading === false" />
     </base-dialog>
   </div>
 </template>

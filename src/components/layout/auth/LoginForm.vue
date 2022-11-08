@@ -1,21 +1,68 @@
 <script setup>
-import BaseDialog from "@/components/UI/BaseDialog.vue";
-import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
-import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 import { Form as VeeForm } from "vee-validate";
+import axios from "@/config/axios/index.js";
+import { setJwtToken } from "@/helpers/jwt/index.js";
+import { setLoginApiError } from "@/helpers/api-error-message";
+import router from "@/router/index.js";
+
+import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
-defineEmits(["close", "showRegister"]);
+import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
-const onSubmit = (values) => {
-  console.log(values);
+import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
+
+import ForgetPassword from "@/components/layout/password/ForgetPassword.vue";
+import MessageSent from "@/components/layout/password/MessageSent.vue";
+
+import { computed, ref } from "vue";
+import { useForgetPassword } from "@/stores/forgetPassword";
+const store = useForgetPassword();
+
+defineEmits(["close", "showRegister"]);
+const remember = ref(null);
+const emailSent = computed(() => store.emailSent);
+
+const handleLogin = (values, actions) => {
+  console.log({
+    email: values.email,
+    password: values.password,
+  });
+  axios
+    .post("login", {
+      email: values.email,
+      password: values.password,
+    })
+    .then((response) => {
+      if (remember.value) {
+        setJwtToken(
+          response.data.access_token,
+          response.data.expires_in,
+          365 * 24 * 60 * 60
+        );
+      } else {
+        setJwtToken(response.data.access_token, response.data.expires_in);
+      }
+
+      router.push({ name: "news-feed" });
+    })
+    .catch((error) => {
+      const errorsObj = error.response.data.errors;
+      for (const errorName in errorsObj) {
+        setLoginApiError(errorName, actions);
+      }
+    });
 };
 </script>
 
 <template>
   <div>
     <base-dialog @close="$emit('close')">
-      <VeeForm @submit="onSubmit" class="font-helvetica">
+      <VeeForm
+        @submit="handleLogin"
+        class="font-helvetica"
+        v-if="emailSent === null"
+      >
         <div class="text-center mt-14 mb-10">
           <div
             @click="$emit('close')"
@@ -48,13 +95,21 @@ const onSubmit = (values) => {
         />
         <div class="mb-2 -top-1 relative flex flex-row justify-between">
           <div>
-            <input type="checkbox" name="remember_me" id="remember_me" />
+            <input
+              type="checkbox"
+              name="remember_me"
+              v-model="remember"
+              id="remember_me"
+            />
             <label for="remember_me" class="text-white relative capitalize ml-1"
               >{{ $t("form.remember_me") }}
             </label>
           </div>
           <div>
-            <p class="text-[#0D6EFD] underline cursor-pointer pl-1">
+            <p
+              class="text-[#0D6EFD] underline cursor-pointer pl-1"
+              @click="store.$patch({ emailSent: false })"
+            >
               {{ $t("form.forgot_password") }}
             </p>
           </div>
@@ -62,23 +117,21 @@ const onSubmit = (values) => {
         <base-button :orange="true" class="text-white w-full mb-4">{{
           $t("landingView.get_started")
         }}</base-button>
-        <base-button
-          :outline="true"
-          class="text-white w-full flex justify-center items-center gap-2"
-          ><google-icon /><span>{{
-            $t("landingView.sign_up_with_google")
-          }}</span></base-button
-        >
-        <span class="text-[#6C757D] text-base flex justify-center py-8"
-          >{{ $t("landingView.dont_have_account") }}
-          <span
-            @click="$emit('showRegister')"
-            class="text-[#0D6EFD] underline cursor-pointer pl-1"
-          >
-            {{ $t("landingView.sign_up") }}
-          </span></span
-        >
       </VeeForm>
+      <google-authorisation v-if="emailSent === null" />
+      <span
+        class="text-[#6C757D] text-base flex justify-center py-8"
+        v-if="emailSent === null"
+        >{{ $t("landingView.already_have_an_account") }}
+        <span
+          @click="$emit('showRegister')"
+          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+        >
+          {{ $t("landingView.sign_up") }}</span
+        >
+      </span>
+      <forget-password v-if="emailSent === false" />
+      <message-sent v-if="emailSent === true" />
     </base-dialog>
   </div>
 </template>

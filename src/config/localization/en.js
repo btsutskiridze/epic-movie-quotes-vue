@@ -7,6 +7,7 @@ export default {
       sign_up: "Sign Up",
       log_in: "Log In",
       sign_up_with_google: "Sign up with Google",
+      log_in_with_google: "Log in with google",
       already_have_an_account: "Already have an account?",
       create_account: "Create an account",
       start_your_journey: "Start your journey!",
@@ -38,6 +39,15 @@ export default {
       confirm_password: "Confirm password",
       forgot_password: "Forgot password",
       remember_me: "Remember me",
+    },
+    verification: {
+      thank_you: "Thank You",
+      failed: "Activation failed",
+      verification_sent:
+        "Please check your email and follow the instructions to activate your account.",
+      go_to_email: "Go to my email",
+      account_activated: "Your Account has been activated",
+      go_to_news_feed: "Go to my news feed",
     },
   },
 };

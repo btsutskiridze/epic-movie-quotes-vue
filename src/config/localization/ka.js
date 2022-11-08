@@ -7,6 +7,7 @@ export default {
       sign_up: "დარეგისტრირდი",
       log_in: "შესვლა",
       sign_up_with_google: "დარეგისტრირდით Google-ით",
+      log_in_with_google: "შესვლა Google-ით",
       already_have_an_account: "უკვე გაქვთ ანგარიში?",
       create_account: "შექმენი ანგარიში",
       start_your_journey: "დაიწყეთ თქვენი მოგზაურობა!",
@@ -38,6 +39,15 @@ export default {
       confirm_password: "პაროლის დადასტურება",
       forgot_password: "დაგავიწყდა პაროლი",
       remember_me: "დამიმახსოვრე",
+    },
+    verification: {
+      thank_you: "გმადლობთ",
+      failed: "აქტივაცია ვერ მოხერხდა",
+      verification_sent:
+        "გთხოვთ ნახოთ თქვენი ელ-ფოსტა, რათა გაიაქტიუროთ ანგარიში",
+      go_to_email: "ელ-ფოსტაზე გადასვლა",
+      account_activated: "ანგარიში გაგიაქტიურდათ",
+      go_to_news_feed: "News feed-ზე გადასვლა",
     },
   },
 };
