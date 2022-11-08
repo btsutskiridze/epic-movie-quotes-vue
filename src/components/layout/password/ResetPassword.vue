@@ -7,8 +7,8 @@ import LoadingCircle from "@/components/LoadingCircle.vue";
 import { Form as VeeForm } from "vee-validate";
 import { computed, onBeforeMount } from "vue";
 
-import { useResetPassword } from "@/stores/resetPassword";
-const store = useResetPassword();
+import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
+const store = useResetPasswordStore();
 
 const loading = computed(() => store.loading);
 

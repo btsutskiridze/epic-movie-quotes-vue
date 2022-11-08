@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import axios from "@/config/axios/index.js";
 import { useRoute } from "vue-router";
 
-export const useResetPassword = defineStore("resetPassword", {
+export const useResetPasswordStore = defineStore("ResetPassword", {
   // arrow function recommended for full type inference
   state: () => {
     return {

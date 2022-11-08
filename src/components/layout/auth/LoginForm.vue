@@ -16,8 +16,9 @@ import ForgetPassword from "@/components/layout/password/ForgetPassword.vue";
 import MessageSent from "@/components/layout/password/MessageSent.vue";
 
 import { computed, ref } from "vue";
-import { useForgetPassword } from "@/stores/forgetPassword";
-const store = useForgetPassword();
+// import { useForgetPassword } from "@/stores/forgetPassword";
+import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
+const store = useForgetPasswordStore();
 
 defineEmits(["close", "showRegister"]);
 const remember = ref(null);
