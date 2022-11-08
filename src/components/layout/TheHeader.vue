@@ -12,7 +12,10 @@ import router from "@/router";
 import { useRoute } from "vue-router";
 
 import { useResetPassword } from "@/stores/resetPassword";
+import { useForgetPassword } from "@/stores/forgetPassword";
+
 const store = useResetPassword();
+const forgetPassword = useForgetPassword();
 
 const showRegister = ref(false);
 const showLogin = ref(false);
@@ -43,6 +46,7 @@ const modify = (options) => {
 
       case "closeLogin":
         showLogin.value = false;
+        forgetPassword.$patch({ emailSent: null });
         localStorage.setItem("showLogin", showLogin.value);
         break;
 
