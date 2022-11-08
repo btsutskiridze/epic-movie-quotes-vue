@@ -26,7 +26,7 @@ const getVerified = ref(undefined);
 const loading = ref(true);
 const autoLogin = () => {
   setJwtToken(jwt.token, jwt.expires_in);
-  router.replace("/news-feed");
+  router.replace({ name: "news-feed" });
 };
 
 onMounted(() => {

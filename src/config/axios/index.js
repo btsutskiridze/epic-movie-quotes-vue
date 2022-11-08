@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { getJwtToken } from "@/helpers/jwt/index.js";
+import { getJwtToken } from "@/helpers/jwt/index.js";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
     "X-Requested-With": "XMLHttpRequest",
-    // Authorization: "Bearer " + getJwtToken(),
+    Authorization: "Bearer " + getJwtToken(),
   },
 });
 

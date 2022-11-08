@@ -44,7 +44,7 @@ const handleLogin = (values, actions) => {
         setJwtToken(response.data.access_token, response.data.expires_in);
       }
 
-      router.push("/news-feed");
+      router.push({ name: "news-feed" });
     })
     .catch((error) => {
       const errorsObj = error.response.data.errors;

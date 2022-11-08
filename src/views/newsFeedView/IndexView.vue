@@ -3,7 +3,7 @@ import router from "@/router/index.js";
 import { deleteJwtToken } from "@/helpers/jwt";
 const handleLogout = () => {
   deleteJwtToken("jwt_token", "/", import.meta.VITE_DOMAIN);
-  router.push("/");
+  router.push({ name: "home" });
 };
 </script>
 

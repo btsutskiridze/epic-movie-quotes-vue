@@ -60,11 +60,11 @@ const modify = (options) => {
 
 const closeEmailPopup = () => {
   verificationSuccess.value = false;
-  router.replace("/");
+  router.replace({ name: "home" });
 };
 const closePasswordPopup = () => {
   store.$patch({ resetPassword: null });
-  router.replace("/");
+  router.replace({ name: "home" });
 };
 </script>
 
