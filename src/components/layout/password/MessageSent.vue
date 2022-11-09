@@ -2,11 +2,14 @@
 import BaseButton from "@/components/UI/form/BaseButton.vue";
 import MessageSent from "@/components/icons/MessageSentIcon.vue";
 
+import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
+const store = useForgetPasswordStore();
+
 const gmail = import.meta.env.VITE_GMAIL_URL;
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center py-16 gap-8">
+  <div class="flex flex-col items-center justify-center py-6 gap-8">
     <div class="flex flex-col items-center gap-6">
       <message-sent />
       <h1 class="font-medium text-4xl text-white">
@@ -23,5 +26,11 @@ const gmail = import.meta.env.VITE_GMAIL_URL;
         $t("verification.go_to_email")
       }}</base-button>
     </a>
+    <p
+      @click="store.$patch({ emailSent: null })"
+      class="font-normal text-base text-[#6C757D] text-center"
+    >
+      Skip, I'll confirm later
+    </p>
   </div>
 </template>

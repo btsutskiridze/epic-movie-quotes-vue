@@ -103,8 +103,5 @@ const closePasswordPopup = () => {
     :token="token"
   />
   <ResetPassword v-if="resetPassword === false" @close="closePasswordPopup" />
-  <reset-success
-    v-if="resetPassword === true"
-    @close="store.$patch({ resetPassword: null })"
-  />
+  <reset-success v-if="resetPassword === true" />
 </template>

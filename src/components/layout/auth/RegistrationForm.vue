@@ -45,18 +45,19 @@ const handleSubmit = async (values, actions) => {
 <template>
   <div>
     <base-dialog @close="$emit('close')">
+      <div
+        @click="$emit('close')"
+        class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
+        v-if="loading === null || loading === false"
+      >
+        <back-arrow-icon />
+      </div>
       <VeeForm
         @submit="handleSubmit"
         class="font-helvetica"
         v-show="loading === null"
       >
         <div class="text-center mt-14 sm:mt-8 mb-10">
-          <div
-            @click="$emit('close')"
-            class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
-          >
-            <back-arrow-icon />
-          </div>
           <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3">
             {{ $t("landingView.create_account") }}
           </h1>

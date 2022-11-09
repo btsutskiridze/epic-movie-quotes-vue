@@ -3,6 +3,7 @@ import BaseButton from "@/components/UI/form/BaseButton.vue";
 import MessageSent from "@/components/icons/MessageSentIcon.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import LoadingCircle from "@/components/LoadingCircle.vue";
+import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import router from "@/router";
 import { useRoute } from "vue-router";
@@ -53,6 +54,12 @@ onMounted(() => {
 
 <template>
   <base-dialog @close="$emit('close')">
+    <div
+      @click="$emit('close')"
+      class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
+    >
+      <back-arrow-icon />
+    </div>
     <loading-circle v-if="loading" />
     <div v-else>
       <div class="flex flex-col items-center justify-center py-16 gap-8">

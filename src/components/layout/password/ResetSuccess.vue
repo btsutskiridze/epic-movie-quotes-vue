@@ -5,12 +5,15 @@ import BaseDialog from "@/components/UI/BaseDialog.vue";
 import { onBeforeMount } from "vue";
 
 import { useAutoLoginStore } from "@/stores/useAutoLoginStore";
+import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
 const store = useAutoLoginStore();
+const resetPassword = useResetPasswordStore();
 onBeforeMount(() => {
   store.getEmail();
 });
 
 const handleAutoLogin = () => {
+  resetPassword.$patch({ resetPassword: null });
   store.autoLogin();
 };
 </script>
