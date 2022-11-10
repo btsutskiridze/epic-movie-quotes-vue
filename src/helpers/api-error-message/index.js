@@ -31,6 +31,9 @@ export const setLoginApiError = (field, actions) => {
       case "password":
         actions.setFieldError("password", "Password is incorrect");
         break;
+      case "verification":
+        actions.setFieldError("email", "Email is not verified");
+        break;
     }
   } else {
     switch (field) {
@@ -39,6 +42,9 @@ export const setLoginApiError = (field, actions) => {
         break;
       case "password":
         actions.setFieldError("password", "პაროლი არასწორია");
+        break;
+      case "verification":
+        actions.setFieldError("email", "ელ-ფოსტა არ არის გააქტიურებული");
         break;
     }
   }

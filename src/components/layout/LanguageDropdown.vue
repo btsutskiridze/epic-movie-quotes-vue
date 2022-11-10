@@ -36,9 +36,9 @@ const setTextLocale = (val) => {
 </script>
 
 <template>
-  <ul id="dropdown" class="relative text-center hidden md:block z-30">
+  <ul id="dropdown" class="relative text-center hidden sm:block z-30">
     <li
-      class="gap-3 cursor-pointer relative flex flex-row justify-between mr-2 items-center mb-2"
+      class="gap-3 cursor-pointer relative flex flex-row justify-between items-center"
       @click="toggleMenu"
     >
       {{ activeLang }}
@@ -47,7 +47,7 @@ const setTextLocale = (val) => {
     <li
       v-if="show"
       @click="toggleMenu(), setTextLocale(locale)"
-      class="pl-2 pr-1 py-1 -left-2 gap-3 absolute cursor-pointer flex flex-row justify-between mr-2 items-center bg-[#2a263d] rounded-xl hover:bg-[#322b57] active:bg-[#473f6e]"
+      class="pl-2 pr-1 py-1 -left-2 gap-3 top-8 absolute cursor-pointer flex flex-row justify-between mr-2 items-center bg-[#2a263d] rounded-xl hover:bg-[#322b57] active:bg-[#473f6e]"
     >
       {{ inactiveLang }}
       <DropdownArrowIcon class="invisible" />
