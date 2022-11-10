@@ -36,7 +36,7 @@ const setTextLocale = (val) => {
 </script>
 
 <template>
-  <ul id="dropdown" class="relative text-center hidden sm:block z-30">
+  <ul id="dropdown" class="relative text-center hidden md:block z-30">
     <li
       class="gap-3 cursor-pointer relative flex flex-row justify-between items-center"
       @click="toggleMenu"

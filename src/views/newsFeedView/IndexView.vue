@@ -1,12 +1,15 @@
 <script setup>
 import NewsFeedHeader from "@/views/newsFeedView/NewsFeedHeader.vue";
+import NewsFeedBody from "@/views/newsFeedView/NewsFeedBody.vue";
 </script>
 
 <template>
-  <div class="bg-[#11101A] text-[#DDCCAA] font-helvetica min-h-screen">
+  <div
+    class="bg-[#0D0C15] md:bg-[#181624] text-[#DDCCAA] font-helvetica min-h-screen"
+  >
     <news-feed-header />
-    <div class="h-[80vh] w-full flex justify-center items-center">
-      <h1 class="text-2xl">News feed</h1>
+    <div class="w-[86%] m-auto">
+      <news-feed-body />
     </div>
   </div>
 </template>
