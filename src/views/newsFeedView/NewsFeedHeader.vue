@@ -58,7 +58,7 @@ const closeMenu = (e) => {
                     height="40"
                   />
                   <div>
-                    <h1>Nino Tabagari</h1>
+                    <h1>chemi sakheli</h1>
                     <p class="text-gray-400 text-sm">Edit your profile</p>
                   </div>
                 </div>

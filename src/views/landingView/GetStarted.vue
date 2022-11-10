@@ -1,24 +1,8 @@
 <script setup>
 import BaseButton from "@/components/UI/form/BaseButton.vue";
-import RegistrationForm from "@/components/layout/auth/RegistrationForm.vue";
-import { ref } from "vue";
+import { useRegisterStore } from "@/stores/useRegisterStore";
 
-const showRegister = ref(false);
-const modify = (options) => {
-  options.forEach((option) => {
-    switch (option) {
-      case "closeRegister":
-        showRegister.value = false;
-        localStorage.setItem("showRegister", showRegister.value);
-        break;
-
-      case "openRegister":
-        showRegister.value = true;
-        localStorage.setItem("showRegister", showRegister.value);
-        break;
-    }
-  });
-};
+const register = useRegisterStore();
 </script>
 
 <template>
@@ -32,11 +16,10 @@ const modify = (options) => {
       <base-button
         :orange="true"
         class="lg:text-2xl"
-        @click="modify(['openRegister'])"
+        @click="register.$patch({ showRegister: true })"
       >
         {{ $t("landingView.get_started") }}</base-button
       >
     </div>
-    <RegistrationForm v-if="showRegister" @close="modify(['closeRegister'])" />
   </div>
 </template>

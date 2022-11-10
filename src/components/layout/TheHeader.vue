@@ -13,9 +13,10 @@ import { useRoute } from "vue-router";
 
 import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
 import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
-
+import { useRegisterStore } from "@/stores/useRegisterStore";
 const store = useResetPasswordStore();
 const forgetPassword = useForgetPasswordStore();
+const register = useRegisterStore();
 
 const showRegister = ref(false);
 const showLogin = ref(false);
@@ -36,11 +37,13 @@ const modify = (options) => {
     switch (option) {
       case "closeRegister":
         showRegister.value = false;
+        register.$patch({ showRegister: false });
         localStorage.setItem("showRegister", showRegister.value);
         break;
 
       case "openRegister":
         showRegister.value = true;
+        register.$patch({ showRegister: true });
         localStorage.setItem("showRegister", showRegister.value);
         break;
 
@@ -88,7 +91,7 @@ const closePasswordPopup = () => {
     </div>
   </header>
   <RegistrationForm
-    v-if="showRegister"
+    v-if="showRegister || register.showRegister"
     @close="modify(['closeRegister'])"
     @showLogin="modify(['closeRegister', 'openLogin'])"
   />
