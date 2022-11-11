@@ -11,7 +11,7 @@ export const useResetPasswordStore = defineStore("ResetPassword", {
       email: "",
       token: "",
       loading: false,
-      resetPassword: null,
+      resetPassword: false,
     };
   },
   actions: {

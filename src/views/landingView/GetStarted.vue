@@ -1,8 +1,5 @@
 <script setup>
 import BaseButton from "@/components/UI/form/BaseButton.vue";
-import { useRegisterStore } from "@/stores/useRegisterStore";
-
-const register = useRegisterStore();
 </script>
 
 <template>
@@ -16,7 +13,7 @@ const register = useRegisterStore();
       <base-button
         :orange="true"
         class="lg:text-2xl"
-        @click="register.$patch({ showRegister: true })"
+        @click="$router.push('/registration')"
       >
         {{ $t("landingView.get_started") }}</base-button
       >

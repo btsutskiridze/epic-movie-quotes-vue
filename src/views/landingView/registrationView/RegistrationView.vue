@@ -13,9 +13,8 @@ import LoadingCircle from "@/components/LoadingCircle.vue";
 import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
 import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
 
-defineEmits(["close", "showLogin"]);
-
 const loading = ref(null);
+
 const handleSubmit = async (values, actions) => {
   loading.value = true;
   axios
@@ -36,17 +35,13 @@ const handleSubmit = async (values, actions) => {
       }
     });
 };
-
-// const googleRegister = () => {
-//   axios.get("auth/google");
-// };
 </script>
 
 <template>
   <div>
-    <base-dialog @close="$emit('close')">
+    <base-dialog @close="$router.push('/')">
       <div
-        @click="$emit('close')"
+        @click="$router.push('/')"
         class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
         v-if="loading === null || loading === false"
       >
@@ -103,7 +98,7 @@ const handleSubmit = async (values, actions) => {
         v-if="loading === null"
         >{{ $t("landingView.already_have_an_account") }}
         <span
-          @click="$emit('showLogin')"
+          @click="$router.push('/login')"
           class="text-[#0D6EFD] underline cursor-pointer pl-1"
         >
           {{ $t("landingView.log_in") }}</span

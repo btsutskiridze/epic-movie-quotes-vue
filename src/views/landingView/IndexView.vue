@@ -8,6 +8,7 @@ import TheFooter from "@/components/layout/TheFooter.vue";
 <template>
   <div class="bg-[#11101A] text-[#DDCCAA] font-helvetica">
     <the-header />
+    <router-view></router-view>
     <get-started />
     <landing-quotes />
     <the-footer />

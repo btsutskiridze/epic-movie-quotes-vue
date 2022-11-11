@@ -7,7 +7,7 @@ export const useForgetPasswordStore = defineStore("ForgetPassword", {
   state: () => {
     return {
       // all these properties will have their type inferred automatically
-      emailSent: null,
+      emailSent: false,
       loading: false,
     };
   },

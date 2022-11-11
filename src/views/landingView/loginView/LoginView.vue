@@ -12,17 +12,9 @@ import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
 
-import ForgetPassword from "@/components/layout/password/ForgetPassword.vue";
-import MessageSent from "@/components/layout/password/MessageSent.vue";
+import { ref } from "vue";
 
-import { computed, ref } from "vue";
-// import { useForgetPassword } from "@/stores/forgetPassword";
-import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
-const store = useForgetPasswordStore();
-
-defineEmits(["close", "showRegister"]);
 const remember = ref(null);
-const emailSent = computed(() => store.emailSent);
 
 const handleLogin = (values, actions) => {
   console.log({
@@ -58,15 +50,11 @@ const handleLogin = (values, actions) => {
 
 <template>
   <div>
-    <base-dialog @close="$emit('close')">
-      <VeeForm
-        @submit="handleLogin"
-        class="font-helvetica"
-        v-if="emailSent === null"
-      >
+    <base-dialog @close="$router.push('/')">
+      <VeeForm @submit="handleLogin" class="font-helvetica">
         <div class="text-center mt-14 mb-10">
           <div
-            @click="$emit('close')"
+            @click="$router.push('/')"
             class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
           >
             <back-arrow-icon />
@@ -109,7 +97,7 @@ const handleLogin = (values, actions) => {
           <div>
             <p
               class="text-[#0D6EFD] underline cursor-pointer pl-1"
-              @click="store.$patch({ emailSent: false })"
+              @click="$router.push('/forget-password')"
             >
               {{ $t("form.forgot_password") }}
             </p>
@@ -119,20 +107,16 @@ const handleLogin = (values, actions) => {
           $t("landingView.get_started")
         }}</base-button>
       </VeeForm>
-      <google-authorisation v-if="emailSent === null" />
-      <span
-        class="text-[#6C757D] text-base flex justify-center py-8"
-        v-if="emailSent === null"
+      <google-authorisation />
+      <span class="text-[#6C757D] text-base flex justify-center py-8"
         >{{ $t("landingView.already_have_an_account") }}
         <span
-          @click="$emit('showRegister')"
+          @click="$router.push('/registration')"
           class="text-[#0D6EFD] underline cursor-pointer pl-1"
         >
           {{ $t("landingView.sign_up") }}</span
         >
       </span>
-      <forget-password v-if="emailSent === false" />
-      <message-sent v-if="emailSent === true" />
     </base-dialog>
   </div>
 </template>
