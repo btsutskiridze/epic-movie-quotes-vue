@@ -15,10 +15,6 @@ import { ref } from "vue";
 const remember = ref(null);
 
 const handleLogin = (values, actions) => {
-  console.log({
-    email: values.email,
-    password: values.password,
-  });
   axios
     .post("login", {
       email: values.email,
