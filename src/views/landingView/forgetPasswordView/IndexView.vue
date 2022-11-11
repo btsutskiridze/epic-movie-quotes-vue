@@ -17,7 +17,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <base-dialog @close="$router.push({ name: 'home' })">
+  <base-dialog
+    @close="
+      store.$patch({ emailSent: false });
+      $router.push({ name: 'home' });
+    "
+  >
     <forget-password v-if="emailSent === false" />
     <message-sent v-if="emailSent === true" />
   </base-dialog>

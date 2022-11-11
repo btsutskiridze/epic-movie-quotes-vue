@@ -27,7 +27,10 @@ const gmail = import.meta.env.VITE_GMAIL_URL;
       }}</base-button>
     </a>
     <p
-      @click="store.$patch({ emailSent: null })"
+      @click="
+        store.$patch({ emailSent: false });
+        $router.push('/');
+      "
       class="font-normal text-base text-[#6C757D] text-center"
     >
       Skip, I'll confirm later
