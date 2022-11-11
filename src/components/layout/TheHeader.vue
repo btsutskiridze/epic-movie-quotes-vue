@@ -1,53 +1,5 @@
 <script setup>
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
-// const showRegister = ref(false);
-// const showLogin = ref(false);
-
-// onMounted(() => {
-//   if (useRoute().query.token) {
-//     verificationSuccess.value = true;
-//     token.value = useRoute().query.token;
-//   }
-//   store.getResetToken();
-// });
-
-// const modify = (options) => {
-//   options.forEach((option) => {
-//     switch (option) {
-//       case "closeRegister":
-//         showRegister.value = false;
-//         register.$patch({ showRegister: false });
-//         localStorage.setItem("showRegister", showRegister.value);
-//         break;
-
-//       case "openRegister":
-//         showRegister.value = true;
-//         register.$patch({ showRegister: true });
-//         localStorage.setItem("showRegister", showRegister.value);
-//         break;
-
-//       case "closeLogin":
-//         showLogin.value = false;
-//         forgetPassword.$patch({ emailSent: null });
-//         localStorage.setItem("showLogin", showLogin.value);
-//         break;
-
-//       case "openLogin":
-//         showLogin.value = true;
-//         localStorage.setItem("showLogin", showLogin.value);
-//         break;
-//     }
-//   });
-// };
-
-// const closeEmailPopup = () => {
-//   verificationSuccess.value = false;
-//   router.replace({ name: "home" });
-// };
-// const closePasswordPopup = () => {
-//   store.$patch({ resetPassword: null });
-//   router.replace({ name: "home" });
-// };
 </script>
 
 <template>
@@ -69,21 +21,4 @@ import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
       </div>
     </div>
   </header>
-  <!-- <RegistrationForm
-    v-if="showRegister || register.showRegister"
-    @close="modify(['closeRegister'])"
-    @showLogin="modify(['closeRegister', 'openLogin'])"
-  />
-  <LoginForm
-    v-if="showLogin"
-    @close="modify(['closeLogin'])"
-    @showRegister="modify(['closeLogin', 'openRegister'])"
-  />
-  <verified-email
-    v-if="verificationSuccess"
-    @close="closeEmailPopup"
-    :token="token"
-  />
-  <ResetPassword v-if="resetPassword === false" @close="closePasswordPopup" />
-  <reset-success v-if="resetPassword === true" /> -->
 </template>
