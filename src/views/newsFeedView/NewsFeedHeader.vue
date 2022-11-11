@@ -49,7 +49,7 @@ const closeMenu = (e) => {
             class="w-screen h-screen top-0 left-0 backdrop-blur-sm z-30 fixed block md:hidden"
           >
             <div
-              class="absolute top-0 left-0 bg-[#11101A] w-[80vw] h-[20vh] z-40 pt-10 pl-10 rounded-lg"
+              class="absolute top-0 left-0 bg-[#0D0C15] w-[80vw] h-[80vh] z-40 pt-10 pl-10 rounded-lg"
             >
               <ul class="flex flex-col gap-8">
                 <div class="flex flex-row gap-4">

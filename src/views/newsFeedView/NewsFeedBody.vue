@@ -9,7 +9,9 @@ const searchInput = ref(null);
 </script>
 
 <template>
-  <div class="h-[80vh] w-full flex justify-start items-start text-white py-8">
+  <div
+    class="h-[80vh] w-full flex justify-start items-start text-white md:py-8"
+  >
     <div class="w-[30%] hidden md:block">
       <div class="flex flex-col gap-8 text-xl">
         <div class="flex flex-row items-center gap-4">
@@ -41,28 +43,37 @@ const searchInput = ref(null);
           <edit-icon class="mr-3" />
           Write new Quote
         </button>
-        <div
-          class="w-3/4 flex flex-row items-center relative overflow-x-hidden"
-        >
-          <search-icon class="absolute w-4 h-4" />
-          <span
-            v-if="!searchInput"
-            class="text-[#97969A] absolute left-6 whitespace-nowrap"
-            >Enter <span class="text-white">@</span> to search movies, Enter
-            <span class="text-white">#</span> to search quotes</span
+        <div class="w-3/4">
+          <div
+            class="hidden md:flex flex-row items-center relative overflow-x-hidden"
           >
-          <input
-            v-model="searchInput"
-            type="search"
-            name="search"
-            id="search"
-            autocomplete="off"
-            class="z-20 bg-transparent text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white border-b border-[#efefef4d] py-2 pl-6 w-full"
-            placeholder=""
-          />
+            <search-icon class="absolute w-4 h-4" />
+            <span
+              v-if="!searchInput"
+              class="text-[#97969A] absolute left-6 whitespace-nowrap"
+              >Enter <span class="text-white">@</span> to search movies, Enter
+              <span class="text-white">#</span> to search quotes</span
+            >
+            <input
+              v-model="searchInput"
+              type="search"
+              name="search"
+              id="search"
+              autocomplete="off"
+              class="z-20 bg-transparent text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white border-b border-[#efefef4d] py-2 pl-6 w-full"
+              placeholder=""
+            />
+          </div>
         </div>
       </div>
-      <!-- <h1 class="text-2xl">News feed</h1> -->
+      <div class="block md:hidden">
+        <button
+          class="bg-[#181624] py-6 px-[7%] w-full absolute left-0 flex flex-row whitespace-nowrap"
+        >
+          <edit-icon class="mr-3" />
+          Write new Quote
+        </button>
+      </div>
     </div>
     <div class="w-[30%] hidden lg:block"></div>
   </div>
