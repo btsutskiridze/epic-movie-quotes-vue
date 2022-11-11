@@ -226,7 +226,7 @@ function autoResize(e) {
                 </div>
               </div>
 
-              <div class="flex flex-row gap-3 items-center">
+              <div class="flex flex-row gap-3 items-start">
                 <img
                   src="@/assets/images/news-feed/avatar.png"
                   alt="avatar"
