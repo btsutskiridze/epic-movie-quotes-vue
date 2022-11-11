@@ -8,11 +8,16 @@ import LikeIcon from "@/components/icons/news-feed/LikeIcon.vue";
 import { ref } from "vue";
 
 const searchInput = ref(null);
+
+function autoResize(e) {
+  e.target.style.height = "auto";
+  e.target.style.height = e.target.scrollHeight + "px";
+}
 </script>
 
 <template>
   <div class="w-full flex justify-start items-start text-white md:py-8">
-    <div class="w-[30%] hidden md:block">
+    <div class="w-[30%] hidden md:block sticky top-10">
       <div class="flex flex-col gap-8 text-xl">
         <div class="flex flex-row items-center gap-4">
           <img
@@ -76,7 +81,7 @@ const searchInput = ref(null);
       </div>
 
       <div id="posts" class="flex flex-col gap-8">
-        <div class="w-full bg-[#11101A] rounded-xl py-6 px-5">
+        <div class="w-full bg-[#11101A] rounded-xl py-6 px-[7%] md:px-5">
           <div class="flex flex-col gap-4">
             <div id="user" class="flex flex-row items-center gap-4">
               <img
@@ -137,7 +142,7 @@ const searchInput = ref(null);
                   </p>
                 </div>
               </div>
-              <div class="flex flex-row gap-3 items-center">
+              <div class="flex flex-row gap-3 items-start">
                 <img
                   src="@/assets/images/news-feed/avatar.png"
                   alt="avatar"
@@ -150,7 +155,8 @@ const searchInput = ref(null);
                     name="comment"
                     id="comment"
                     autocomplete="off"
-                    class="bg-[#24222F] px-4 py-2 rounded-xl text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white w-full"
+                    @input="autoResize"
+                    class="bg-[#24222F] overflow-y-hidden resize-none px-4 py-3 leading-5 rounded-xl text-base focus:outline-none hover:outline-none placeholder-white w-full"
                     placeholder="Write a comment"
                   />
                 </div>
@@ -158,7 +164,7 @@ const searchInput = ref(null);
             </div>
           </div>
         </div>
-        <div class="w-full bg-[#11101A] rounded-xl py-4 px-5">
+        <div class="w-full bg-[#11101A] rounded-xl py-6 px-[7%] md:px-5">
           <div class="flex flex-col gap-4">
             <div id="user" class="flex flex-row items-center gap-4">
               <img
