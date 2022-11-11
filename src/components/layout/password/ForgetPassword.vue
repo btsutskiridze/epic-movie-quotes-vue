@@ -1,7 +1,6 @@
 <script setup>
 import { Form as VeeForm } from "vee-validate";
 
-import BaseInput from "@/components/UI/form/BaseInput.vue";
 import { computed } from "vue";
 
 import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";

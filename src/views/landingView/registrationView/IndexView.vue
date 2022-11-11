@@ -3,7 +3,7 @@ import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
 import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";
-import VeeFormVue from "@/components/layout/auth/VeeForm.vue";
+import RegisterForm from "@/components/layout/auth/RegisterForm.vue";
 import { useRegisterStore } from "@/stores/useRegisterStore";
 import { computed } from "vue";
 const store = useRegisterStore();
@@ -20,7 +20,7 @@ const loading = computed(() => store.loading);
       >
         <back-arrow-icon />
       </div>
-      <VeeFormVue v-if="loading === null" />
+      <register-form v-if="loading === null" />
       <google-authorisation v-if="loading === null" />
       <span
         class="text-[#6C757D] text-base flex justify-center py-8"

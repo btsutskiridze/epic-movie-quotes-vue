@@ -3,11 +3,13 @@ import landingView from "@/views/landingView/IndexView.vue";
 import newsFeed from "@/views/newsFeedView/IndexView.vue";
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
-import RegistrationView from "@/views/landingView/registrationView/RegistrationView.vue";
+
+import RegistrationView from "@/views/landingView/registrationView/IndexView.vue";
+import VerificationView from "@/views/landingView/verificationView/IndexView.vue";
+
+import LoginView from "@/views/landingView/loginView/IndexView.vue";
 import ForgetPasswordView from "@/views/landingView/forgetPasswordView/IndexView.vue";
 import ResetPasswordView from "@/views/landingView/resetPasswordView/IndexView.vue";
-import VerificationView from "@/views/landingView/verificationView/IndexView.vue";
-import LoginView from "@/views/landingView/loginView/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

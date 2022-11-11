@@ -1,6 +1,4 @@
 <script setup>
-import BaseInput from "@/components/UI/form/BaseInput.vue";
-
 import { Form as VeeForm } from "vee-validate";
 import { computed, onBeforeMount } from "vue";
 
