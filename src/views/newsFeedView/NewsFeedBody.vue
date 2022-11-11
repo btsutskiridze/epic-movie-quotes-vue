@@ -239,8 +239,9 @@ function autoResize(e) {
                     name="comment"
                     id="comment"
                     autocomplete="off"
-                    class="bg-[#24222F] px-4 py-2 rounded-xl text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white w-full"
-                    placeholder="comment"
+                    @input="autoResize"
+                    class="bg-[#24222F] overflow-y-hidden resize-none px-4 py-3 leading-5 rounded-xl text-base focus:outline-none hover:outline-none placeholder-white w-full"
+                    placeholder="Write a comment"
                   />
                 </div>
               </div>
