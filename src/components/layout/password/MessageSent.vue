@@ -1,5 +1,4 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import MessageSent from "@/components/icons/MessageSentIcon.vue";
 
 import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";

@@ -1,6 +1,4 @@
-<script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
-</script>
+<script setup></script>
 
 <template>
   <div class="relative z-20">

@@ -1,5 +1,4 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BigSuccess from "@/components/icons/BigSuccessIcon.vue";
 import { onBeforeMount } from "vue";
 

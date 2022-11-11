@@ -1,7 +1,5 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import MessageSent from "@/components/icons/MessageSentIcon.vue";
-import LoadingCircle from "@/components/LoadingCircle.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import router from "@/router";

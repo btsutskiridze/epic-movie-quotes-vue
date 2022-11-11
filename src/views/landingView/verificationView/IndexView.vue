@@ -1,6 +1,5 @@
 <script setup>
 import VerifiedEmail from "@/components/layout/verification/VerifiedEmail.vue";
-import BaseDialog from "@/components/UI/BaseDialog.vue";
 </script>
 
 <template>

@@ -1,7 +1,5 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
-import LoadingCircle from "@/components/LoadingCircle.vue";
 
 import { Form as VeeForm } from "vee-validate";
 import { computed, onBeforeMount } from "vue";

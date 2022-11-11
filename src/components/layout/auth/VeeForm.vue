@@ -1,7 +1,4 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
-import BaseInput from "@/components/UI/form/BaseInput.vue";
-
 import { Form as VeeForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 import { setRegisterApiError } from "@/helpers/api-error-message";

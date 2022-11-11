@@ -1,6 +1,5 @@
 <script setup>
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 // const showRegister = ref(false);
 // const showLogin = ref(false);
 

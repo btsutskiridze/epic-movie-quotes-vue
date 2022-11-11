@@ -5,8 +5,6 @@ import { setJwtToken } from "@/helpers/jwt/index.js";
 import { setLoginApiError } from "@/helpers/api-error-message";
 import router from "@/router/index.js";
 
-import BaseDialog from "@/components/UI/BaseDialog.vue";
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import BaseInput from "@/components/UI/form/BaseInput.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 

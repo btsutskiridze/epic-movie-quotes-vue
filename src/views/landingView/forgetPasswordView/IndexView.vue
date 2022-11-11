@@ -1,7 +1,6 @@
 <script setup>
 import ForgetPassword from "@/components/layout/password/ForgetPassword.vue";
 import MessageSent from "@/components/layout/password/MessageSent.vue";
-import BaseDialog from "@/components/UI/BaseDialog.vue";
 
 import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
 import { useResetPasswordStore } from "@/stores/useResetPasswordStore";

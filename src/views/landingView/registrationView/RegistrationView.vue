@@ -1,7 +1,5 @@
 <script setup>
-import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
-import LoadingCircle from "@/components/LoadingCircle.vue";
 
 import VerifyEmail from "@/components/layout/verification/VerifyEmail.vue";
 import GoogleAuthorisation from "@/components/layout/auth/GoogleAuthorisation.vue";

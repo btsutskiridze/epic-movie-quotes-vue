@@ -1,5 +1,4 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import BurgerMenu from "@/components/icons/news-feed/BurgerMenuIcon.vue";
 

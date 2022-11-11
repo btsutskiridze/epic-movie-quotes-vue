@@ -1,7 +1,6 @@
 <script setup>
 import ResetSuccess from "@/components/layout/password/ResetSuccess.vue";
 import ResetPassword from "@/components/layout/password/ResetPassword.vue";
-import BaseDialog from "@/components/UI/BaseDialog.vue";
 
 import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
 import { computed, onMounted, ref } from "vue";
