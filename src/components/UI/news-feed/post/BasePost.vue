@@ -22,10 +22,11 @@ defineProps({
         />
         <h1>{{ quote.username }}</h1>
       </div>
-      <div class="">
+      <div class="flex flex-row gap-3">
         <p>"{{ quote.text }}”</p>
-        <p>movie- {{ quote.moviename }}</p>
-        <p>(2000)</p>
+        <p>
+          <span class="text-[#DDCCAA]">{{ quote.moviename }}</span>
+        </p>
       </div>
       <div>
         <img
