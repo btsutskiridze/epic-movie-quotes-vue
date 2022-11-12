@@ -2,6 +2,13 @@
 import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
 import BaseTextarea from "@/components/UI/news-feed/post/BaseTextarea.vue";
 import LikesAndComments from "@/components/layout/news-feed/post/LikesAndComments.vue";
+
+defineProps({
+  quote: {
+    type: Object,
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -13,12 +20,12 @@ import LikesAndComments from "@/components/layout/news-feed/post/LikesAndComment
           alt="avatar"
           class="w-10 h-10"
         />
-        <h1>Nino Chkheidze</h1>
+        <h1>{{ quote.username }}</h1>
       </div>
       <div class="">
-        <span>“Follow your dream.”</span>
-        <span>movie- Billy Elliot.</span>
-        <span> (2000)</span>
+        <p>"{{ quote.text }}”</p>
+        <p>movie- {{ quote.moviename }}</p>
+        <p>(2000)</p>
       </div>
       <div>
         <img
@@ -29,15 +36,13 @@ import LikesAndComments from "@/components/layout/news-feed/post/LikesAndComment
       </div>
       <likes-and-comments></likes-and-comments>
       <div id="comments" class="flex flex-col gap-6">
-        <base-comment username="Lela wurwumia"
-          >ras gavxar she sacodao</base-comment
+        <base-comment
+          v-for="comment in quote.comments"
+          :key="comment.id"
+          :username="comment.username"
+          >{{ comment.text }}</base-comment
         >
-        <base-comment username="Anri jokhadze"
-          >lela reebs bedav she sacodao</base-comment
-        >
-        <base-comment username="Gia suramelashvili"
-          >ver shemedrebitt
-        </base-comment>
+
         <base-textarea></base-textarea>
       </div>
     </div>

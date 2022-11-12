@@ -5,6 +5,45 @@ import PcNavbar from "@/components/layout/news-feed/navbar/PcNavbar.vue";
 import PcQuoteButton from "@/components/layout/news-feed/new-quote-button/PcQuoteButton.vue";
 import MobileQuoteButton from "@/components/layout/news-feed/new-quote-button/MobileQuoteButton.vue";
 import PcSearch from "@/components/layout/news-feed/search-bar/PcSearch.vue";
+
+const quotes = [
+  {
+    id: 1,
+    username: "bakari",
+    moviename: "titanic",
+    text: "titanic is big",
+    comments: [
+      {
+        id: 1,
+        username: "gela",
+        text: "woooooow",
+      },
+      {
+        id: 2,
+        username: "anjelina joli",
+        text: "reebs uyureb bichoo",
+      },
+    ],
+  },
+  {
+    id: 2,
+    username: "mziuri",
+    moviename: "fight club",
+    text: "second rule is remember first rule",
+    comments: [
+      {
+        id: 1,
+        username: "murmani",
+        text: "thats messed upp duuude",
+      },
+      {
+        id: 2,
+        username: "anjelina joli",
+        text: "brad momwere saswrafod",
+      },
+    ],
+  },
+];
 </script>
 
 <template>
@@ -22,10 +61,11 @@ import PcSearch from "@/components/layout/news-feed/search-bar/PcSearch.vue";
       </div>
 
       <div id="posts" class="flex flex-col gap-8">
-        <base-post></base-post>
-        <base-post></base-post>
-        <base-post></base-post>
-        <base-post></base-post>
+        <base-post
+          v-for="quote in quotes"
+          :key="quote.id"
+          :quote="quote"
+        ></base-post>
       </div>
     </div>
   </div>
