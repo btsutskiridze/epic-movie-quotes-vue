@@ -8,7 +8,7 @@ const store = useRegisterStore();
 const loading = computed(() => store.loading);
 
 const handleSubmit = async (values, actions) => {
-  store.$dispatch({ loading: true });
+  store.$patch({ loading: true });
   axios
     .post("register", {
       name: values.name,
@@ -17,10 +17,10 @@ const handleSubmit = async (values, actions) => {
       password_confirmation: values.password_confirmation,
     })
     .then(() => {
-      store.$dispatch({ loading: false });
+      store.$patch({ loading: false });
     })
     .catch((error) => {
-      store.$dispatch({ loading: null });
+      store.$patch({ loading: null });
       const errorsObj = error.response.data.errors;
       for (const errorName in errorsObj) {
         setRegisterApiError(errorName, actions);
