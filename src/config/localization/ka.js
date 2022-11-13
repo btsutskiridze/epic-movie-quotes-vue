@@ -64,6 +64,7 @@ export default {
       success: "წარმატება",
       your_password_changed_successfully: "პაროლი შეიცვალა წარმატებით",
       go_to_news_feed: "News feed-ზე გადასვლა",
+      confirm_later: "გამოვტოვებ, მოგვიანებით დავადასტურებ",
     },
   },
 };

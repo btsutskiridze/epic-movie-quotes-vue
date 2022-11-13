@@ -42,7 +42,7 @@ const handlePasswordReset = (values, actions) => {
       </VeeForm>
       <p
         @click="$router.push('/login')"
-        class="font-normal text-base text-[#6C757D] text-center mt-4"
+        class="font-normal text-base text-[#6C757D] text-center mt-4 cursor-pointer"
       >
         {{ $t("passwordReset.back_to_login") }}
       </p>

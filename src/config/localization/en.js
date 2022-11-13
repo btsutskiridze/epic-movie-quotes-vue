@@ -65,6 +65,7 @@ export default {
       success: "Success",
       your_password_changed_successfully: "Your password changed successfully",
       go_to_news_feed: "Go to news feed",
+      confirm_later: "Skip, I'll confirm later",
     },
   },
 };

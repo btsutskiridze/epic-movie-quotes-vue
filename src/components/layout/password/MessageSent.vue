@@ -30,9 +30,9 @@ const gmail = import.meta.env.VITE_GMAIL_URL;
         store.$patch({ emailSent: false });
         $router.push('/');
       "
-      class="font-normal text-base text-[#6C757D] text-center"
+      class="font-normal text-base text-[#6C757D] text-center cursor-pointer"
     >
-      Skip, I'll confirm later
+      {{ $t("passwordReset.confirm_later") }}
     </p>
   </div>
 </template>

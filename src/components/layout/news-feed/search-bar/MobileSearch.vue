@@ -13,7 +13,10 @@ const close = (e) => {
 </script>
 
 <template>
-  <search-icon class="block md:hidden" @click="showSearch = true" />
+  <search-icon
+    class="block md:hidden cursor-pointer"
+    @click="showSearch = true"
+  />
   <section
     v-if="showSearch"
     id="container"
