@@ -33,9 +33,21 @@ const setTextLocale = (val) => {
 
   localStorage.setItem("locale", val);
 };
+const closeDialog = (e) => {
+  if (document.getElementById("container") === e.target) {
+    show.value = false;
+  }
+};
 </script>
 
 <template>
+  <div
+    v-if="show"
+    @click="closeDialog"
+    id="container"
+    class="h-screen w-screen fixed top-0 left-0 z-30 flex justify-center items-center"
+  ></div>
+
   <ul id="dropdown" class="relative text-center hidden md:block z-30">
     <li
       class="gap-3 cursor-pointer relative flex flex-row justify-between items-center"

@@ -66,5 +66,19 @@ export default {
       go_to_news_feed: "News feed-ზე გადასვლა",
       confirm_later: "გამოვტოვებ, მოგვიანებით დავადასტურებ",
     },
+    newsFeed: {
+      edit_your_profile: "პროფილის რედაქტირება",
+      news_feed: "ახალი ამბები",
+      list_of_movies: "თქვენი ფილმები",
+      write_new_quote: "დაამატე ციტატა",
+      write_a_comment: "დაწერე კომენტარი",
+      logout: "გამოსვლა",
+    },
+    search: {
+      search: "მოძებნა",
+      enter: "დაწერე",
+      to_search_movies: "ფილმების მოსაძებნად",
+      to_search_quotes: "ციტატების მოსაძებნად",
+    },
   },
 };

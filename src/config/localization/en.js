@@ -67,5 +67,19 @@ export default {
       go_to_news_feed: "Go to news feed",
       confirm_later: "Skip, I'll confirm later",
     },
+    newsFeed: {
+      edit_your_profile: "Edit your profile",
+      news_feed: "News feed",
+      list_of_movies: "List of Movies",
+      write_new_quote: "Write new quote",
+      write_a_comment: "Write a comment",
+      logout: "Log out",
+    },
+    search: {
+      search: "Search",
+      enter: "Enter",
+      to_search_movies: "to search movies",
+      to_search_quotes: "to search quotes",
+    },
   },
 };

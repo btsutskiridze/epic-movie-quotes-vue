@@ -13,16 +13,18 @@ import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
       />
       <div>
         <h1>Brad piti</h1>
-        <p class="text-gray-400 text-base">Edit your profile</p>
+        <p class="text-gray-400 text-base">
+          {{ $t("newsFeed.edit_your_profile") }}
+        </p>
       </div>
     </div>
     <div class="flex flex-row gap-3 cursor-pointer">
       <home-icon />
-      <h1>News Feed</h1>
+      <h1>{{ $t("newsFeed.news_feed") }}</h1>
     </div>
     <div class="flex flex-row gap-3 cursor-pointer">
       <movies-icon />
-      <h1>List of Movies</h1>
+      <h1>{{ $t("newsFeed.list_of_movies") }}</h1>
     </div>
   </div>
 </template>

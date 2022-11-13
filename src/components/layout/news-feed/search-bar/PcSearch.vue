@@ -15,8 +15,10 @@ const searchInput = ref(null);
       <span
         v-if="!searchInput"
         class="text-[#97969A] absolute left-6 whitespace-nowrap"
-        >Enter <span class="text-white">@</span> to search movies, Enter
-        <span class="text-white">#</span> to search quotes</span
+        >{{ $t("search.enter") }} <span class="text-white">@</span>
+        {{ $t("search.to_search_movies") }} {{ $t("search.enter") }}
+        <span class="text-white">#</span>
+        {{ $t("search.to_search_quotes") }}</span
       >
       <input
         v-model="searchInput"

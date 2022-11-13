@@ -21,7 +21,7 @@ function autoResize(e) {
         autocomplete="off"
         @input="autoResize"
         class="bg-[#24222F] overflow-y-hidden resize-none px-4 py-3 leading-5 rounded-xl text-base focus:outline-none hover:outline-none placeholder-white w-full"
-        placeholder="Write a comment"
+        :placeholder="$t('newsFeed.write_a_comment')"
       />
     </div>
   </div>

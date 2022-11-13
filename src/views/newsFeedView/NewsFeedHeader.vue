@@ -33,7 +33,7 @@ const handleLogout = () => {
             @click="handleLogout"
             class="hidden md:block"
           >
-            Log out</base-button
+            {{ $t("newsFeed.logout") }}</base-button
           >
         </section>
       </div>

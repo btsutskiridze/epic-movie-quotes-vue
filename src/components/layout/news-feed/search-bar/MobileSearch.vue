@@ -37,16 +37,19 @@ const close = (e) => {
             id="search"
             autocomplete="off"
             class="bg-transparent text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white w-full"
-            placeholder="Search"
+            :placeholder="$t('search.search')"
           />
         </div>
       </div>
       <div class="flex flex-col justify-center gap-6 px-[86px] py-6">
         <h1 class="text-[#97969A]">
-          Enter <span class="text-white">@</span> to search movies
+          {{ $t("search.enter") }} <span class="text-white">@</span>
+          {{ $t("search.to_search_movies") }}
         </h1>
         <h1 class="text-[#97969A]">
-          Enter <span class="text-white">#</span> to search quotes
+          {{ $t("search.enter") }}
+          <span class="text-white">#</span>
+          {{ $t("search.to_search_quotes") }}
         </h1>
       </div>
     </div>
