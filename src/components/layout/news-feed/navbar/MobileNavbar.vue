@@ -50,11 +50,17 @@ const handleLogout = () => {
             </p>
           </div>
         </div>
-        <div class="flex flex-row gap-3 cursor-pointer">
+        <div
+          class="flex flex-row gap-3 cursor-pointer"
+          @click="$router.push({ name: 'news-feed' })"
+        >
           <home-icon />
           <h1>{{ $t("newsFeed.news_feed") }}</h1>
         </div>
-        <div class="flex flex-row gap-3 cursor-pointer">
+        <div
+          class="flex flex-row gap-3 cursor-pointer"
+          @click="$router.push({ name: 'movies-list' })"
+        >
           <movies-icon />
           <h1>{{ $t("newsFeed.list_of_movies") }}</h1>
         </div>

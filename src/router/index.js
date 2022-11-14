@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import landingView from "@/views/landingView/IndexView.vue";
-import newsFeed from "@/views/newsFeedView/IndexView.vue";
+
+import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
+import MoviesListView from "@/views/moviesListView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
+
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
 
@@ -56,7 +59,7 @@ const router = createRouter({
     {
       path: "/news-feed",
       name: "news-feed",
-      component: newsFeed,
+      component: NewsFeedView,
       beforeEnter: (_, _2, next) => {
         return isAuthenticated() ? next() : next({ name: "home" });
       },
@@ -67,6 +70,14 @@ const router = createRouter({
           component: AddQuteView,
         },
       ],
+    },
+    {
+      path: "/movies-list",
+      name: "movies-list",
+      component: MoviesListView,
+      beforeEnter: (_, _2, next) => {
+        return isAuthenticated() ? next() : next({ name: "home" });
+      },
     },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
     { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
