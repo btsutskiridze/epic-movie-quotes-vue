@@ -40,17 +40,4 @@ const dragFile = (e) => {
   </div>
 </template>
 
-<style>
-::-webkit-input-placeholder {
-  font-style: italic;
-}
-:-moz-placeholder {
-  font-style: italic;
-}
-::-moz-placeholder {
-  font-style: italic;
-}
-:-ms-input-placeholder {
-  font-style: italic;
-}
-</style>
+<style></style>

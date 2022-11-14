@@ -22,11 +22,11 @@ const closeDialog = (e) => {
       <div
         @click="closeDialog"
         id="container"
-        class="h-screen w-screen fixed top-0 left-0 z-30 backdrop-blur-sm bg-[#00000089] flex justify-center items-center"
+        class="h-screen overflow-y-scroll overflow-x-hidden w-screen fixed top-0 left-0 z-30 backdrop-blur-sm bg-[#00000089] flex justify-center items-center"
       >
         <dialog
           open
-          class="bg-[#11101A] w-full h-[76vh] top-0 md:top-[10%] md:min-w-[600px] overflow-x-hidden md:max-w-[32%] md:h-min md:rounded-xl z-30 p-0"
+          class="bg-[#11101A] w-full min-h-[76vh] md:min-h-[auto] top-0 md:top-[10%] md:min-w-[600px] overflow-x-hidden md:max-w-[32%] md:h-min md:rounded-xl z-30 p-0"
         >
           <div class="text-center relative border-b p-8 border-[#efefef4d]">
             <h1 class="text-white text-xl md:text-2xl">
