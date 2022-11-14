@@ -1,6 +1,6 @@
 <script setup>
 import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
-import BaseTextarea from "@/components/UI/news-feed/post/BaseTextarea.vue";
+import CommentTextarea from "@/components/UI/news-feed/post/CommentTextarea.vue";
 import LikesAndComments from "@/components/layout/news-feed/post/LikesAndComments.vue";
 
 defineProps({
@@ -44,7 +44,7 @@ defineProps({
           >{{ comment.text }}</base-comment
         >
 
-        <base-textarea></base-textarea>
+        <comment-textarea></comment-textarea>
       </div>
     </div>
   </div>

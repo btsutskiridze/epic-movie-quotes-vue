@@ -3,11 +3,20 @@ const autoResize = (e) => {
   e.target.style.height = "auto";
   e.target.style.height = e.target.scrollHeight + "px";
 };
+
+defineProps({
+  showUser: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+});
 </script>
 
 <template>
   <div class="flex flex-row gap-3 items-start">
     <img
+      v-if="showUser"
       src="@/assets/images/news-feed/avatar.png"
       alt="avatar"
       class="w-10 h-10"

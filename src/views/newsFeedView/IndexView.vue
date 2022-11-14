@@ -6,6 +6,8 @@ import NewsFeedBody from "@/views/newsFeedView/NewsFeedBody.vue";
 <template>
   <div class="bg-[#181624] text-[#DDCCAA] font-helvetica min-h-screen">
     <news-feed-header />
+    <router-view></router-view>
+
     <div class="w-full md:w-[86%] m-auto">
       <news-feed-body />
     </div>

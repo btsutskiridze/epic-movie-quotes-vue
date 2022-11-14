@@ -4,6 +4,7 @@ import EditIcon from "@/components/icons/news-feed/EditIcon.vue";
 
 <template>
   <button
+    @click="$router.push({ name: 'add-quote' })"
     class="bg-[#181624] py-6 px-[7%] w-full left-0 flex flex-row whitespace-nowrap"
   >
     <edit-icon class="mr-3" />
