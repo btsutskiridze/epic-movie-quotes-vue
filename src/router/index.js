@@ -2,8 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import landingView from "@/views/landingView/IndexView.vue";
 
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
-import MoviesListView from "@/views/moviesListView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
+
+import MoviesListView from "@/views/moviesListView/IndexView.vue";
+import AddMovieView from "@/views/moviesListView/addMovieView/IndexView.vue";
 
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
@@ -78,6 +80,13 @@ const router = createRouter({
       beforeEnter: (_, _2, next) => {
         return isAuthenticated() ? next() : next({ name: "home" });
       },
+      children: [
+        {
+          path: "add-movie",
+          name: "add-movie",
+          component: AddMovieView,
+        },
+      ],
     },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
     { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
