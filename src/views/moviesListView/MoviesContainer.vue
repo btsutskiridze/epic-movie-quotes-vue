@@ -30,31 +30,31 @@ import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
         name="samurai champloo"
         date="2000"
         quotes-number="6"
-        path="src/assets/images/movies/samurai-champloo.jpg"
+        image="samurai-champloo.jpg"
       />
       <base-movie-item
         name="samurai champloo"
         date="2000"
         quotes-number="6"
-        path="src/assets/images/movies/samurai-champloo.jpg"
+        image="samurai-champloo.jpg"
       />
       <base-movie-item
         name="samurae champloo"
         date="2000"
         quotes-number="4"
-        path="src/assets/images/movies/samurai-champloo.jpg"
+        image="samurai-champloo.jpg"
       />
       <base-movie-item
         name="samurai champloo"
         date="2000"
         quotes-number="6"
-        path="src/assets/images/movies/samurai-champloo.jpg"
+        image="samurai-champloo.jpg"
       />
       <base-movie-item
         name="samurai champloo"
         date="2000"
         quotes-number="6"
-        path="src/assets/images/movies/samurai-champloo.jpg"
+        image="samurai-champloo.jpg"
       />
     </div>
   </div>
