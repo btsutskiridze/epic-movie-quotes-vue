@@ -33,7 +33,7 @@ const dragFile = (e) => {
     <input
       type="file"
       accept="image/jpeg, image/png"
-      class="absolute w-full left-0 h-full invisible"
+      class="absolute w-full left-0 h-full hidden"
       @change="setImage"
       id="image-input"
     />
