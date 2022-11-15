@@ -8,6 +8,14 @@ import MobileSearch from "@/components/layout/news-feed/search-bar/MobileSearch.
 import router from "@/router/index.js";
 import { deleteJwtToken } from "@/helpers/jwt";
 
+defineProps({
+  haveMovies: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
+
 const handleLogout = () => {
   deleteJwtToken("jwt_token", "/", import.meta.VITE_DOMAIN);
   router.push({ name: "home" });
@@ -25,7 +33,9 @@ const handleLogout = () => {
         </h2>
         <mobile-navbar />
         <section class="flex justify-center items-center gap-8">
-          <mobile-search />
+          <div :class="haveMovies ? 'hidden' : ''">
+            <mobile-search />
+          </div>
           <notification-icon />
           <language-dropdown />
           <base-button

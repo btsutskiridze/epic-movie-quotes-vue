@@ -6,7 +6,7 @@ import MoviesContainer from "@/views/moviesListView/MoviesContainer.vue";
 
 <template>
   <div class="bg-[#181624] text-[#DDCCAA] font-helvetica min-h-screen">
-    <news-feed-header />
+    <news-feed-header :have-movies="true" />
     <div class="w-full md:w-[86%] m-auto">
       <base-container :have-movies="true">
         <movies-container />
