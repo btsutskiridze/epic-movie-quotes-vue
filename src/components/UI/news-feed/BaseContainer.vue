@@ -15,7 +15,7 @@ defineProps({
       <pc-navbar />
     </div>
     <div
-      class="w-full flex flex-col md:gap-4 pb-4"
+      class="w-full flex flex-col md:gap-4"
       :class="haveMovies ? '' : 'md:w-[64%] lg:w-[50%]'"
     >
       <slot></slot>
