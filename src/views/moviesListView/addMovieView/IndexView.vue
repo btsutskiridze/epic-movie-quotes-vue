@@ -2,6 +2,24 @@
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 import BaseChipInput from "@/components/UI/form/BaseChipInput.vue";
+import axios from "@/config/axios/index.js";
+import { Form as VeeForm } from "vee-validate";
+
+const addMovie = (values) => {
+  console.log(values);
+  // axios
+  //   .post("movie/store", {
+  //     title_en: "matrix",
+  //     title_ka: "მატრიცა",
+  //     director_en: "gurama",
+  //     director_ka: "გურამა",
+  //     description_en: "agia ragacaze",
+  //     description_ka: "ბაახ ბუხხ და მატრიცა",
+  //   })
+  //   .then((response) => {
+  //     console.log(response);
+  //   });
+};
 </script>
 
 <template>
@@ -9,39 +27,37 @@ import BaseChipInput from "@/components/UI/form/BaseChipInput.vue";
     <template #header>
       {{ $t("movies.write_new_movie") }}
     </template>
-    <section class="flex flex-col gap-4 text-white">
-      <div id="user" class="flex flex-row items-center gap-4">
-        <img
-          src="@/assets/images/news-feed/avatar.png"
-          alt="avatar"
-          class="w-10 h-10"
+    <VeeForm @submit="addMovie">
+      <section class="flex flex-col gap-4 text-white">
+        <div id="user" class="flex flex-row items-center gap-4">
+          <img
+            src="@/assets/images/news-feed/avatar.png"
+            alt="avatar"
+            class="w-10 h-10"
+          />
+          <h1 class="">Brad spit</h1>
+        </div>
+        <base-textarea name="title_en" placeholder="Movie name" lang="Eng" />
+        <base-textarea name="title_ka" placeholder="ფილმის სახელი" lang="ქარ" />
+        <base-chip-input />
+        <base-textarea name="director_en" placeholder="Director" lang="Eng" />
+        <base-textarea name="director_ka" placeholder="რეჟისორი" lang="ქარ" />
+        <base-textarea
+          name="description_en"
+          placeholder="Movie description"
+          lang="Eng"
         />
-        <h1 class="">Brad spit</h1>
-      </div>
-      <base-textarea name="movie_name_en" placeholder="Movie name" lang="Eng" />
-      <base-textarea
-        name="movie_name_ka"
-        placeholder="ფილმის სახელი"
-        lang="ქარ"
-      />
-      <base-chip-input />
-      <base-textarea name="director_en" placeholder="Director" lang="Eng" />
-      <base-textarea name="director_ka" placeholder="რეჟისორი" lang="ქარ" />
-      <base-textarea
-        name="description_en"
-        placeholder="Movie description"
-        lang="Eng"
-      />
-      <base-textarea
-        name="description_ka"
-        placeholder="ფილმის აღწერა"
-        lang="ქარ"
-      />
-      <base-file-input />
-      <base-button class="w-full bg-[#E31221]">{{
-        $t("movies.add_movie")
-      }}</base-button>
-    </section>
+        <base-textarea
+          name="description_ka"
+          placeholder="ფილმის აღწერა"
+          lang="ქარ"
+        />
+        <base-file-input name="thumbnail" />
+        <base-button class="w-full bg-[#E31221]" @click="addMovie">{{
+          $t("movies.add_movie")
+        }}</base-button>
+      </section>
+    </VeeForm>
   </news-feed-dialog>
 </template>
 
