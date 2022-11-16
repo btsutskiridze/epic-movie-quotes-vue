@@ -11,7 +11,7 @@
       <base-button
         :orange="true"
         class="lg:text-2xl"
-        @click="$router.push('/registration')"
+        @click="$router.push({ name: 'registration' })"
       >
         {{ $t("landingView.get_started") }}</base-button
       >

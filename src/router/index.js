@@ -29,18 +29,22 @@ const router = createRouter({
       },
       children: [
         {
+          name: "registration",
           path: "registration",
           component: RegistrationView,
         },
         {
+          name: "login",
           path: "login",
           component: LoginView,
         },
         {
+          name: "forget-password",
           path: "forget-password",
           component: ForgetPasswordView,
         },
         {
+          name: "reset-password",
           path: "reset-password",
           component: ResetPasswordView,
           beforeEnter: (to, _2, next) => {
@@ -49,6 +53,7 @@ const router = createRouter({
           },
         },
         {
+          name: "verify",
           path: "verify",
           component: VerificationView,
           beforeEnter: (to, _2, next) => {

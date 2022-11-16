@@ -28,7 +28,7 @@ const gmail = import.meta.env.VITE_GMAIL_URL;
     <p
       @click="
         store.$patch({ emailSent: false });
-        $router.push('/');
+        $router.push({ name: 'home' });
       "
       class="font-normal text-base text-[#6C757D] text-center cursor-pointer"
     >

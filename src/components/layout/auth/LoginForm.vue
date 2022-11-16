@@ -43,7 +43,7 @@ const handleLogin = (values, actions) => {
   <VeeForm @submit="handleLogin" class="font-helvetica">
     <div class="text-center mt-14 mb-10">
       <div
-        @click="$router.push('/')"
+        @click="$router.push({ name: 'home' })"
         class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
       >
         <back-arrow-icon />
@@ -84,7 +84,7 @@ const handleLogin = (values, actions) => {
       <div>
         <p
           class="text-[#0D6EFD] underline cursor-pointer pl-1"
-          @click="$router.push('/forget-password')"
+          @click="$router.push({ name: 'forget-password' })"
         >
           {{ $t("form.forgot_password") }}
         </p>

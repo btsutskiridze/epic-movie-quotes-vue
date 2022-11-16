@@ -12,9 +12,9 @@ const loading = computed(() => store.loading);
 
 <template>
   <div>
-    <base-dialog @close="$router.push('/')">
+    <base-dialog @close="$router.push({ name: 'home' })">
       <div
-        @click="$router.push('/')"
+        @click="$router.push({ name: 'home' })"
         class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
         v-if="loading === null || loading === false"
       >
@@ -27,7 +27,7 @@ const loading = computed(() => store.loading);
         v-if="loading === null"
         >{{ $t("landingView.already_have_an_account") }}
         <span
-          @click="$router.push('/login')"
+          @click="$router.push({ name: 'login' })"
           class="text-[#0D6EFD] underline cursor-pointer pl-1"
         >
           {{ $t("landingView.log_in") }}</span

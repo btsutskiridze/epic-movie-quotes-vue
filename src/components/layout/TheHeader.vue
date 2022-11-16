@@ -11,11 +11,11 @@ import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
         <base-button
           :orange="true"
           class="hidden md:block"
-          @click="$router.push('/registration')"
+          @click="$router.push({ name: 'registration' })"
         >
           {{ $t("landingView.sign_up") }}
         </base-button>
-        <base-button :outline="true" @click="$router.push('/login')"
+        <base-button :outline="true" @click="$router.push({ name: 'login' })"
           >{{ $t("landingView.log_in") }}
         </base-button>
       </div>

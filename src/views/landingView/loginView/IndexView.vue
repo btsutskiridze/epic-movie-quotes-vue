@@ -5,13 +5,13 @@ import LoginForm from "@/components/layout/auth/LoginForm.vue";
 
 <template>
   <div>
-    <base-dialog @close="$router.push('/')">
+    <base-dialog @close="$router.push({ name: 'home' })">
       <login-form />
       <google-authorisation />
       <span class="text-[#6C757D] text-base flex justify-center py-8"
         >{{ $t("landingView.already_have_an_account") }}
         <span
-          @click="$router.push('/registration')"
+          @click="$router.push({ name: 'registration' })"
           class="text-[#0D6EFD] underline cursor-pointer pl-1"
         >
           {{ $t("landingView.sign_up") }}</span
