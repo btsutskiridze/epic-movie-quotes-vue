@@ -1,6 +1,7 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
+import BaseChipInput from "@/components/UI/form/BaseChipInput.vue";
 </script>
 
 <template>
@@ -23,6 +24,7 @@ import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
         placeholder="ფილმის სახელი"
         lang="ქარ"
       />
+      <base-chip-input />
       <base-textarea name="director_en" placeholder="Director" lang="Eng" />
       <base-textarea name="director_ka" placeholder="რეჟისორი" lang="ქარ" />
       <base-textarea
