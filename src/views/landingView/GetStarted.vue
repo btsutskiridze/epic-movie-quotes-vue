@@ -8,13 +8,11 @@
       >
         {{ $t("landingView.welcome_msg") }}
       </h1>
-      <base-button
-        :orange="true"
-        class="lg:text-2xl"
-        @click="$router.push({ name: 'registration' })"
-      >
-        {{ $t("landingView.get_started") }}</base-button
-      >
+      <router-link :to="{ name: 'registration' }">
+        <base-button :orange="true" class="lg:text-2xl">
+          {{ $t("landingView.get_started") }}
+        </base-button>
+      </router-link>
     </div>
   </div>
 </template>

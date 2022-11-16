@@ -20,11 +20,13 @@ import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
         class="flex flex-col-reverse md:flex-row justify-start gap-4 xs:w-full"
       >
         <base-search class="hidden md:flex" />
-        <base-button
-          @click="$router.push({ name: 'add-movie' })"
-          class="flex flex-row items-center gap-3 bg-red-600 whitespace-nowrap"
-          ><plus-icon /> {{ $t("movies.add_movie") }}</base-button
-        >
+        <router-link :to="{ name: 'add-movie' }">
+          <base-button
+            class="flex flex-row items-center gap-3 bg-red-600 whitespace-nowrap"
+          >
+            <plus-icon /> {{ $t("movies.add_movie") }}
+          </base-button>
+        </router-link>
       </div>
     </section>
 

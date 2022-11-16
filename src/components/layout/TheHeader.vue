@@ -8,16 +8,16 @@ import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
       <h2 class="font-bold uppercase">{{ $t("landingView.movie_quotes") }}</h2>
       <div class="flex justify-center items-center gap-4">
         <language-dropdown />
-        <base-button
-          :orange="true"
-          class="hidden md:block"
-          @click="$router.push({ name: 'registration' })"
-        >
-          {{ $t("landingView.sign_up") }}
-        </base-button>
-        <base-button :outline="true" @click="$router.push({ name: 'login' })"
-          >{{ $t("landingView.log_in") }}
-        </base-button>
+        <router-link :to="{ name: 'registration' }">
+          <base-button :orange="true" class="hidden md:block">
+            {{ $t("landingView.sign_up") }}
+          </base-button>
+        </router-link>
+        <router-link :to="{ name: 'login' }">
+          <base-button :outline="true"
+            >{{ $t("landingView.log_in") }}
+          </base-button>
+        </router-link>
       </div>
     </div>
   </header>
