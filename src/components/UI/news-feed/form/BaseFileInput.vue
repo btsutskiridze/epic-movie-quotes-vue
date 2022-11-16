@@ -21,13 +21,13 @@ const dragFile = (e) => {
   <div
     @drop.prevent="dragFile"
     @dragover.prevent
-    class="relative flex flex-row gap-3 p-3 items-center justify-between border rounded-[4px] border-[#6C757D]"
+    class="relative flex flex-row gap-3 p-3 items-center justify-between border rounded-[0.25rem] border-[#6C757D]"
   >
     <p class="flex flex-row gap-3">
       <camera-icon />
       {{ img !== null ? img : $t("fileInput.upload_image") }}
     </p>
-    <button class="bg-[#462676] rounded-[4px] p-[10px]" @click="getImage">
+    <button class="bg-[#462676] rounded-[0.24rem] p-[0.6rem]" @click="getImage">
       {{ $t("fileInput.choose_file") }}
     </button>
     <input

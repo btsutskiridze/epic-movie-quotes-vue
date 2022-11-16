@@ -27,7 +27,7 @@ const close = (e) => {
       class="absolute top-0 left-0 bg-[#12101A] w-full h-[80vh] z-40 rounded-lg"
     >
       <div
-        class="flex flex-row justify-start items-center gap-8 w-full border-b-[1px] py-6 pl-10 border-[#efefef4d]"
+        class="flex flex-row justify-start items-center gap-8 w-full border-b py-6 pl-10 border-[#efefef4d]"
       >
         <go-back-arrow @click="showSearch = false" class="cursor-pointer" />
         <div class="w-4/5">
@@ -41,7 +41,7 @@ const close = (e) => {
           />
         </div>
       </div>
-      <div class="flex flex-col justify-center gap-6 px-[86px] py-6">
+      <div class="flex flex-col justify-center gap-6 px-[5.3rem] py-6">
         <h1 class="text-[#97969A]">
           {{ $t("search.enter") }} <span class="text-white">@</span>
           {{ $t("search.to_search_movies") }}

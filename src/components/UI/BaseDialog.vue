@@ -18,7 +18,7 @@ const closeDialog = (e) => {
       >
         <dialog
           open
-          class="bg-[#222030] w-full h-screen sm:min-w-[600px] overflow-x-hidden sm:max-w-[32%] sm:h-min sm:rounded-xl z-40 px-9 pt-10 md:pt-2 sm:px-[7rem]"
+          class="bg-[#222030] w-full h-screen sm:min-w-[37.5rem] overflow-x-hidden sm:max-w-[32%] sm:h-min sm:rounded-xl z-40 px-9 pt-10 md:pt-2 sm:px-[7rem]"
         >
           <slot></slot>
         </dialog>

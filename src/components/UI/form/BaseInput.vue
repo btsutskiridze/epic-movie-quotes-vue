@@ -61,7 +61,7 @@ const eye = (option) => {
         :id="name"
         :type="type === 'password' ? passwordType : type"
         :placeholder="$t(placeholder)"
-        class="w-full relative placeholder-[#6C757D] text-[#212529] bg-[#CED4DA] px-3 py-2 my-2 rounded-[4px] disabled:bg-white disabled:placeholder-[#B7BBC0] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
+        class="w-full relative placeholder-[#6C757D] text-[#212529] bg-[#CED4DA] px-3 py-2 my-2 rounded-[0.25rem] disabled:bg-white disabled:placeholder-[#B7BBC0] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
         :class="[
           !meta.valid && meta.touched
             ? 'outline-2 -outline-offset-2 outline-[#DC3545]'

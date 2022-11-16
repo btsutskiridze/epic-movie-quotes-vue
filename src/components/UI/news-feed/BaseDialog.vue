@@ -26,7 +26,7 @@ const closeDialog = (e) => {
       >
         <dialog
           open
-          class="bg-[#11101A] w-full min-h-[76vh] md:min-h-[auto] top-0 md:top-[5%] md:min-w-[600px] overflow-x-hidden md:max-w-[32%] md:h-min md:rounded-xl z-30 p-0 mb-10"
+          class="bg-[#11101A] w-full min-h-[76vh] md:min-h-[auto] top-0 md:top-[5%] md:min-w-[37.5rem] overflow-x-hidden md:max-w-[32%] md:h-min md:rounded-xl z-30 p-0 mb-10"
         >
           <div class="text-center relative border-b p-8 border-[#efefef4d]">
             <h1 class="text-white text-xl md:text-2xl">

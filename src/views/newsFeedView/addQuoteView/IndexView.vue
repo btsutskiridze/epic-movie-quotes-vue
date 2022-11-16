@@ -31,7 +31,7 @@ const autoResize = (e) => {
           id="quote_en"
           autocomplete="off"
           @input="autoResize"
-          class="relative bg-transparent resize-none overflow-y-hidden border rounded-[4px] border-[#6C757D] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
+          class="relative bg-transparent resize-none overflow-y-hidden border rounded-[0.25rem] border-[#6C757D] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
           placeholder="Start create new quote"
         />
       </div>

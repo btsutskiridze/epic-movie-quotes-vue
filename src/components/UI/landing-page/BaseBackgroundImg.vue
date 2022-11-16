@@ -37,7 +37,7 @@ defineProps({
           >
             <slot name="quote"></slot>
             <div
-              class="h-[2px] bg-white w-4 md:w-14 absolute top-4 md:top-10 -left-6 md:left-[-4.2rem]"
+              class="h-[0.125rem] bg-white w-4 md:w-14 absolute top-4 md:top-10 -left-6 md:left-[-4.2rem]"
             ></div>
           </article>
 
