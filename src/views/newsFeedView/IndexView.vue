@@ -1,15 +1,15 @@
 <script setup>
-import router from "@/router/index.js";
-import { deleteJwtToken } from "@/helpers/jwt";
-const handleLogout = () => {
-  deleteJwtToken("jwt_token", "/", import.meta.VITE_DOMAIN);
-  router.push({ name: "home" });
-};
+import NewsFeedHeader from "@/views/newsFeedView/NewsFeedHeader.vue";
+import NewsFeedBody from "@/views/newsFeedView/NewsFeedBody.vue";
 </script>
 
 <template>
-  <div>
-    <h1>news feed</h1>
-    <h1 @click="handleLogout">LOG OUT</h1>
+  <div class="bg-[#181624] text-[#DDCCAA] font-helvetica min-h-screen">
+    <news-feed-header />
+    <router-view></router-view>
+
+    <div class="w-full md:w-[86%] m-auto">
+      <news-feed-body />
+    </div>
   </div>
 </template>

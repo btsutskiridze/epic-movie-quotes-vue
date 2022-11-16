@@ -4,8 +4,7 @@ import router from "@/router";
 import axios from "@/config/axios/index.js";
 import { useRoute } from "vue-router";
 
-export const useAutoLogin = defineStore("auto-login", {
-  // arrow function recommended for full type inference
+export const useAutoLoginStore = defineStore("AutoLogin", {
   state: () => {
     return {};
   },

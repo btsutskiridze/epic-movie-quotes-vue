@@ -1,5 +1,4 @@
 <script setup>
-import BaseButton from "@/components/UI/form/BaseButton.vue";
 import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 
 const url = import.meta.env.VITE_API_BASE_URL + "redirect";

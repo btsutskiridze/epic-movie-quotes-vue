@@ -1,17 +1,14 @@
 import { defineStore } from "pinia";
-// import { setResetPasswordError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 import { useRoute } from "vue-router";
 
-export const useResetPassword = defineStore("resetPassword", {
-  // arrow function recommended for full type inference
+export const useResetPasswordStore = defineStore("ResetPassword", {
   state: () => {
     return {
-      // all these properties will have their type inferred automatically
       email: "",
       token: "",
       loading: false,
-      resetPassword: null,
+      resetPassword: false,
     };
   },
   actions: {

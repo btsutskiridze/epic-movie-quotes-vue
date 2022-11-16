@@ -49,5 +49,46 @@ export default {
       account_activated: "ანგარიში გაგიაქტიურდათ",
       go_to_news_feed: "News feed-ზე გადასვლა",
     },
+    passwordReset: {
+      forgot_password: "დაგავიწყდა პაროლი",
+      enter_details:
+        "შეიყვანე ელ-ფოსტა და ჩვენ გამოგიგზავნით ინსტრუცქიას, რათა შეცვალოთ პაროლი",
+      send_instructions: "ინსტრუქციის გაგზავნა",
+      back_to_login: "შესვლაზე დაბრუნება",
+      check_email: "შეამოწმე ელ-ფოსტა",
+      instruction_sent: "გამოგიგზავნეთ აღდგენის ინსტრუქცია ელ-ფოსტაზე",
+      create_new_password: "შექმენი ახალი პაროლი",
+      password_must_be_different:
+        "თქვენი ახალი პაროლი უნდა განსხვავდებოდეს წინა გამოყენებული პაროლებისგან",
+      reset_password: "შეცვალე პაროლი",
+      success: "წარმატება",
+      your_password_changed_successfully: "პაროლი შეიცვალა წარმატებით",
+      go_to_news_feed: "News feed-ზე გადასვლა",
+      confirm_later: "გამოვტოვებ, მოგვიანებით დავადასტურებ",
+    },
+    newsFeed: {
+      edit_your_profile: "პროფილის რედაქტირება",
+      news_feed: "ახალი ამბები",
+      list_of_movies: "თქვენი ფილმები",
+      write_new_quote: "დაამატე ციტატა",
+      write_a_comment: "დაწერე კომენტარი",
+      logout: "გამოსვლა",
+    },
+    search: {
+      search: "მოძებნა",
+      enter: "დაწერე",
+      to_search_movies: "ფილმების მოსაძებნად",
+      to_search_quotes: "ციტატების მოსაძებნად",
+    },
+    fileInput: {
+      choose_file: "აირჩიე ფაილი",
+      upload_image: "ატვირთე ფოტო",
+    },
+    movies: {
+      write_new_movie: "დაამატე ახალი ფილმი",
+      add_movie: "ფილმის დამატება",
+      my_list_of_movies: "ჩემი ფილმების სია",
+      total: "სულ",
+    },
   },
 };
