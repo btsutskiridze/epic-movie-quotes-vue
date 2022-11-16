@@ -4,10 +4,10 @@ const chips = ref([]);
 const currentInput = ref("");
 
 const saveChip = () => {
-  if (currentInput.value.length !== 0) {
+  if (currentInput.value.trim().length !== 0) {
     chips.value.push(currentInput.value);
-    currentInput.value = "";
   }
+  currentInput.value = "";
 };
 
 const backspaceDelete = ({ which }) => {
