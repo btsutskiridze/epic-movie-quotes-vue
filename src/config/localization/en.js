@@ -81,5 +81,15 @@ export default {
       to_search_movies: "to search movies",
       to_search_quotes: "to search quotes",
     },
+    fileInput: {
+      choose_file: "Choose file",
+      upload_image: "Upload image",
+    },
+    movies: {
+      write_new_movie: "Write new Movie",
+      add_movie: "Add movie",
+      my_list_of_movies: "My list of movies",
+      total: "Total",
+    },
   },
 };

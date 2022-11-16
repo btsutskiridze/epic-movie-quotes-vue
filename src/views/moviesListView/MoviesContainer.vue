@@ -11,7 +11,10 @@ import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
       class="flex xs:flex-col flex-row justify-between items-center w-full gap-3"
     >
       <div>
-        <h1 class="whitespace-nowrap">My list of movies (Total 4)</h1>
+        <h1 class="whitespace-nowrap">
+          {{ $t("movies.my_list_of_movies") }}
+          ({{ $t("movies.total") }} 5)
+        </h1>
       </div>
       <div
         class="flex flex-col-reverse md:flex-row justify-start gap-4 xs:w-full"
@@ -20,7 +23,7 @@ import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
         <base-button
           @click="$router.push({ name: 'add-movie' })"
           class="flex flex-row items-center gap-3 bg-red-600 whitespace-nowrap"
-          ><plus-icon /> Add movie</base-button
+          ><plus-icon /> {{ $t("movies.add_movie") }}</base-button
         >
       </div>
     </section>

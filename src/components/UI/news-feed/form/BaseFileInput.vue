@@ -25,10 +25,10 @@ const dragFile = (e) => {
   >
     <p class="flex flex-row gap-3">
       <camera-icon />
-      {{ img !== null ? img : "Upload image" }}
+      {{ img !== null ? img : $t("fileInput.upload_image") }}
     </p>
     <button class="bg-[#462676] rounded-[4px] p-[10px]" @click="getImage">
-      Choose File
+      {{ $t("fileInput.choose_file") }}
     </button>
     <input
       type="file"

@@ -6,7 +6,7 @@ import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 <template>
   <news-feed-dialog @close="$router.push({ name: 'movies-list' })">
     <template #header>
-      {{ $t("newsFeed.write_new_movie") }}
+      {{ $t("movies.write_new_movie") }}
     </template>
     <section class="flex flex-col gap-4 text-white">
       <div id="user" class="flex flex-row items-center gap-4">
@@ -36,7 +36,9 @@ import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
         lang="ქარ"
       />
       <base-file-input />
-      <base-button class="w-full bg-[#E31221]">Add movie</base-button>
+      <base-button class="w-full bg-[#E31221]">{{
+        $t("movies.add_movie")
+      }}</base-button>
     </section>
   </news-feed-dialog>
 </template>

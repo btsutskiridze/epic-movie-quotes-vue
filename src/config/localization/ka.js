@@ -80,5 +80,15 @@ export default {
       to_search_movies: "ფილმების მოსაძებნად",
       to_search_quotes: "ციტატების მოსაძებნად",
     },
+    fileInput: {
+      choose_file: "აირჩიე ფაილი",
+      upload_image: "ატვირთე ფოტო",
+    },
+    movies: {
+      write_new_movie: "დაამატე ახალი ფილმი",
+      add_movie: "ფილმის დამატება",
+      my_list_of_movies: "ჩემი ფილმების სია",
+      total: "სულ",
+    },
   },
 };
