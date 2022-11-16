@@ -6,19 +6,25 @@ import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
 
 const addMovie = (values) => {
-  console.log(values);
-  // axios
-  //   .post("movie/store", {
-  //     title_en: "matrix",
-  //     title_ka: "მატრიცა",
-  //     director_en: "gurama",
-  //     director_ka: "გურამა",
-  //     description_en: "agia ragacaze",
-  //     description_ka: "ბაახ ბუხხ და მატრიცა",
-  //   })
-  //   .then((response) => {
-  //     console.log(response);
-  //   });
+  axios
+    .post(
+      "movie/store",
+      {
+        title_en: values.title_en,
+        title_ka: values.title_ka,
+        director_en: values.director_en,
+        director_ka: values.director_ka,
+        description_en: values.description_en,
+        description_ka: values.description_ka,
+        thumbnail: values.thumbnail,
+      },
+      {
+        headers: { "content-type": "multipart/form-data" },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+    });
 };
 </script>
 
@@ -53,7 +59,7 @@ const addMovie = (values) => {
           lang="ქარ"
         />
         <base-file-input name="thumbnail" />
-        <base-button class="w-full bg-[#E31221]" @click="addMovie">{{
+        <base-button class="w-full bg-[#E31221]">{{
           $t("movies.add_movie")
         }}</base-button>
       </section>
