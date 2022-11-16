@@ -1,5 +1,3 @@
-import axios from "@/config/axios/index.js";
-
 /*
  * retrieves JWT token from cookie named 'jwt_token' and returns it's value
  */
@@ -21,7 +19,7 @@ export const setJwtToken = (token, expires_in, time = 1000) => {
   expires.setTime(expires.getTime() + expires_in * time);
   document.cookie = `jwt_token=${token}; expires=${expires.toUTCString()}; path=/`;
 
-  axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+  localStorage.setItem("jwt", token);
 };
 
 export const deleteJwtToken = (name, path, domain) => {
@@ -31,4 +29,5 @@ export const deleteJwtToken = (name, path, domain) => {
     (path ? ";path=" + path : "") +
     (domain ? ";domain=" + domain : "") +
     ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  localStorage.removeItem("jwt");
 };
