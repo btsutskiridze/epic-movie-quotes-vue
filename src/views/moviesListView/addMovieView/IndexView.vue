@@ -1,6 +1,7 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
+import BaseDialogInput from "@/components/UI/dialog/BaseInput.vue";
 import BaseMultiSelect from "@/components/UI/form/BaseMultiSelect.vue";
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
@@ -8,7 +9,6 @@ import { useMoviesStore } from "@/stores/useMoviesStore";
 import router from "@/router";
 
 const addMovie = (values) => {
-  console.log(values);
   axios
     .post(
       "movie/store",
@@ -20,6 +20,8 @@ const addMovie = (values) => {
         director_ka: values.director_ka,
         description_en: values.description_en,
         description_ka: values.description_ka,
+        year: JSON.parse(values.year),
+        budget: JSON.parse(values.budget),
         thumbnail: values.thumbnail,
       },
       {
@@ -48,20 +50,52 @@ const addMovie = (values) => {
           />
           <h1 class="">Brad spit</h1>
         </div>
-        <base-textarea name="title_en" placeholder="Movie name" lang="Eng" />
-        <base-textarea name="title_ka" placeholder="ფილმის სახელი" lang="ქარ" />
+        <base-dialog-input
+          rules="required|eng"
+          name="title_en"
+          placeholder="Movie name"
+          lang="Eng"
+        />
+        <base-dialog-input
+          rules="required|geo"
+          name="title_ka"
+          placeholder="ფილმის სახელი"
+          lang="ქარ"
+        />
         <base-multi-select name="genre" />
-        <base-textarea name="director_en" placeholder="Director" lang="Eng" />
-        <base-textarea name="director_ka" placeholder="რეჟისორი" lang="ქარ" />
+        <base-dialog-input
+          rules="required|eng"
+          name="director_en"
+          placeholder="Director"
+          lang="Eng"
+        />
+        <base-dialog-input
+          rules="required|geo"
+          name="director_ka"
+          placeholder="რეჟისორი"
+          lang="ქარ"
+        />
         <base-textarea
+          rules="required|eng"
           name="description_en"
           placeholder="Movie description"
           lang="Eng"
         />
         <base-textarea
+          rules="required|geo"
           name="description_ka"
           placeholder="ფილმის აღწერა"
           lang="ქარ"
+        />
+        <base-dialog-input
+          rules="required|numeric"
+          name="year"
+          placeholder="Year"
+        />
+        <base-dialog-input
+          rules="required|numeric"
+          name="budget"
+          placeholder="Budget"
         />
         <base-file-input name="thumbnail" />
         <base-button class="w-full bg-[#E31221]">{{

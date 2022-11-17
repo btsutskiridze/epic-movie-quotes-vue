@@ -45,7 +45,7 @@ onMounted(() => {
         v-for="movie in movies"
         :key="movie?.id"
         :name="movie.title?.en"
-        date="200"
+        :date="movie?.year"
         quotes-number="3"
         :path="url + movie?.thumbnail"
       />
