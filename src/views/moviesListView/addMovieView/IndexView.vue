@@ -4,6 +4,7 @@ import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 import BaseChipInput from "@/components/UI/form/BaseChipInput.vue";
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
+import router from "@/router";
 
 const addMovie = (values) => {
   axios
@@ -22,8 +23,8 @@ const addMovie = (values) => {
         headers: { "content-type": "multipart/form-data" },
       }
     )
-    .then((response) => {
-      console.log(response);
+    .then(() => {
+      router.push({ name: "movies-list" });
     });
 };
 </script>
