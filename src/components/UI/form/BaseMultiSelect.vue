@@ -13,7 +13,18 @@ defineProps({
     required: true,
   },
 });
-
+const movieGenres = [
+  "Action",
+  "Crime",
+  "Fantasy",
+  "Horror",
+  "Romance",
+  "Science Fiction",
+  "Slice of Life",
+  "Sports",
+  "Thriller",
+  "War and Western",
+];
 const saveChip = (e) => {
   if (!chips.value.includes(e.target.textContent)) {
     e.target.classList.add("bg-gray-800");
@@ -25,7 +36,6 @@ const removeChip = (index) => {
   document
     .getElementById(chips.value[index].trim())
     .classList.remove("bg-gray-800");
-  // .classList.remove("bg-gray-800");
   chips.value.splice(index, 1);
 };
 
@@ -89,25 +99,13 @@ const rule = () => {
       v-show="open"
     >
       <li
-        id="movie-1"
+        :id="item"
         class="cursor-pointer py-1 px-3 hover:bg-slate-900"
+        v-for="item in movieGenres"
+        :key="item.label"
         @click="saveChip"
       >
-        movie-1
-      </li>
-      <li
-        id="movie-2"
-        class="cursor-pointer py-1 px-3 hover:bg-slate-900"
-        @click="saveChip"
-      >
-        movie-2
-      </li>
-      <li
-        id="movie-3"
-        class="cursor-pointer py-1 px-3 hover:bg-slate-900"
-        @click="saveChip"
-      >
-        movie-3
+        {{ item }}
       </li>
     </ul>
   </div>

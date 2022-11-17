@@ -2,13 +2,16 @@
 import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
 import BaseSearch from "@/components/UI/form/BaseSearch.vue";
 import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 
 const store = useMoviesStore();
 
 const url = store.url;
 const movies = computed(() => store.movies);
+onMounted(() => {
+  store.getMovies();
+});
 </script>
 
 <template>
@@ -40,11 +43,11 @@ const movies = computed(() => store.movies);
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <base-movie-item
         v-for="movie in movies"
-        :key="movie.id"
+        :key="movie?.id"
         :name="movie.title?.en"
         date="200"
         quotes-number="3"
-        :path="url + movie.thumbnail"
+        :path="url + movie?.thumbnail"
       />
     </div>
   </div>
