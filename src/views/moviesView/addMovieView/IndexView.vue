@@ -29,14 +29,14 @@ const addMovie = (values) => {
       }
     )
     .then(() => {
-      router.push({ name: "movies-list" });
+      router.push({ name: "all-movies" });
       useMoviesStore().getMovies();
     });
 };
 </script>
 
 <template>
-  <news-feed-dialog @close="$router.push({ name: 'movies-list' })">
+  <news-feed-dialog @close="$router.push({ name: 'all-movies' })">
     <template #header>
       {{ $t("movies.write_new_movie") }}
     </template>

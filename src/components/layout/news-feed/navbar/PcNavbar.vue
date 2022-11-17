@@ -26,7 +26,7 @@ import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
       <h1>{{ $t("newsFeed.news_feed") }}</h1>
     </router-link>
     <router-link
-      :to="{ name: 'movies-list' }"
+      :to="{ name: 'all-movies' }"
       class="flex flex-row gap-3 cursor-pointer"
     >
       <movies-icon />

@@ -4,8 +4,10 @@ import landingView from "@/views/landingView/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
 
-import MoviesListView from "@/views/moviesListView/IndexView.vue";
-import AddMovieView from "@/views/moviesListView/addMovieView/IndexView.vue";
+import MoviesView from "@/views/moviesView/IndexView.vue";
+import AddMovieView from "@/views/moviesView/addMovieView/IndexView.vue";
+import AllMoviesView from "@/views/moviesView/allMoviesView/IndexView.vue";
+import MovieView from "@/views/moviesView/movieView/IndexView.vue";
 
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
@@ -79,17 +81,28 @@ const router = createRouter({
       ],
     },
     {
-      path: "/movies-list",
-      name: "movies-list",
-      component: MoviesListView,
+      path: "/movies",
+      name: "movies",
+      component: MoviesView,
       beforeEnter: (_, _2, next) => {
         return isAuthenticated() ? next() : next({ name: "home" });
       },
+
       children: [
+        {
+          path: "all-movies",
+          name: "all-movies",
+          component: AllMoviesView,
+        },
         {
           path: "add-movie",
           name: "add-movie",
           component: AddMovieView,
+        },
+        {
+          path: ":id",
+          name: "movie",
+          component: MovieView,
         },
       ],
     },
