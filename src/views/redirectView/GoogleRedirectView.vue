@@ -8,7 +8,6 @@ import router from "@/router";
 
 onBeforeMount(() => {
   setJwtToken(useRoute().query.jwt_token, useRoute().query.expires_in);
-  window.location.reload();
   router.replace({ name: "news-feed" });
 });
 </script>

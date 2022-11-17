@@ -27,7 +27,6 @@ const handleLogin = (values, actions) => {
       } else {
         setJwtToken(response.data.access_token, response.data.expires_in);
       }
-      window.location.reload();
       router.push({ name: "news-feed" });
     })
     .catch((error) => {

@@ -1,19 +1,21 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
-import BaseChipInput from "@/components/UI/form/BaseChipInput.vue";
+import BaseMultiSelect from "@/components/UI/form/BaseMultiSelect.vue";
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 import router from "@/router";
 
 const addMovie = (values) => {
+  console.log(values);
   axios
     .post(
       "movie/store",
       {
         title_en: values.title_en,
         title_ka: values.title_ka,
+        genre: values.genre,
         director_en: values.director_en,
         director_ka: values.director_ka,
         description_en: values.description_en,
@@ -48,7 +50,7 @@ const addMovie = (values) => {
         </div>
         <base-textarea name="title_en" placeholder="Movie name" lang="Eng" />
         <base-textarea name="title_ka" placeholder="ფილმის სახელი" lang="ქარ" />
-        <base-chip-input />
+        <base-multi-select name="genre" />
         <base-textarea name="director_en" placeholder="Director" lang="Eng" />
         <base-textarea name="director_ka" placeholder="რეჟისორი" lang="ქარ" />
         <base-textarea
