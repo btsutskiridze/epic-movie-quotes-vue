@@ -2,6 +2,14 @@
 import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
 import BaseSearch from "@/components/UI/form/BaseSearch.vue";
 import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
+import axios from "@/config/axios";
+import { computed, ref } from "vue";
+import { useMoviesStore } from "@/stores/useMoviesStore";
+
+const store = useMoviesStore();
+
+const url = store.url;
+const movies = computed(() => store.movies);
 </script>
 
 <template>
@@ -13,7 +21,7 @@ import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
       <div>
         <h1 class="whitespace-nowrap">
           {{ $t("movies.my_list_of_movies") }}
-          ({{ $t("movies.total") }} 5)
+          ({{ $t("movies.total") }} {{ movies.length }})
         </h1>
       </div>
       <div
@@ -32,34 +40,12 @@ import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <base-movie-item
-        name="samurai champloo"
-        date="2000"
-        quotes-number="6"
-        image="samurai-champloo.jpg"
-      />
-      <base-movie-item
-        name="samurai champloo"
-        date="2000"
-        quotes-number="6"
-        image="samurai-champloo.jpg"
-      />
-      <base-movie-item
-        name="samurae champloo"
-        date="2000"
-        quotes-number="4"
-        image="samurai-champloo.jpg"
-      />
-      <base-movie-item
-        name="samurai champloo"
-        date="2000"
-        quotes-number="6"
-        image="samurai-champloo.jpg"
-      />
-      <base-movie-item
-        name="samurai champloo"
-        date="2000"
-        quotes-number="6"
-        image="samurai-champloo.jpg"
+        v-for="movie in movies"
+        :key="movie.id"
+        :name="movie.title?.en"
+        date="200"
+        quotes-number="3"
+        :path="url + movie.thumbnail"
       />
     </div>
   </div>

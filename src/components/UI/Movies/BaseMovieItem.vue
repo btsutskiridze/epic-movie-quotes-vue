@@ -23,8 +23,12 @@ defineProps({
 
 <template>
   <section class="flex flex-col gap-2 items-start">
-    <div class="w-full min-h-[13.75rem]">
-      <img :src="path" :alt="name" class="rounded-xl object-cover h-full" />
+    <div class="w-full md:min-h-[13.75rem] max-h-[13.75rem]">
+      <img
+        :src="path"
+        :alt="name"
+        class="rounded-xl object-cover w-full h-full"
+      />
     </div>
     <div>
       <h1 class="text-2xl">
