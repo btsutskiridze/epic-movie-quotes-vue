@@ -2,8 +2,7 @@
 import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
 import BaseSearch from "@/components/UI/form/BaseSearch.vue";
 import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
-import axios from "@/config/axios";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 
 const store = useMoviesStore();
