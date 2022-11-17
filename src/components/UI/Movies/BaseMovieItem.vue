@@ -1,8 +1,6 @@
 <script setup>
 import QuoteIcon from "@/components/icons/movies/QuoteIcon.vue";
-import { ref } from "vue";
-
-const props = defineProps({
+defineProps({
   name: {
     type: String,
     required: true,
@@ -15,22 +13,18 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  image: {
+  path: {
     type: String,
     required: true,
     default: "",
   },
 });
-
-const imagePath = ref(
-  `${import.meta.env.VITE_BASE_URL}src/assets/images/movies/${props.image}`
-);
 </script>
 
 <template>
   <section class="flex flex-col gap-2 items-start">
-    <div class="w-full">
-      <img :src="imagePath" :alt="name" class="rounded-xl" />
+    <div class="w-full min-h-[13.75rem]">
+      <img :src="path" :alt="name" class="rounded-xl object-cover h-full" />
     </div>
     <div>
       <h1 class="text-2xl">
