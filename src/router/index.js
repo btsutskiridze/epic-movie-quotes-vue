@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import landingView from "@/views/landingView/IndexView.vue";
 
-import HomeView from "@/views/homeView/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
 
@@ -85,6 +84,7 @@ const router = createRouter({
     {
       path: "/movies",
       name: "movies",
+      redirect: { name: "all-movies" },
       component: MoviesView,
       beforeEnter: (_, _2, next) => {
         return isAuthenticated() ? next() : next({ name: "landing" });
@@ -105,6 +105,13 @@ const router = createRouter({
           path: ":id",
           name: "movie",
           component: MovieView,
+          children: [
+            {
+              path: "add-quote",
+              name: "add-movie-quote",
+              component: AddQuteView,
+            },
+          ],
         },
       ],
     },

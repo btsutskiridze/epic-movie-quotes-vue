@@ -1,15 +1,29 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
+import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import router from "@/router";
 
 const autoResize = (e) => {
   e.target.style.height = "auto";
   e.target.style.height = e.target.scrollHeight + "px";
 };
+
+const currRoute = ref(useRouter().currentRoute.value.path);
+const movieId = ref(useRoute().params.id);
+console.log(currRoute.value);
+const goBack = () => {
+  if (currRoute.value.includes("movies")) {
+    router.push({ name: "movie", params: { id: movieId.value } });
+  } else {
+    router.push({ name: "news-feed" });
+  }
+};
 </script>
 
 <template>
-  <news-feed-dialog @close="$router.push({ name: 'news-feed' })">
+  <news-feed-dialog @close="goBack">
     <template #header>
       {{ $t("newsFeed.write_new_quote") }}
     </template>

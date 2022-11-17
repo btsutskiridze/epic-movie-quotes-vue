@@ -24,5 +24,6 @@ onMounted(() => {
     <h1 v-for="genre in genres" :key="genre.label">
       {{ genre }}
     </h1>
+    <router-view></router-view>
   </div>
 </template>
