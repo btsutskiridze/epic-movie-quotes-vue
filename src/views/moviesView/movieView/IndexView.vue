@@ -1,7 +1,5 @@
 <script setup>
-import { useRoute } from "vue-router";
-import axios from "@/config/axios/index.js";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 
 const store = useMoviesStore();
