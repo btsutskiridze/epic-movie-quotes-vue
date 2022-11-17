@@ -17,6 +17,7 @@ const getImage = () => {
   document.getElementById(props.name).click();
 };
 const setImage = (e) => {
+  document.getElementById("container").classList.add("border-[#198754]");
   img.value = e.target.files.length !== 0 ? e.target.files[0].name : img.value;
 };
 
@@ -29,12 +30,13 @@ const dragFile = (e) => {
 <template>
   <Field v-slot="{ handleChange, meta }" rules="required" :name="name">
     <div
+      id="container"
       @drop.prevent="dragFile"
       @dragover.prevent
       class="relative flex flex-row gap-3 p-3 items-center justify-between border rounded-[0.25rem] border-[#6C757D]"
       :class="[
         !meta.valid && meta.touched ? 'border-[#DC3545]' : '',
-        meta.valid && meta.touched ? 'border-[#198754]' : '',
+        meta.valid ? 'border-[#198754]' : '',
       ]"
     >
       <p class="flex flex-row gap-3">
