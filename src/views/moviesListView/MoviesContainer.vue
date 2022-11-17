@@ -7,7 +7,6 @@ import { useMoviesStore } from "@/stores/useMoviesStore";
 
 const store = useMoviesStore();
 
-const url = store.url;
 const movies = computed(() => store.movies);
 onMounted(() => {
   store.getMovies();
@@ -44,10 +43,8 @@ onMounted(() => {
       <base-movie-item
         v-for="movie in movies"
         :key="movie?.id"
-        :name="movie.title?.en"
-        :date="movie?.year"
+        :movie="movie"
         quotes-number="3"
-        :path="url + movie?.thumbnail"
       />
     </div>
   </div>
