@@ -42,7 +42,7 @@ const handleLogin = (values, actions) => {
   <VeeForm @submit="handleLogin" class="font-helvetica">
     <div class="text-center mt-14 mb-10">
       <router-link
-        :to="{ name: 'home' }"
+        :to="{ name: 'landing' }"
         class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
       >
         <back-arrow-icon />

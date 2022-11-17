@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import landingView from "@/views/landingView/IndexView.vue";
 
+import HomeView from "@/views/homeView/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
 
@@ -24,7 +25,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "landing",
       component: landingView,
       beforeEnter: (_, _2, next) => {
         return !isAuthenticated() ? next() : next({ name: "news-feed" });
@@ -50,7 +51,7 @@ const router = createRouter({
           path: "reset-password",
           component: ResetPasswordView,
           beforeEnter: (to, _2, next) => {
-            if (!to.query.reset_token) return next({ name: "home" });
+            if (!to.query.reset_token) return next({ name: "landing" });
             return next();
           },
         },
@@ -59,18 +60,19 @@ const router = createRouter({
           path: "verify",
           component: VerificationView,
           beforeEnter: (to, _2, next) => {
-            if (!to.query.token) return next({ name: "home" });
+            if (!to.query.token) return next({ name: "landing" });
             return next();
           },
         },
       ],
     },
+
     {
       path: "/news-feed",
       name: "news-feed",
       component: NewsFeedView,
       beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "home" });
+        return isAuthenticated() ? next() : next({ name: "landing" });
       },
       children: [
         {
@@ -85,7 +87,7 @@ const router = createRouter({
       name: "movies",
       component: MoviesView,
       beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "home" });
+        return isAuthenticated() ? next() : next({ name: "landing" });
       },
 
       children: [

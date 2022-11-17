@@ -43,7 +43,7 @@ onBeforeMount(() => {
 
 <template>
   <router-link
-    :to="{ name: 'home' }"
+    :to="{ name: 'landing' }"
     class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
   >
     <back-arrow-icon />

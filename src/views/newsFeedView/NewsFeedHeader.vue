@@ -18,7 +18,7 @@ defineProps({
 
 const handleLogout = () => {
   deleteJwtToken("jwt_token", "/", import.meta.VITE_DOMAIN);
-  router.push({ name: "home" });
+  router.push({ name: "landing" });
 };
 </script>
 

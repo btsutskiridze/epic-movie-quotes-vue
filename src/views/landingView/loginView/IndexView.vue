@@ -5,7 +5,7 @@ import LoginForm from "@/components/layout/auth/LoginForm.vue";
 
 <template>
   <div>
-    <base-dialog @close="$router.push({ name: 'home' })">
+    <base-dialog @close="$router.push({ name: 'landing' })">
       <login-form />
       <google-authorisation />
       <span class="text-[#6C757D] text-base flex justify-center py-8"
