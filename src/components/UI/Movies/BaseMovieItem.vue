@@ -2,7 +2,7 @@
 import QuoteIcon from "@/components/icons/movies/QuoteIcon.vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 
-defineProps({
+const props = defineProps({
   quotesNumber: {
     type: String,
     required: true,
@@ -19,11 +19,11 @@ const store = useMoviesStore();
 const url = store.url;
 
 const addColor = () => {
-  document.querySelector(".name").classList.add("text-[#766cab]");
+  document.getElementById(props.movie.id).classList.add("text-[#766cab]");
 };
 
 const removeColor = () => {
-  document.querySelector(".name").classList.remove("text-[#766cab]");
+  document.getElementById(props.movie.id).classList.remove("text-[#766cab]");
 };
 </script>
 
@@ -42,7 +42,7 @@ const removeColor = () => {
       />
     </div>
     <div>
-      <h1 class="text-2xl name">
+      <h1 class="text-2xl" :id="movie.id">
         {{ movie.title?.en }} <span>({{ movie?.year }})</span>
       </h1>
     </div>
