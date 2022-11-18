@@ -92,6 +92,7 @@ export default {
       total: "Total",
       year: "Year",
       budget: "Bugdet",
+      movie_description: "Movie description",
     },
   },
 };

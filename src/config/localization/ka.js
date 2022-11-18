@@ -91,6 +91,7 @@ export default {
       total: "სულ",
       year: "წელი",
       budget: "ბიუჯეტი",
+      movie_description: "ფილმის აღწერა",
     },
   },
 };
