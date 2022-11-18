@@ -90,12 +90,12 @@ const addMovie = (values) => {
         <base-dialog-input
           rules="required|numeric"
           name="year"
-          placeholder="Year"
+          placeholder="movies.year"
         />
         <base-dialog-input
           rules="required|numeric"
           name="budget"
-          placeholder="Budget"
+          placeholder="movies.budget"
         />
         <base-file-input name="thumbnail" />
         <base-button class="w-full bg-[#E31221]">{{

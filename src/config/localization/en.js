@@ -90,6 +90,8 @@ export default {
       add_movie: "Add movie",
       my_list_of_movies: "My list of movies",
       total: "Total",
+      year: "Year",
+      budget: "Bugdet",
     },
   },
 };
