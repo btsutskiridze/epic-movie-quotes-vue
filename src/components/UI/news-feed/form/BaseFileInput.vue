@@ -11,6 +11,11 @@ const props = defineProps({
     required: false,
     default: "file",
   },
+  rules: {
+    type: String,
+    required: false,
+    default: "required",
+  },
 });
 
 const getImage = () => {
@@ -28,7 +33,7 @@ const dragFile = (e) => {
 </script>
 
 <template>
-  <Field v-slot="{ handleChange, meta }" rules="required" :name="name">
+  <Field v-slot="{ handleChange, meta }" :rules="rules" :name="name">
     <div
       id="container"
       @drop.prevent="dragFile"

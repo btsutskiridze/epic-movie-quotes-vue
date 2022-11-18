@@ -2,17 +2,31 @@
 import RemoveIcon from "@/components/icons/dialog/RemoveIcon.vue";
 
 import { Field } from "vee-validate";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const chips = ref([]);
 const open = ref(false);
 const genres = ref();
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     required: true,
   },
+  values: {
+    type: Array,
+    required: false,
+  },
 });
+
+onMounted(() => {
+  if (props.values) {
+    props.values.forEach((chip) => {
+      chips.value.push(chip);
+      document.getElementById(chip.trim()).classList.add("bg-gray-800");
+    });
+  }
+});
+
 const movieGenres = [
   "Action",
   "Crime",

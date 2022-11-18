@@ -1,7 +1,8 @@
 <script setup>
 import { Field } from "vee-validate";
+import { onMounted, ref } from "vue";
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     required: true,
@@ -18,18 +19,28 @@ defineProps({
     type: String,
     required: false,
   },
+  model: {
+    type: String,
+    required: false,
+  },
 });
+const value = ref(props.model);
 
 const autoResize = (e) => {
   e.target.style.height = "auto";
   e.target.style.height = e.target.scrollHeight + "px";
 };
+
+onMounted(() => {
+  document.getElementById(props.name).style.height =
+    document.getElementById(props.name).scrollHeight + "px";
+});
 </script>
 
 <template>
   <div class="relative">
     <label :for="name" class="absolute right-4 top-2">{{ lang }}</label>
-    <Field v-slot="{ field, meta }" :name="name" :rules="rules">
+    <Field v-slot="{ field, meta }" :name="name" :rules="rules" v-model="value">
       <textarea
         v-bind="field"
         rows="1"

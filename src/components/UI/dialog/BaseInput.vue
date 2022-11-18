@@ -1,8 +1,9 @@
 <script setup>
 import { Field } from "vee-validate";
+import { ref } from "vue";
 
 // import { ref } from "vue";
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     required: true,
@@ -24,13 +25,18 @@ defineProps({
     type: String,
     required: false,
   },
+  model: {
+    type: String,
+    required: false,
+  },
 });
+const value = ref(props.model);
 </script>
 
 <template>
   <div class="relative">
     <label :for="name" class="absolute right-4 top-2">{{ lang }}</label>
-    <Field :name="name" v-slot="{ field, meta }" :rules="rules">
+    <Field :name="name" v-slot="{ field, meta }" :rules="rules" v-model="value">
       <input
         v-bind="field"
         :id="name"
