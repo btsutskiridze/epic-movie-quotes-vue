@@ -8,7 +8,7 @@ import MoviesView from "@/views/moviesView/IndexView.vue";
 import AddMovieView from "@/views/moviesView/addMovieView/IndexView.vue";
 import AllMoviesView from "@/views/moviesView/allMoviesView/IndexView.vue";
 import MovieView from "@/views/moviesView/movieView/IndexView.vue";
-
+import EditMovieView from "@/views/moviesView/movieView/editMovie/IndexView.vue";
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
 
@@ -110,6 +110,11 @@ const router = createRouter({
               path: "add-quote",
               name: "add-movie-quote",
               component: AddQuteView,
+            },
+            {
+              path: "edit-movie",
+              name: "edit-movie",
+              component: EditMovieView,
             },
           ],
         },

@@ -23,10 +23,10 @@ export const useMoviesStore = defineStore("Movies", {
           console.log(e);
         });
     },
-    getMovie() {
+    getMovie(id = useRoute().params.id) {
       this.loading = true;
       axios
-        .get("movies/" + useRoute().params.id)
+        .get("movies/" + id)
         .then((response) => {
           this.movie = response.data;
           this.genres = JSON.parse(this.movie.genre);
