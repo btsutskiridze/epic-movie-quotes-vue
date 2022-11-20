@@ -76,13 +76,13 @@ const addMovie = (values) => {
           lang="ქარ"
         />
         <base-textarea
-          rules="required|eng"
+          rules="required|eng-textarea"
           name="description_en"
           placeholder="Movie description"
           lang="Eng"
         />
         <base-textarea
-          rules="required|geo"
+          rules="required|geo-textarea"
           name="description_ka"
           placeholder="ფილმის აღწერა"
           lang="ქარ"

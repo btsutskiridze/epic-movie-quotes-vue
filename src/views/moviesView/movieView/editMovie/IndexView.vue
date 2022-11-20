@@ -96,14 +96,14 @@ const goBack = () => {
           :model="movie.director['ka']"
         />
         <base-textarea
-          rules="required|eng"
+          rules="required|eng-textarea"
           name="description_en"
           placeholder="Movie description"
           lang="Eng"
           :model="movie.description['en']"
         />
         <base-textarea
-          rules="required|geo"
+          rules="required|geo-textarea"
           name="description_ka"
           placeholder="ფილმის აღწერა"
           lang="ქარ"
@@ -123,7 +123,7 @@ const goBack = () => {
         />
         <base-file-input name="thumbnail" rules="" />
         <base-button class="w-full bg-[#E31221]">{{
-          $t("movies.add_movie")
+          $t("movies.edit_movie")
         }}</base-button>
       </section>
     </VeeForm>
