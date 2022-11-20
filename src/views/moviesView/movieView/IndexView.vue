@@ -43,13 +43,13 @@ const numberWithCommas = (x) => {
             <div class="flex flex-row rounded-lg py-2 bg-[#24222F]">
               <div
                 class="cursor-pointer border-r border-white px-4"
-                @click="$router.push({ name: 'edit-movie' })"
+                @click="$router.replace({ name: 'edit-movie' })"
               >
                 <edit-icon class="w-5 h-5" />
               </div>
               <div
                 class="cursor-pointer px-4"
-                @click="$router.push({ name: 'delete-movie' })"
+                @click="$router.replace({ name: 'delete-movie' })"
               >
                 <delete-icon class="w-5 h-5" />
               </div>

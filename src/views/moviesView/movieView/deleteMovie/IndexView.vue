@@ -16,14 +16,14 @@ const deleteMovie = () => {
     .delete("movies/" + movieId.value + "/destroy")
     .then(() => {
       store.getMovies();
-      router.push({ name: "all-movies" });
+      router.replace({ name: "all-movies" });
     })
     .catch((error) => {
       console.log(error);
     });
 };
 const goBack = () => {
-  router.push({ name: "movie", params: { id: movieId.value } });
+  router.replace({ name: "movie", params: { id: movieId.value } });
 };
 </script>
 <template>

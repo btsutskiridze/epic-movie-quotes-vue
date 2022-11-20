@@ -47,7 +47,7 @@ const updateMovie = (values) => {
 };
 
 const goBack = () => {
-  router.push({ name: "movie", params: { id: movieId.value } });
+  router.replace({ name: "movie", params: { id: movieId.value } });
 };
 </script>
 
