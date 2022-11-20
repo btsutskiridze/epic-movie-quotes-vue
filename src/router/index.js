@@ -9,6 +9,8 @@ import AddMovieView from "@/views/moviesView/addMovieView/IndexView.vue";
 import AllMoviesView from "@/views/moviesView/allMoviesView/IndexView.vue";
 import MovieView from "@/views/moviesView/movieView/IndexView.vue";
 import EditMovieView from "@/views/moviesView/movieView/editMovie/IndexView.vue";
+import DeleteMovieView from "@/views/moviesView/movieView/deleteMovie/IndexView.vue";
+
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
 
@@ -115,6 +117,11 @@ const router = createRouter({
               path: "edit-movie",
               name: "edit-movie",
               component: EditMovieView,
+            },
+            {
+              path: "delete-movie",
+              name: "delete-movie",
+              component: DeleteMovieView,
             },
           ],
         },

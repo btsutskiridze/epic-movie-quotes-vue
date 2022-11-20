@@ -54,7 +54,7 @@ const goBack = () => {
 <template>
   <news-feed-dialog @close="goBack">
     <template #header>
-      {{ $t("movies.write_new_movie") }}
+      {{ $t("movies.edit_movie") }}
     </template>
     <VeeForm @submit="updateMovie">
       <section class="flex flex-col gap-4 text-white">

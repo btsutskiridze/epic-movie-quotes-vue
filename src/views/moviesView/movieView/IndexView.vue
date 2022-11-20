@@ -1,9 +1,10 @@
 <script setup>
 import { computed, onMounted } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
+import i18n from "@/i18n";
+
 import EditIcon from "@/components/icons/news-feed/EditIcon.vue";
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
-import i18n from "@/i18n";
 const store = useMoviesStore();
 
 const url = store.url;
@@ -46,7 +47,10 @@ const numberWithCommas = (x) => {
               >
                 <edit-icon class="w-5 h-5" />
               </div>
-              <div class="cursor-pointer px-4">
+              <div
+                class="cursor-pointer px-4"
+                @click="$router.push({ name: 'delete-movie' })"
+              >
                 <delete-icon class="w-5 h-5" />
               </div>
             </div>
@@ -78,7 +82,6 @@ const numberWithCommas = (x) => {
         </section>
       </div>
     </div>
-
     <router-view></router-view>
   </div>
 </template>
