@@ -29,7 +29,9 @@ const goBack = () => {
 <template>
   <news-feed-dialog @close="goBack">
     <template #header> Delete movie </template>
-    <section class="py-4 text-2xl flex flex-col gap-8 text-white">
+    <section
+      class="py-4 text-xl md:text-2xl flex justify-end h-full flex-col gap-8 text-white"
+    >
       <h1 class="text-center">
         Are you sure you want to delete
         <span class="text-[#DDCCAA] font-extrabold">{{
