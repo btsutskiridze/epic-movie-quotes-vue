@@ -42,12 +42,12 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div
-    @click="$router.push({ name: 'home' })"
+  <router-link
+    :to="{ name: 'landing' }"
     class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
   >
     <back-arrow-icon />
-  </div>
+  </router-link>
   <loading-circle v-if="loading" />
   <div v-else>
     <div class="flex flex-col items-center justify-center py-16 gap-8">

@@ -27,7 +27,6 @@ const handleLogin = (values, actions) => {
       } else {
         setJwtToken(response.data.access_token, response.data.expires_in);
       }
-
       router.push({ name: "news-feed" });
     })
     .catch((error) => {
@@ -42,12 +41,12 @@ const handleLogin = (values, actions) => {
 <template>
   <VeeForm @submit="handleLogin" class="font-helvetica">
     <div class="text-center mt-14 mb-10">
-      <div
-        @click="$router.push({ name: 'home' })"
+      <router-link
+        :to="{ name: 'landing' }"
         class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
       >
         <back-arrow-icon />
-      </div>
+      </router-link>
       <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3 leading-9">
         {{ $t("landingView.login_to_your_account") }}
       </h1>
@@ -82,12 +81,12 @@ const handleLogin = (values, actions) => {
         </label>
       </div>
       <div>
-        <p
+        <router-link
+          :to="{ name: 'forget-password' }"
           class="text-[#0D6EFD] underline cursor-pointer pl-1"
-          @click="$router.push({ name: 'forget-password' })"
         >
           {{ $t("form.forgot_password") }}
-        </p>
+        </router-link>
       </div>
     </div>
     <base-button :orange="true" class="text-white w-full mb-4">{{

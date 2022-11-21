@@ -40,12 +40,12 @@ const handlePasswordReset = (values, actions) => {
           {{ $t("passwordReset.send_instructions") }}
         </base-button>
       </VeeForm>
-      <p
-        @click="$router.push({ name: 'login' })"
+      <router-link
+        :to="{ name: 'login' }"
         class="font-normal text-base text-[#6C757D] text-center mt-4 cursor-pointer"
       >
         {{ $t("passwordReset.back_to_login") }}
-      </p>
+      </router-link>
     </div>
     <LoadingCircle v-if="loading === true" />
   </div>

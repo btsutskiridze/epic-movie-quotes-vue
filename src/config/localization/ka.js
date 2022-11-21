@@ -89,6 +89,9 @@ export default {
       add_movie: "ფილმის დამატება",
       my_list_of_movies: "ჩემი ფილმების სია",
       total: "სულ",
+      year: "წელი",
+      budget: "ბიუჯეტი",
+      movie_description: "ფილმის აღწერა",
     },
   },
 };

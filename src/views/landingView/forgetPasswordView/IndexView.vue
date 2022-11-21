@@ -19,7 +19,7 @@ onMounted(() => {
   <base-dialog
     @close="
       store.$patch({ emailSent: false });
-      $router.push({ name: 'home' });
+      $router.push({ name: 'landing' });
     "
   >
     <forget-password v-if="emailSent === false" />

@@ -1,43 +1,68 @@
 <script setup>
+import { Field } from "vee-validate";
 import CameraIcon from "@/components/icons/dialog/CameraIcon.vue";
 import { ref } from "vue";
 
-const img = ref(null);
+const img = ref("");
+
+const props = defineProps({
+  name: {
+    type: String,
+    required: false,
+    default: "file",
+  },
+  rules: {
+    type: String,
+    required: false,
+    default: "required",
+  },
+});
 
 const getImage = () => {
-  document.getElementById("image-input").click();
+  document.getElementById(props.name).click();
 };
 const setImage = (e) => {
+  document.getElementById("container").classList.add("border-[#198754]");
   img.value = e.target.files.length !== 0 ? e.target.files[0].name : img.value;
 };
 
 const dragFile = (e) => {
-  document.getElementById("image-input").files = e.dataTransfer.files;
+  document.getElementById(props.name).files = e.dataTransfer.files;
   img.value = e.dataTransfer.files[0].name;
 };
 </script>
 
 <template>
-  <div
-    @drop.prevent="dragFile"
-    @dragover.prevent
-    class="relative flex flex-row gap-3 p-3 items-center justify-between border rounded-[0.25rem] border-[#6C757D]"
-  >
-    <p class="flex flex-row gap-3">
-      <camera-icon />
-      {{ img !== null ? img : $t("fileInput.upload_image") }}
-    </p>
-    <button class="bg-[#462676] rounded-[0.24rem] p-[0.6rem]" @click="getImage">
-      {{ $t("fileInput.choose_file") }}
-    </button>
-    <input
-      type="file"
-      accept="image/jpeg, image/png"
-      class="absolute w-full left-0 h-full hidden"
-      @change="setImage"
-      id="image-input"
-    />
-  </div>
+  <Field v-slot="{ handleChange, meta }" :rules="rules" :name="name">
+    <div
+      id="container"
+      @drop.prevent="dragFile"
+      @dragover.prevent
+      class="relative flex flex-row gap-3 p-3 items-center justify-between border rounded-[0.25rem] border-[#6C757D]"
+      :class="[
+        !meta.valid && meta.touched ? 'border-[#DC3545]' : '',
+        meta.valid ? 'border-[#198754]' : '',
+      ]"
+    >
+      <p class="flex flex-row gap-3">
+        <camera-icon />
+        {{ img !== "" ? img : $t("fileInput.upload_image") }}
+      </p>
+      <span
+        class="bg-[#462676] rounded-[0.24rem] p-[0.6rem] cursor-pointer"
+        @click="getImage"
+      >
+        {{ $t("fileInput.choose_file") }}
+      </span>
+      <input
+        type="file"
+        class="absolute w-full left-0 h-full hidden"
+        @change="handleChange"
+        @input="setImage"
+        :id="name"
+      />
+    </div>
+  </Field>
 </template>
 
 <style></style>

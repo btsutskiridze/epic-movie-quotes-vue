@@ -27,11 +27,6 @@ defineProps({
     type: String,
     required: false,
   },
-  apiError: {
-    type: String,
-    required: false,
-    default: null,
-  },
 });
 
 const show = ref(false);

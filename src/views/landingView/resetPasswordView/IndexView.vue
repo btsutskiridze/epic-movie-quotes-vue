@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <base-dialog @close="$router.push({ name: 'home' })">
+  <base-dialog @close="$router.push({ name: 'landing' })">
     <ResetPassword v-if="resetPassword === false" />
     <reset-success v-if="resetPassword === true" />
   </base-dialog>

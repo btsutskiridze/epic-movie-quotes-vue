@@ -1,3 +1,5 @@
+import axios from "@/config/axios/index.js";
+
 /*
  * retrieves JWT token from cookie named 'jwt_token' and returns it's value
  */
@@ -19,6 +21,7 @@ export const setJwtToken = (token, expires_in, time = 1000) => {
   expires.setTime(expires.getTime() + expires_in * time);
   document.cookie = `jwt_token=${token}; expires=${expires.toUTCString()}; path=/`;
 
+  axios.defaults.headers["Authorization"] = `Bearer ${token}`;
   localStorage.setItem("jwt", token);
 };
 
