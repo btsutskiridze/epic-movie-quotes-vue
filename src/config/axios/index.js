@@ -10,4 +10,6 @@ const axiosInstance = axios.create({
   },
 });
 
+axiosInstance.defaults.withCredentials = true;
+
 export default axiosInstance;

@@ -7,8 +7,6 @@ import { computed } from "vue";
 const store = useRegisterStore();
 const loading = computed(() => store.loading);
 
-axios.defaults.withCreadentials = true;
-
 const handleRegistration = async (values, actions) => {
   store.$patch({ loading: true });
   axios

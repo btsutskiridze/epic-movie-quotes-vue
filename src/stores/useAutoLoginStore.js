@@ -16,7 +16,6 @@ export const useAutoLoginStore = defineStore("AutoLogin", {
       }
     },
     autoLogin() {
-      axios.defaults.withCreadentials = true;
       this.loading = true;
       axios
         .post("auto-login", {

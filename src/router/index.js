@@ -24,8 +24,6 @@ import LoginView from "@/views/landingView/loginView/IndexView.vue";
 import ForgetPasswordView from "@/views/landingView/forgetPasswordView/IndexView.vue";
 import ResetPasswordView from "@/views/landingView/resetPasswordView/IndexView.vue";
 
-axios.defaults.withCreadentials = true;
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

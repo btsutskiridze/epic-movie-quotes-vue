@@ -2,7 +2,7 @@
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import { Form as VeeForm } from "vee-validate";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/useAuthStore";

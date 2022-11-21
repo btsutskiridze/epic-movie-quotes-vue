@@ -12,8 +12,6 @@ const loading = ref(true);
 
 const store = useAutoLoginStore();
 
-axios.defaults.withCreadentials = true;
-
 const handleAutoLogin = () => {
   store.autoLogin();
 };

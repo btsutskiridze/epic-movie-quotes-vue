@@ -5,7 +5,7 @@ import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import MobileNavbar from "@/components/layout/news-feed/navbar/MobileNavbar.vue";
 import MobileSearch from "@/components/layout/news-feed/search-bar/MobileSearch.vue";
 import { useAuthStore } from "@/stores/useAuthStore";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios/authAxios.js";
 
 import router from "@/router/index.js";
 
