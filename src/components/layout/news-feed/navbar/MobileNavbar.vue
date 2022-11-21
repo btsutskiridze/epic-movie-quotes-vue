@@ -5,7 +5,8 @@ import LogoutIcon from "@/components/icons/news-feed/LogoutIcon.vue";
 import BurgerMenu from "@/components/icons/news-feed/BurgerMenuIcon.vue";
 
 import { ref } from "vue";
-import { deleteJwtToken } from "@/helpers/jwt";
+import { useAuthStore } from "@/stores/useAuthStore";
+import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
 
 const showMenu = ref(false);
@@ -14,8 +15,18 @@ const closeMenu = (e) => {
   if (e.target == document.getElementById("container")) showMenu.value = false;
 };
 
-const handleLogout = () => {
-  deleteJwtToken("jwt_token", "/", import.meta.VITE_DOMAIN);
+const authStore = useAuthStore();
+const handleLogout = async () => {
+  try {
+    const response = await axios.get("logout");
+    authStore.authenticated = false;
+    router.push({ name: "news-feed" });
+
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+
   router.push({ name: "landing" });
 };
 </script>
