@@ -77,10 +77,9 @@ const router = createRouter({
       path: "/news-feed",
       name: "news-feed",
       component: NewsFeedView,
-      // beforeEnter: (_, _2, next) => {
-      //   return isAuthenticated() ? next() : next({ name: "landing" });
-      // },
-      beforeEnter: isAuthenticated,
+      beforeEnter: (_, _2, next) => {
+        return isAuthenticated() ? next() : next({ name: "landing" });
+      },
       children: [
         {
           path: "add-quote",

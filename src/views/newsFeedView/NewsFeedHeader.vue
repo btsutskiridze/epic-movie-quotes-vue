@@ -4,9 +4,10 @@ import NotificationIcon from "@/components/icons/news-feed/NotificationIcon.vue"
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import MobileNavbar from "@/components/layout/news-feed/navbar/MobileNavbar.vue";
 import MobileSearch from "@/components/layout/news-feed/search-bar/MobileSearch.vue";
+import { useAuthStore } from "@/stores/useAuthStore";
+import axios from "@/config/axios/index.js";
 
 import router from "@/router/index.js";
-import { deleteJwtToken } from "@/helpers/jwt";
 
 defineProps({
   haveMovies: {
@@ -15,9 +16,18 @@ defineProps({
     default: false,
   },
 });
+const authStore = useAuthStore();
+const handleLogout = async () => {
+  try {
+    const response = await axios.get("logout");
+    authStore.authenticated = false;
+    router.push({ name: "news-feed" });
 
-const handleLogout = () => {
-  deleteJwtToken("jwt_token", "/", import.meta.VITE_DOMAIN);
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+
   router.push({ name: "landing" });
 };
 </script>
