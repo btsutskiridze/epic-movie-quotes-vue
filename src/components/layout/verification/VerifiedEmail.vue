@@ -2,41 +2,36 @@
 import MessageSent from "@/components/icons/MessageSentIcon.vue";
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
-import router from "@/router";
 import { onBeforeMount, ref } from "vue";
-import { setJwtToken } from "@/helpers/jwt/index.js";
 import axios from "@/config/axios/index.js";
 import { useRoute } from "vue-router";
+import { useAutoLoginStore } from "@/stores/useAutoLoginStore";
+
 const getVerified = ref(undefined);
 const loading = ref(true);
 
+const store = useAutoLoginStore();
+
+axios.defaults.withCreadentials = true;
+
 const handleAutoLogin = () => {
-  setJwtToken(jwt.token, jwt.expires_in);
-  router.replace({ name: "news-feed" });
+  store.autoLogin();
 };
 
-const jwt = {
-  token: "",
-  expires_in: "",
-};
-
-onBeforeMount(() => {
+onBeforeMount(async () => {
   if (useRoute().query.token) {
-    axios
-      .post("verification", {
-        token: useRoute().query.token,
-      })
-      .then((response) => {
-        loading.value = false;
-        getVerified.value = true;
-        jwt.token = response.data.access_token;
-        jwt.expires_in = response.data.expires_in;
-      })
-      .catch((error) => {
-        getVerified.value = false;
-        loading.value = false;
-        console.log(error.response);
+    store.getToken();
+    try {
+      await axios.post("verification", {
+        token: store.token,
       });
+      loading.value = false;
+      getVerified.value = true;
+    } catch (error) {
+      getVerified.value = false;
+      loading.value = false;
+      console.log(error);
+    }
   }
 });
 </script>

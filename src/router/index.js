@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+import axios from "@/config/axios/authAxios.js";
+import { useAuthStore } from "@/stores/useAuthStore";
+
 import landingView from "@/views/landingView/IndexView.vue";
 
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
@@ -21,6 +24,8 @@ import LoginView from "@/views/landingView/loginView/IndexView.vue";
 import ForgetPasswordView from "@/views/landingView/forgetPasswordView/IndexView.vue";
 import ResetPasswordView from "@/views/landingView/resetPasswordView/IndexView.vue";
 
+axios.defaults.withCreadentials = true;
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -29,7 +34,7 @@ const router = createRouter({
       name: "landing",
       component: landingView,
       beforeEnter: (_, _2, next) => {
-        return !isAuthenticated() ? next() : next({ name: "news-feed" });
+        return isAuthenticated() ? next({ name: "news-feed" }) : next();
       },
       children: [
         {
@@ -51,19 +56,19 @@ const router = createRouter({
           name: "reset-password",
           path: "reset-password",
           component: ResetPasswordView,
-          beforeEnter: (to, _2, next) => {
-            if (!to.query.reset_token) return next({ name: "landing" });
-            return next();
-          },
+          // beforeEnter: (to, _2, next) => {
+          //   if (!to.query.reset_token) return next({ name: "landing" });
+          //   return next();
+          // },
         },
         {
           name: "verify",
           path: "verify",
           component: VerificationView,
-          beforeEnter: (to, _2, next) => {
-            if (!to.query.token) return next({ name: "landing" });
-            return next();
-          },
+          // beforeEnter: (to, _2, next) => {
+          //   if (!to.query.token) return next({ name: "landing" });
+          //   return next();
+          // },
         },
       ],
     },
@@ -72,9 +77,10 @@ const router = createRouter({
       path: "/news-feed",
       name: "news-feed",
       component: NewsFeedView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "landing" });
-      },
+      // beforeEnter: (_, _2, next) => {
+      //   return isAuthenticated() ? next() : next({ name: "landing" });
+      // },
+      beforeEnter: isAuthenticated,
       children: [
         {
           path: "add-quote",
@@ -88,9 +94,9 @@ const router = createRouter({
       name: "movies",
       redirect: { name: "all-movies" },
       component: MoviesView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "landing" });
-      },
+      // beforeEnter: (_, _2, next) => {
+      //   return isAuthenticated() ? next() : next({ name: "landing" });
+      // },
 
       children: [
         {
@@ -130,6 +136,20 @@ const router = createRouter({
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
     { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  const authStore = useAuthStore();
+
+  if (authStore.authenticated === null) {
+    try {
+      await axios.get(`${import.meta.env.VITE_API_BASE_URL}me`);
+      authStore.authenticated = true;
+    } catch (err) {
+      authStore.authenticated = false;
+    }
+  }
+  return next();
 });
 
 export default router;
