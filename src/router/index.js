@@ -111,7 +111,7 @@ const router = createRouter({
           component: AddMovieView,
         },
         {
-          path: ":id",
+          path: ":movieId",
           name: "movie",
           component: MovieView,
           children: [
@@ -131,17 +131,17 @@ const router = createRouter({
               component: DeleteMovieView,
             },
             {
-              path: "quotes/:id",
+              path: "quotes/:quoteId",
               name: "quote",
               component: QuoteView,
             },
             {
-              path: "delete-quote/:id",
+              path: "delete-quote/:quoteId",
               name: "delete-quote",
               component: DeleteQuoteView,
             },
             {
-              path: "edit-quote/:id",
+              path: "edit-quote/:quoteId",
               name: "edit-quote",
               component: EditQuoteView,
             },

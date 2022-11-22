@@ -4,8 +4,8 @@ import { useMoviesStore } from "@/stores/useMoviesStore";
 import i18n from "@/i18n";
 
 import QuotesContainer from "@/components/layout/quotes/QuotesContainer.vue";
+import AddMovieQuote from "@/components/layout/quotes/AddMovieQuote.vue";
 
-import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
 import EditIcon from "@/components/icons/news-feed/EditIcon.vue";
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
 const store = useMoviesStore();
@@ -25,7 +25,7 @@ const numberWithCommas = (x) => {
 
 <template>
   <loading-circle v-if="store.loading" />
-  <div v-else class="flex flex-col gap-8 mt-8 md:mt-0 px-[7%] md:px-5 mx-auto">
+  <div v-else class="flex flex-col gap-8 mt-8 md:mt-0 px-[7%] md:px-5">
     <div class="flex w-full flex-col gap-4">
       <h1 class="text-2xl hidden md:block">
         {{ $t("movies.movie_description") }}
@@ -85,16 +85,7 @@ const numberWithCommas = (x) => {
         </section>
       </div>
     </div>
-    <div class="flex flex-row items-center gap-6">
-      <h1>quotes (total 7)</h1>
-      <router-link :to="{ name: 'add-movie-quote' }">
-        <base-button
-          class="flex flex-row items-center gap-3 bg-red-600 whitespace-nowrap"
-        >
-          <plus-icon /> {{ $t("newsFeed.write_new_quote") }}
-        </base-button>
-      </router-link>
-    </div>
+    <add-movie-quote :quotes-number="movie.quotes.length" />
     <quotes-container />
     <router-view></router-view>
   </div>

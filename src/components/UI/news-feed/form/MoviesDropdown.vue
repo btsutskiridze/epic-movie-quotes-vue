@@ -1,9 +1,26 @@
 <script setup>
 import MovieIcon from "@/components/icons/dialog/MovieIcon.vue";
 import DownArrow from "@/components/icons/dialog/DownArrowIcon.vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { useMoviesStore } from "@/stores/useMoviesStore";
+import i18n from "@/i18n";
+
+const moviesStore = useMoviesStore();
+
 const open = ref(false);
 const selected = ref("Choose movie");
+
+const movie = computed(() => moviesStore.movie);
+const lang = computed(() => i18n.global.locale);
+
+defineProps({
+  onlyOne: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
+
 const setValue = (e) => {
   selected.value = e.target.textContent;
   open.value = false;
@@ -18,12 +35,12 @@ const setValue = (e) => {
   ></div>
   <div class="relative z-[42]">
     <section
-      @click="open = !open"
+      @click="onlyOne ? (open = false) : (open = !open)"
       class="bg-[#000000] px-3 py-4 flex flex-row justify-between items-center rounded-lg"
     >
       <div class="flex flex-row gap-3">
         <movie-icon />
-        <p>{{ selected }}</p>
+        <p>{{ onlyOne ? movie?.title[lang] : selected }}</p>
       </div>
       <down-arrow
         :class="open ? 'rotate-180' : 'rotate-0'"

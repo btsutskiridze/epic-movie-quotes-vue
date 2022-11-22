@@ -27,7 +27,7 @@ export const useMoviesStore = defineStore("Movies", {
           this.loading = false;
         });
     },
-    getMovie(id = useRoute().params.id) {
+    getMovie(id = useRoute().params.movieId) {
       this.loading = true;
       axios
         .get("movies/" + id)

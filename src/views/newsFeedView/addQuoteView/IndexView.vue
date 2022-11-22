@@ -1,18 +1,18 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
-import { ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import router from "@/router";
+import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 
-const autoResize = (e) => {
-  e.target.style.height = "auto";
-  e.target.style.height = e.target.scrollHeight + "px";
-};
+import { ref } from "vue";
+import { Form as VeeForm } from "vee-validate";
+import { useRoute, useRouter } from "vue-router";
+import axios from "@/config/axios/index.js";
+import router from "@/router";
+import { useMoviesStore } from "../../../stores/useMoviesStore";
 
 const currRoute = ref(useRouter().currentRoute.value.path);
-const movieId = ref(useRoute().params.id);
-console.log(currRoute.value);
+const movieId = ref(useRoute().params.movieId);
+
 const goBack = () => {
   if (currRoute.value.includes("movies")) {
     router.push({ name: "movie", params: { id: movieId.value } });
@@ -20,52 +20,60 @@ const goBack = () => {
     router.push({ name: "news-feed" });
   }
 };
+
+const addQuote = async (values) => {
+  axios
+    .post(
+      "quote/store",
+      {
+        movie_id: movieId.value,
+        title_en: values.title_en,
+        title_ka: values.title_ka,
+        thumbnail: values.thumbnail,
+      },
+      {
+        headers: { "content-type": "multipart/form-data" },
+      }
+    )
+    .then(() => {
+      useMoviesStore().getMovie(movieId.value);
+      goBack();
+    });
+};
 </script>
 
 <template>
   <news-feed-dialog @close="goBack">
-    <template #header>
-      {{ $t("newsFeed.write_new_quote") }}
-    </template>
-    <section class="flex flex-col gap-4 text-white">
-      <div id="user" class="flex flex-row items-center gap-4">
-        <img
-          src="@/assets/images/news-feed/avatar.png"
-          alt="avatar"
-          class="w-10 h-10"
+    <VeeForm @submit="addQuote" class="font-helvetica">
+      <template #header>
+        {{ $t("newsFeed.write_new_quote") }}
+      </template>
+      <section class="flex flex-col gap-4 text-white">
+        <div id="user" class="flex flex-row items-center gap-4">
+          <img
+            src="@/assets/images/news-feed/avatar.png"
+            alt="avatar"
+            class="w-10 h-10"
+          />
+          <h1 class="">Brad spit</h1>
+        </div>
+        <base-textarea
+          rules="required|eng-textarea"
+          name="title_en"
+          placeholder="Start create new Quote"
+          lang="Eng"
         />
-        <h1 class="">Brad spit</h1>
-      </div>
-      <div class="relative">
-        <label for="quote_en" class="absolute right-4 top-2">Eng</label>
-        <textarea
-          rows="1"
-          cols="50"
-          name="quote_en"
-          id="quote_en"
-          autocomplete="off"
-          @input="autoResize"
-          class="relative bg-transparent resize-none overflow-y-hidden border rounded-[0.25rem] border-[#6C757D] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
-          placeholder="Start create new quote"
+        <base-textarea
+          rules="required|geo-textarea"
+          name="title_ka"
+          placeholder="დაიწყე ახალი ციტატის დამატება"
+          lang="Eng"
         />
-      </div>
-      <div class="relative">
-        <label for="quote_ka" class="absolute right-4 top-2">ქარ</label>
-        <textarea
-          rows="1"
-          cols="50"
-          name="quote_ka"
-          id="quote_ka"
-          autocomplete="off"
-          @input="autoResize"
-          class="relative bg-transparent resize-none overflow-y-hidden border rounded-[4px] border-[#6C757D] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
-          placeholder="Start create new quote"
-        />
-      </div>
-      <base-file-input />
-      <movies-dropdown />
-      <base-button class="w-full bg-[#E31221]">Post</base-button>
-    </section>
+        <base-file-input name="thumbnail" />
+        <movies-dropdown :only-one="true" />
+        <base-button class="w-full bg-[#E31221]">Post</base-button>
+      </section>
+    </VeeForm>
   </news-feed-dialog>
 </template>
 
