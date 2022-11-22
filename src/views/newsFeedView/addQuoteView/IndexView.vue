@@ -15,7 +15,7 @@ const movieId = ref(useRoute().params.movieId);
 
 const goBack = () => {
   if (currRoute.value.includes("movies")) {
-    router.push({ name: "movie", params: { id: movieId.value } });
+    router.push({ name: "movie", params: { movieId: movieId.value } });
   } else {
     router.push({ name: "news-feed" });
   }
