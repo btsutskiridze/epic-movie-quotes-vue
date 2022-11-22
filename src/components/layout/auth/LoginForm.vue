@@ -2,39 +2,31 @@
 import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 
 import { Form as VeeForm } from "vee-validate";
-import axios from "@/config/axios/index.js";
+import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
 import { ref } from "vue";
-
-import { setJwtToken } from "@/helpers/jwt/index.js";
+import { useAuthStore } from "@/stores/useAuthStore";
 import { setLoginApiError } from "@/helpers/api-error-message";
-
 const remember = ref(null);
 
-const handleLogin = (values, actions) => {
-  axios
-    .post("login", {
+const authStore = useAuthStore();
+const handleLogin = async (values, actions) => {
+  try {
+    const response = await axios.post("login", {
       email: values.email,
       password: values.password,
-    })
-    .then((response) => {
-      if (remember.value) {
-        setJwtToken(
-          response.data.access_token,
-          response.data.expires_in,
-          365 * 24 * 60 * 60
-        );
-      } else {
-        setJwtToken(response.data.access_token, response.data.expires_in);
-      }
-      router.push({ name: "news-feed" });
-    })
-    .catch((error) => {
-      const errorsObj = error.response.data.errors;
-      for (const errorName in errorsObj) {
-        setLoginApiError(errorName, actions);
-      }
+      remember: remember.value ? true : false,
     });
+    authStore.authenticated = true;
+    router.push({ name: "news-feed" });
+
+    console.log(response);
+  } catch (error) {
+    const errorsObj = error.response.data.errors;
+    for (const errorName in errorsObj) {
+      setLoginApiError(errorName, actions);
+    }
+  }
 };
 </script>
 

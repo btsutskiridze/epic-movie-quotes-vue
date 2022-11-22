@@ -7,8 +7,9 @@ const axiosInstance = axios.create({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
     "X-Requested-With": "XMLHttpRequest",
-    Authorization: "Bearer " + localStorage.jwt,
   },
 });
+
+axiosInstance.defaults.withCredentials = true;
 
 export default axiosInstance;

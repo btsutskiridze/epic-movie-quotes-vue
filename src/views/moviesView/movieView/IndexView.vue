@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onBeforeMount } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 import i18n from "@/i18n";
 
@@ -11,7 +11,7 @@ const url = store.url;
 const movie = computed(() => store.movie);
 const genres = computed(() => store.genres);
 const lang = computed(() => i18n.global.locale);
-onMounted(() => {
+onBeforeMount(() => {
   store.getMovie();
 });
 
@@ -31,14 +31,14 @@ const numberWithCommas = (x) => {
         <div class="flex w-full lg:w-3/5 h-full" id="image">
           <img
             class="flex-shrink-0 h-[40vh] max-h-[24rem] w-full object-cover rounded-xl"
-            :src="movie.thumbnail && url + movie?.thumbnail"
-            :alt="movie.name"
+            :src="movie?.thumbnail && url + movie?.thumbnail"
+            :alt="movie?.name"
           />
         </div>
         <section class="flex flex-col gap-4 w-full lg:w-2/4">
           <div class="w-full flex flex-row justify-between items-center">
             <h1 class="text-2xl text-[#DDCCAA]">
-              {{ movie.title[lang] }} ({{ movie?.year }})
+              {{ movie?.title[lang] }} ({{ movie?.year }})
             </h1>
             <div class="flex flex-row rounded-lg py-2 bg-[#24222F]">
               <div
@@ -66,17 +66,17 @@ const numberWithCommas = (x) => {
           </div>
           <div>
             <p class="flex flex-row gap-4">
-              Director: <span>{{ movie.director[lang] }}</span>
+              Director: <span>{{ movie?.director[lang] }}</span>
             </p>
           </div>
           <div>
             <p class="flex flex-row gap-4">
-              Budget: <span>{{ numberWithCommas(movie.budget) }}$</span>
+              Budget: <span>{{ numberWithCommas(movie?.budget) }}$</span>
             </p>
           </div>
           <div>
             <p>
-              {{ movie.description[lang] }}
+              {{ movie?.description[lang] }}
             </p>
           </div>
         </section>

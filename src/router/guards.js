@@ -1,8 +1,10 @@
-import { getJwtToken } from "@/helpers/jwt/index.js";
+import { useAuthStore } from "@/stores/useAuthStore";
 
-export function isAuthenticated() {
-  if (!getJwtToken()) {
+export const isAuthenticated = () => {
+  const authStore = useAuthStore();
+  if (!authStore.authenticated) {
     return false;
+  } else {
+    return true;
   }
-  return true;
-}
+};

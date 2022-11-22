@@ -1,31 +1,44 @@
 import { defineStore } from "pinia";
-import { setJwtToken } from "@/helpers/jwt/index.js";
-import router from "@/router";
-import axios from "@/config/axios/index.js";
+// import router from "@/router";
+import axios from "@/config/axios/authAxios.js";
 import { useRoute } from "vue-router";
 
 export const useAutoLoginStore = defineStore("AutoLogin", {
   state: () => {
-    return {};
+    return {
+      token: "",
+      email: "",
+      loading: false,
+    };
   },
   actions: {
+    getToken() {
+      if (useRoute().query.token) {
+        this.token = useRoute().query.token;
+      }
+    },
     getEmail() {
       if (useRoute().query.email) {
-        this.email = false;
+        this.email = useRoute().query.email;
       }
     },
     autoLogin() {
       this.loading = true;
+      const key = this.email ? "email" : "token";
+      const value = this.email ? this.email : this.token;
+      const data = {};
+      data[key] = value;
       axios
-        .post("auto-login", {
-          email: this.email,
-        })
+        .post("auto-login", data)
         .then((response) => {
-          setJwtToken(response.data.access_token, response.data.expires_in);
-          router.push({ name: "news-feed" });
+          window.location.reload();
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          this.loading = false;
         });
     },
   },

@@ -20,7 +20,7 @@ const loading = computed(() => store.loading);
       >
         <back-arrow-icon />
       </router-link>
-      <register-form v-if="loading === null" />
+      <register-form v-show="loading === null" />
       <google-authorisation v-if="loading === null" />
       <span
         class="text-[#6C757D] text-base flex justify-center py-8"

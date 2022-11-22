@@ -14,6 +14,7 @@ export const useMoviesStore = defineStore("Movies", {
   },
   actions: {
     getMovies() {
+      this.loading = true;
       axios
         .get("movies")
         .then((response) => {
@@ -21,6 +22,9 @@ export const useMoviesStore = defineStore("Movies", {
         })
         .catch((e) => {
           console.log(e);
+        })
+        .finally(() => {
+          this.loading = false;
         });
     },
     getMovie(id = useRoute().params.id) {

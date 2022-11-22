@@ -7,7 +7,7 @@ import { computed } from "vue";
 const store = useRegisterStore();
 const loading = computed(() => store.loading);
 
-const handleSubmit = async (values, actions) => {
+const handleRegistration = async (values, actions) => {
   store.$patch({ loading: true });
   axios
     .post("register", {
@@ -31,7 +31,7 @@ const handleSubmit = async (values, actions) => {
 
 <template>
   <VeeForm
-    @submit="handleSubmit"
+    @submit="handleRegistration"
     class="font-helvetica"
     v-show="loading === null"
   >

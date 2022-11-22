@@ -1,6 +1,13 @@
 <script setup>
 import MoviesIcon from "@/components/icons/news-feed/MoviesIcon.vue";
 import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
+import axios from "@/config/axios/authAxios.js";
+import { onMounted, ref } from "vue";
+const user = ref({});
+onMounted(async () => {
+  const response = await axios.get("me");
+  user.value = response.data.user;
+});
 </script>
 
 <template>
@@ -12,7 +19,7 @@ import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
         class="w-10 h-10"
       />
       <div>
-        <h1>Brad piti</h1>
+        <h1>{{ user.name }}</h1>
         <p class="text-gray-400 text-base">
           {{ $t("newsFeed.edit_your_profile") }}
         </p>
