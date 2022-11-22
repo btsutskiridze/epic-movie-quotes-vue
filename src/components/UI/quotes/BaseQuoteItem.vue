@@ -10,8 +10,8 @@
     <h1>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, temporibus.
     </h1>
-    <!-- <router-link :to="{ name: 'quote' }">view</router-link>
+    <router-link :to="{ name: 'quote' }">view</router-link>
     <router-link :to="{ name: 'edit-quote' }">edit</router-link>
-    <router-link :to="{ name: 'delete-quote' }">delete</router-link> -->
+    <router-link :to="{ name: 'delete-quote' }">delete</router-link>
   </div>
 </template>
