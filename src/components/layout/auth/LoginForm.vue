@@ -15,6 +15,7 @@ const handleLogin = async (values, actions) => {
     const response = await axios.post("login", {
       email: values.email,
       password: values.password,
+      remember: remember.value ? true : false,
     });
     authStore.authenticated = true;
     router.push({ name: "news-feed" });
