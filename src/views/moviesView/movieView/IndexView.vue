@@ -3,6 +3,8 @@ import { computed, onBeforeMount } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 import i18n from "@/i18n";
 
+import QuotesContainer from "@/components/layout/quotes/QuotesContainer.vue";
+
 import EditIcon from "@/components/icons/news-feed/EditIcon.vue";
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
 const store = useMoviesStore();
@@ -22,8 +24,10 @@ const numberWithCommas = (x) => {
 
 <template>
   <loading-circle v-if="store.loading" />
-  <div v-else>
-    <div class="flex flex-col gap-4 px-[7%] mt-8 md:mt-0 md:px-5 mx-auto">
+  <div v-else class="flex flex-col gap-8">
+    <div
+      class="flex w-full flex-col gap-4 mt-8 md:mt-0 px-[7%] md:px-5 mx-auto"
+    >
       <h1 class="text-2xl hidden md:block">
         {{ $t("movies.movie_description") }}
       </h1>
@@ -82,6 +86,7 @@ const numberWithCommas = (x) => {
         </section>
       </div>
     </div>
+    <quotes-container />
     <router-view></router-view>
   </div>
 </template>
