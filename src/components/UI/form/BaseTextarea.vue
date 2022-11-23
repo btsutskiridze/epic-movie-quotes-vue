@@ -32,10 +32,8 @@ const autoResize = (e) => {
 };
 
 onMounted(() => {
-  if (props.model) {
-    document.getElementById(props.name).style.height =
-      document.getElementById(props.name).scrollHeight + "px";
-  }
+  document.getElementById(props.name).style.height =
+    document.getElementById(props.name).scrollHeight + "px";
 });
 </script>
 

@@ -22,7 +22,15 @@ const lang = computed(() => i18n.global.locale);
     />
     <h1>{{ quote?.title[lang] }}</h1>
     <!-- <router-link :to="{ name: 'quote' }">view</router-link> -->
-    <!-- <router-link :to="{ name: 'edit-quote' }">edit</router-link> -->
+    <router-link
+      :to="{
+        name: 'edit-quote',
+        params: {
+          quoteId: quote.id,
+        },
+      }"
+      >edit
+    </router-link>
     <!-- <router-link :to="{ name: 'delete-quote' }">delete</router-link> -->
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onBeforeMount } from "vue";
-import { useMoviesStore } from "@/stores/useMoviesStore";
+
 import i18n from "@/i18n";
 
 import QuotesContainer from "@/components/layout/quotes/QuotesContainer.vue";
@@ -8,6 +8,7 @@ import AddMovieQuote from "@/components/layout/quotes/AddMovieQuote.vue";
 
 import EditIcon from "@/components/icons/news-feed/EditIcon.vue";
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
+import { useMoviesStore } from "@/stores/useMoviesStore";
 const store = useMoviesStore();
 
 const url = store.url;
@@ -87,6 +88,6 @@ const numberWithCommas = (x) => {
     </div>
     <add-movie-quote :quotes-number="movie.quotes.length" />
     <quotes-container />
-    <router-view></router-view>
+    <router-view v-cloak></router-view>
   </div>
 </template>

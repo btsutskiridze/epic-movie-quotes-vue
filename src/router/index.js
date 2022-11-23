@@ -145,6 +145,7 @@ const router = createRouter({
               path: "edit-quote/:quoteId",
               name: "edit-quote",
               component: EditQuoteView,
+              beforeEnter: () => {},
             },
           ],
         },
