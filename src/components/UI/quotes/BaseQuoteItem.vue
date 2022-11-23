@@ -31,6 +31,14 @@ const lang = computed(() => i18n.global.locale);
       }"
       >edit
     </router-link>
-    <!-- <router-link :to="{ name: 'delete-quote' }">delete</router-link> -->
+    <router-link
+      :to="{
+        name: 'delete-quote',
+        params: {
+          quoteId: quote.id,
+        },
+      }"
+      >delete</router-link
+    >
   </div>
 </template>

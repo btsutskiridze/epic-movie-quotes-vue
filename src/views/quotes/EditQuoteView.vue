@@ -22,7 +22,7 @@ onBeforeMount(() => {
 });
 
 const goBack = () => {
-  router.push({ name: "movie", params: { movieId: movieId.value } });
+  router.replace({ name: "movie", params: { movieId: movieId.value } });
 };
 
 const addQuote = async (values) => {
