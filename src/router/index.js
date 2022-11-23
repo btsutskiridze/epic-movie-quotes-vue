@@ -16,6 +16,7 @@ import DeleteMovieView from "@/views/moviesView/movieView/deleteMovie/IndexView.
 
 import QuoteView from "@/views/quotes/QuoteView.vue";
 import DeleteQuoteView from "@/views/quotes/DeleteQuoteView.vue";
+import AddMovieQuoteView from "@/views/quotes/AddMovieQuoteView.vue";
 import EditQuoteView from "@/views/quotes/EditQuoteView.vue";
 
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
@@ -118,7 +119,7 @@ const router = createRouter({
             {
               path: "add-quote",
               name: "add-movie-quote",
-              component: AddQuteView,
+              component: AddMovieQuoteView,
             },
             {
               path: "edit-movie",
