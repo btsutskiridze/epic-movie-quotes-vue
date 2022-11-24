@@ -26,17 +26,19 @@ export const useQuoteStore = defineStore("Quote", {
           this.loading = false;
         });
     },
-    // getQuotes(id = useRoute().params.movieId) {
-    //   this.loading = true;
-    //   axios
-    //     .get("quotes/" + id)
-    //     .then((response) => {
-    //       this.movie = response.data;
-    //       this.genres = JSON.parse(this.movie.genre);
-    //     })
-    //     .finally(() => {
-    //       this.loading = false;
-    //     });
-    // },
+    getQuotes() {
+      this.loading = true;
+      axios
+        .get("quotes")
+        .then((response) => {
+          this.quotes = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
   },
 });

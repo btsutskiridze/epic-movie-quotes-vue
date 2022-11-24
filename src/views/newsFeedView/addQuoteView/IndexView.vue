@@ -6,6 +6,7 @@ import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 import { Form as VeeForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 import router from "@/router";
+import { useQuoteStore } from "@/stores/useQuoteStore";
 
 const goBack = () => {
   router.push({ name: "news-feed" });
@@ -26,6 +27,7 @@ const addQuote = async (values) => {
       }
     )
     .then(() => {
+      useQuoteStore().getQuotes();
       goBack();
     });
 };

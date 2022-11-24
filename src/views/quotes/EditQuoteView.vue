@@ -25,7 +25,7 @@ const goBack = () => {
   router.replace({ name: "movie", params: { movieId: movieId.value } });
 };
 
-const addQuote = async (values) => {
+const editQuote = async (values) => {
   const data = {
     title_en: values.title_en,
     title_ka: values.title_ka,
@@ -49,11 +49,9 @@ const addQuote = async (values) => {
 
 <template>
   <news-feed-dialog @close="goBack">
+    <template #header> Edit Quote </template>
     <loading-circle v-if="quoteStore.loading" />
-    <VeeForm v-else @submit="addQuote" class="font-helvetica">
-      <template #header>
-        {{ $t("newsFeed.write_new_quote") }}
-      </template>
+    <VeeForm v-else @submit="editQuote" class="font-helvetica">
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
@@ -79,7 +77,7 @@ const addQuote = async (values) => {
         />
         <base-file-input name="thumbnail" rules="" />
         <movies-dropdown :only-one="true" />
-        <base-button class="w-full bg-[#E31221]">Post</base-button>
+        <base-button class="w-full bg-[#E31221]">Save Changes</base-button>
       </section>
     </VeeForm>
   </news-feed-dialog>
