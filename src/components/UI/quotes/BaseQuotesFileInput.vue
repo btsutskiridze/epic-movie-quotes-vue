@@ -41,6 +41,11 @@ const setImage = (e) => {
 };
 
 const dragFile = (e) => {
+  const output = document.getElementById("image-output");
+  output.src = URL.createObjectURL(e.dataTransfer.files[0]);
+  output.onload = function () {
+    URL.revokeObjectURL(output.src);
+  };
   fileModel.value = e.dataTransfer.files[0];
   img.value = e.dataTransfer.files[0].name;
 };
