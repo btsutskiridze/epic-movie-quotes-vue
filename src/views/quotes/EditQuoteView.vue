@@ -1,7 +1,9 @@
 <script setup>
-import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
+import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
+// import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
+import QuotesFileInput from "@/components/UI/quotes/BaseQuotesFileInput.vue";
 
 import { computed, onBeforeMount, ref } from "vue";
 import { Form as VeeForm } from "vee-validate";
@@ -49,7 +51,27 @@ const editQuote = async (values) => {
 
 <template>
   <news-feed-dialog @close="goBack">
-    <template #header> Edit Quote </template>
+    <template #header>
+      <div
+        class="absolute flex flex-row items-center rounded-lg py-2 text-[#CED4DA]"
+      >
+        <div
+          class="cursor-pointer px-4 flex flex-row items-end gap-2"
+          @click="
+            $router.replace({
+              name: 'delete-quote',
+              params: {
+                quoteId: quote.id,
+              },
+            })
+          "
+        >
+          <delete-icon class="w-4 h-4" />
+          <span class="text-base leading-none">Delete</span>
+        </div>
+      </div>
+      Edit Quote
+    </template>
     <loading-circle v-if="quoteStore.loading" />
     <VeeForm v-else @submit="editQuote" class="font-helvetica">
       <section class="flex flex-col gap-4 text-white">
@@ -75,7 +97,11 @@ const editQuote = async (values) => {
           lang="ქარ"
           :model="quote.title?.ka"
         />
-        <base-file-input name="thumbnail" rules="" />
+        <quotes-file-input
+          :path="quoteStore.url + quote.thumbnail"
+          name="thumbnail"
+          rules=""
+        />
         <movies-dropdown :only-one="true" />
         <base-button class="w-full bg-[#E31221]">Save Changes</base-button>
       </section>
