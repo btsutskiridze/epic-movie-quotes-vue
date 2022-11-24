@@ -132,8 +132,8 @@ const router = createRouter({
               component: DeleteMovieView,
             },
             {
-              path: "quotes/:quoteId",
-              name: "quote",
+              path: "view-quote",
+              name: "view-quote",
               component: QuoteView,
             },
             {
