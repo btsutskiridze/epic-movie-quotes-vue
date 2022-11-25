@@ -21,11 +21,10 @@ const show = ref(false);
     v-if="show"
     @click="show = false"
   ></div>
-  <div
-    class="absolute cursor-pointer right-0 bottom-0 lg:bottom-auto lg:top-0 p-2"
-    @click="show = !show"
-  >
-    <menu-button class="relative" />
+  <div class="absolute right-0 bottom-0 lg:bottom-auto lg:top-0">
+    <div class="relative p-2 cursor-pointer" @click="show = !show">
+      <menu-button />
+    </div>
     <div
       v-if="show"
       class="absolute bottom-5 right-0 md:right-auto lg:bottom-auto lg:top-5 flex flex-col gap-8 px-10 z-40 py-8 w-[12rem] rounded-[0.6rem] bg-[#24222F]"
