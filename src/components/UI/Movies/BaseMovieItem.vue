@@ -41,7 +41,7 @@ const removeColor = () => {
       <img
         :src="url + movie?.thumbnail"
         :alt="movie.title[lang]"
-        class="rounded-xl object-cover w-full h-full"
+        class="rounded-xl object-cover object-center w-full h-full"
       />
     </div>
     <div>

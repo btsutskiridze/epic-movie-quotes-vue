@@ -28,7 +28,7 @@ const lang = computed(() => i18n.global.locale);
         <h1>{{ quote.user.name }}</h1>
       </div>
       <div class="flex flex-row gap-3">
-        <p>"{{ quote.title[lang] }}”</p>
+        <p class="break-words break-all">"{{ quote.title[lang] }}”</p>
         <p>
           <span class="text-[#DDCCAA]">{{ quote.movie.title[lang] }}</span>
         </p>
@@ -37,7 +37,7 @@ const lang = computed(() => i18n.global.locale);
         <img
           :src="url + quote.thumbnail"
           alt="post-image"
-          class="w-full min-h-[30vh] object-cover rounded-[0.6rem]"
+          class="w-full min-h-[30vh] object-cover object-center rounded-[0.6rem]"
         />
       </div>
       <likes-and-comments></likes-and-comments>

@@ -96,7 +96,7 @@ const goBack = () => {
           <img
             :src="url + quote.thumbnail"
             alt="post-image"
-            class="w-full min-h-[30vh] object-cover rounded-[0.6rem]"
+            class="w-full min-h-[30vh] object-cover object-center rounded-[0.6rem]"
           />
         </div>
         <likes-and-comments></likes-and-comments>

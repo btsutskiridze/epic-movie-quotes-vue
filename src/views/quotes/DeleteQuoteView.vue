@@ -47,7 +47,7 @@ const goBack = () => {
       >
         <h1 class="text-center">
           Are you sure you want to delete
-          <span class="text-[#DDCCAA] font-extrabold">{{
+          <span class="text-[#DDCCAA] break-words break-all font-extrabold">{{
             quote.title[lang]
           }}</span>
           ?

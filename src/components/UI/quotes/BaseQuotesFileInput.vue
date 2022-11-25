@@ -58,7 +58,7 @@ const dragFile = (e) => {
         :src="path"
         alt="quote-image"
         id="image-output"
-        class="w-full min-h-[22rem] max-h-[32rem] object-cover rounded-[0.6rem]"
+        class="w-full min-h-[22rem] max-h-[32rem] object-cover object-center rounded-[0.6rem]"
       />
       <div
         class="absolute flex items-center gap-2 justify-center top-0 w-full h-full"

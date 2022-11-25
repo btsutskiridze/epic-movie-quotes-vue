@@ -3,8 +3,6 @@ import { Field } from "vee-validate";
 import CameraIcon from "@/components/icons/dialog/CameraIcon.vue";
 import { ref } from "vue";
 
-const img = ref("");
-
 const props = defineProps({
   name: {
     type: String,
@@ -17,7 +15,7 @@ const props = defineProps({
     default: "required",
   },
 });
-
+const img = ref("");
 const fileModel = ref(null);
 const getImage = () => {
   document.getElementById(props.name).click();

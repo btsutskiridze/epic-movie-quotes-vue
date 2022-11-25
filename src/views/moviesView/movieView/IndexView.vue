@@ -34,7 +34,7 @@ const numberWithCommas = (x) => {
       <div class="flex flex-col lg:flex-row gap-6">
         <div class="flex w-full lg:w-3/5 h-full" id="image">
           <img
-            class="flex-shrink-0 h-[40vh] max-h-[24rem] w-full object-cover rounded-xl"
+            class="flex-shrink-0 h-[40vh] max-h-[24rem] w-full object-cover object-center rounded-xl"
             :src="movie?.thumbnail && url + movie?.thumbnail"
             :alt="movie?.name"
           />
@@ -87,7 +87,7 @@ const numberWithCommas = (x) => {
       </div>
     </div>
     <add-movie-quote :quotes-number="movie.quotes.length" />
-    <quotes-container />
-    <router-view v-cloak></router-view>
+    <router-view></router-view>
   </div>
+  <quotes-container />
 </template>
