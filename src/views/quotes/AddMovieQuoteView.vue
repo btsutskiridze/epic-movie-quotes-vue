@@ -1,6 +1,7 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
+import MovieDescription from "@/components/layout/movies/MovieDescription.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 
 import { ref } from "vue";
@@ -44,10 +45,10 @@ const addQuote = async (values) => {
 
 <template>
   <news-feed-dialog @close="goBack">
+    <template #header>
+      {{ $t("newsFeed.write_new_quote") }}
+    </template>
     <VeeForm @submit="addQuote" class="font-helvetica">
-      <template #header>
-        {{ $t("newsFeed.write_new_quote") }}
-      </template>
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
@@ -57,6 +58,8 @@ const addQuote = async (values) => {
           />
           <h1 class="">Brad spit</h1>
         </div>
+        <movie-description />
+
         <base-textarea
           rules="required|eng-textarea"
           name="title_en"

@@ -35,10 +35,10 @@ const addQuote = async (values) => {
 
 <template>
   <news-feed-dialog @close="goBack">
+    <template #header>
+      {{ $t("newsFeed.write_new_quote") }}
+    </template>
     <VeeForm @submit="addQuote" class="font-helvetica">
-      <template #header>
-        {{ $t("newsFeed.write_new_quote") }}
-      </template>
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
