@@ -2,7 +2,7 @@
 import CommentIcon from "@/components/icons/news-feed/CommentIcon.vue";
 import LikeIcon from "@/components/icons/news-feed/LikeIcon.vue";
 import likedIcon from "@/components/icons/quotes/LikedIcon.vue";
-// import { useUserStore } from "@/stores/useUserStore";
+import { useUserStore } from "@/stores/useUserStore";
 import axios from "@/config/axios/index.js";
 import { onBeforeMount, ref } from "vue";
 
@@ -22,28 +22,51 @@ const props = defineProps({
 });
 const likesNumber = ref(props.likes);
 const likable = ref(true);
-// const userStore = useUserStore();
-const addLike = async () => {
+const userStore = useUserStore();
+
+onBeforeMount(async () => {
   try {
-    const response = await axios.post("quotes/" + props.quoteId + "/like");
-    if (response.data === "like added") {
-      likesNumber.value++;
-      likable.value = false;
-    } else {
-      likesNumber.value--;
-      likable.value = true;
-    }
+    const response = await axios.post("quotes/" + props.quoteId + "/likable");
+    likable.value = response.data.likable;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const toggleLike = async () => {
+  //first toggle like
+  if (likable.value) {
+    likesNumber.value++;
+    likable.value = false;
+  } else {
+    likesNumber.value--;
+    likable.value = true;
+  }
+
+  //send response and see change for users also
+  try {
+    await axios.post("quotes/" + props.quoteId + "/like", {
+      user_id: userStore.user.id,
+      quote_id: props.quoteId,
+      was_liked: !likable.value,
+    });
   } catch (error) {
     console.log(error);
   }
 };
-onBeforeMount(async () => {
-  try {
-    const response = await axios.post("quotes/" + props.quoteId + "/likable");
-    console.log(response.data.likable);
-    likable.value = response.data.likable;
-  } catch (error) {
-    console.log(error);
+
+window.Echo.channel("like-channel").listen(".toggle-like", (e) => {
+  const isCorrectQuote =
+    e.like.user_id !== userStore.user.id && e.like.quote_id === props.quoteId;
+
+  if (isCorrectQuote) {
+    if (e.like.was_liked) {
+      likesNumber.value++;
+      console.log("liked");
+    } else {
+      likesNumber.value--;
+      console.log("unliked");
+    }
   }
 });
 </script>
@@ -56,7 +79,7 @@ onBeforeMount(async () => {
     </div>
     <div
       class="flex flex-row gap-2 items-center cursor-pointer"
-      @click="addLike()"
+      @click="toggleLike()"
     >
       <span class="md:text-xl">{{ likesNumber }}</span>
       <like-icon class="w-[67%] h-[67%]" v-if="likable" />
