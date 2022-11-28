@@ -3,6 +3,7 @@ import axios from "@/config/axios/index.js";
 import { Field } from "vee-validate";
 import { Form as VeeForm } from "vee-validate";
 import { useCommentStore } from "@/stores/useCommentStore";
+import { useUserStore } from "@/stores/useUserStore";
 import { ref } from "vue";
 
 const commentStore = useCommentStore();
@@ -24,20 +25,25 @@ const props = defineProps({
   },
 });
 const addComment = (values) => {
-  console.log(values);
+  const name = useUserStore().user.name;
+  const comment = values.comment;
+
+  //adding static comment
+  commentStore.add(name, comment);
+  body.value = "";
+
+  //adding to database
   axios
     .post("quotes/" + props.quoteId + "/comment", {
-      body: values.comment,
+      author: name,
+      body: comment,
     })
-    .then(() => {
-      commentStore.add(values.comment);
-      body.value = "";
-    });
+    .then(() => {});
 };
 
-// const clear = (e) => {
-//   e.target.textContent = "";
-// };
+window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
+  commentStore.echoComment(e.comment.author, e.comment.body);
+});
 </script>
 
 <template>
