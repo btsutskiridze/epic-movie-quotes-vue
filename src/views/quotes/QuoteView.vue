@@ -99,17 +99,19 @@ const goBack = () => {
             class="w-full min-h-[30vh] object-cover object-center rounded-[0.6rem]"
           />
         </div>
-        <likes-and-comments></likes-and-comments>
+        <likes-and-comments
+          :comments="quote.comments.length"
+        ></likes-and-comments>
         <div
           id="comments"
           class="flex flex-col gap-6 overflow-y-auto max-h-[14rem]"
         >
-          <base-comment username="giorga">woow amaizing</base-comment>
-          <base-comment username="giorga">woow amaizing</base-comment>
-          <base-comment username="giorga">woow amaizing</base-comment>
-          <base-comment username="giorga">woow amaizing</base-comment>
-          <base-comment username="giorga">woow amaizing</base-comment>
-          <base-comment username="giorga">woow amaizing</base-comment>
+          <base-comment
+            v-for="comment in quote.comments"
+            :key="comment.id"
+            :username="comment.author?.name"
+            >{{ comment.body }}</base-comment
+          >
         </div>
       </div>
     </div>

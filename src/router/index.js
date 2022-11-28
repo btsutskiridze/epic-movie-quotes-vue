@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import axios from "@/config/axios/authAxios.js";
 import { useAuthStore } from "@/stores/useAuthStore";
+import { useUserStore } from "@/stores/useUserStore";
 
 import landingView from "@/views/landingView/IndexView.vue";
 
@@ -158,10 +159,14 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
+  const userStore = useUserStore();
 
   if (authStore.authenticated === null) {
     try {
-      await axios.get(`${import.meta.env.VITE_API_BASE_URL}me`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URL}me`
+      );
+      userStore.user = response.data.user;
       authStore.authenticated = true;
     } catch (err) {
       authStore.authenticated = false;
