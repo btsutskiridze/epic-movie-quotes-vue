@@ -1,15 +1,25 @@
 <script setup>
 import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
+import MovieDescription from "@/components/layout/movies/MovieDescription.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 
+import { ref } from "vue";
 import { Form as VeeForm } from "vee-validate";
+import { useRoute, useRouter } from "vue-router";
 import axios from "@/config/axios/index.js";
 import router from "@/router";
-import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useMoviesStore } from "@/stores/useMoviesStore";
+
+const currRoute = ref(useRouter().currentRoute.value.path);
+const movieId = ref(useRoute().params.movieId);
 
 const goBack = () => {
-  router.push({ name: "news-feed" });
+  if (currRoute.value.includes("movies")) {
+    router.push({ name: "movie", params: { movieId: movieId.value } });
+  } else {
+    router.push({ name: "news-feed" });
+  }
 };
 
 const addQuote = async (values) => {
@@ -17,7 +27,7 @@ const addQuote = async (values) => {
     .post(
       "quote/store",
       {
-        movie_id: JSON.parse(values.movie),
+        movie_id: movieId.value,
         title_en: values.title_en,
         title_ka: values.title_ka,
         thumbnail: values.thumbnail,
@@ -27,7 +37,7 @@ const addQuote = async (values) => {
       }
     )
     .then(() => {
-      useQuoteStore().getQuotes();
+      useMoviesStore().getMovie(movieId.value);
       goBack();
     });
 };
@@ -48,6 +58,8 @@ const addQuote = async (values) => {
           />
           <h1 class="">Brad spit</h1>
         </div>
+        <movie-description />
+
         <base-textarea
           rules="required|eng-textarea"
           name="title_en"
@@ -61,7 +73,7 @@ const addQuote = async (values) => {
           lang="ქარ"
         />
         <base-file-input name="thumbnail" />
-        <movies-dropdown />
+        <movies-dropdown :only-one="true" />
         <base-button class="w-full bg-[#E31221]">Post</base-button>
       </section>
     </VeeForm>

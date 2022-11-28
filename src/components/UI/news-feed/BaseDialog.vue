@@ -28,7 +28,9 @@ const closeDialog = (e) => {
           open
           class="bg-[#11101A] w-full md:min-h-[auto] top-0 md:top-[5%] md:min-w-[37.5rem] overflow-x-hidden md:max-w-[32%] md:h-min md:rounded-xl z-30 p-0 mb-10"
         >
-          <div class="text-center relative border-b p-8 border-[#efefef4d]">
+          <div
+            class="text-center relative border-b px-9 md:px-[1.2rem] py-6 border-[#efefef4d]"
+          >
             <h1 class="text-white text-xl md:text-2xl">
               <slot name="header"></slot>
             </h1>
@@ -39,7 +41,7 @@ const closeDialog = (e) => {
               <close-icon />
             </div>
           </div>
-          <div class="px-9 py-8 md:pt-2 md:px-[2rem]">
+          <div class="px-9 py-8 md:pt-2 md:px-[1.6rem]">
             <slot></slot>
           </div>
         </dialog>

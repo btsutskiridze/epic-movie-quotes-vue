@@ -9,7 +9,7 @@ import i18n from "@/i18n";
 
 const store = useMoviesStore();
 const lang = computed(() => i18n.global.locale);
-const movieId = ref(useRoute().params.id);
+const movieId = ref(useRoute().params.movieId);
 
 const deleteMovie = () => {
   axios
@@ -23,7 +23,7 @@ const deleteMovie = () => {
     });
 };
 const goBack = () => {
-  router.replace({ name: "movie", params: { id: movieId.value } });
+  router.replace({ name: "movie", params: { movieId: movieId.value } });
 };
 </script>
 <template>

@@ -4,13 +4,13 @@ import MessageSent from "@/components/layout/password/MessageSent.vue";
 
 import { useForgetPasswordStore } from "@/stores/useForgetPasswordStore";
 import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
-import { computed, onMounted } from "vue";
+import { computed, onBeforeMount } from "vue";
 const store = useForgetPasswordStore();
 const resetPasswordStore = useResetPasswordStore();
 
 const emailSent = computed(() => store.emailSent);
 
-onMounted(() => {
+onBeforeMount(() => {
   resetPasswordStore.getResetToken();
 });
 </script>

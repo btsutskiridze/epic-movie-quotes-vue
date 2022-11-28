@@ -3,14 +3,14 @@ import ResetSuccess from "@/components/layout/password/ResetSuccess.vue";
 import ResetPassword from "@/components/layout/password/ResetPassword.vue";
 
 import { useResetPasswordStore } from "@/stores/useResetPasswordStore";
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 const resetPasswordStore = useResetPasswordStore();
 
 const resetPassword = computed(() => resetPasswordStore.resetPassword);
 const token = ref(null);
 
-onMounted(() => {
+onBeforeMount(() => {
   if (useRoute().query.token) {
     token.value = useRoute().query.token;
   }

@@ -3,8 +3,6 @@ import { Field } from "vee-validate";
 import CameraIcon from "@/components/icons/dialog/CameraIcon.vue";
 import { ref } from "vue";
 
-const img = ref("");
-
 const props = defineProps({
   name: {
     type: String,
@@ -17,23 +15,30 @@ const props = defineProps({
     default: "required",
   },
 });
-
+const img = ref("");
+const fileModel = ref(null);
 const getImage = () => {
   document.getElementById(props.name).click();
 };
 const setImage = (e) => {
+  fileModel.value = e.target.files[0];
   document.getElementById("container").classList.add("border-[#198754]");
   img.value = e.target.files.length !== 0 ? e.target.files[0].name : img.value;
 };
 
 const dragFile = (e) => {
-  document.getElementById(props.name).files = e.dataTransfer.files;
+  fileModel.value = e.dataTransfer.files[0];
   img.value = e.dataTransfer.files[0].name;
 };
 </script>
 
 <template>
-  <Field v-slot="{ handleChange, meta }" :rules="rules" :name="name">
+  <Field
+    v-slot="{ handleChange, meta }"
+    :rules="rules"
+    :name="name"
+    v-model="fileModel"
+  >
     <div
       id="container"
       @drop.prevent="dragFile"

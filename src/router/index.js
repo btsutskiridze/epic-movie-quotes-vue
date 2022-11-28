@@ -14,6 +14,11 @@ import MovieView from "@/views/moviesView/movieView/IndexView.vue";
 import EditMovieView from "@/views/moviesView/movieView/editMovie/IndexView.vue";
 import DeleteMovieView from "@/views/moviesView/movieView/deleteMovie/IndexView.vue";
 
+import QuoteView from "@/views/quotes/QuoteView.vue";
+import DeleteQuoteView from "@/views/quotes/DeleteQuoteView.vue";
+import AddMovieQuoteView from "@/views/quotes/AddMovieQuoteView.vue";
+import EditQuoteView from "@/views/quotes/EditQuoteView.vue";
+
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
 import { isAuthenticated } from "@/router/guards.js";
 
@@ -107,14 +112,14 @@ const router = createRouter({
           component: AddMovieView,
         },
         {
-          path: ":id",
+          path: ":movieId",
           name: "movie",
           component: MovieView,
           children: [
             {
               path: "add-quote",
               name: "add-movie-quote",
-              component: AddQuteView,
+              component: AddMovieQuoteView,
             },
             {
               path: "edit-movie",
@@ -125,6 +130,22 @@ const router = createRouter({
               path: "delete-movie",
               name: "delete-movie",
               component: DeleteMovieView,
+            },
+            {
+              path: "view-quote",
+              name: "view-quote",
+              component: QuoteView,
+            },
+            {
+              path: "delete-quote/:quoteId",
+              name: "delete-quote",
+              component: DeleteQuoteView,
+            },
+            {
+              path: "edit-quote/:quoteId",
+              name: "edit-quote",
+              component: EditQuoteView,
+              beforeEnter: () => {},
             },
           ],
         },

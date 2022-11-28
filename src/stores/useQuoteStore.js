@@ -1,39 +1,48 @@
 import { defineStore } from "pinia";
 import axios from "@/config/axios/index.js";
 import { useRoute } from "vue-router";
+import router from "@/router";
 
-export const useMoviesStore = defineStore("Movies", {
+export const useQuoteStore = defineStore("Quote", {
   state: () => {
     return {
-      movies: [],
-      movie: {},
-      genres: [],
+      quotes: [],
+      quote: {},
       url: import.meta.env.VITE_API_BASE_IMAGES_URL,
       loading: true,
+      isFetched: false,
     };
   },
   actions: {
-    getMovies() {
+    getQuote(id = useRoute().params.quoteId, withRelations = "") {
       this.loading = true;
+      const movieId = useRoute().params.movieId;
       axios
-        .get("movies")
+        .get("quotes/" + id + withRelations)
         .then((response) => {
-          this.movies = response.data;
+          this.quote = response.data;
+          this.isFetched = true;
         })
         .catch((e) => {
           console.log(e);
+          router.replace({
+            name: "movie",
+            params: { movieId: movieId },
+          });
         })
         .finally(() => {
           this.loading = false;
         });
     },
-    getMovie(id = useRoute().params.movieId) {
+    getQuotes() {
       this.loading = true;
       axios
-        .get("movies/" + id)
+        .get("quotes")
         .then((response) => {
-          this.movie = response.data;
-          this.genres = JSON.parse(this.movie.genre);
+          this.quotes = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
         })
         .finally(() => {
           this.loading = false;

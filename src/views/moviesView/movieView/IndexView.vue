@@ -1,10 +1,14 @@
 <script setup>
 import { computed, onBeforeMount } from "vue";
-import { useMoviesStore } from "@/stores/useMoviesStore";
+
 import i18n from "@/i18n";
 
-import EditIcon from "@/components/icons/news-feed/EditIcon.vue";
+import QuotesContainer from "@/components/layout/quotes/QuotesContainer.vue";
+import AddMovieQuote from "@/components/layout/quotes/AddMovieQuote.vue";
+
+import EditIcon from "@/components/icons/movies/EditIcon.vue";
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
+import { useMoviesStore } from "@/stores/useMoviesStore";
 const store = useMoviesStore();
 
 const url = store.url;
@@ -22,15 +26,15 @@ const numberWithCommas = (x) => {
 
 <template>
   <loading-circle v-if="store.loading" />
-  <div v-else>
-    <div class="flex flex-col gap-4 px-[7%] mt-8 md:mt-0 md:px-5 mx-auto">
+  <div v-else class="flex flex-col gap-8 mt-8 md:mt-0 px-[7%] md:px-5">
+    <div class="flex w-full flex-col gap-4">
       <h1 class="text-2xl hidden md:block">
         {{ $t("movies.movie_description") }}
       </h1>
       <div class="flex flex-col lg:flex-row gap-6">
         <div class="flex w-full lg:w-3/5 h-full" id="image">
           <img
-            class="flex-shrink-0 h-[40vh] max-h-[24rem] w-full object-cover rounded-xl"
+            class="flex-shrink-0 h-[40vh] max-h-[24rem] w-full object-cover object-center rounded-xl"
             :src="movie?.thumbnail && url + movie?.thumbnail"
             :alt="movie?.name"
           />
@@ -82,6 +86,8 @@ const numberWithCommas = (x) => {
         </section>
       </div>
     </div>
+    <add-movie-quote :quotes-number="movie.quotes.length" />
     <router-view></router-view>
   </div>
+  <quotes-container />
 </template>

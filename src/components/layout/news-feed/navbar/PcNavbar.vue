@@ -2,9 +2,9 @@
 import MoviesIcon from "@/components/icons/news-feed/MoviesIcon.vue";
 import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
 import axios from "@/config/axios/authAxios.js";
-import { onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 const user = ref({});
-onMounted(async () => {
+onBeforeMount(async () => {
   const response = await axios.get("me");
   user.value = response.data.user;
 });
@@ -37,7 +37,7 @@ onMounted(async () => {
       class="flex flex-row gap-3 cursor-pointer"
     >
       <movies-icon />
-      <h1>{{ $t("newsFeed.list_of_movies") }}</h1>
+      <h1 class="whitespace-nowrap">{{ $t("newsFeed.list_of_movies") }}</h1>
     </router-link>
   </div>
 </template>

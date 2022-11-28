@@ -15,7 +15,8 @@ const store = useMoviesStore();
 // const url = store.url;
 const movie = computed(() => store.movie);
 const movieGenres = store.genres;
-const movieId = ref(useRoute().params.id);
+const movieId = ref(useRoute().params.movieId);
+
 const updateMovie = (values) => {
   const data = {
     title_en: values.title_en,
@@ -47,7 +48,7 @@ const updateMovie = (values) => {
 };
 
 const goBack = () => {
-  router.replace({ name: "movie", params: { id: movieId.value } });
+  router.replace({ name: "movie", params: { MovieId: movieId.value } });
 };
 </script>
 

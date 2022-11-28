@@ -23,6 +23,11 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 const value = ref(props.model);
 
@@ -34,6 +39,7 @@ const autoResize = (e) => {
 onMounted(() => {
   document.getElementById(props.name).style.height =
     document.getElementById(props.name).scrollHeight + "px";
+  document.getElementById(props.name).disabled = props.disabled;
 });
 </script>
 
@@ -50,7 +56,7 @@ onMounted(() => {
         :placeholder="placeholder"
         autocomplete="off"
         @input="autoResize"
-        class="relative bg-transparent resize-none overflow-y-hidden border rounded-[0.25rem] border-[#6C757D] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
+        class="relative bg-transparent resize-none overflow-y-hidden border rounded-[0.25rem] border-[#6C757D] disabled:border-[#51575F] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
         :class="[
           !meta.valid && meta.touched ? 'border-[#DC3545]' : '',
           meta.valid && meta.touched ? 'border-[#198754]' : '',
