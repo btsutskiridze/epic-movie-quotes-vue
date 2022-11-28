@@ -1,10 +1,11 @@
 <script setup>
-// import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
+import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
 import CommentTextarea from "@/components/UI/news-feed/post/CommentTextarea.vue";
 import LikesAndComments from "@/components/layout/news-feed/post/LikesAndComments.vue";
 import i18n from "@/i18n";
 import { computed } from "vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useCommentStore } from "@/stores/useCommentStore";
 defineProps({
   quote: {
     type: Object,
@@ -14,6 +15,7 @@ defineProps({
 const quoteStore = useQuoteStore();
 const url = quoteStore.url;
 const lang = computed(() => i18n.global.locale);
+const staticComments = computed(() => useCommentStore().comments);
 </script>
 
 <template>
@@ -40,16 +42,23 @@ const lang = computed(() => i18n.global.locale);
           class="w-full min-h-[30vh] object-cover object-center rounded-[0.6rem]"
         />
       </div>
-      <likes-and-comments></likes-and-comments>
+      <likes-and-comments
+        :comments="quote.comments.length"
+      ></likes-and-comments>
       <div id="comments" class="flex flex-col gap-6">
-        <!-- <base-comment
+        <base-comment
           v-for="comment in quote.comments"
           :key="comment.id"
-          :username="comment.username"
-          >{{ comment.text }}</base-comment
-        > -->
-
-        <comment-textarea></comment-textarea>
+          :username="comment.author?.name"
+          >{{ comment.body }}</base-comment
+        >
+        <base-comment
+          v-for="comment in staticComments"
+          :key="comment.id"
+          :username="comment.author"
+          >{{ comment.body }}</base-comment
+        >
+        <comment-textarea :quoteId="quote.id"></comment-textarea>
       </div>
     </div>
   </div>

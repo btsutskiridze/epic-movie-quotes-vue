@@ -51,7 +51,6 @@ onMounted(() => {
         v-bind="field"
         rows="1"
         cols="50"
-        :name="name"
         :id="name"
         :placeholder="placeholder"
         autocomplete="off"
