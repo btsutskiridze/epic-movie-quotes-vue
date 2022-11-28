@@ -27,14 +27,16 @@ const props = defineProps({
 const addComment = (values) => {
   const name = useUserStore().user.name;
   const comment = values.comment;
+  const quoteId = props.quoteId;
 
   //adding static comment
-  commentStore.add(name, comment);
+  commentStore.add(quoteId, name, comment);
   body.value = "";
 
   //adding to database
   axios
     .post("quotes/" + props.quoteId + "/comment", {
+      quoteId: quoteId,
       author: name,
       body: comment,
     })
@@ -42,7 +44,12 @@ const addComment = (values) => {
 };
 
 window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
-  commentStore.echoComment(e.comment.author, e.comment.body);
+  commentStore.echoComment(
+    e.comment.quoteId,
+    props.quoteId,
+    e.comment.author,
+    e.comment.body
+  );
 });
 </script>
 

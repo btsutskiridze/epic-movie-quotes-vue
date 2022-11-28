@@ -7,17 +7,19 @@ export const useCommentStore = defineStore("Comment", {
     };
   },
   actions: {
-    add(username, body) {
+    add(id, username, body) {
       this.comments.push({
+        quote_id: id,
         author: username,
         body: body,
       });
     },
-    echoComment(username, body) {
+    echoComment(id, thisId, username, body) {
       const userStore = useUserStore();
 
-      if (userStore.user.name !== username) {
+      if (userStore.user.name !== username && thisId !== id) {
         this.comments.push({
+          quote_id: id,
           author: username,
           body: body,
         });
