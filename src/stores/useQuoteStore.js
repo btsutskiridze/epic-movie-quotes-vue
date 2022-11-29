@@ -9,7 +9,7 @@ export const useQuoteStore = defineStore("Quote", {
       quotes: [],
       quote: {},
       url: import.meta.env.VITE_API_BASE_IMAGES_URL,
-      loading: true,
+      loading: false,
       isFetched: false,
     };
   },
@@ -34,8 +34,8 @@ export const useQuoteStore = defineStore("Quote", {
           this.loading = false;
         });
     },
-    getQuotes() {
-      this.loading = true;
+    getQuotes(type) {
+      this.loading = type == "refresh" ? false : true;
       axios
         .get("quotes")
         .then((response) => {

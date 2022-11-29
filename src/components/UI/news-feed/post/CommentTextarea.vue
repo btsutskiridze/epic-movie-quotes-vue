@@ -3,6 +3,7 @@ import axios from "@/config/axios/index.js";
 import { Field } from "vee-validate";
 import { Form as VeeForm } from "vee-validate";
 import { useCommentStore } from "@/stores/useCommentStore";
+import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useUserStore } from "@/stores/useUserStore";
 import { ref } from "vue";
 
@@ -44,12 +45,10 @@ const addComment = (values) => {
 };
 
 window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
-  commentStore.echoComment(
-    e.comment.quoteId,
-    props.quoteId,
-    e.comment.author,
-    e.comment.body
-  );
+  if (e.comment.author !== useUserStore().user.name) {
+    useCommentStore().comments = [];
+    useQuoteStore().getQuotes("refresh");
+  }
 });
 </script>
 
