@@ -8,13 +8,13 @@ import i18n from "@/i18n";
 const lang = computed(() => i18n.global.locale);
 
 const quoteStore = useQuoteStore();
-const searchValue = computed(() => useSearchStore().search);
+const searchValue = computed(() => useSearchStore().search.trim());
 
 const quotes = computed(() =>
   quoteStore.quotes.filter((quote) => {
     const cleanSearch = searchValue.value.slice(1);
 
-    if (searchValue.value.trim() === "") {
+    if (searchValue.value === "") {
       return true;
     }
 
