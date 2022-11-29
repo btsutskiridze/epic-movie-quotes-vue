@@ -1,7 +1,7 @@
 <script setup>
 import SearchIcon from "@/components/icons/news-feed/SearchIcon.vue";
 import GoBackArrow from "@/components/icons/news-feed/GoBackArrowIcon.vue";
-
+import PostsSearch from "@/components/layout/news-feed/post/PostsSearch.vue";
 import { ref } from "vue";
 
 const showSearch = ref(false);
@@ -18,8 +18,7 @@ const close = (e) => {
     @click="showSearch = true"
   />
   <section
-    v-if="showSearch"
-    id="container"
+    v-show="showSearch"
     @click="close"
     class="block md:hidden w-screen h-screen top-0 left-0 backdrop-blur-sm z-30 fixed"
   >
@@ -31,14 +30,7 @@ const close = (e) => {
       >
         <go-back-arrow @click="showSearch = false" class="cursor-pointer" />
         <div class="w-4/5">
-          <input
-            type="search"
-            name="search"
-            id="search"
-            autocomplete="off"
-            class="bg-transparent text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white w-full"
-            :placeholder="$t('search.search')"
-          />
+          <posts-search :isMobile="true" />
         </div>
       </div>
       <div class="flex flex-col justify-center gap-6 px-[5.3rem] py-6">

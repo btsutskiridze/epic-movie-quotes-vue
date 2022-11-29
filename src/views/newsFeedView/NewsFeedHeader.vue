@@ -43,9 +43,7 @@ const handleLogout = async () => {
         </h2>
         <mobile-navbar />
         <section class="flex justify-center items-center gap-8">
-          <div :class="haveMovies ? 'hidden' : ''">
-            <mobile-search />
-          </div>
+          <mobile-search />
           <notification-icon />
           <language-dropdown />
           <base-button
