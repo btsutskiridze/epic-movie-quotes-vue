@@ -36,6 +36,12 @@ const quotes = computed(() =>
 onBeforeMount(() => {
   quoteStore.getQuotes();
 });
+
+window.onscroll = function () {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    quoteStore.getQuotes("refresh");
+  }
+};
 </script>
 
 <template>
