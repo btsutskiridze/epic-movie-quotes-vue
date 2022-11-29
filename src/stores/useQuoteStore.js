@@ -36,7 +36,7 @@ export const useQuoteStore = defineStore("Quote", {
         });
     },
     getQuotes(type) {
-      this.loading = type == "refresh" ? false : true;
+      this.loading = type === "paginate" ? false : true;
       axios
         .get("quotes?page=" + this.page)
         .then((response) => {
@@ -48,6 +48,15 @@ export const useQuoteStore = defineStore("Quote", {
         })
         .finally(() => {
           this.loading = false;
+        });
+    },
+    refreshQuotes() {
+      axios
+        .post("number-quotes", {
+          count: this.quotes.length,
+        })
+        .then((response) => {
+          this.quotes = response.data;
         });
     },
   },

@@ -45,9 +45,12 @@ const addComment = (values) => {
 };
 
 window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
-  if (e.comment.author !== useUserStore().user.name) {
+  if (
+    e.comment.author !== useUserStore().user.name &&
+    e.comment.quoteId === props.quoteId
+  ) {
     useCommentStore().comments = [];
-    useQuoteStore().getQuotes("refresh");
+    useQuoteStore().refreshQuotes();
   }
 });
 </script>
