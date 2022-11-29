@@ -40,6 +40,9 @@ onBeforeMount(() => {
 
 <template>
   <loading-circle v-if="quoteStore.loading" />
+  <div v-else-if="quotes.length === 0">
+    <h1 class="text-center text-white text-2xl">No quotes found</h1>
+  </div>
   <div v-else id="posts" class="flex flex-col gap-8">
     <base-post
       v-for="quote in quotes"
