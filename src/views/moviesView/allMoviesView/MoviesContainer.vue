@@ -4,10 +4,18 @@ import BaseSearch from "@/components/UI/form/BaseSearch.vue";
 import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
 import { computed, onBeforeMount } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
+import { useSearchStore } from "@/stores/useSearchStore";
+import i18n from "@/i18n";
 
+const lang = computed(() => i18n.global.locale);
 const store = useMoviesStore();
+const searchValue = computed(() => useSearchStore().search.trim());
 
-const movies = computed(() => store.movies);
+const movies = computed(() =>
+  store.movies.filter((movie) =>
+    movie.title[lang.value].toLowerCase().startsWith(searchValue.value)
+  )
+);
 onBeforeMount(() => {
   store.getMovies();
 });
@@ -15,7 +23,6 @@ onBeforeMount(() => {
 
 <template>
   <div class="container py-6 px-[7%] md:px-5 flex flex-col gap-6 mx-auto">
-    <base-search class="flex md:hidden" />
     <section
       class="flex xs:flex-col flex-row justify-between items-center w-full gap-3"
     >
@@ -39,7 +46,7 @@ onBeforeMount(() => {
       </div>
     </section>
 
-    <!-- <loading-circle v-if="store.loading" /> -->
+    <loading-circle v-if="store.loading" />
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <base-movie-item
         v-for="movie in movies"

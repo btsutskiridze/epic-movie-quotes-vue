@@ -1,11 +1,19 @@
 <script setup>
 import SearchIcon from "@/components/icons/news-feed/SearchIcon.vue";
+import { useSearchStore } from "@/stores/useSearchStore";
+
+const setSearch = (e) => {
+  useSearchStore().$patch({
+    search: e.target.value,
+  });
+};
 </script>
 <template>
   <div class="flex-row items-center">
     <search-icon class="absolute w-4 h-4" />
     <input
       type="search"
+      @keyup="setSearch"
       name="search"
       id="search"
       autocomplete="off"
