@@ -51,18 +51,20 @@ const staticComments = computed(() =>
         :comments="quote.comments.length + staticComments.length"
       ></likes-and-comments>
       <div id="comments" class="flex flex-col gap-6">
-        <base-comment
-          v-for="comment in quote.comments"
-          :key="comment.id"
-          :username="comment.author?.name"
-          >{{ comment.body }}</base-comment
-        >
-        <base-comment
-          v-for="comment in staticComments"
-          :key="comment.id"
-          :username="comment.author"
-          >{{ comment.body }}</base-comment
-        >
+        <div class="flex flex-col gap-6 max-h-[20rem] overflow-auto">
+          <base-comment
+            v-for="comment in quote.comments"
+            :key="comment.id"
+            :username="comment.author?.name"
+            >{{ comment.body }}</base-comment
+          >
+          <base-comment
+            v-for="comment in staticComments"
+            :key="comment.id"
+            :username="comment.author"
+            >{{ comment.body }}</base-comment
+          >
+        </div>
         <comment-textarea :quoteId="quote.id"></comment-textarea>
       </div>
     </div>
