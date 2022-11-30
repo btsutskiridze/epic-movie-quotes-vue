@@ -11,7 +11,7 @@ const show = ref(false);
     v-if="show"
     @click="show = false"
   ></div>
-  <div class="relative">
+  <div class="relative z-40">
     <notification-icon class="relative cursor-pointer" @click="show = !show" />
     <span
       @click="show = !show"
