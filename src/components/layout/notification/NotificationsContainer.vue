@@ -1,8 +1,14 @@
 <script setup>
 import NotificationIcon from "@/components/icons/news-feed/NotificationIcon.vue";
 import NotificationItem from "@/components/layout/notification/NotificationItem.vue";
-import { ref } from "vue";
+import { computed, onBeforeMount, ref } from "vue";
+import { useNotificationStore } from "@/stores/useNotificationStore";
 const show = ref(false);
+const notificationStore = useNotificationStore();
+onBeforeMount(() => {
+  notificationStore.getNotifications();
+});
+const notifications = computed(() => notificationStore.notifications);
 </script>
 
 <template>
@@ -11,12 +17,13 @@ const show = ref(false);
     v-if="show"
     @click="show = false"
   ></div>
-  <div class="relative z-40">
+  <div class="relative">
     <notification-icon class="relative cursor-pointer" @click="show = !show" />
     <span
       @click="show = !show"
-      class="cursor-pointer absolute flex items-center justify-center text-xs top-[-0.25rem] right-0 bg-red-500 w-4 h-4 rounded-full"
-      >2</span
+      v-if="!notificationStore.allRead"
+      class="cursor-pointer absolute flex items-center justify-center text-[0.6rem] top-[-0.25rem] right-0 bg-red-500 w-4 h-4 rounded-full"
+      >{{ notificationStore.unRead }}</span
     >
     <div
       v-if="show"
@@ -27,18 +34,21 @@ const show = ref(false);
     v-if="show"
     class="cursor-default flex flex-col gap-6 px-6 py-10 rounded-[0.25rem] z-[50] absolute top-[5rem] md:top-[5.6rem] bg-[#000] right-[7%] min-w-[44%]"
   >
-    <section class="text-white flex flex-row justify-between">
+    <section
+      @click="notificationStore.readAll()"
+      class="text-white flex flex-row justify-between"
+    >
       <h1 class="text-[1.8rem]">Notifications</h1>
       <h2 class="text-lg underline text-white cursor-pointer">
         Mark as all read
       </h2>
     </section>
-    <section class="h-[20rem] overflow-y-scroll">
-      <notification-item />
-      <notification-item />
-      <notification-item />
-      <notification-item />
-      <notification-item />
+    <section class="h-[24rem] overflow-y-scroll">
+      <notification-item
+        :notif="notification"
+        v-for="notification in notifications"
+        :key="notification.id"
+      />
     </section>
   </div>
 </template>
