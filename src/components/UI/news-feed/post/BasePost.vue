@@ -47,6 +47,7 @@ const staticComments = computed(() =>
       </div>
       <likes-and-comments
         :quoteId="quote.id"
+        :quoteUserId="quote.user.id"
         :likes="quote.likes_count"
         :comments="quote.comments.length + staticComments.length"
       ></likes-and-comments>

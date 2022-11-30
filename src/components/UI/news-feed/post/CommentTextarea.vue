@@ -59,13 +59,6 @@ window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
     useQuoteStore().refreshQuotes();
   }
 });
-
-window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
-  ".new-notification",
-  () => {
-    console.log("fetch comment notification");
-  }
-);
 </script>
 
 <template>

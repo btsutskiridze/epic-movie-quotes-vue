@@ -19,6 +19,10 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  quoteUserId: {
+    type: Number,
+    required: true,
+  },
 });
 const likesNumber = ref(props.likes);
 const likable = ref(true);
@@ -46,7 +50,8 @@ const toggleLike = async () => {
   //send response and see change for users also
   try {
     await axios.post("quotes/" + props.quoteId + "/like", {
-      user_id: userStore.user.id,
+      from_id: userStore.user.id,
+      to_id: props.quoteUserId,
       quote_id: props.quoteId,
       was_liked: !likable.value,
     });
@@ -57,7 +62,7 @@ const toggleLike = async () => {
 
 window.Echo.channel("like-channel").listen(".toggle-like", (e) => {
   const isCorrectQuote =
-    e.like.user_id !== userStore.user.id && e.like.quote_id === props.quoteId;
+    e.like.from_id !== userStore.user.id && e.like.quote_id === props.quoteId;
 
   if (isCorrectQuote) {
     if (e.like.was_liked) {
@@ -69,13 +74,6 @@ window.Echo.channel("like-channel").listen(".toggle-like", (e) => {
     }
   }
 });
-
-window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
-  ".new-notification",
-  () => {
-    console.log("fetch like notification");
-  }
-);
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 <script setup>
 import BasePost from "@/components/UI/news-feed/post/BasePost.vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useUserStore } from "@/stores/useUserStore";
 import { useSearchStore } from "@/stores/useSearchStore";
 import { computed, onBeforeMount } from "vue";
 import i18n from "@/i18n";
@@ -44,6 +45,21 @@ window.onscroll = function () {
     }
   }
 };
+
+window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
+  ".new-notification",
+  (e) => {
+    if (e.notification.type == "like") console.log("fetch like notification");
+  }
+);
+
+window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
+  ".new-notification",
+  (e) => {
+    if (e.notification.type == "comment")
+      console.log("fetch comment notification");
+  }
+);
 </script>
 
 <template>
