@@ -69,6 +69,13 @@ window.Echo.channel("like-channel").listen(".toggle-like", (e) => {
     }
   }
 });
+
+window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
+  ".new-notification",
+  () => {
+    console.log("fetch like notification");
+  }
+);
 </script>
 
 <template>

@@ -65,7 +65,10 @@ const staticComments = computed(() =>
             >{{ comment.body }}</base-comment
           >
         </div>
-        <comment-textarea :quoteId="quote.id"></comment-textarea>
+        <comment-textarea
+          :quoteId="quote.id"
+          :quoteUserId="quote.user.id"
+        ></comment-textarea>
       </div>
     </div>
   </div>

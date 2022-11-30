@@ -11,22 +11,41 @@ import BaseDialog from "@/components/UI/BaseDialog.vue";
 import NewsFeedDialog from "@/components/UI/news-feed/BaseDialog.vue";
 import LoadingCircle from "@/components/LoadingCircle.vue";
 import { isAuthenticated } from "@/router/guards.js";
-
+import axios from "@/config/axios/authAxios.js";
 import "@/index.css";
 
 import "@/config/vee-validate/rules";
 import "@/config/vee-validate/messages";
 
+window.Pusher = Pusher;
+
 watchEffect(() => {
   if (isAuthenticated) {
     window.Echo = new Echo({
-      authEndpoint: `${import.meta.env.VITE_API_BASE_URL}broadcasting/auth`,
       broadcaster: "pusher",
       key: import.meta.env.VITE_PUSHER_APP_KEY,
       cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
-      forceTLS: true,
       withCredentials: true,
-      enabledTransports: ["ws", "wss"],
+      encrypted: true,
+      forceTLS: true,
+      disableStats: true,
+      authorizer: (channel, options) => {
+        return {
+          authorize: (socketId, callback) => {
+            axios
+              .post("/broadcasting/auth", {
+                socket_id: socketId,
+                channel_name: channel.name,
+              })
+              .then((response) => {
+                callback(false, response.data);
+              })
+              .catch((error) => {
+                callback(true, error);
+              });
+          },
+        };
+      },
     });
   }
 });

@@ -24,6 +24,10 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  quoteUserId: {
+    type: Number,
+    required: true,
+  },
 });
 const addComment = (values) => {
   const name = useUserStore().user.name;
@@ -39,6 +43,8 @@ const addComment = (values) => {
     .post("quotes/" + props.quoteId + "/comment", {
       quoteId: quoteId,
       author: name,
+      from_id: useUserStore().user.id,
+      to_id: props.quoteUserId,
       body: comment,
     })
     .then(() => {});
@@ -53,6 +59,13 @@ window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
     useQuoteStore().refreshQuotes();
   }
 });
+
+window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
+  ".new-notification",
+  () => {
+    console.log("fetch comment notification");
+  }
+);
 </script>
 
 <template>
