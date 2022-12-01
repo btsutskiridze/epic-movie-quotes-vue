@@ -28,8 +28,9 @@ watchEffect(() => {
       withCredentials: true,
       encrypted: true,
       forceTLS: true,
+
       disableStats: true,
-      authorizer: (channel, options) => {
+      authorizer: (channel) => {
         return {
           authorize: (socketId, callback) => {
             axios

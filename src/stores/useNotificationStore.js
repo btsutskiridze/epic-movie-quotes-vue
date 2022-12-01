@@ -12,7 +12,6 @@ export const useNotificationStore = defineStore("Notification", {
     async getNotifications() {
       try {
         const response = await axios.get("notifications");
-        console.log(response);
         this.notifications = response.data.notifications;
         this.allRead = response.data.allRead;
         this.unRead = this.notifications.length - response.data.read;
@@ -23,8 +22,7 @@ export const useNotificationStore = defineStore("Notification", {
     async readAll() {
       if (this.allRead === false) {
         try {
-          const response = await axios.get("notifications/read-all");
-          console.log(response);
+          await axios.get("notifications/read-all");
           this.allRead = true;
           this.unRead = 0;
           this.getNotifications();
