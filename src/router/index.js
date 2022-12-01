@@ -4,7 +4,7 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import { useUserStore } from "@/stores/useUserStore";
 
 import landingView from "@/views/landingView/IndexView.vue";
-
+import UserProfileView from "@/views/user/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
 
@@ -151,6 +151,11 @@ const router = createRouter({
           ],
         },
       ],
+    },
+    {
+      path: "/user-profile",
+      name: "user-profile",
+      component: UserProfileView,
     },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
     { path: "/google-redirect", name: "redirect", component: GoogleRedirect },

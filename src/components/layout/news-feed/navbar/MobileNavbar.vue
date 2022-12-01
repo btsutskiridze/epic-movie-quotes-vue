@@ -4,12 +4,16 @@ import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
 import LogoutIcon from "@/components/icons/news-feed/LogoutIcon.vue";
 import BurgerMenu from "@/components/icons/news-feed/BurgerMenuIcon.vue";
 
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useAuthStore } from "@/stores/useAuthStore";
 import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
+import { useRouter } from "vue-router";
 
+import { useUserStore } from "@/stores/useUserStore";
+const user = computed(() => useUserStore().user);
 const showMenu = ref(false);
+const routePath = ref(useRouter().currentRoute.value.path);
 
 const closeMenu = (e) => {
   if (e.target == document.getElementById("container")) showMenu.value = false;
@@ -41,7 +45,7 @@ const handleLogout = async () => {
     v-if="showMenu"
     @click="closeMenu"
     id="container"
-    class="w-screen h-screen top-0 left-0 backdrop-blur-sm z-30 fixed block md:hidden"
+    class="cursor-default w-screen h-screen top-0 left-0 backdrop-blur-sm z-30 fixed block md:hidden"
   >
     <div
       class="absolute top-0 left-0 bg-[#0D0C15] w-[80vw] h-[80vh] z-40 pt-10 pl-10 rounded-lg"
@@ -53,10 +57,19 @@ const handleLogout = async () => {
             alt="avatar"
             width="40"
             height="40"
+            class="rounded-full"
+            :class="
+              routePath.includes('user-profile')
+                ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'
+                : ''
+            "
           />
           <div>
-            <h1>Brad Piti</h1>
-            <p class="text-gray-400 text-sm">
+            <h1>{{ user.name }}</h1>
+            <p
+              class="text-gray-400 text-sm cursor-pointer"
+              @click="$router.push({ name: 'user-profile' })"
+            >
               {{ $t("newsFeed.edit_your_profile") }}
             </p>
           </div>

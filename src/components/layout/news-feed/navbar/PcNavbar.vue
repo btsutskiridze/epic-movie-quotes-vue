@@ -1,26 +1,34 @@
 <script setup>
 import MoviesIcon from "@/components/icons/news-feed/MoviesIcon.vue";
 import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
-import axios from "@/config/axios/authAxios.js";
-import { onBeforeMount, ref } from "vue";
-const user = ref({});
-onBeforeMount(async () => {
-  const response = await axios.get("me");
-  user.value = response.data.user;
-});
+import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
+import { useUserStore } from "@/stores/useUserStore";
+const user = computed(() => useUserStore().user);
+
+const routePath = ref(useRouter().currentRoute.value.path);
 </script>
 
 <template>
-  <div class="flex flex-col gap-8 text-xl">
+  <div class="flex flex-col gap-8 text-xl cursor-default">
     <div class="flex flex-row items-center gap-4">
       <img
         src="@/assets/images/news-feed/avatar.png"
         alt="avatar"
-        class="w-10 h-10"
+        class="w-12 h-12 rounded-full"
+        :class="
+          routePath.includes('user-profile')
+            ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'
+            : ''
+        "
       />
+
       <div>
         <h1>{{ user.name }}</h1>
-        <p class="text-gray-400 text-base">
+        <p
+          class="text-gray-400 text-base cursor-pointer"
+          @click="$router.push({ name: 'user-profile' })"
+        >
           {{ $t("newsFeed.edit_your_profile") }}
         </p>
       </div>
