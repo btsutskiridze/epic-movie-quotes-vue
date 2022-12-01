@@ -21,14 +21,16 @@ export const useNotificationStore = defineStore("Notification", {
       }
     },
     async readAll() {
-      try {
-        const response = await axios.get("notifications/read-all");
-        console.log(response);
-        this.allRead = true;
-        this.unRead = 0;
-        this.getNotifications();
-      } catch (e) {
-        console.log(e);
+      if (this.allRead === false) {
+        try {
+          const response = await axios.get("notifications/read-all");
+          console.log(response);
+          this.allRead = true;
+          this.unRead = 0;
+          this.getNotifications();
+        } catch (e) {
+          console.log(e);
+        }
       }
     },
   },

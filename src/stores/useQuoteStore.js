@@ -35,8 +35,13 @@ export const useQuoteStore = defineStore("Quote", {
           this.loading = false;
         });
     },
-    getQuotes(type) {
+    getQuotes(type, resetCount = false) {
       this.loading = type === "paginate" ? false : true;
+      if (resetCount) {
+        this.page = 1;
+        this.quotes = [];
+      }
+
       axios
         .get("quotes?page=" + this.page)
         .then((response) => {

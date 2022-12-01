@@ -27,23 +27,23 @@ const notifications = computed(() => notificationStore.notifications);
     >
     <div
       v-if="show"
-      class="top-[2.3rem] absolute w-0 h-0 border-l-[10px] border-l-transparent border-b-[25px] border-b-black border-r-[10px] border-r-transparent"
+      class="top-[1.9rem] md:top-[2.3rem] absolute w-0 h-0 border-l-[10px] border-l-transparent border-b-[15px] md:border-b-[25px] border-b-black border-r-[10px] border-r-transparent"
     ></div>
   </div>
   <div
     v-if="show"
-    class="cursor-default flex flex-col gap-6 px-6 py-10 rounded-[0.25rem] z-[50] absolute top-[5rem] md:top-[5.6rem] bg-[#000] right-[7%] min-w-[44%]"
+    class="cursor-default flex flex-col gap-6 px-6 py-10 rounded-[0.25rem] z-[50] absolute top-[4rem] md:top-[5.6rem] bg-[#000] right-0 md:right-[7%] w-screen md:w-auto md:min-w-[24rem]"
   >
     <section
       @click="notificationStore.readAll()"
-      class="text-white flex flex-row justify-between"
+      class="text-white flex flex-row justify-between items-center"
     >
-      <h1 class="text-[1.8rem]">Notifications</h1>
-      <h2 class="text-lg underline text-white cursor-pointer">
+      <h1 class="text-xl md:text-[1.8rem]">Notifications</h1>
+      <h2 class="text-sm md:text-lg underline text-white cursor-pointer">
         Mark as all read
       </h2>
     </section>
-    <section class="h-[24rem] overflow-y-scroll">
+    <section class="h-[76vh] md:h-[24rem] overflow-y-scroll">
       <notification-item
         :notif="notification"
         v-for="notification in notifications"

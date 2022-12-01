@@ -18,6 +18,7 @@ const movies = computed(() =>
 );
 onBeforeMount(() => {
   store.getMovies();
+  useSearchStore().search = "";
 });
 </script>
 
@@ -47,7 +48,7 @@ onBeforeMount(() => {
     </section>
 
     <loading-circle v-if="store.loading" />
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div v-else class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <base-movie-item
         v-for="movie in movies"
         :key="movie?.id"

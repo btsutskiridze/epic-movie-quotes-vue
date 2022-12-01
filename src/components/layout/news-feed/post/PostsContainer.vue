@@ -36,7 +36,8 @@ const quotes = computed(() =>
 );
 
 onBeforeMount(() => {
-  quoteStore.getQuotes();
+  quoteStore.getQuotes("", true);
+  useSearchStore().search = "";
 });
 
 window.onscroll = function () {
