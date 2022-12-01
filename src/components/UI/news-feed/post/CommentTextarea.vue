@@ -3,6 +3,7 @@ import axios from "@/config/axios/index.js";
 import { Field } from "vee-validate";
 import { Form as VeeForm } from "vee-validate";
 import { useCommentStore } from "@/stores/useCommentStore";
+import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useUserStore } from "@/stores/useUserStore";
 import { ref } from "vue";
 
@@ -23,26 +24,40 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  quoteUserId: {
+    type: Number,
+    required: true,
+  },
 });
 const addComment = (values) => {
   const name = useUserStore().user.name;
   const comment = values.comment;
+  const quoteId = props.quoteId;
 
   //adding static comment
-  commentStore.add(name, comment);
+  commentStore.add(quoteId, name, comment);
   body.value = "";
 
   //adding to database
   axios
     .post("quotes/" + props.quoteId + "/comment", {
+      quoteId: quoteId,
       author: name,
+      from_id: useUserStore().user.id,
+      to_id: props.quoteUserId,
       body: comment,
     })
     .then(() => {});
 };
 
 window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
-  commentStore.echoComment(e.comment.author, e.comment.body);
+  if (
+    e.comment.author !== useUserStore().user.name &&
+    e.comment.quoteId === props.quoteId
+  ) {
+    useCommentStore().comments = [];
+    useQuoteStore().refreshQuotes();
+  }
 });
 </script>
 

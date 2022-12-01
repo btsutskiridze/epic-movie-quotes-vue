@@ -1,9 +1,8 @@
 <script setup>
-import NotificationIcon from "@/components/icons/news-feed/NotificationIcon.vue";
-
 import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 import MobileNavbar from "@/components/layout/news-feed/navbar/MobileNavbar.vue";
 import MobileSearch from "@/components/layout/news-feed/search-bar/MobileSearch.vue";
+import NotifiactionsContainer from "@/components/layout/notification/NotificationsContainer.vue";
 import { useAuthStore } from "@/stores/useAuthStore";
 import axios from "@/config/axios/authAxios.js";
 
@@ -43,10 +42,8 @@ const handleLogout = async () => {
         </h2>
         <mobile-navbar />
         <section class="flex justify-center items-center gap-8">
-          <div :class="haveMovies ? 'hidden' : ''">
-            <mobile-search />
-          </div>
-          <notification-icon />
+          <mobile-search />
+          <notifiactions-container />
           <language-dropdown />
           <base-button
             :outline="true"

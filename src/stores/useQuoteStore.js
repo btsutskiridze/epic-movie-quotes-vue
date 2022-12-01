@@ -9,8 +9,9 @@ export const useQuoteStore = defineStore("Quote", {
       quotes: [],
       quote: {},
       url: import.meta.env.VITE_API_BASE_IMAGES_URL,
-      loading: true,
+      loading: false,
       isFetched: false,
+      page: 1,
     };
   },
   actions: {
@@ -34,18 +35,33 @@ export const useQuoteStore = defineStore("Quote", {
           this.loading = false;
         });
     },
-    getQuotes() {
-      this.loading = true;
+    getQuotes(type, resetCount = false) {
+      this.loading = type === "paginate" ? false : true;
+      if (resetCount) {
+        this.page = 1;
+        this.quotes = [];
+      }
+
       axios
-        .get("quotes")
+        .get("quotes?page=" + this.page)
         .then((response) => {
-          this.quotes = response.data;
+          this.quotes.push(...response.data.data);
+          this.page++;
         })
         .catch((e) => {
           console.log(e);
         })
         .finally(() => {
           this.loading = false;
+        });
+    },
+    refreshQuotes() {
+      axios
+        .post("number-quotes", {
+          count: this.quotes.length,
+        })
+        .then((response) => {
+          this.quotes = response.data;
         });
     },
   },

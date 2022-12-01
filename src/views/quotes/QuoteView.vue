@@ -9,13 +9,11 @@ import { computed, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import { useQuoteStore } from "@/stores/useQuoteStore";
-
 const quoteStore = useQuoteStore();
 const url = quoteStore.url;
 
 const quote = computed(() => quoteStore.quote);
 const movieId = ref(useRoute().params.movieId);
-
 onBeforeMount(() => {
   if (useRoute().query.quoteId)
     quoteStore.getQuote(useRoute().query.quoteId, "/with-relations");
@@ -101,6 +99,7 @@ const goBack = () => {
         </div>
         <likes-and-comments
           :comments="quote.comments.length"
+          :likes="quote.likes_count"
         ></likes-and-comments>
         <div
           id="comments"

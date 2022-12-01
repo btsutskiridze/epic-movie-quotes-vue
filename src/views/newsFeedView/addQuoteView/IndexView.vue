@@ -27,7 +27,7 @@ const addQuote = async (values) => {
       }
     )
     .then(() => {
-      useQuoteStore().getQuotes();
+      useQuoteStore().getQuotes("-", true);
       goBack();
     });
 };

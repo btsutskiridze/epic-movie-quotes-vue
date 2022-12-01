@@ -1,21 +1,24 @@
 <script setup>
 import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
 import CommentTextarea from "@/components/UI/news-feed/post/CommentTextarea.vue";
-import LikesAndComments from "@/components/layout/news-feed/post/LikesAndComments.vue";
+import LikesAndComments from "@/components/layout/news-feed/post/PostLikesAndComments.vue";
 import i18n from "@/i18n";
 import { computed } from "vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useCommentStore } from "@/stores/useCommentStore";
-defineProps({
+const props = defineProps({
   quote: {
     type: Object,
     required: true,
   },
 });
 const quoteStore = useQuoteStore();
+const commentStore = useCommentStore();
 const url = quoteStore.url;
 const lang = computed(() => i18n.global.locale);
-const staticComments = computed(() => useCommentStore().comments);
+const staticComments = computed(() =>
+  commentStore.comments.filter((com) => com.quote_id === props.quote.id)
+);
 </script>
 
 <template>
@@ -43,22 +46,30 @@ const staticComments = computed(() => useCommentStore().comments);
         />
       </div>
       <likes-and-comments
-        :comments="quote.comments.length"
+        :quoteId="quote.id"
+        :quoteUserId="quote.user.id"
+        :likes="quote.likes_count"
+        :comments="quote.comments.length + staticComments.length"
       ></likes-and-comments>
       <div id="comments" class="flex flex-col gap-6">
-        <base-comment
-          v-for="comment in quote.comments"
-          :key="comment.id"
-          :username="comment.author?.name"
-          >{{ comment.body }}</base-comment
-        >
-        <base-comment
-          v-for="comment in staticComments"
-          :key="comment.id"
-          :username="comment.author"
-          >{{ comment.body }}</base-comment
-        >
-        <comment-textarea :quoteId="quote.id"></comment-textarea>
+        <div class="flex flex-col gap-6 max-h-[20rem] overflow-auto">
+          <base-comment
+            v-for="comment in quote.comments"
+            :key="comment.id"
+            :username="comment.author?.name"
+            >{{ comment.body }}</base-comment
+          >
+          <base-comment
+            v-for="comment in staticComments"
+            :key="comment.id"
+            :username="comment.author"
+            >{{ comment.body }}</base-comment
+          >
+        </div>
+        <comment-textarea
+          :quoteId="quote.id"
+          :quoteUserId="quote.user.id"
+        ></comment-textarea>
       </div>
     </div>
   </div>

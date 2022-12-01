@@ -35,12 +35,12 @@ const lang = computed(() => i18n.global.locale);
       </div>
       <div class="flex flex-row gap-6 border-t border-[#efefef4d] pt-4">
         <div class="flex flex-row gap-2 items-center leading-none">
-          <span class="md:text-xl">3</span>
+          <span class="md:text-xl">{{ quote.comments.length }}</span>
           <comment-icon class="w-[60%] h-[60%]" />
         </div>
         <div class="flex flex-row gap-2 items-center">
-          <span class="md:text-xl">10</span>
-          <like-icon class="w-[60%] h-[60%]" />
+          <span class="md:text-xl">{{ quote?.likes.length }}</span>
+          <like-icon class="w-[67%] h-[67%]" />
         </div>
       </div>
       <quotes-dropdown :id="quote.id" />
