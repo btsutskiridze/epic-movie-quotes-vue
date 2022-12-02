@@ -1,8 +1,17 @@
 <script setup>
 import { Field } from "vee-validate";
 import { useProfileStore } from "@/stores/useProfileStore";
+import { computed } from "vue";
 
 const profileStore = useProfileStore();
+const name = computed({
+  set(value) {
+    profileStore.nameValue = value;
+  },
+  get() {
+    return profileStore.nameValue;
+  },
+});
 
 const edit = () => {
   profileStore.showButtons = true;
@@ -14,9 +23,11 @@ const edit = () => {
   <section class="relative flex flex-col justify-center gap-1">
     <Field
       v-slot="{ field, errorMessage }"
-      v-model="profileStore.nameValue"
+      v-model="name"
       name="name"
-      rules="required|min:3|max:15|lowercase"
+      :rules="
+        profileStore.nameDisabled ? '' : 'required|min:3|max:15|lowercase'
+      "
     >
       <label for="name" class="top-[-1.3rem] text-base text-white capitalize"
         >Username

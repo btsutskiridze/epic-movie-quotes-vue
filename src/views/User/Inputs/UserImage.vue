@@ -8,7 +8,7 @@ const img = ref("");
 const fileModel = ref(null);
 
 const getImage = () => {
-  document.getElementById("image-input").click();
+  document.getElementById("image_input").click();
 };
 
 const setImage = (e) => {
@@ -30,7 +30,7 @@ const setImage = (e) => {
   <div
     class="flex flex-col items-center gap-3 justify-center relative top-[-4rem]"
   >
-    <Field name="image-input" v-model="fileModel">
+    <Field name="image_input" v-model="fileModel">
       <img
         id="image-output"
         src="@/assets/images/news-feed/avatar-2.png"
@@ -39,7 +39,7 @@ const setImage = (e) => {
       />
       <p class="cursor-pointer text-xl" @click="getImage">Upload new photo</p>
       <input
-        id="image-input"
+        id="image_input"
         type="file"
         class="absolute w-full left-0 h-full hidden"
         @input="setImage"

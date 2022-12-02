@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "@/config/axios/authAxios.js";
 
 export const useUserStore = defineStore("User", {
   state: () => {
@@ -6,5 +7,10 @@ export const useUserStore = defineStore("User", {
       user: {},
     };
   },
-  actions: {},
+  actions: {
+    async getUser() {
+      const response = await axios.get("me");
+      this.user = response.data.user;
+    },
+  },
 });
