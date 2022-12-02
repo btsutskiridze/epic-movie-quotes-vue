@@ -53,7 +53,7 @@ const handleLogout = async () => {
       <ul class="flex flex-col gap-8">
         <div class="flex flex-row gap-4">
           <img
-            src="@/assets/images/news-feed/avatar.png"
+            src="@/assets/images/news-feed/avatar-2.png"
             alt="avatar"
             width="40"
             height="40"

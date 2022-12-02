@@ -77,7 +77,7 @@ const editQuote = async (values) => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar.png"
+            src="@/assets/images/news-feed/avatar-2.png"
             alt="avatar"
             class="w-10 h-10"
           />

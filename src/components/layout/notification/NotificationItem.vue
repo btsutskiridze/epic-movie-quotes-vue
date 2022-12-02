@@ -23,7 +23,7 @@ const time = ref(timeStore.timeAgo(props.notif.created_at));
   >
     <div class="flex flex-row gap-4 items-center">
       <img
-        src="@/assets/images/news-feed/avatar.png"
+        src="@/assets/images/news-feed/avatar-2.png"
         alt="avatar"
         class="w-[3.75rem] h-[3.75rem] rounded-full"
         :class="

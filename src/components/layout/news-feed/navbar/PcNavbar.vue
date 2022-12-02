@@ -13,7 +13,7 @@ const routePath = ref(useRouter().currentRoute.value.path);
   <div class="flex flex-col gap-8 text-xl cursor-default">
     <div class="flex flex-row items-center gap-4">
       <img
-        src="@/assets/images/news-feed/avatar.png"
+        src="@/assets/images/news-feed/avatar-2.png"
         alt="avatar"
         class="w-12 h-12 rounded-full"
         :class="

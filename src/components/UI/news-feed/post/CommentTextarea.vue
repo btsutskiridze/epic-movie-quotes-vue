@@ -66,7 +66,7 @@ window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
     <div class="flex flex-row gap-3 items-start">
       <img
         v-if="showUser"
-        src="@/assets/images/news-feed/avatar.png"
+        src="@/assets/images/news-feed/avatar-2.png"
         alt="avatar"
         class="w-10 h-10"
       />

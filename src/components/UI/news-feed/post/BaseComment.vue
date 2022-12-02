@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="flex flex-row gap-3">
     <img
-      src="@/assets/images/news-feed/avatar.png"
+      src="@/assets/images/news-feed/avatar-2.png"
       alt="avatar"
       class="w-10 h-10"
     />
