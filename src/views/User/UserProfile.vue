@@ -3,19 +3,23 @@ import { useUserStore } from "@/stores/useUserStore";
 import { useProfileStore } from "@/stores/useProfileStore";
 import { computed } from "vue";
 
-import UserName from "@/views/User/inputs/UserName.vue";
-import UserEmail from "@/views/User/inputs/UserEmail.vue";
-import UserPassword from "@/views/User/inputs/UserPassword.vue";
+import UserImage from "@/views/User/Inputs/UserImage.vue";
+import UserName from "@/views/User/Inputs/UserName.vue";
+import UserEmail from "@/views/User/Inputs/UserEmail.vue";
+import UserPassword from "@/views/User/Inputs/UserPassword.vue";
 
 const profileStore = useProfileStore();
 const user = computed(() => useUserStore().user);
 
 const hideOpen = () => {
+  const image = document.getElementById("image-output");
+
   profileStore.showButtons = false;
 
   profileStore.nameDisabled = true;
   profileStore.passwordDisabled = true;
 
+  image.src = profileStore.defaultImage;
   profileStore.nameValue = user.value.name;
   profileStore.passwordValue = "garbagehahaha";
 };
@@ -28,16 +32,7 @@ const toggleOpen = () => {
   <div class="w-full flex flex-col gap-6 pb-20">
     <h1 class="text-2xl ml-8 mb-24">My profile</h1>
     <section class="relative w-full bg-[#11101A] rounded-xl">
-      <div
-        class="flex flex-col items-center gap-3 justify-center relative top-[-4rem]"
-      >
-        <img
-          src="@/assets/images/news-feed/avatar-2.png"
-          alt="avatar"
-          class="rounded-full w-44 h-44"
-        />
-        <p class="cursor-pointer text-xl">Upload new photo</p>
-      </div>
+      <user-image />
       <div class="flex flex-col mx-20 2xl:mx-40 gap-9">
         <user-name @changes="toggleOpen" />
         <user-email :email="user.email" />

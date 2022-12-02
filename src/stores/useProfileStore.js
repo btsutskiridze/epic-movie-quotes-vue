@@ -6,6 +6,7 @@ export const useProfileStore = defineStore("Profile", {
   state: () => {
     return {
       showButtons: false,
+      defaultImage: "src/assets/images/news-feed/avatar-2.png",
       nameValue: useUserStore().user.name,
       nameDisabled: true,
       passwordDisabled: true,
