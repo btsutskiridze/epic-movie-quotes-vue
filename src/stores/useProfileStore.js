@@ -13,6 +13,7 @@ export const useProfileStore = defineStore("Profile", {
       nameDisabled: true,
       passwordDisabled: true,
       passwordValue: "garbagehahahaa",
+      changePassword: false,
     };
   },
 });

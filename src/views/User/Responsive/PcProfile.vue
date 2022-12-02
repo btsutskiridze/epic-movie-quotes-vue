@@ -1,7 +1,8 @@
 <script setup>
 import { useUserStore } from "@/stores/useUserStore";
 import { useProfileStore } from "@/stores/useProfileStore";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
+import { Form as VeeForm } from "vee-validate";
 
 import UserImage from "@/views/User/Inputs/UserImage.vue";
 import UserName from "@/views/User/Inputs/Pc/UserName.vue";
@@ -18,23 +19,33 @@ const hideOpen = () => {
 
   profileStore.nameDisabled = true;
   profileStore.passwordDisabled = true;
+  profileStore.changePassword = false;
 
   image.src = profileStore.defaultImage;
   profileStore.nameValue = user.value.name;
   profileStore.passwordValue = "garbagehahaha";
 };
+
+onMounted(() => {
+  profileStore.showButtons = false;
+  profileStore.nameDisabled = true;
+  profileStore.passwordDisabled = true;
+  profileStore.changePassword = false;
+});
 </script>
 
 <template>
   <div class="w-full flex flex-col gap-6 pb-20">
     <h1 class="text-2xl ml-8 mb-24">My profile</h1>
     <section class="relative w-full bg-[#11101A] rounded-xl">
-      <user-image />
-      <div class="flex flex-col mx-20 2xl:mx-40 gap-9">
-        <user-name />
-        <user-email :email="user.email" />
-        <user-password />
-      </div>
+      <VeeForm>
+        <user-image />
+        <div class="flex flex-col mx-20 2xl:mx-40 gap-9">
+          <user-name />
+          <user-email :email="user.email" />
+          <user-password />
+        </div>
+      </VeeForm>
     </section>
     <div class="relative">
       <div
