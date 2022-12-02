@@ -45,7 +45,6 @@ const updateProfile = (values) => {
 
   if (values.password) {
     data["password"] = values.password;
-    data["password_confirmation"] = values.password_confirmation;
   }
   axios.put("user/update", data).then(() => {
     useUserStore().getUser();

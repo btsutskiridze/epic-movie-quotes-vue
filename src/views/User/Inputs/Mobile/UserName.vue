@@ -1,4 +1,5 @@
 <script setup>
+import { useUserStore } from "@/stores/useUserStore";
 import { useProfileStore } from "@/stores/useProfileStore";
 
 const profileStore = useProfileStore();
@@ -18,7 +19,7 @@ const edit = () => {
       <input
         id="name"
         type="text"
-        v-model="profileStore.nameValue"
+        v-model="useUserStore().user.name"
         placeholder="username"
         :disabled="true"
         class="w-full relative placeholder-[#6C757D] text-white bg-transparent px-3 py-2 my-2 rounded-[0.25rem] focus:outline-none"
