@@ -1,6 +1,7 @@
 <script setup>
 import BasePost from "@/components/UI/news-feed/post/BasePost.vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useCommentStore } from "@/stores/useCommentStore";
 import { useUserStore } from "@/stores/useUserStore";
 import { useSearchStore } from "@/stores/useSearchStore";
 import { useNotificationStore } from "@/stores/useNotificationStore";
@@ -38,6 +39,9 @@ const quotes = computed(() =>
 onBeforeMount(() => {
   quoteStore.getQuotes("", true);
   useSearchStore().search = "";
+  useCommentStore().$patch({
+    comments: [],
+  });
 });
 
 window.onscroll = function () {
