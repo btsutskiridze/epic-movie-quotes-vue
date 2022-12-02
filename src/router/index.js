@@ -97,9 +97,9 @@ const router = createRouter({
       name: "movies",
       redirect: { name: "all-movies" },
       component: MoviesView,
-      // beforeEnter: (_, _2, next) => {
-      //   return isAuthenticated() ? next() : next({ name: "landing" });
-      // },
+      beforeEnter: (_, _2, next) => {
+        return isAuthenticated() ? next() : next({ name: "landing" });
+      },
 
       children: [
         {
@@ -156,6 +156,9 @@ const router = createRouter({
       path: "/user-profile",
       name: "user-profile",
       component: UserProfileView,
+      beforeEnter: (_, _2, next) => {
+        return isAuthenticated() ? next() : next({ name: "landing" });
+      },
     },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
     { path: "/google-redirect", name: "redirect", component: GoogleRedirect },

@@ -13,7 +13,7 @@ html {
   background: rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 2px;
   height: 10px;
 }
 

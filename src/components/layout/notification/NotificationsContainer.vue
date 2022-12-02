@@ -44,11 +44,16 @@ const notifications = computed(() => notificationStore.notifications);
       </h2>
     </section>
     <section class="h-[76vh] md:h-[24rem] overflow-y-scroll">
-      <notification-item
-        :notif="notification"
-        v-for="notification in notifications"
-        :key="notification.id"
-      />
+      <div v-if="notifications.length">
+        <notification-item
+          :notif="notification"
+          v-for="notification in notifications"
+          :key="notification.id"
+        />
+      </div>
+      <div v-else class="flex justify-center h-full">
+        <h1 class="text-white text-xl">No notifications</h1>
+      </div>
     </section>
   </div>
 </template>

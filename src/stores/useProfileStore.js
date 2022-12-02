@@ -5,6 +5,8 @@ import { useUserStore } from "@/stores/useUserStore";
 export const useProfileStore = defineStore("Profile", {
   state: () => {
     return {
+      openDialog: false,
+      dialogType: "",
       showButtons: false,
       defaultImage: "src/assets/images/news-feed/avatar-2.png",
       nameValue: useUserStore().user.name,
