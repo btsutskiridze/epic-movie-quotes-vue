@@ -11,12 +11,12 @@ const routePath = ref(useRouter().currentRoute.value.path);
 </script>
 
 <template>
-  <div class="flex flex-col gap-8 text-xl cursor-default">
+  <div class="flex cursor-default flex-col gap-8 text-xl">
     <div class="flex flex-row items-center gap-4">
       <img
         :src="userStore.imagePath"
         alt="avatar"
-        class="w-12 h-12 rounded-full object-cover"
+        class="h-12 w-12 rounded-full object-cover"
         :class="
           routePath.includes('user-profile')
             ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'
@@ -27,7 +27,7 @@ const routePath = ref(useRouter().currentRoute.value.path);
       <div>
         <h1>{{ user.name }}</h1>
         <p
-          class="text-gray-400 text-base cursor-pointer whitespace-nowrap"
+          class="cursor-pointer whitespace-nowrap text-base text-gray-400"
           @click="$router.push({ name: 'user-profile' })"
         >
           {{ $t("newsFeed.edit_your_profile") }}
@@ -36,14 +36,14 @@ const routePath = ref(useRouter().currentRoute.value.path);
     </div>
     <router-link
       :to="{ name: 'news-feed' }"
-      class="flex flex-row gap-3 cursor-pointer"
+      class="flex cursor-pointer flex-row gap-3"
     >
       <home-icon />
       <h1>{{ $t("newsFeed.news_feed") }}</h1>
     </router-link>
     <router-link
       :to="{ name: 'all-movies' }"
-      class="flex flex-row gap-3 cursor-pointer"
+      class="flex cursor-pointer flex-row gap-3"
     >
       <movies-icon />
       <h1 class="whitespace-nowrap">{{ $t("newsFeed.list_of_movies") }}</h1>

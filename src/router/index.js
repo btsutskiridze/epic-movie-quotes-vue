@@ -163,10 +163,13 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
+  const userStore = useUserStore();
 
   if (authStore.authenticated === null) {
     try {
-      await axios.get("me");
+      const response = await axios.get("me");
+      userStore.user = response.data.user;
+      userStore.setImage(response.data.user);
       authStore.authenticated = true;
     } catch (err) {
       authStore.authenticated = false;
