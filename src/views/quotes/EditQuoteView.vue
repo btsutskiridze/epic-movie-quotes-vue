@@ -57,7 +57,7 @@ const editQuote = async (values) => {
         class="absolute flex flex-row items-center rounded-lg py-2 text-[#CED4DA]"
       >
         <div
-          class="cursor-pointer px-4 flex flex-row items-end gap-2"
+          class="flex cursor-pointer flex-row items-end gap-2 px-4"
           @click="
             $router.replace({
               name: 'delete-quote',
@@ -67,7 +67,7 @@ const editQuote = async (values) => {
             })
           "
         >
-          <delete-icon class="w-4 h-4" />
+          <delete-icon class="h-4 w-4" />
           <span class="text-base leading-none">Delete</span>
         </div>
       </div>
@@ -78,9 +78,9 @@ const editQuote = async (values) => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            :src="useUserStore().imagePath"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="w-10 h-10 rounded-full object-cover"
+            class="h-10 w-10 rounded-full object-cover"
           />
           <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>

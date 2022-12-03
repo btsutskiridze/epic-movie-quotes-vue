@@ -23,15 +23,13 @@ const staticComments = computed(() =>
 </script>
 
 <template>
-  <div class="w-full bg-[#11101A] rounded-xl py-6 px-[7%] md:px-5">
+  <div class="w-full rounded-xl bg-[#11101A] py-6 px-[7%] md:px-5">
     <div class="flex flex-col gap-4">
       <div id="user" class="flex flex-row items-center gap-4">
         <img
-          :src="
-            quote.user.google_id ? quote.user.avatar : url + quote.user.avatar
-          "
+          :src="quote.user?.avatar"
           alt="avatar"
-          class="w-10 h-10 rounded-full object-cover"
+          class="h-10 w-10 rounded-full object-cover"
         />
         <h1>{{ quote.user.name }}</h1>
       </div>
@@ -45,7 +43,7 @@ const staticComments = computed(() =>
         <img
           :src="url + quote.thumbnail"
           alt="post-image"
-          class="w-full min-h-[30vh] object-cover object-center rounded-[0.6rem]"
+          class="min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
         />
       </div>
       <likes-and-comments
@@ -55,23 +53,19 @@ const staticComments = computed(() =>
         :comments="quote.comments.length + staticComments.length"
       ></likes-and-comments>
       <div id="comments" class="flex flex-col gap-6">
-        <div class="flex flex-col gap-6 max-h-[20rem] overflow-auto">
+        <div class="flex max-h-[20rem] flex-col gap-6 overflow-auto">
           <base-comment
             v-for="comment in quote.comments"
             :key="comment.id"
             :username="comment.author?.name"
-            :user-image="
-              comment.author?.google_id
-                ? comment.author?.avatar
-                : url + comment.author?.avatar
-            "
+            :user-image="comment.author?.avatar"
             >{{ comment.body }}</base-comment
           >
           <base-comment
             v-for="comment in staticComments"
             :key="comment.id"
             :username="comment.author"
-            :userImage="useUserStore().imagePath"
+            :userImage="useUserStore().user?.avatar"
             >{{ comment.body }}</base-comment
           >
         </div>

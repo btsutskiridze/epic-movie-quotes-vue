@@ -43,9 +43,9 @@ const addQuote = async (values) => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            :src="useUserStore().imagePath"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="w-10 h-10 rounded-full object-cover"
+            class="h-10 w-10 rounded-full object-cover"
           />
           <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>

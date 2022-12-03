@@ -10,7 +10,7 @@ const img = ref("");
 const fileModel = ref(null);
 
 const imagePath = computed(() => {
-  return userStore.imagePath;
+  return userStore.user.avatar;
 });
 
 const getImage = () => {

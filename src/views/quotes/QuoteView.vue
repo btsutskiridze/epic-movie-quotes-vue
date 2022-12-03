@@ -41,7 +41,7 @@ const goBack = () => {
             })
           "
         >
-          <edit-icon class="w-4 h-4" />
+          <edit-icon class="h-4 w-4" />
         </div>
         <div
           class="cursor-pointer px-4"
@@ -54,7 +54,7 @@ const goBack = () => {
             })
           "
         >
-          <delete-icon class="w-4 h-4" />
+          <delete-icon class="h-4 w-4" />
         </div>
       </div>
       <div class="text-center">View Quote</div>
@@ -62,14 +62,14 @@ const goBack = () => {
     <loading-circle v-if="quoteStore.loading" />
     <div
       v-if="!quoteStore.loading && quoteStore.isFetched"
-      class="w-full bg-[#11101A] text-white rounded-xl"
+      class="w-full rounded-xl bg-[#11101A] text-white"
     >
       <div class="flex flex-col gap-4">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            :src="useUserStore().imagePath"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="w-10 h-10 rounded-full object-cover"
+            class="h-10 w-10 rounded-full object-cover"
           />
           <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
@@ -95,7 +95,7 @@ const goBack = () => {
           <img
             :src="url + quote.thumbnail"
             alt="post-image"
-            class="w-full min-h-[30vh] object-cover object-center rounded-[0.6rem]"
+            class="min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
           />
         </div>
         <likes-and-comments
@@ -104,16 +104,12 @@ const goBack = () => {
         ></likes-and-comments>
         <div
           id="comments"
-          class="flex flex-col gap-6 overflow-y-auto max-h-[14rem]"
+          class="flex max-h-[14rem] flex-col gap-6 overflow-y-auto"
         >
           <base-comment
             v-for="comment in quote.comments"
             :key="comment.id"
-            :user-image="
-              comment.author?.google_id
-                ? comment.author?.avatar
-                : url + comment.author?.avatar
-            "
+            :user-image="comment.author?.avatar"
             :username="comment.author?.name"
             >{{ comment.body }}</base-comment
           >

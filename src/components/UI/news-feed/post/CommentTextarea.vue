@@ -63,12 +63,12 @@ window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
 
 <template>
   <VeeForm v-slot="{ handleSubmit }">
-    <div class="flex flex-row gap-3 items-start">
+    <div class="flex flex-row items-start gap-3">
       <img
         v-if="showUser"
-        :src="useUserStore().imagePath"
+        :src="useUserStore().user?.avatar"
         alt="avatar"
-        class="w-10 h-10 rounded-full object-cover"
+        class="h-10 w-10 rounded-full object-cover"
       />
       <Field v-slot="{ field }" name="comment" rules="required" v-model="body">
         <div class="w-full">
@@ -80,7 +80,7 @@ window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
             autocomplete="off"
             @keypress.enter.prevent="handleSubmit($event, addComment)"
             @input="autoResize"
-            class="bg-[#24222F] overflow-y-hidden resize-none px-4 py-3 leading-5 rounded-xl text-base focus:outline-none hover:outline-none placeholder-white w-full"
+            class="w-full resize-none overflow-y-hidden rounded-xl bg-[#24222F] px-4 py-3 text-base leading-5 placeholder-white hover:outline-none focus:outline-none"
             :placeholder="$t('newsFeed.write_a_comment')"
           ></textarea>
         </div>

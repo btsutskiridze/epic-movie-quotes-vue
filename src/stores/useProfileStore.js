@@ -8,7 +8,7 @@ export const useProfileStore = defineStore("Profile", {
       openDialog: false,
       dialogType: "",
       showButtons: false,
-      defaultImage: useUserStore().imagePath,
+      defaultImage: useUserStore().user?.avatar,
       nameValue: useUserStore().user.name,
       nameDisabled: true,
       passwordDisabled: true,

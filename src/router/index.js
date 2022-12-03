@@ -169,7 +169,6 @@ router.beforeEach(async (to, from, next) => {
     try {
       const response = await axios.get("me");
       userStore.user = response.data.user;
-      userStore.setImage(response.data.user);
       authStore.authenticated = true;
     } catch (err) {
       authStore.authenticated = false;

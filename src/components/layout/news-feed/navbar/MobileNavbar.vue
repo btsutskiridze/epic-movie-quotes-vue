@@ -37,7 +37,7 @@ const handleLogout = async () => {
 
 <template>
   <burger-menu
-    class="font-bold uppercase block md:hidden relative cursor-pointer"
+    class="relative block cursor-pointer font-bold uppercase md:hidden"
     @click="showMenu = !showMenu"
   />
 
@@ -45,17 +45,17 @@ const handleLogout = async () => {
     v-if="showMenu"
     @click="closeMenu"
     id="container"
-    class="cursor-default w-screen h-screen top-0 left-0 backdrop-blur-sm z-30 fixed block md:hidden"
+    class="fixed top-0 left-0 z-30 block h-screen w-screen cursor-default backdrop-blur-sm md:hidden"
   >
     <div
-      class="absolute top-0 left-0 bg-[#0D0C15] w-[80vw] h-[80vh] z-40 pt-10 pl-10 rounded-lg"
+      class="absolute top-0 left-0 z-40 h-[80vh] w-[80vw] rounded-lg bg-[#0D0C15] pt-10 pl-10"
     >
       <ul class="flex flex-col gap-8">
         <div class="flex flex-row gap-4">
           <img
-            :src="useUserStore().imagePath"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="rounded-full object-cover w-10 h-10"
+            class="h-10 w-10 rounded-full object-cover"
             :class="
               routePath.includes('user-profile')
                 ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'
@@ -65,7 +65,7 @@ const handleLogout = async () => {
           <div>
             <h1>{{ user.name }}</h1>
             <p
-              class="text-gray-400 text-sm cursor-pointer"
+              class="cursor-pointer text-sm text-gray-400"
               @click="$router.push({ name: 'user-profile' })"
             >
               {{ $t("newsFeed.edit_your_profile") }}
@@ -74,19 +74,19 @@ const handleLogout = async () => {
         </div>
         <router-link
           :to="{ name: 'news-feed' }"
-          class="flex flex-row gap-3 cursor-pointer"
+          class="flex cursor-pointer flex-row gap-3"
         >
           <home-icon />
           <h1>{{ $t("newsFeed.news_feed") }}</h1>
         </router-link>
         <router-link
           :to="{ name: 'all-movies' }"
-          class="flex flex-row gap-3 cursor-pointer"
+          class="flex cursor-pointer flex-row gap-3"
         >
           <movies-icon />
           <h1>{{ $t("newsFeed.list_of_movies") }}</h1>
         </router-link>
-        <div class="flex flex-row gap-3 cursor-pointer" @click="handleLogout">
+        <div class="flex cursor-pointer flex-row gap-3" @click="handleLogout">
           <logout-icon />
           <h1>{{ $t("newsFeed.logout") }}</h1>
         </div>

@@ -14,7 +14,7 @@ const routePath = ref(useRouter().currentRoute.value.path);
   <div class="flex cursor-default flex-col gap-8 text-xl">
     <div class="flex flex-row items-center gap-4">
       <img
-        :src="userStore.imagePath"
+        :src="userStore.user?.avatar"
         alt="avatar"
         class="h-12 w-12 rounded-full object-cover"
         :class="
