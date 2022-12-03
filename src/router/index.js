@@ -3,7 +3,7 @@ import axios from "@/config/axios/authAxios.js";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useUserStore } from "@/stores/useUserStore";
 
-import landingView from "@/views/landingView/IndexView.vue";
+import landingView from "@/views/Landing/IndexView.vue";
 import UserProfileView from "@/views/User/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
@@ -24,12 +24,12 @@ import NotFoundView from "@/views/NotFound/IndexView.vue";
 import ForbiddenView from "@/views/Forbidden/IndexView.vue";
 import { isAuthenticated, isNotAuthenticated } from "@/router/guards.js";
 
-import RegistrationView from "@/views/landingView/registrationView/IndexView.vue";
-import VerificationView from "@/views/landingView/verificationView/IndexView.vue";
+import RegistrationView from "@/views/Landing/Registration/IndexView.vue";
+import VerificationView from "@/views/Landing/Verification/IndexView.vue";
 
-import LoginView from "@/views/landingView/loginView/IndexView.vue";
-import ForgetPasswordView from "@/views/landingView/forgetPasswordView/IndexView.vue";
-import ResetPasswordView from "@/views/landingView/resetPasswordView/IndexView.vue";
+import LoginView from "@/views/Landing/Login/IndexView.vue";
+import ForgetPasswordView from "@/views/Landing/ForgetPassword/IndexView.vue";
+import ResetPasswordView from "@/views/Landing/ResetPassword/IndexView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
