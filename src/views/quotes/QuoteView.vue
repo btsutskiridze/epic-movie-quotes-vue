@@ -9,6 +9,7 @@ import { computed, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useUserStore } from "@/stores/useUserStore";
 const quoteStore = useQuoteStore();
 const url = quoteStore.url;
 
@@ -66,11 +67,11 @@ const goBack = () => {
       <div class="flex flex-col gap-4">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar-2.png"
+            :src="useUserStore().imagePath"
             alt="avatar"
-            class="w-10 h-10"
+            class="w-10 h-10 rounded-full object-cover"
           />
-          <h1>{{ quote.user?.name }}</h1>
+          <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
         <div class="flex flex-col gap-1">
           <base-textarea

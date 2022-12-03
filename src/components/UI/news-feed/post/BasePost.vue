@@ -5,6 +5,7 @@ import LikesAndComments from "@/components/layout/news-feed/post/PostLikesAndCom
 import i18n from "@/i18n";
 import { computed } from "vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useUserStore } from "@/stores/useUserStore";
 import { useCommentStore } from "@/stores/useCommentStore";
 const props = defineProps({
   quote: {
@@ -26,9 +27,11 @@ const staticComments = computed(() =>
     <div class="flex flex-col gap-4">
       <div id="user" class="flex flex-row items-center gap-4">
         <img
-          src="@/assets/images/news-feed/avatar-2.png"
+          :src="
+            quote.user.google_id ? quote.user.avatar : url + quote.user.avatar
+          "
           alt="avatar"
-          class="w-10 h-10"
+          class="w-10 h-10 rounded-full object-cover"
         />
         <h1>{{ quote.user.name }}</h1>
       </div>
@@ -57,12 +60,18 @@ const staticComments = computed(() =>
             v-for="comment in quote.comments"
             :key="comment.id"
             :username="comment.author?.name"
+            :user-image="
+              comment.author?.google_id
+                ? comment.author?.avatar
+                : url + comment.author?.avatar
+            "
             >{{ comment.body }}</base-comment
           >
           <base-comment
             v-for="comment in staticComments"
             :key="comment.id"
             :username="comment.author"
+            :userImage="useUserStore().imagePath"
             >{{ comment.body }}</base-comment
           >
         </div>

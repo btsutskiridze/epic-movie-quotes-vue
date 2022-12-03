@@ -33,7 +33,7 @@ const setImage = (e) => {
     <Field name="image_input" v-model="fileModel">
       <img
         id="image-output"
-        src="@/assets/images/news-feed/avatar-2.png"
+        :src="profileStore.defaultImage"
         alt="avatar"
         class="rounded-full w-44 h-44 object-cover"
       />

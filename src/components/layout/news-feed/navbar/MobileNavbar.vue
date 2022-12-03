@@ -53,11 +53,11 @@ const handleLogout = async () => {
       <ul class="flex flex-col gap-8">
         <div class="flex flex-row gap-4">
           <img
-            src="@/assets/images/news-feed/avatar-2.png"
+            :src="useUserStore().imagePath"
             alt="avatar"
             width="40"
             height="40"
-            class="rounded-full"
+            class="rounded-full object-cover"
             :class="
               routePath.includes('user-profile')
                 ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'

@@ -4,7 +4,8 @@ import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/useUserStore";
-const user = computed(() => useUserStore().user);
+const userStore = useUserStore();
+const user = computed(() => userStore.user);
 
 const routePath = ref(useRouter().currentRoute.value.path);
 </script>
@@ -13,9 +14,9 @@ const routePath = ref(useRouter().currentRoute.value.path);
   <div class="flex flex-col gap-8 text-xl cursor-default">
     <div class="flex flex-row items-center gap-4">
       <img
-        src="@/assets/images/news-feed/avatar-2.png"
+        :src="userStore.imagePath"
         alt="avatar"
-        class="w-12 h-12 rounded-full"
+        class="w-12 h-12 rounded-full object-cover"
         :class="
           routePath.includes('user-profile')
             ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'

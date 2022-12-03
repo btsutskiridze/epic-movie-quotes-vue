@@ -3,13 +3,15 @@ import QuoteIcon from "@/components/icons/movies/QuoteIcon.vue";
 import likedIcon from "@/components/icons/quotes/LikedIcon.vue";
 import { ref } from "vue";
 import { useTimeStore } from "@/stores/useTimeStore";
+import { useMoviesStore } from "@/stores/useMoviesStore";
+
 const props = defineProps({
   notif: {
     type: Object,
     required: true,
   },
 });
-
+const url = useMoviesStore().url;
 const timeStore = useTimeStore();
 const time = ref(timeStore.timeAgo(props.notif.created_at));
 // const interval = setInterval(() => {
@@ -23,7 +25,9 @@ const time = ref(timeStore.timeAgo(props.notif.created_at));
   >
     <div class="flex flex-row gap-4 items-center">
       <img
-        src="@/assets/images/news-feed/avatar-2.png"
+        :src="
+          notif.from.google_id ? notif.from.avatar : url + notif.from.avatar
+        "
         alt="avatar"
         class="w-[3.75rem] h-[3.75rem] rounded-full"
         :class="

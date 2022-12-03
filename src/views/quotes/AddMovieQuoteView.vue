@@ -10,7 +10,7 @@ import { useRoute, useRouter } from "vue-router";
 import axios from "@/config/axios/index.js";
 import router from "@/router";
 import { useMoviesStore } from "@/stores/useMoviesStore";
-
+import { useUserStore } from "@/stores/useUserStore";
 const currRoute = ref(useRouter().currentRoute.value.path);
 const movieId = ref(useRoute().params.movieId);
 
@@ -52,11 +52,11 @@ const addQuote = async (values) => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar-2.png"
+            :src="useUserStore().imagePath"
             alt="avatar"
-            class="w-10 h-10"
+            class="w-10 h-10 rounded-full object-cover"
           />
-          <h1 class="">Brad spit</h1>
+          <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
         <movie-description />
 

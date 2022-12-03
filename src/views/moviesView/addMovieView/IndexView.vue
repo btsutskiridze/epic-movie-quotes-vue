@@ -6,6 +6,7 @@ import BaseMultiSelect from "@/components/UI/form/BaseMultiSelect.vue";
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
 import { useMoviesStore } from "@/stores/useMoviesStore";
+import { useUserStore } from "@/stores/useUserStore";
 import router from "@/router";
 
 const addMovie = (values) => {
@@ -44,11 +45,11 @@ const addMovie = (values) => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar-2.png"
+            :src="useUserStore().imagePath"
             alt="avatar"
-            class="w-10 h-10"
+            class="w-10 h-10 rounded-full object-cover"
           />
-          <h1 class="">Brad spit</h1>
+          <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
         <base-dialog-input
           rules="required|eng"

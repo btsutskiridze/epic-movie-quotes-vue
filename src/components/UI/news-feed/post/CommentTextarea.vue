@@ -66,9 +66,9 @@ window.Echo.channel("add-comment-channel").listen(".new-comment", (e) => {
     <div class="flex flex-row gap-3 items-start">
       <img
         v-if="showUser"
-        src="@/assets/images/news-feed/avatar-2.png"
+        :src="useUserStore().imagePath"
         alt="avatar"
-        class="w-10 h-10"
+        class="w-10 h-10 rounded-full object-cover"
       />
       <Field v-slot="{ field }" name="comment" rules="required" v-model="body">
         <div class="w-full">
