@@ -24,7 +24,6 @@ const hideOpen = (type) => {
 
   if (type != "change") {
     profileStore.nameValue = useUserStore().user.name;
-    image.src = profileStore.defaultImage;
   }
 };
 
