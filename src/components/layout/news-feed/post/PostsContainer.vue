@@ -6,35 +6,21 @@ import { useUserStore } from "@/stores/useUserStore";
 import { useSearchStore } from "@/stores/useSearchStore";
 import { useNotificationStore } from "@/stores/useNotificationStore";
 import { computed, onBeforeMount } from "vue";
-import i18n from "@/i18n";
-
-const lang = computed(() => i18n.global.locale);
 
 const quoteStore = useQuoteStore();
 const searchValue = computed(() => useSearchStore().search.trim());
 
-const quotes = computed(() =>
-  quoteStore.quotes.filter((quote) => {
-    const cleanSearch = searchValue.value.slice(1);
-
-    if (searchValue.value === "") {
-      return true;
-    }
-
-    if (searchValue.value.startsWith("#")) {
-      return quote.title[lang.value].startsWith(cleanSearch);
-    } else if (searchValue.value.startsWith("@")) {
-      return quote.movie.title[lang.value].startsWith(cleanSearch);
-    }
-
-    if (
-      !searchValue.value.startsWith("#") ||
-      !searchValue.value.startsWith("@")
-    ) {
-      return quote.title[lang.value].startsWith(searchValue.value);
-    }
-  })
-);
+const quotes = computed(() => {
+  if (
+    searchValue.value === "" ||
+    searchValue.value === "#" ||
+    searchValue.value === "@"
+  ) {
+    return quoteStore.quotes;
+  } else {
+    return quoteStore.searchedQuotes;
+  }
+});
 
 onBeforeMount(() => {
   quoteStore.getQuotes("", true);

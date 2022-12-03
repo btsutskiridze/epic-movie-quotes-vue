@@ -26,42 +26,42 @@ const numberWithCommas = (x) => {
 
 <template>
   <loading-circle v-if="store.loading" />
-  <div v-else class="flex flex-col gap-8 mt-8 md:mt-0 px-[7%] md:px-5">
+  <div v-else class="mt-8 flex flex-col gap-8 px-[7%] md:mt-0 md:px-5">
     <div class="flex w-full flex-col gap-4">
-      <h1 class="text-2xl hidden md:block">
+      <h1 class="hidden text-2xl md:block">
         {{ $t("movies.movie_description") }}
       </h1>
-      <div class="flex flex-col lg:flex-row gap-6">
-        <div class="flex w-full lg:w-3/5 h-full" id="image">
+      <div class="flex flex-col gap-6 lg:flex-row">
+        <div class="flex h-full w-full lg:w-3/5" id="image">
           <img
-            class="flex-shrink-0 h-[40vh] max-h-[24rem] w-full object-cover object-center rounded-xl"
+            class="h-[40vh] max-h-[24rem] w-full flex-shrink-0 rounded-xl object-cover object-center"
             :src="movie?.thumbnail && url + movie?.thumbnail"
             :alt="movie?.name"
           />
         </div>
-        <section class="flex flex-col gap-4 w-full lg:w-2/4">
-          <div class="w-full flex flex-row justify-between items-center">
+        <section class="flex w-full flex-col gap-4 lg:w-2/4">
+          <div class="flex w-full flex-row items-center justify-between">
             <h1 class="text-2xl text-[#DDCCAA]">
               {{ movie?.title[lang] }} ({{ movie?.year }})
             </h1>
-            <div class="flex flex-row rounded-lg py-2 bg-[#24222F]">
+            <div class="flex flex-row rounded-lg bg-[#24222F] py-2">
               <div
                 class="cursor-pointer border-r border-white px-4"
                 @click="$router.replace({ name: 'edit-movie' })"
               >
-                <edit-icon class="w-5 h-5" />
+                <edit-icon class="h-5 w-5" />
               </div>
               <div
                 class="cursor-pointer px-4"
                 @click="$router.replace({ name: 'delete-movie' })"
               >
-                <delete-icon class="w-5 h-5" />
+                <delete-icon class="h-5 w-5" />
               </div>
             </div>
           </div>
           <div class="flex flex-wrap gap-2">
             <p
-              class="bg-[#6C757D] text-white text-lg rounded-[0.25rem] px-3"
+              class="rounded-[0.25rem] bg-[#6C757D] px-3 text-lg text-white"
               v-for="genre in genres"
               :key="genre.label"
             >
