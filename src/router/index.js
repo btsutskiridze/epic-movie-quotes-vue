@@ -21,7 +21,7 @@ import AddMovieQuoteView from "@/views/quotes/AddMovieQuoteView.vue";
 import EditQuoteView from "@/views/quotes/EditQuoteView.vue";
 
 import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
-import { isAuthenticated } from "@/router/guards.js";
+import { isAuthenticated, isNotAuthenticated } from "@/router/guards.js";
 
 import RegistrationView from "@/views/landingView/registrationView/IndexView.vue";
 import VerificationView from "@/views/landingView/verificationView/IndexView.vue";
@@ -37,9 +37,10 @@ const router = createRouter({
       path: "/",
       name: "landing",
       component: landingView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next({ name: "news-feed" }) : next();
-      },
+      beforeEnter: isNotAuthenticated,
+      // beforeEnter: (_, _2, next) => {
+      //   return isAuthenticated() ? next({ name: "news-feed" }) : next();
+      // },
       children: [
         {
           name: "registration",
@@ -81,9 +82,8 @@ const router = createRouter({
       path: "/news-feed",
       name: "news-feed",
       component: NewsFeedView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "landing" });
-      },
+      beforeEnter: isAuthenticated,
+
       children: [
         {
           path: "add-quote",
@@ -97,9 +97,7 @@ const router = createRouter({
       name: "movies",
       redirect: { name: "all-movies" },
       component: MoviesView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "landing" });
-      },
+      beforeEnter: isAuthenticated,
 
       children: [
         {
@@ -156,9 +154,7 @@ const router = createRouter({
       path: "/user-profile",
       name: "user-profile",
       component: UserProfileView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "landing" });
-      },
+      beforeEnter: isAuthenticated,
     },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
     { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
@@ -167,15 +163,10 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
-  const userStore = useUserStore();
 
   if (authStore.authenticated === null) {
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}me`
-      );
-      userStore.user = response.data.user;
-      userStore.setImage(response.data.user);
+      await axios.get("me");
       authStore.authenticated = true;
     } catch (err) {
       authStore.authenticated = false;

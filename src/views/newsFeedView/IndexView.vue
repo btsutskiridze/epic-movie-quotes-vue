@@ -1,6 +1,14 @@
 <script setup>
 import NewsFeedHeader from "@/views/newsFeedView/NewsFeedHeader.vue";
 import NewsFeedBody from "@/views/newsFeedView/NewsFeedBody.vue";
+import { onMounted } from "vue";
+import { useUserStore } from "@/stores/useUserStore";
+
+const userStore = useUserStore();
+
+onMounted(() => {
+  userStore.getUser();
+});
 </script>
 
 <template>
