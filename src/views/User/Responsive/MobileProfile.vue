@@ -47,10 +47,10 @@ const handleImage = (values) => {
     <div class="w-full flex flex-col gap-6">
       <section class="mt-24 relative w-full bg-[#11101A] rounded-xl">
         <user-image />
-        <div class="flex flex-col mx-10 gap-9">
+        <div class="flex flex-col mx-10 gap-9 pb-14">
           <user-name />
           <user-email :email="user.email" />
-          <user-password />
+          <user-password v-if="!user.google_id" />
         </div>
       </section>
       <div class="relative">

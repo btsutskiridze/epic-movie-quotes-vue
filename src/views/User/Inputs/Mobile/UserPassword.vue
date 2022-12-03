@@ -14,7 +14,7 @@ const edit = () => {
     <label for="password" class="top-[-1.3rem] text-base text-white capitalize">
       Password
     </label>
-    <div class="w-full relative border-b border-[#40414A] mb-10">
+    <div class="w-full relative border-b border-[#40414A]">
       <input
         name="password"
         type="password"

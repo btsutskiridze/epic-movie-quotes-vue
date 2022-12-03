@@ -65,8 +65,8 @@ const updateProfile = (values) => {
         <user-image />
         <div class="flex flex-col mx-20 2xl:mx-40 gap-9">
           <user-name />
-          <user-email :email="user.email" />
-          <user-password />
+          <user-email :email="user.email" :google-id="user.google_id" />
+          <user-password v-if="!user.google_id" />
         </div>
       </section>
       <div class="relative">
