@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "@/config/axios/index.js";
 import { useRoute } from "vue-router";
-
+import router from "@/router";
 export const useMoviesStore = defineStore("Movies", {
   state: () => {
     return {
@@ -34,6 +34,9 @@ export const useMoviesStore = defineStore("Movies", {
         .then((response) => {
           this.movie = response.data;
           this.genres = JSON.parse(this.movie.genre);
+        })
+        .catch(() => {
+          router.push({ name: "all-movies" });
         })
         .finally(() => {
           this.loading = false;
