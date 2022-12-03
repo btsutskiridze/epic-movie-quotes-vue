@@ -61,6 +61,7 @@ const dragFile = (e) => {
       </span>
       <input
         type="file"
+        accept="image/*"
         class="absolute w-full left-0 h-full hidden"
         @change="handleChange"
         @input="setImage"

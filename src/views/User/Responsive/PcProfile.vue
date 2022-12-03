@@ -14,8 +14,6 @@ const profileStore = useProfileStore();
 const user = computed(() => useUserStore().user);
 
 const hideOpen = (type) => {
-  const image = document.getElementById("image-output");
-
   profileStore.showButtons = false;
 
   profileStore.nameDisabled = true;

@@ -47,6 +47,7 @@ const setImage = (e) => {
       <input
         id="image_input"
         type="file"
+        accept="image/*"
         class="absolute w-full left-0 h-full hidden"
         @input="setImage"
       />

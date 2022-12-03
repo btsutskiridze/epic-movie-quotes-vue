@@ -77,6 +77,7 @@ const dragFile = (e) => {
     </div>
     <input
       type="file"
+      accept="image/*"
       class="absolute w-full left-0 h-full hidden"
       @input="setImage"
       :id="name"
