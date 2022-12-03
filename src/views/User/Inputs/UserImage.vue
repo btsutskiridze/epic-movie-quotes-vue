@@ -1,11 +1,17 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { Field } from "vee-validate";
+import { useUserStore } from "@/stores/useUserStore";
 import { useProfileStore } from "@/stores/useProfileStore";
 
+const userStore = useUserStore();
 const profileStore = useProfileStore();
 const img = ref("");
 const fileModel = ref(null);
+
+const imagePath = computed(() => {
+  return userStore.imagePath;
+});
 
 const getImage = () => {
   document.getElementById("image_input").click();
@@ -33,7 +39,7 @@ const setImage = (e) => {
     <Field name="image_input" v-model="fileModel">
       <img
         id="image-output"
-        :src="profileStore.defaultImage"
+        :src="imagePath"
         alt="avatar"
         class="rounded-full w-44 h-44 object-cover"
       />

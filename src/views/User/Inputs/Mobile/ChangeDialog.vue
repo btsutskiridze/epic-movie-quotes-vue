@@ -12,8 +12,8 @@ const profileStore = useProfileStore();
 const value = computed(() => profileStore.dialogType);
 const secondStep = ref(false);
 const dataToSubmit = ref({});
+
 const handleChange = (values) => {
-  console.log(values);
   dataToSubmit.value = values;
   secondStep.value = true;
 };
@@ -28,12 +28,16 @@ const submitChange = () => {
     data["password"] = dataToSubmit.value.password;
   }
 
-  axios.put("user/update", data).then(() => {
-    useUserStore().getUser();
-    profileStore.openDialog = false;
-    profileStore.nameValue = useUserStore().user.name;
-    secondStep.value = false;
-  });
+  axios
+    .post("user/update", data, {
+      headers: { "content-type": "multipart/form-data" },
+    })
+    .then(() => {
+      useUserStore().getUser();
+      profileStore.openDialog = false;
+      profileStore.nameValue = useUserStore().user.name;
+      secondStep.value = false;
+    });
 };
 </script>
 

@@ -55,9 +55,7 @@ const handleLogout = async () => {
           <img
             :src="useUserStore().imagePath"
             alt="avatar"
-            width="40"
-            height="40"
-            class="rounded-full object-cover"
+            class="rounded-full object-cover w-10 h-10"
             :class="
               routePath.includes('user-profile')
                 ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'

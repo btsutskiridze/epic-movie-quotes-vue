@@ -175,7 +175,7 @@ router.beforeEach(async (to, from, next) => {
         `${import.meta.env.VITE_API_BASE_URL}me`
       );
       userStore.user = response.data.user;
-      userStore.setImage();
+      userStore.setImage(response.data.user);
       authStore.authenticated = true;
     } catch (err) {
       authStore.authenticated = false;

@@ -12,13 +12,13 @@ export const useUserStore = defineStore("User", {
     async getUser() {
       const response = await axios.get("me");
       this.user = response.data.user;
+      this.setImage(response.data.user);
     },
-    setImage() {
-      if (this.user.google_id) {
-        this.imagePath = this.user.avatar;
+    setImage(user) {
+      if (user.google_id) {
+        this.imagePath = user.avatar;
       } else {
-        this.imagePath =
-          import.meta.env.VITE_API_BASE_IMAGES_URL + this.user.avatar;
+        this.imagePath = import.meta.env.VITE_API_BASE_IMAGES_URL + user.avatar;
       }
     },
   },

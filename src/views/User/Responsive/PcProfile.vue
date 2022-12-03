@@ -21,9 +21,9 @@ const hideOpen = (type) => {
   profileStore.passwordDisabled = true;
   profileStore.changePassword = false;
 
-  image.src = profileStore.defaultImage;
   if (type != "change") {
     profileStore.nameValue = useUserStore().user.name;
+    image.src = profileStore.defaultImage;
   }
 };
 
@@ -46,10 +46,14 @@ const updateProfile = (values) => {
   if (values.password) {
     data["password"] = values.password;
   }
-  axios.put("user/update", data).then(() => {
-    useUserStore().getUser();
-    hideOpen("change");
-  });
+  axios
+    .post("user/update", data, {
+      headers: { "content-type": "multipart/form-data" },
+    })
+    .then(() => {
+      useUserStore().getUser();
+      hideOpen("change");
+    });
 };
 </script>
 
