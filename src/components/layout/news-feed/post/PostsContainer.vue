@@ -52,7 +52,7 @@ window.onscroll = function () {
   }
 };
 
-window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
+window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
   ".new-notification",
   (e) => {
     if (e.notification.type == "like")
@@ -60,7 +60,7 @@ window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
   }
 );
 
-window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
+window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
   ".new-notification",
   (e) => {
     if (e.notification.type == "comment")
@@ -72,7 +72,7 @@ window.Echo.channel(`user-notification.${useUserStore().user.id}`).listen(
 <template>
   <loading-circle v-if="quoteStore.loading" />
   <div v-else-if="quotes.length === 0">
-    <h1 class="text-center text-white text-2xl">No quotes found</h1>
+    <h1 class="text-center text-2xl text-white">No quotes found</h1>
   </div>
   <div v-else id="posts" class="flex flex-col gap-8">
     <base-post
