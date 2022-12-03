@@ -9,7 +9,7 @@ import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
 
 defineProps({
-  haveMovies: {
+  haveUser: {
     type: Boolean,
     required: false,
     default: false,
@@ -42,7 +42,7 @@ const handleLogout = async () => {
         </h2>
         <mobile-navbar />
         <section class="flex justify-center items-center gap-8">
-          <mobile-search />
+          <mobile-search v-if="!haveUser" />
           <notifiactions-container />
           <language-dropdown />
           <base-button

@@ -109,6 +109,11 @@ const goBack = () => {
           <base-comment
             v-for="comment in quote.comments"
             :key="comment.id"
+            :user-image="
+              comment.author?.google_id
+                ? comment.author?.avatar
+                : url + comment.author?.avatar
+            "
             :username="comment.author?.name"
             >{{ comment.body }}</base-comment
           >

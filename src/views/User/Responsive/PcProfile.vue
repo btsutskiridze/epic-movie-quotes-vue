@@ -3,6 +3,7 @@ import { useUserStore } from "@/stores/useUserStore";
 import { useProfileStore } from "@/stores/useProfileStore";
 import { computed, onMounted } from "vue";
 import { Form as VeeForm } from "vee-validate";
+import { setRegisterApiError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 
 import UserImage from "@/views/User/Inputs/UserImage.vue";
@@ -34,7 +35,7 @@ onMounted(() => {
   profileStore.changePassword = false;
 });
 
-const updateProfile = (values) => {
+const updateProfile = (values, actions) => {
   const data = {};
   if (values.name !== user.value.name) {
     data["name"] = values.name;
@@ -53,6 +54,12 @@ const updateProfile = (values) => {
     .then(() => {
       useUserStore().getUser();
       hideOpen("change");
+    })
+    .catch((e) => {
+      const errorsObj = e.response.data.errors;
+      for (const errorName in errorsObj) {
+        setRegisterApiError(errorName, actions);
+      }
     });
 };
 </script>

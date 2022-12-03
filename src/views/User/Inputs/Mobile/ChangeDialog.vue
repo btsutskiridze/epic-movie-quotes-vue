@@ -3,6 +3,7 @@ import { useUserStore } from "@/stores/useUserStore";
 import { useProfileStore } from "@/stores/useProfileStore";
 import { Form as VeeForm, Field } from "vee-validate";
 import { computed, ref } from "vue";
+import { setRegisterApiError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 
 import ChangePassword from "@/views/User/Inputs/Mobile/ChangePassword.vue";
@@ -18,7 +19,7 @@ const handleChange = (values) => {
   secondStep.value = true;
 };
 
-const submitChange = () => {
+const submitChange = (values, actions) => {
   const data = {};
   if (dataToSubmit.value.name) {
     data["name"] = dataToSubmit.value.name;
@@ -37,12 +38,19 @@ const submitChange = () => {
       profileStore.openDialog = false;
       profileStore.nameValue = useUserStore().user.name;
       secondStep.value = false;
+    })
+    .catch((e) => {
+      secondStep.value = false;
+      const errorsObj = e.response.data.errors;
+      for (const errorName in errorsObj) {
+        setRegisterApiError(errorName, actions);
+      }
     });
 };
 </script>
 
 <template>
-  <VeeForm @submit="handleChange">
+  <VeeForm @submit="handleChange" v-slot="{ handleSubmit }">
     <div class="flex flex-col justify-center gap-6 mt-16">
       <section
         v-show="!secondStep"
@@ -89,7 +97,10 @@ const submitChange = () => {
           >
             Cancel
           </p>
-          <base-button type="button" :orange="true" @click="submitChange"
+          <base-button
+            type="button"
+            :orange="true"
+            @click="handleSubmit($event, submitChange)"
             >Confirm</base-button
           >
         </div>
