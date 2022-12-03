@@ -20,7 +20,8 @@ import DeleteQuoteView from "@/views/quotes/DeleteQuoteView.vue";
 import AddMovieQuoteView from "@/views/quotes/AddMovieQuoteView.vue";
 import EditQuoteView from "@/views/quotes/EditQuoteView.vue";
 
-import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
+import NotFoundView from "@/views/NotFound/IndexView.vue";
+import ForbiddenView from "@/views/Forbidden/IndexView.vue";
 import { isAuthenticated, isNotAuthenticated } from "@/router/guards.js";
 
 import RegistrationView from "@/views/landingView/registrationView/IndexView.vue";
@@ -61,19 +62,19 @@ const router = createRouter({
           name: "reset-password",
           path: "reset-password",
           component: ResetPasswordView,
-          // beforeEnter: (to, _2, next) => {
-          //   if (!to.query.reset_token) return next({ name: "landing" });
-          //   return next();
-          // },
+          beforeEnter: (to, _2, next) => {
+            if (!to.query.reset_token) return next({ name: "landing" });
+            return next();
+          },
         },
         {
           name: "verify",
           path: "verify",
           component: VerificationView,
-          // beforeEnter: (to, _2, next) => {
-          //   if (!to.query.token) return next({ name: "landing" });
-          //   return next();
-          // },
+          beforeEnter: (to, _2, next) => {
+            if (!to.query.token) return next({ name: "landing" });
+            return next();
+          },
         },
       ],
     },
@@ -156,8 +157,8 @@ const router = createRouter({
       component: UserProfileView,
       beforeEnter: isAuthenticated,
     },
-    { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
-    { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
+    { path: "/:pathMatch(.*)*", name: "not-found", component: NotFoundView },
+    { path: "/forbidden", name: "forbidden", component: ForbiddenView },
   ],
 });
 
