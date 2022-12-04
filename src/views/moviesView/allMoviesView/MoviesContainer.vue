@@ -48,13 +48,19 @@ onBeforeMount(() => {
     </section>
 
     <loading-circle v-if="store.loading" />
-    <div v-else class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div
+      v-else-if="movies.length"
+      class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
       <base-movie-item
         v-for="movie in movies"
         :key="movie?.id"
         :movie="movie"
         quotes-number="3"
       />
+    </div>
+    <div v-else>
+      <h1 class="text-center text-2xl text-white">No movies found</h1>
     </div>
   </div>
 </template>

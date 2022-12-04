@@ -3,7 +3,9 @@ import SearchIcon from "@/components/icons/news-feed/SearchIcon.vue";
 import GoBackArrow from "@/components/icons/news-feed/GoBackArrowIcon.vue";
 import PostsSearch from "@/components/layout/news-feed/post/PostsSearch.vue";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+const routePath = ref(useRouter().currentRoute.value.path);
 const showSearch = ref(false);
 const close = (e) => {
   if (e.target === document.getElementById("container")) {
@@ -33,7 +35,10 @@ const close = (e) => {
           <posts-search :isMobile="true" />
         </div>
       </div>
-      <div class="flex flex-col justify-center gap-6 px-[5.3rem] py-6">
+      <div
+        class="flex flex-col justify-center gap-6 px-[5.3rem] py-6"
+        v-if="!routePath.includes('movies')"
+      >
         <h1 class="text-[#97969A]">
           {{ $t("search.enter") }} <span class="text-white">@</span>
           {{ $t("search.to_search_movies") }}
