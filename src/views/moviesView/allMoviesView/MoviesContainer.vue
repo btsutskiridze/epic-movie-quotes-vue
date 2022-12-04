@@ -25,7 +25,7 @@ onBeforeMount(() => {
 <template>
   <div class="container mx-auto flex flex-col gap-6 py-6 px-[7%] md:px-5">
     <section
-      class="flex w-full flex-col justify-between gap-3 lg:flex-row lg:items-center xs:flex-col"
+      class="flex w-full flex-row justify-between gap-3 md:flex-col lg:flex-row lg:items-center xs:flex-col"
     >
       <div>
         <h1 class="whitespace-nowrap">
@@ -34,9 +34,9 @@ onBeforeMount(() => {
         </h1>
       </div>
       <div
-        class="flex flex-col-reverse justify-start gap-4 md:flex-row xs:w-full"
+        class="flex flex-col-reverse justify-start gap-6 md:flex-row xs:w-full"
       >
-        <base-search class="hidden md:flex" />
+        <base-search class="hidden w-[60%] md:flex" />
         <router-link :to="{ name: 'add-movie' }">
           <base-button
             class="flex flex-row items-center gap-3 whitespace-nowrap bg-red-600"

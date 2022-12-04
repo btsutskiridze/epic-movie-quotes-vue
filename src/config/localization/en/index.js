@@ -9,6 +9,7 @@ import search from "./search.json";
 import fileInput from "./file-input.json";
 import movies from "./movies.json";
 import genres from "./genres.json";
+import profile from "./profile.json";
 
 const translations = {
   landingView,
@@ -22,5 +23,6 @@ const translations = {
   fileInput,
   movies,
   genres,
+  profile,
 };
 export default translations;

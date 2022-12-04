@@ -16,7 +16,7 @@ onMounted(() => {
     <news-feed-header />
     <router-view></router-view>
 
-    <div class="m-auto w-full md:w-[86%]">
+    <div class="m-auto w-full md:w-[94%] lg:w-[86%]">
       <news-feed-body />
     </div>
   </div>

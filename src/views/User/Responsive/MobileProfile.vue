@@ -44,10 +44,10 @@ const handleImage = (values) => {
 
 <template>
   <VeeForm v-if="!profileStore.openDialog" @submit="handleImage">
-    <div class="w-full flex flex-col gap-6">
-      <section class="mt-24 relative w-full bg-[#11101A] rounded-xl">
+    <div class="flex w-full flex-col gap-6">
+      <section class="relative mt-24 w-full rounded-xl bg-[#11101A]">
         <user-image />
-        <div class="flex flex-col mx-10 gap-9 pb-14">
+        <div class="mx-10 flex flex-col gap-9 pb-14">
           <user-name />
           <user-email :email="user.email" />
           <user-password v-if="!user.google_id" />
@@ -55,13 +55,15 @@ const handleImage = (values) => {
       </section>
       <div class="relative">
         <div
-          class="w-full flex items-center justify-center text-base gap-2 mb-6"
+          class="mb-6 flex w-full items-center justify-center gap-2 text-base"
           v-if="profileStore.showButtons"
         >
           <base-button class="text-[#CED4DA]" @click="hideOpen">
-            Cancel
+            {{ $t("profile.cancel") }}
           </base-button>
-          <base-button :orange="true">Save changes</base-button>
+          <base-button :orange="true">
+            {{ $t("profile.save_changes") }}
+          </base-button>
         </div>
       </div>
     </div>

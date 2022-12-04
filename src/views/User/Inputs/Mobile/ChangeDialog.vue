@@ -51,10 +51,10 @@ const submitChange = (values, actions) => {
 
 <template>
   <VeeForm @submit="handleChange" v-slot="{ handleSubmit }">
-    <div class="flex flex-col justify-center gap-6 mt-16">
+    <div class="mt-16 flex flex-col justify-center gap-6">
       <section
         v-show="!secondStep"
-        class="relative flex flex-col justify-center gap-1 px-10 min-h-[32vh] rounded-[0.6rem] bg-[#24222F]"
+        class="relative flex min-h-[32vh] flex-col justify-center gap-1 rounded-[0.6rem] bg-[#24222F] px-10"
       >
         <Field
           v-if="value === 'name'"
@@ -64,14 +64,14 @@ const submitChange = (values, actions) => {
         >
           <div class="relative">
             <label for="name" class="top-[-1.3rem] text-base text-white"
-              >Enter new username
+              >{{ $t("profile.enter_new_username") }}
             </label>
             <input
               v-bind="field"
               :id="'name'"
               :type="'text'"
-              :placeholder="'username'"
-              class="w-full border border-b border-white relative placeholder-[#6C757D] text-[#212529] bg-[#CED4DA] px-3 py-2 my-2 rounded-[0.25rem] disabled:bg-white disabled:placeholder-[#B7BBC0] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
+              :placeholder="$t('profile.username')"
+              class="relative my-2 w-full rounded-[0.25rem] border border-b border-white bg-[#CED4DA] px-3 py-2 text-[#212529] placeholder-[#6C757D] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF] disabled:bg-white disabled:placeholder-[#B7BBC0]"
             />
 
             <span class="absolute left-0 top-[5rem] text-[#DC3545]">
@@ -83,39 +83,41 @@ const submitChange = (values, actions) => {
       </section>
       <section
         v-show="secondStep"
-        class="relative flex flex-col justify-between gap-1 min-h-[28vh] rounded-[0.6rem] bg-[#24222F]"
+        class="relative flex min-h-[28vh] flex-col justify-between gap-1 rounded-[0.6rem] bg-[#24222F]"
       >
-        <div class="h-[18vh] text-lg w-full flex justify-center items-center">
-          <h1 class="leading-none">Are you sure to make changes ?</h1>
+        <div class="flex h-[18vh] w-full items-center justify-center text-lg">
+          <h1 class="leading-none">{{ $t("profile.want_to_change") }}?</h1>
         </div>
         <div
-          class="w-full h-[10vh] border-t border-[#40414A] flex items-center justify-between text-base gap-2 px-16"
+          class="flex h-[10vh] w-full items-center justify-between gap-2 border-t border-[#40414A] px-16 text-base"
         >
           <p
             class="cursor-pointer text-[#CED4DA]"
             @click="profileStore.openDialog = false"
           >
-            Cancel
+            {{ $t("profile.cancel") }}
           </p>
           <base-button
             type="button"
             :orange="true"
             @click="handleSubmit($event, submitChange)"
-            >Confirm</base-button
+            >{{ $t("profile.confirm") }}</base-button
           >
         </div>
       </section>
       <div
         v-if="!secondStep"
-        class="w-full flex items-center justify-between text-base gap-2 px-10"
+        class="flex w-full items-center justify-between gap-2 px-10 text-base"
       >
         <p
           class="cursor-pointer text-[#CED4DA]"
           @click="profileStore.openDialog = false"
         >
-          Cancel
+          {{ $t("profile.cancel") }}
         </p>
-        <base-button :orange="true">Save changes</base-button>
+        <base-button :orange="true">{{
+          $t("profile.save_changes")
+        }}</base-button>
       </div>
     </div>
   </VeeForm>

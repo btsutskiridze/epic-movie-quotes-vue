@@ -63,11 +63,13 @@ const updateProfile = (values, actions) => {
 
 <template>
   <VeeForm @submit="updateProfile">
-    <div class="w-full flex flex-col gap-6 pb-20">
-      <h1 class="text-2xl ml-8 mb-24">My profile</h1>
-      <section class="relative w-full bg-[#11101A] rounded-xl">
+    <div class="flex w-full flex-col gap-6 pb-20">
+      <h1 class="ml-8 mb-24 text-2xl">
+        {{ $t("profile.my_profile") }}
+      </h1>
+      <section class="relative w-full rounded-xl bg-[#11101A]">
         <user-image />
-        <div class="flex flex-col mx-20 2xl:mx-40 gap-9">
+        <div class="mx-20 flex flex-col gap-9 2xl:mx-40">
           <user-name />
           <user-email :email="user.email" :google-id="user.google_id" />
           <user-password v-if="!user.google_id" />
@@ -75,11 +77,15 @@ const updateProfile = (values, actions) => {
       </section>
       <div class="relative">
         <div
-          class="absolute right-0 flex items-center text-base gap-6"
+          class="absolute right-0 flex items-center gap-6 text-base"
           v-if="profileStore.showButtons"
         >
-          <p class="cursor-pointer text-[#CED4DA]" @click="hideOpen">Cancel</p>
-          <base-button :orange="true">Save changes</base-button>
+          <p class="cursor-pointer text-[#CED4DA]" @click="hideOpen">
+            {{ $t("profile.cancel") }}
+          </p>
+          <base-button :orange="true">
+            {{ $t("profile.save_changes") }}
+          </base-button>
         </div>
       </div>
     </div>

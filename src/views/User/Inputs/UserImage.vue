@@ -34,21 +34,23 @@ const setImage = (e) => {
 
 <template>
   <div
-    class="flex flex-col items-center gap-3 justify-center relative top-[-4rem]"
+    class="relative top-[-4rem] flex flex-col items-center justify-center gap-3"
   >
     <Field name="image_input" v-model="fileModel">
       <img
         id="image-output"
         :src="imagePath"
         alt="avatar"
-        class="rounded-full w-44 h-44 object-cover"
+        class="h-44 w-44 rounded-full object-cover"
       />
-      <p class="cursor-pointer text-xl" @click="getImage">Upload new photo</p>
+      <p class="cursor-pointer text-xl" @click="getImage">
+        {{ $t("profile.upload_new_photo") }}
+      </p>
       <input
         id="image_input"
         type="file"
         accept="image/*"
-        class="absolute w-full left-0 h-full hidden"
+        class="absolute left-0 hidden h-full w-full"
         @input="setImage"
       />
     </Field>
