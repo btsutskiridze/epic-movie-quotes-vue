@@ -6,5 +6,6 @@
   "write_a_comment": "Write a comment",
   "logout": "Log out",
   "post": "Post",
-  "add_quote": "Add quote"
+  "add_quote": "Add quote",
+  "no_quotes_found": "No quotes found"
 }

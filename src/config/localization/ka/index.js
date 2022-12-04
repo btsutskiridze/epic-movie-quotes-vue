@@ -1,5 +1,6 @@
 import landingView from "./landing.json";
 import quotes from "./quotes.json";
+import quote from "./quote.json";
 import form from "./form.json";
 import verification from "./verification.json";
 import passwordReset from "./password-reset.json";
@@ -11,6 +12,7 @@ import genres from "./genres.json";
 
 const translations = {
   landingView,
+  quote,
   quotes,
   form,
   verification,

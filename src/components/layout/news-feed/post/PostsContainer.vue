@@ -51,7 +51,9 @@ setTimeout(() => {
 <template>
   <loading-circle v-if="quoteStore.loading" />
   <div v-else-if="quotes.length === 0">
-    <h1 class="text-center text-2xl text-white">No quotes found</h1>
+    <h1 class="text-center text-2xl text-white">
+      {{ $t("newsFeed.no_quotes_found") }}
+    </h1>
   </div>
   <div v-else id="posts" class="flex flex-col gap-8">
     <base-post

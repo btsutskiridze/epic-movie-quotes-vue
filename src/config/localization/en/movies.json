@@ -13,5 +13,6 @@
   "want_to_delete": "Are you sure you want to delete",
   "yes": "Yes",
   "cancel": "Cancel",
-  "choose_movie": "Choose movie"
+  "choose_movie": "Choose movie",
+  "no_movies_found": "No movies found"
 }

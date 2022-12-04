@@ -39,22 +39,26 @@ const goBack = () => {
 </script>
 <template>
   <news-feed-dialog @close="goBack">
-    <template #header> Delete Quote </template>
+    <template #header> {{ $t("quote.delete_quote") }} </template>
     <loading-circle v-if="quoteStore.loading" />
     <div v-else>
       <section
-        class="py-4 text-xl md:text-2xl flex justify-end h-full flex-col gap-8 text-white"
+        class="flex h-full flex-col justify-end gap-8 py-4 text-xl text-white md:text-2xl"
       >
         <h1 class="text-center">
-          Are you sure you want to delete
-          <span class="text-[#DDCCAA] break-words break-all font-extrabold">{{
+          {{ $t("quote.want_to_delete") }}
+          <span class="break-words break-all font-extrabold text-[#DDCCAA]">{{
             quote.title[lang]
           }}</span>
           ?
         </h1>
         <div class="flex justify-around">
-          <base-button :orange="true" @click="deleteQuote">Yes</base-button>
-          <base-button :outline="true" @click="goBack"> cancel </base-button>
+          <base-button :orange="true" @click="deleteQuote">{{
+            $t("quote.yes")
+          }}</base-button>
+          <base-button :outline="true" @click="goBack">
+            {{ $t("quote.cancel") }}</base-button
+          >
         </div>
       </section>
     </div>

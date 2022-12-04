@@ -57,7 +57,7 @@ const goBack = () => {
           <delete-icon class="h-4 w-4" />
         </div>
       </div>
-      <div class="text-center">View Quote</div>
+      <div class="text-center">{{ $t("quote.view_quote") }}</div>
     </template>
     <loading-circle v-if="quoteStore.loading" />
     <div

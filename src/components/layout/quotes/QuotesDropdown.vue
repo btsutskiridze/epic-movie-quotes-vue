@@ -17,46 +17,47 @@ const show = ref(false);
 
 <template>
   <div
-    class="fixed w-screen h-screen top-0 left-0 z-40"
+    class="fixed top-0 left-0 z-40 h-screen w-screen"
     v-if="show"
     @click="show = false"
   ></div>
   <div class="absolute right-0 bottom-0 lg:bottom-auto lg:top-0">
-    <div class="relative p-2 cursor-pointer" @click="show = !show">
+    <div class="relative cursor-pointer p-2" @click="show = !show">
       <menu-button />
     </div>
     <div
       v-if="show"
-      class="absolute bottom-5 right-0 md:right-auto lg:bottom-auto lg:top-5 flex flex-col gap-8 px-10 z-40 py-8 w-[12rem] rounded-[0.6rem] bg-[#24222F]"
+      class="absolute bottom-5 right-0 z-40 flex min-w-[12rem] flex-col gap-8 rounded-[0.6rem] bg-[#24222F] px-10 py-8 md:right-auto lg:bottom-auto lg:top-5"
     >
       <router-link
         @click="show = false"
-        class="flex flex-row gap-3 items-center w-full hover:text-[#8b86a5]"
+        class="flex w-full flex-row items-center gap-3 hover:text-[#8b86a5]"
         :to="{ name: 'view-quote', query: { quoteId: id } }"
       >
-        <eye-icon cls="hover:fill-[#8b86a5]" /> view</router-link
+        <eye-icon />
+        {{ $t("quote.view") }}</router-link
       >
       <router-link
         @click="show = false"
-        class="flex flex-row gap-3 items-center hover:text-[#8b86a5]"
+        class="flex flex-row items-center gap-3 hover:text-[#8b86a5]"
         :to="{
           name: 'edit-quote',
           params: {
             quoteId: id,
           },
         }"
-        ><edit-icon cls="hover:fill-[#8b86a5]" />edit
+        ><edit-icon />{{ $t("quote.edit") }}
       </router-link>
       <router-link
         @click="show = false"
-        class="flex flex-row gap-3 items-center hover:text-[#8b86a5]"
+        class="flex flex-row items-center gap-3 hover:text-[#8b86a5]"
         :to="{
           name: 'delete-quote',
           params: {
             quoteId: id,
           },
         }"
-        ><delete-icon cls="hover:fill-[#8b86a5]" /> delete</router-link
+        ><delete-icon /> {{ $t("quote.delete") }}</router-link
       >
     </div>
   </div>

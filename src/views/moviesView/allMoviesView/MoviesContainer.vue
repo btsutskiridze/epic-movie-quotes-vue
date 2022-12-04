@@ -60,7 +60,9 @@ onBeforeMount(() => {
       />
     </div>
     <div v-else>
-      <h1 class="text-center text-2xl text-white">No movies found</h1>
+      <h1 class="text-center text-2xl text-white">
+        {{ $t("movies.no_movies_found") }}
+      </h1>
     </div>
   </div>
 </template>

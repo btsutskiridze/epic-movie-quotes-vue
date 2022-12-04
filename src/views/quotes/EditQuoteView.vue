@@ -68,10 +68,10 @@ const editQuote = async (values) => {
           "
         >
           <delete-icon class="h-4 w-4" />
-          <span class="text-base leading-none">Delete</span>
+          <span class="text-base leading-none">{{ $t("quote.delete") }}</span>
         </div>
       </div>
-      Edit Quote
+      {{ $t("quote.edit_quote") }}
     </template>
     <loading-circle v-if="quoteStore.loading" />
     <VeeForm v-else @submit="editQuote" class="font-helvetica">
@@ -104,7 +104,9 @@ const editQuote = async (values) => {
           rules=""
         />
         <movies-dropdown :only-one="true" />
-        <base-button class="w-full bg-[#E31221]">Save Changes</base-button>
+        <base-button class="w-full bg-[#E31221]">{{
+          $t("quote.save_changes")
+        }}</base-button>
       </section>
     </VeeForm>
   </news-feed-dialog>

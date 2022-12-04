@@ -5,9 +5,9 @@ import UserProfile from "@/views/User/UserProfile.vue";
 </script>
 
 <template>
-  <div class="bg-[#181624] text-[#DDCCAA] font-helvetica min-h-screen">
+  <div class="font-helvetica min-h-screen bg-[#181624] text-[#DDCCAA]">
     <news-feed-header :have-movies="true" :have-user="true" />
-    <div class="w-full md:w-[86%] m-auto">
+    <div class="m-auto w-full md:w-[86%]">
       <base-container :have-movies="true" :have-user="true">
         <user-profile />
       </base-container>
