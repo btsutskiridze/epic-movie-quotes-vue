@@ -41,17 +41,8 @@ window.onscroll = function () {
 setTimeout(() => {
   window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
     ".new-notification",
-    (e) => {
-      if (e.notification.type == "like")
-        useNotificationStore().getNotifications();
-    }
-  );
-
-  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
-    ".new-notification",
-    (e) => {
-      if (e.notification.type == "comment")
-        useNotificationStore().getNotifications();
+    () => {
+      useNotificationStore().getNotifications();
     }
   );
 }, 200);
