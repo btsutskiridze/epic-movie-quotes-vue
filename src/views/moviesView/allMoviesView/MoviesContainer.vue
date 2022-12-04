@@ -23,9 +23,9 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="container py-6 px-[7%] md:px-5 flex flex-col gap-6 mx-auto">
+  <div class="container mx-auto flex flex-col gap-6 py-6 px-[7%] md:px-5">
     <section
-      class="flex xs:flex-col flex-row justify-between items-center w-full gap-3"
+      class="flex w-full flex-col justify-between gap-3 lg:flex-row lg:items-center xs:flex-col"
     >
       <div>
         <h1 class="whitespace-nowrap">
@@ -34,12 +34,12 @@ onBeforeMount(() => {
         </h1>
       </div>
       <div
-        class="flex flex-col-reverse md:flex-row justify-start gap-4 xs:w-full"
+        class="flex flex-col-reverse justify-start gap-4 md:flex-row xs:w-full"
       >
         <base-search class="hidden md:flex" />
         <router-link :to="{ name: 'add-movie' }">
           <base-button
-            class="flex flex-row items-center gap-3 bg-red-600 whitespace-nowrap"
+            class="flex flex-row items-center gap-3 whitespace-nowrap bg-red-600"
           >
             <plus-icon /> {{ $t("movies.add_movie") }}
           </base-button>

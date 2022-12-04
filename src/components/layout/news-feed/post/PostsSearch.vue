@@ -3,6 +3,9 @@ import { useSearchStore } from "@/stores/useSearchStore";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import axios from "@/config/axios/index.js";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const routePath = ref(useRouter().currentRoute.value.path);
 defineProps({
   isMobile: {
     type: Boolean,
@@ -19,7 +22,12 @@ const setSearch = (e) => {
 };
 const search = (e) => {
   const search = e.target.value.trim();
-  if (search === "" || search === "@" || search === "#") {
+  if (
+    search === "" ||
+    search === "@" ||
+    search === "#" ||
+    routePath.value.includes("movies")
+  ) {
     return;
   } else {
     axios
