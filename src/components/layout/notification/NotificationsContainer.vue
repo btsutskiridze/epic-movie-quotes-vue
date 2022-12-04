@@ -38,9 +38,11 @@ const notifications = computed(() => notificationStore.notifications);
       @click="notificationStore.readAll()"
       class="flex flex-row items-center justify-between text-white"
     >
-      <h1 class="text-xl md:text-[1.8rem]">Notifications</h1>
-      <h2 class="cursor-pointer text-sm text-white underline md:text-lg">
-        Mark as all read
+      <h1 class="text-xl md:text-[1.8rem]">{{ $t("notif.notifications") }}</h1>
+      <h2
+        class="cursor-pointer text-right text-sm text-white underline md:text-lg"
+      >
+        {{ $t("notif.mark_as_all_read") }}
       </h2>
     </section>
     <section class="h-[76vh] overflow-y-scroll md:h-[24rem]">
@@ -52,7 +54,7 @@ const notifications = computed(() => notificationStore.notifications);
         />
       </div>
       <div v-else class="flex h-full justify-center">
-        <h1 class="text-xl text-white">No notifications</h1>
+        <h1 class="text-xl text-white">{{ $t("notif.no_notifications") }}</h1>
       </div>
     </section>
   </div>

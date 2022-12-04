@@ -10,6 +10,7 @@ import fileInput from "./file-input.json";
 import movies from "./movies.json";
 import genres from "./genres.json";
 import profile from "./profile.json";
+import notif from "./notifications.json";
 
 const translations = {
   landingView,
@@ -24,5 +25,6 @@ const translations = {
   movies,
   genres,
   profile,
+  notif,
 };
 export default translations;

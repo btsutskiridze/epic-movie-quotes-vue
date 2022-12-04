@@ -40,15 +40,17 @@ const time = ref(timeStore.timeAgo(props.notif.created_at));
         >
           <quote-icon class="h-[1.2rem] w-[1.2rem]" />
           <span class="hidden leading-none md:block">
-            Commented to your movie quote
+            {{ $t("notif.commented_to_your_movie_quote") }}
           </span>
           <span class="block leading-none md:hidden">
-            Commented to your quote..
+            {{ $t("notif.commented_to_your_quote") }}...
           </span>
         </p>
         <p class="flex flex-row items-center gap-2 text-gray-400" v-else>
           <liked-icon class="h-[1.2rem] w-[1.2rem]" />
-          <span class="leading-none"> Reacted to your quote</span>
+          <span class="leading-none">
+            {{ $t("notif.reacted_to_your_quote") }}
+          </span>
         </p>
       </div>
     </div>
@@ -57,7 +59,7 @@ const time = ref(timeStore.timeAgo(props.notif.created_at));
     >
       <p class="">{{ time }}</p>
       <h1 class="min-w-[3.75rem] text-center text-green-600">
-        <span v-if="!notif.read">New</span>
+        <span v-if="!notif.read"> {{ $t("notif.new") }} </span>
       </h1>
     </div>
   </div>

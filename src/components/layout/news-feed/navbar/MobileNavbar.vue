@@ -22,11 +22,9 @@ const closeMenu = (e) => {
 const authStore = useAuthStore();
 const handleLogout = async () => {
   try {
-    const response = await axios.get("logout");
+    await axios.get("logout");
     authStore.authenticated = false;
     router.push({ name: "news-feed" });
-
-    console.log(response);
   } catch (err) {
     console.log(err);
   }
