@@ -11,12 +11,18 @@ const remember = ref(null);
 
 const authStore = useAuthStore();
 const handleLogin = async (values, actions) => {
+  const data = {
+    password: values.password,
+    remember: remember.value ? true : false,
+  };
+  if (ValidateEmail(values.email)) {
+    data["email"] = values.email;
+  } else {
+    data["name"] = values.email;
+  }
+
   try {
-    await axios.post("login", {
-      email: values.email,
-      password: values.password,
-      remember: remember.value ? true : false,
-    });
+    await axios.post("login", data);
     authStore.authenticated = true;
     router.push({ name: "news-feed" });
   } catch (error) {
@@ -26,6 +32,15 @@ const handleLogin = async (values, actions) => {
     }
   }
 };
+
+function ValidateEmail(inputText) {
+  var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+  if (inputText.match(mailformat)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 </script>
 
 <template>
@@ -48,7 +63,7 @@ const handleLogin = async (values, actions) => {
       name="email"
       labelName="form.email"
       placeholder="form.enter_your_email"
-      rules="required|email"
+      rules="required|min:3"
       type="email"
     />
     <base-input
