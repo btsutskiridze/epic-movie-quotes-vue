@@ -27,10 +27,12 @@ const routePath = ref(useRouter().currentRoute.value.path);
       <div>
         <h1>{{ user.name }}</h1>
         <p
-          class="cursor-pointer whitespace-nowrap text-base text-gray-400"
+          class="cursor-pointer whitespace-pre text-base text-gray-400"
           @click="$router.push({ name: 'user-profile' })"
         >
-          {{ $t("newsFeed.edit_your_profile") }}
+          <span>
+            {{ $t("newsFeed.edit_your_profile") }}
+          </span>
         </p>
       </div>
     </div>
