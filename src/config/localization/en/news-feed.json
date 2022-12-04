@@ -4,5 +4,7 @@
   "list_of_movies": "List of Movies",
   "write_new_quote": "Write new quote",
   "write_a_comment": "Write a comment",
-  "logout": "Log out"
+  "logout": "Log out",
+  "post": "Post",
+  "add_quote": "Add quote"
 }

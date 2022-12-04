@@ -74,7 +74,9 @@ const addQuote = async (values) => {
         />
         <base-file-input name="thumbnail" />
         <movies-dropdown :only-one="true" />
-        <base-button class="w-full bg-[#E31221]">Post</base-button>
+        <base-button class="w-full bg-[#E31221]">{{
+          $t("newsFeed.add_quote")
+        }}</base-button>
       </section>
     </VeeForm>
   </news-feed-dialog>

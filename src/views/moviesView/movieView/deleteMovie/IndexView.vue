@@ -28,20 +28,24 @@ const goBack = () => {
 </script>
 <template>
   <news-feed-dialog @close="goBack">
-    <template #header> Delete movie </template>
+    <template #header> {{ $t("movies.delete_movie") }}</template>
     <section
-      class="py-4 text-xl md:text-2xl flex justify-end h-full flex-col gap-8 text-white"
+      class="flex h-full flex-col justify-end gap-8 py-4 text-xl text-white md:text-2xl"
     >
       <h1 class="text-center">
-        Are you sure you want to delete
-        <span class="text-[#DDCCAA] font-extrabold">{{
+        {{ $t("movies.want_to_delete") }}
+        <span class="font-extrabold text-[#DDCCAA]">{{
           store.movie.title[lang]
         }}</span>
         ?
       </h1>
-      <div class="flex justify-around">
-        <base-button :orange="true" @click="deleteMovie">Yes</base-button>
-        <base-button :outline="true" @click="goBack"> cancel </base-button>
+      <div class="flex justify-around text-xl">
+        <base-button :orange="true" @click="deleteMovie">{{
+          $t("movies.yes")
+        }}</base-button>
+        <base-button :outline="true" @click="goBack">
+          {{ $t("movies.cancel") }}
+        </base-button>
       </div>
     </section>
   </news-feed-dialog>

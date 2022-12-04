@@ -4,5 +4,7 @@
   "list_of_movies": "თქვენი ფილმები",
   "write_new_quote": "დაამატე ციტატა",
   "write_a_comment": "დაწერე კომენტარი",
-  "logout": "გამოსვლა"
+  "logout": "გამოსვლა",
+  "add_quote": "დაამატე ციტატა",
+  "post": "დაპოსტე"
 }

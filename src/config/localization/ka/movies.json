@@ -5,5 +5,13 @@
   "total": "სულ",
   "year": "წელი",
   "budget": "ბიუჯეტი",
-  "movie_description": "ფილმის აღწერა"
+  "movie_description": "ფილმის აღწერა",
+  "director": "რეჟისორი",
+  "quotes": "ციტატები",
+  "edit_movie": "ფილმის რედაქტირება",
+  "delete_movie": "ფილმის წაშლა",
+  "want_to_delete": "ნამდვილად გსურთ წაშალოთ",
+  "yes": "დიახ",
+  "cancel": "გაუქმება",
+  "choose_movie": "აირჩიე ფილმი"
 }

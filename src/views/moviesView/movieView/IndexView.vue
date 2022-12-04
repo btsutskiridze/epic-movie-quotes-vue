@@ -70,12 +70,15 @@ const numberWithCommas = (x) => {
           </div>
           <div>
             <p class="flex flex-row gap-4">
-              Director: <span>{{ movie?.director[lang] }}</span>
+              {{ $t("movies.director") }}:
+              <span>{{ movie?.director[lang] }}</span>
             </p>
           </div>
           <div>
             <p class="flex flex-row gap-4">
-              Budget: <span>{{ numberWithCommas(movie?.budget) }}$</span>
+              {{ $t("movies.budget") }}:<span
+                >{{ numberWithCommas(movie?.budget) }}$</span
+              >
             </p>
           </div>
           <div>

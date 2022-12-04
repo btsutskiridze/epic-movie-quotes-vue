@@ -5,5 +5,13 @@
   "total": "Total",
   "year": "Year",
   "budget": "Bugdet",
-  "movie_description": "Movie description"
+  "director": "Director",
+  "movie_description": "Movie description",
+  "quotes": "Quotes",
+  "edit_movie": "Edit movie",
+  "delete_movie": "Delete movie",
+  "want_to_delete": "Are you sure you want to delete",
+  "yes": "Yes",
+  "cancel": "Cancel",
+  "choose_movie": "Choose movie"
 }

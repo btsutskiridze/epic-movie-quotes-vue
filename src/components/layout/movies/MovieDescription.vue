@@ -42,7 +42,7 @@ const lang = computed(() => i18n.global.locale);
           </div>
           <div>
             <p class="flex flex-col gap-4 text-base sm:flex-row sm:text-lg">
-              Director:
+              {{ $t("movies.director") }}:
               <span class="break-all">{{ movie?.director[lang] }}</span>
             </p>
           </div>
