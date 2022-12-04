@@ -12,15 +12,13 @@ const remember = ref(null);
 const authStore = useAuthStore();
 const handleLogin = async (values, actions) => {
   try {
-    const response = await axios.post("login", {
+    await axios.post("login", {
       email: values.email,
       password: values.password,
       remember: remember.value ? true : false,
     });
     authStore.authenticated = true;
     router.push({ name: "news-feed" });
-
-    console.log(response);
   } catch (error) {
     const errorsObj = error.response.data.errors;
     for (const errorName in errorsObj) {
@@ -32,17 +30,17 @@ const handleLogin = async (values, actions) => {
 
 <template>
   <VeeForm @submit="handleLogin" class="font-helvetica">
-    <div class="text-center mt-14 mb-10">
+    <div class="mt-14 mb-10 text-center">
       <router-link
         :to="{ name: 'landing' }"
-        class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
+        class="absolute top-[4%] block cursor-pointer py-2 pr-2 sm:hidden"
       >
         <back-arrow-icon />
       </router-link>
-      <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3 leading-9">
+      <h1 class="mb-3 text-2xl font-medium leading-9 text-white sm:text-4xl">
         {{ $t("landingView.login_to_your_account") }}
       </h1>
-      <p class="text-[#6C757D] font-normal">
+      <p class="font-normal text-[#6C757D]">
         {{ $t("landingView.welcome_back_please_enter_your_details") }}
       </p>
     </div>
@@ -60,7 +58,7 @@ const handleLogin = async (values, actions) => {
       rules="required|min:8|max:15|lowercase"
       type="password"
     />
-    <div class="mb-2 -top-1 relative flex flex-row justify-between">
+    <div class="relative -top-1 mb-2 flex flex-row justify-between">
       <div>
         <input
           type="checkbox"
@@ -68,20 +66,20 @@ const handleLogin = async (values, actions) => {
           v-model="remember"
           id="remember_me"
         />
-        <label for="remember_me" class="text-white relative capitalize ml-1"
+        <label for="remember_me" class="relative ml-1 capitalize text-white"
           >{{ $t("form.remember_me") }}
         </label>
       </div>
       <div>
         <router-link
           :to="{ name: 'forget-password' }"
-          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+          class="cursor-pointer pl-1 text-[#0D6EFD] underline"
         >
           {{ $t("form.forgot_password") }}
         </router-link>
       </div>
     </div>
-    <base-button :orange="true" class="text-white w-full mb-4">{{
+    <base-button :orange="true" class="mb-4 w-full text-white">{{
       $t("landingView.get_started")
     }}</base-button>
   </VeeForm>

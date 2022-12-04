@@ -22,26 +22,26 @@ const closeDialog = (e) => {
       <div
         @click="closeDialog"
         id="container"
-        class="h-screen overflow-y-scroll overflow-x-hidden w-screen fixed top-0 left-0 z-30 backdrop-blur-sm bg-[#00000089] flex justify-center items-center"
+        class="fixed top-0 left-0 z-30 flex h-screen w-screen items-center justify-center overflow-x-hidden overflow-y-scroll bg-[#00000089] backdrop-blur-sm"
       >
         <dialog
           open
-          class="bg-[#11101A] w-full md:min-h-[auto] top-0 md:top-[5%] md:min-w-[37.5rem] overflow-x-hidden md:max-w-[32%] md:h-min md:rounded-xl z-30 p-0 mb-10"
+          class="top-0 z-30 mb-10 w-full overflow-x-hidden bg-[#11101A] p-0 md:top-[5%] md:h-min md:min-h-[auto] md:min-w-[37.5rem] md:max-w-[32%] md:rounded-xl"
         >
           <div
-            class="text-center relative border-b px-9 md:px-[1.2rem] py-6 border-[#efefef4d]"
+            class="relative border-b border-[#efefef4d] px-9 py-6 text-center md:px-[1.2rem]"
           >
-            <h1 class="text-white text-xl md:text-2xl">
+            <h1 class="text-xl text-white md:text-2xl">
               <slot name="header"></slot>
             </h1>
             <div
               @click="closeDialog"
-              class="closebtn absolute flex items-center h-full top-0 right-8 text-right cursor-pointer z-40"
+              class="closebtn absolute top-0 right-8 z-40 flex h-full cursor-pointer items-center text-right"
             >
               <close-icon />
             </div>
           </div>
-          <div class="px-9 py-8 md:pt-2 md:px-[1.6rem]">
+          <div class="px-9 py-8 md:px-[1.6rem] md:pt-2">
             <slot></slot>
           </div>
         </dialog>

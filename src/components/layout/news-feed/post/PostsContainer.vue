@@ -38,21 +38,23 @@ window.onscroll = function () {
   }
 };
 
-window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
-  ".new-notification",
-  (e) => {
-    if (e.notification.type == "like")
-      useNotificationStore().getNotifications();
-  }
-);
+setTimeout(() => {
+  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
+    ".new-notification",
+    (e) => {
+      if (e.notification.type == "like")
+        useNotificationStore().getNotifications();
+    }
+  );
 
-window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
-  ".new-notification",
-  (e) => {
-    if (e.notification.type == "comment")
-      useNotificationStore().getNotifications();
-  }
-);
+  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
+    ".new-notification",
+    (e) => {
+      if (e.notification.type == "comment")
+        useNotificationStore().getNotifications();
+    }
+  );
+}, 200);
 </script>
 
 <template>
