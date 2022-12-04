@@ -7,6 +7,7 @@ import newsFeed from "./news-feed.json";
 import search from "./search.json";
 import fileInput from "./file-input.json";
 import movies from "./movies.json";
+import genres from "./genres.json";
 
 const translations = {
   landingView,
@@ -18,5 +19,6 @@ const translations = {
   search,
   fileInput,
   movies,
+  genres,
 };
 export default translations;

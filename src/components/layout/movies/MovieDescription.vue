@@ -14,34 +14,34 @@ const lang = computed(() => i18n.global.locale);
 
 <template>
   <div
-    class="rounded-lg p-4 sm:p-0 bg-black sm:bg-transparent flex flex-col gap-8"
+    class="flex flex-col gap-8 rounded-lg bg-black p-4 sm:bg-transparent sm:p-0"
   >
     <div class="flex flex-row gap-6">
       <div id="image">
         <img
-          class="flex-shrink-0 w-full h-full max-w-[18.1rem] max-h-[9.8rem] object-cover object-center rounded-xl"
+          class="h-full max-h-[9.8rem] w-full max-w-[18.1rem] flex-shrink-0 rounded-xl object-cover object-center"
           :src="movie?.thumbnail && url + movie?.thumbnail"
           :alt="movie?.name"
         />
       </div>
-      <section class="flex flex-col gap-2 md:gap-4 w-2/4">
-        <div class="w-full flex flex-row justify-between items-center">
-          <h1 class="text-base sm:text-2xl text-[#DDCCAA]">
+      <section class="flex w-2/4 flex-col gap-2 md:gap-4">
+        <div class="flex w-full flex-row items-center justify-between">
+          <h1 class="text-base text-[#DDCCAA] sm:text-2xl">
             {{ movie?.title[lang] }} ({{ movie?.year }})
           </h1>
         </div>
-        <div class="flex flex-col-reverse sm:flex-col gap-2 md:gap-4">
+        <div class="flex flex-col-reverse gap-2 sm:flex-col md:gap-4">
           <div class="flex flex-wrap gap-2">
             <p
-              class="bg-[#6C757D] text-white text-xs leading-6 md:leading-7 sm:text-lg rounded-[0.25rem] px-3"
+              class="rounded-[0.25rem] bg-[#6C757D] px-3 text-xs leading-6 text-white sm:text-lg md:leading-7"
               v-for="genre in genres"
               :key="genre.label"
             >
-              {{ genre }}
+              {{ $t("genres." + genre) }}
             </p>
           </div>
           <div>
-            <p class="flex flex-col sm:flex-row gap-row-4 text-base sm:text-lg">
+            <p class="flex flex-col gap-4 text-base sm:flex-row sm:text-lg">
               Director:
               <span class="break-all">{{ movie?.director[lang] }}</span>
             </p>

@@ -1,6 +1,6 @@
 <script setup>
 import RemoveIcon from "@/components/icons/dialog/RemoveIcon.vue";
-
+import genresJson from "@/config/genres/genres.json";
 import { Field } from "vee-validate";
 import { onMounted, ref } from "vue";
 const chips = ref([]);
@@ -22,27 +22,16 @@ onMounted(() => {
   if (props.values) {
     props.values.forEach((chip) => {
       chips.value.push(chip);
-      document.getElementById(chip.trim()).classList.add("bg-gray-800");
+      document.getElementById(chip).classList.add("bg-gray-800");
     });
   }
 });
 
-const movieGenres = [
-  "Action",
-  "Crime",
-  "Fantasy",
-  "Horror",
-  "Romance",
-  "Science Fiction",
-  "Slice of Life",
-  "Sports",
-  "Thriller",
-  "War and Western",
-];
+const movieGenres = genresJson;
 const saveChip = (e) => {
-  if (!chips.value.includes(e.target.textContent)) {
+  if (!chips.value.includes(e.target.id)) {
     e.target.classList.add("bg-gray-800");
-    chips.value.push(e.target.textContent);
+    chips.value.push(e.target.id);
     genres.value = chips.value;
   }
 };
@@ -70,7 +59,7 @@ const rule = () => {
 
 <template>
   <div
-    class="fixed w-screen h-screen top-0 left-0 z-20"
+    class="fixed top-0 left-0 z-20 h-screen w-screen"
     v-if="open"
     @click="open = false"
   ></div>
@@ -78,19 +67,19 @@ const rule = () => {
     <Field v-slot="{ field, meta }" :name="name" :rules="rule" v-model="genres">
       <div
         @click="toggleGenres"
-        class="flex flex-wrap gap-y-2 cursor-pointer content-between border rounded-[0.25rem] border-[#6C757D] pr-12 py-2 text-base w-full"
+        class="flex w-full cursor-pointer flex-wrap content-between gap-y-2 rounded-[0.25rem] border border-[#6C757D] py-2 pr-12 text-base"
         :class="[
           !meta.valid && meta.touched ? 'border-[#DC3545]' : '',
           meta.valid ? 'border-[#198754]' : '',
         ]"
       >
         <div
-          class="bg-gray-600 flex items-center ml-2 pl-2 rounded-sm w-max"
+          class="ml-2 flex w-max items-center rounded-sm bg-gray-600 pl-2"
           v-for="(chip, i) of chips"
           :key="chip.label"
         >
-          <span class="cursor-default"> {{ chip }} </span>
-          <span @click="removeChip(i)" class="cursor-pointer p-2 chip-remove">
+          <span class="cursor-default"> {{ $t("genres." + chip) }} </span>
+          <span @click="removeChip(i)" class="chip-remove cursor-pointer p-2">
             <remove-icon />
           </span>
           <!-- <p class="flex flex-row items-center gap-2 cursor-default">
@@ -100,7 +89,7 @@ const rule = () => {
         <input
           v-bind="field"
           :id="name"
-          class="cursor-pointer w-16 bg-transparent px-2 placeholder-[#6C757D]"
+          class="w-16 cursor-pointer bg-transparent px-2 placeholder-[#6C757D]"
           :class="chips.length !== 0 ? 'invisible ' : ''"
           :placeholder="chips.length === 0 ? 'Genre' : ''"
           autocomplete="off"
@@ -109,7 +98,7 @@ const rule = () => {
       </div>
     </Field>
     <ul
-      class="w-full flex flex-col max-h-[8.5rem] overflow-y-auto bg-black mt-2 py-1 rounded-lg"
+      class="mt-2 flex max-h-[8.5rem] w-full flex-col overflow-y-auto rounded-lg bg-black py-1"
       v-show="open"
     >
       <li
@@ -119,7 +108,7 @@ const rule = () => {
         :key="item.label"
         @click="saveChip"
       >
-        {{ item }}
+        {{ $t("genres." + item) }}
       </li>
     </ul>
   </div>

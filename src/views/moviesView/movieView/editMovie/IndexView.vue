@@ -49,7 +49,7 @@ const updateMovie = (values) => {
 };
 
 const goBack = () => {
-  router.replace({ name: "movie", params: { MovieId: movieId.value } });
+  router.replace({ name: "movie", params: { movieId: movieId.value } });
 };
 </script>
 

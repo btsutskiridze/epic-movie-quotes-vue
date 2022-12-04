@@ -65,7 +65,7 @@ const numberWithCommas = (x) => {
               v-for="genre in genres"
               :key="genre.label"
             >
-              {{ genre }}
+              {{ $t("genres." + genre) }}
             </p>
           </div>
           <div>
