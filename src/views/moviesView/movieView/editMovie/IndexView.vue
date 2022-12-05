@@ -6,13 +6,13 @@ import BaseMultiSelect from "@/components/UI/form/BaseMultiSelect.vue";
 import axios from "@/config/axios/index.js";
 import { Form as VeeForm } from "vee-validate";
 import { useMoviesStore } from "@/stores/useMoviesStore";
+import { useUserStore } from "@/stores/useUserStore";
 import router from "@/router";
 import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 
 const store = useMoviesStore();
 
-// const url = store.url;
 const movie = computed(() => store.movie);
 const movieGenres = store.genres;
 const movieId = ref(useRoute().params.movieId);
@@ -48,7 +48,7 @@ const updateMovie = (values) => {
 };
 
 const goBack = () => {
-  router.replace({ name: "movie", params: { MovieId: movieId.value } });
+  router.replace({ name: "movie", params: { movieId: movieId.value } });
 };
 </script>
 
@@ -61,11 +61,11 @@ const goBack = () => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar.png"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="w-10 h-10"
+            class="h-10 w-10 rounded-full object-cover"
           />
-          <h1 class="">Brad spit</h1>
+          <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
         <base-dialog-input
           rules="required|eng"

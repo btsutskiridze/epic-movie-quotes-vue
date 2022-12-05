@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-// import router from "@/router";
 import axios from "@/config/axios/authAxios.js";
 import { useRoute } from "vue-router";
 

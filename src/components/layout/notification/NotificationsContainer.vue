@@ -13,42 +13,49 @@ const notifications = computed(() => notificationStore.notifications);
 
 <template>
   <div
-    class="fixed w-screen h-screen top-0 left-0 z-40"
+    class="fixed top-0 left-0 z-40 h-screen w-screen backdrop-blur-[2px]"
     v-if="show"
     @click="show = false"
   ></div>
-  <div class="relative">
+  <div class="relative" :class="show ? 'z-50' : ''">
     <notification-icon class="relative cursor-pointer" @click="show = !show" />
     <span
       @click="show = !show"
       v-if="!notificationStore.allRead"
-      class="cursor-pointer absolute flex items-center justify-center text-[0.6rem] top-[-0.25rem] right-0 bg-red-500 w-4 h-4 rounded-full"
+      class="absolute top-[-0.25rem] right-0 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full bg-red-500 text-[0.6rem]"
       >{{ notificationStore.unRead }}</span
     >
     <div
       v-if="show"
-      class="top-[1.9rem] md:top-[2.3rem] absolute w-0 h-0 border-l-[10px] border-l-transparent border-b-[15px] md:border-b-[25px] border-b-black border-r-[10px] border-r-transparent"
+      class="absolute top-[1.9rem] h-0 w-0 border-l-[10px] border-b-[15px] border-r-[10px] border-l-transparent border-b-black border-r-transparent md:top-[2.3rem] md:border-b-[25px]"
     ></div>
   </div>
   <div
     v-if="show"
-    class="cursor-default flex flex-col gap-6 px-6 py-10 rounded-[0.25rem] z-[50] absolute top-[4rem] md:top-[5.6rem] bg-[#000] right-0 md:right-[7%] w-screen md:w-auto md:min-w-[24rem]"
+    class="absolute top-[4rem] right-0 z-[50] flex w-screen cursor-default flex-col gap-6 rounded-[0.25rem] bg-[#000] px-6 py-10 md:top-[5.6rem] md:right-[7%] md:w-auto md:min-w-[24rem]"
   >
     <section
       @click="notificationStore.readAll()"
-      class="text-white flex flex-row justify-between items-center"
+      class="flex flex-row items-center justify-between text-white"
     >
-      <h1 class="text-xl md:text-[1.8rem]">Notifications</h1>
-      <h2 class="text-sm md:text-lg underline text-white cursor-pointer">
-        Mark as all read
+      <h1 class="text-xl md:text-[1.8rem]">{{ $t("notif.notifications") }}</h1>
+      <h2
+        class="cursor-pointer text-right text-sm text-white underline md:text-lg"
+      >
+        {{ $t("notif.mark_as_all_read") }}
       </h2>
     </section>
-    <section class="h-[76vh] md:h-[24rem] overflow-y-scroll">
-      <notification-item
-        :notif="notification"
-        v-for="notification in notifications"
-        :key="notification.id"
-      />
+    <section class="h-[76vh] overflow-y-scroll md:h-[24rem]">
+      <div v-if="notifications.length">
+        <notification-item
+          :notif="notification"
+          v-for="notification in notifications"
+          :key="notification.id"
+        />
+      </div>
+      <div v-else class="flex h-full justify-center">
+        <h1 class="text-xl text-white">{{ $t("notif.no_notifications") }}</h1>
+      </div>
     </section>
   </div>
 </template>

@@ -6,17 +6,28 @@ defineProps({
     required: false,
     default: false,
   },
+  haveUser: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 </script>
 
 <template>
-  <div class="w-full flex justify-start items-start text-white md:pt-8 pb-auto">
-    <div class="w-[30%] hidden md:block sticky top-10">
+  <div class="pb-auto flex w-full items-start justify-start text-white md:pt-8">
+    <div
+      class="sticky top-10 hidden w-[30%] md:block"
+      :class="haveUser ? 'md:w-[40%] lg:w-[25%]' : ''"
+    >
       <pc-navbar />
     </div>
     <div
-      class="w-full flex flex-col md:gap-4"
-      :class="haveMovies ? '' : 'md:w-[64%] lg:w-[50%]'"
+      class="flex w-full flex-col md:gap-4"
+      :class="[
+        haveMovies ? '' : 'md:w-[64%] lg:w-[50%]',
+        haveUser ? 'lg:w-[60%]' : '',
+      ]"
     >
       <slot></slot>
     </div>

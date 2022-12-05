@@ -1,6 +1,5 @@
 <script setup>
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
-// import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 import QuotesFileInput from "@/components/UI/quotes/BaseQuotesFileInput.vue";
@@ -12,6 +11,7 @@ import axios from "@/config/axios/index.js";
 import router from "@/router";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useUserStore } from "@/stores/useUserStore";
 
 const quoteStore = useQuoteStore();
 
@@ -56,7 +56,7 @@ const editQuote = async (values) => {
         class="absolute flex flex-row items-center rounded-lg py-2 text-[#CED4DA]"
       >
         <div
-          class="cursor-pointer px-4 flex flex-row items-end gap-2"
+          class="flex cursor-pointer flex-row items-end gap-2 px-4"
           @click="
             $router.replace({
               name: 'delete-quote',
@@ -66,22 +66,22 @@ const editQuote = async (values) => {
             })
           "
         >
-          <delete-icon class="w-4 h-4" />
-          <span class="text-base leading-none">Delete</span>
+          <delete-icon class="h-4 w-4" />
+          <span class="text-base leading-none">{{ $t("quote.delete") }}</span>
         </div>
       </div>
-      Edit Quote
+      {{ $t("quote.edit_quote") }}
     </template>
     <loading-circle v-if="quoteStore.loading" />
     <VeeForm v-else @submit="editQuote" class="font-helvetica">
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar.png"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="w-10 h-10"
+            class="h-10 w-10 rounded-full object-cover"
           />
-          <h1 class="">Brad spit</h1>
+          <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
         <base-textarea
           rules="required|eng-textarea"
@@ -103,7 +103,9 @@ const editQuote = async (values) => {
           rules=""
         />
         <movies-dropdown :only-one="true" />
-        <base-button class="w-full bg-[#E31221]">Save Changes</base-button>
+        <base-button class="w-full bg-[#E31221]">{{
+          $t("quote.save_changes")
+        }}</base-button>
       </section>
     </VeeForm>
   </news-feed-dialog>

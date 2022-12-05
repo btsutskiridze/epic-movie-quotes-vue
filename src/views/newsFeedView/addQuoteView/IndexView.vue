@@ -7,6 +7,7 @@ import { Form as VeeForm } from "vee-validate";
 import axios from "@/config/axios/index.js";
 import router from "@/router";
 import { useQuoteStore } from "@/stores/useQuoteStore";
+import { useUserStore } from "@/stores/useUserStore";
 
 const goBack = () => {
   router.push({ name: "news-feed" });
@@ -42,11 +43,11 @@ const addQuote = async (values) => {
       <section class="flex flex-col gap-4 text-white">
         <div id="user" class="flex flex-row items-center gap-4">
           <img
-            src="@/assets/images/news-feed/avatar.png"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            class="w-10 h-10"
+            class="h-10 w-10 rounded-full object-cover"
           />
-          <h1 class="">Brad spit</h1>
+          <h1 class="">{{ useUserStore().user.name }}</h1>
         </div>
         <base-textarea
           rules="required|eng-textarea"
@@ -62,7 +63,9 @@ const addQuote = async (values) => {
         />
         <base-file-input name="thumbnail" />
         <movies-dropdown />
-        <base-button class="w-full bg-[#E31221]">Post</base-button>
+        <base-button class="w-full bg-[#E31221]">{{
+          $t("newsFeed.post")
+        }}</base-button>
       </section>
     </VeeForm>
   </news-feed-dialog>

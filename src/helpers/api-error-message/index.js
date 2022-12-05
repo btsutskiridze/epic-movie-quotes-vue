@@ -25,6 +25,9 @@ export const setRegisterApiError = (field, actions) => {
 export const setLoginApiError = (field, actions) => {
   if (i18n.global.locale == "en") {
     switch (field) {
+      case "name":
+        actions.setFieldError("email", "Name does not exist");
+        break;
       case "email":
         actions.setFieldError("email", "Email does not exist");
         break;
@@ -37,6 +40,9 @@ export const setLoginApiError = (field, actions) => {
     }
   } else {
     switch (field) {
+      case "name":
+        actions.setFieldError("email", "სახელი არ არსებობს");
+        break;
       case "email":
         actions.setFieldError("email", "ელ-ფოსტა არ არსებობს");
         break;

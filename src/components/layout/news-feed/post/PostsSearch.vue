@@ -1,6 +1,11 @@
 <script setup>
 import { useSearchStore } from "@/stores/useSearchStore";
+import { useQuoteStore } from "@/stores/useQuoteStore";
+import axios from "@/config/axios/index.js";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const routePath = ref(useRouter().currentRoute.value.path);
 defineProps({
   isMobile: {
     type: Boolean,
@@ -15,22 +20,42 @@ const setSearch = (e) => {
     search: e.target.value,
   });
 };
+const search = (e) => {
+  const search = e.target.value.trim();
+  if (
+    search === "" ||
+    search === "@" ||
+    search === "#" ||
+    routePath.value.includes("movies")
+  ) {
+    return;
+  } else {
+    axios
+      .post("quotes/search", {
+        search: search,
+      })
+      .then((response) => {
+        useQuoteStore().searchedQuotes = response.data;
+        console.log("triggered");
+      });
+  }
+};
 </script>
 
 <template>
   <input
     v-if="isMobile"
-    @keyup="setSearch"
+    @keyup="setSearch($event), search($event)"
     type="search"
     name="search"
     id="search"
     autocomplete="off"
-    class="bg-transparent text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white w-full"
+    class="w-full bg-transparent text-base leading-[150%] placeholder-white hover:outline-none focus:outline-none"
     :placeholder="$t('search.search')"
   />
   <span
     v-if="searchInput === '' && !isMobile"
-    class="text-[#97969A] absolute left-6 whitespace-nowrap"
+    class="absolute left-6 whitespace-nowrap text-[#97969A]"
     >{{ $t("search.enter") }} <span class="text-white">@</span>
     {{ $t("search.to_search_movies") }} {{ $t("search.enter") }}
     <span class="text-white">#</span>
@@ -39,12 +64,12 @@ const setSearch = (e) => {
   <input
     v-if="!isMobile"
     v-model="searchInput"
-    @keyup="setSearch"
+    @keyup="setSearch($event), search($event)"
     type="search"
     name="search"
     id="search"
     autocomplete="off"
-    class="z-20 bg-transparent text-base leading-[150%] focus:outline-none hover:outline-none placeholder-white border-b border-[#efefef4d] py-2 pl-6 w-full"
+    class="z-20 w-full border-b border-[#efefef4d] bg-transparent py-2 pl-6 text-base leading-[150%] placeholder-white hover:outline-none focus:outline-none"
     placeholder=""
   />
 </template>

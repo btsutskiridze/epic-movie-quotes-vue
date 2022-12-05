@@ -9,7 +9,7 @@ import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
 
 defineProps({
-  haveMovies: {
+  haveUser: {
     type: Boolean,
     required: false,
     default: false,
@@ -18,11 +18,9 @@ defineProps({
 const authStore = useAuthStore();
 const handleLogout = async () => {
   try {
-    const response = await axios.get("logout");
+    await axios.get("logout");
     authStore.authenticated = false;
     router.push({ name: "news-feed" });
-
-    console.log(response);
   } catch (err) {
     console.log(err);
   }
@@ -33,16 +31,16 @@ const handleLogout = async () => {
 
 <template>
   <div>
-    <header class="w-full m-auto text-white bg-[#1F1D2A]">
+    <header class="m-auto w-full bg-[#1F1D2A] text-white">
       <div
-        class="w-[86%] m-auto flex justify-between items-center py-5 text-base"
+        class="m-auto flex w-[86%] items-center justify-between py-5 text-base md:w-[94%] lg:w-[86%]"
       >
-        <h2 class="font-medium uppercase hidden md:block text-[#DDCCAA]">
+        <h2 class="hidden font-medium uppercase text-[#DDCCAA] md:block">
           {{ $t("landingView.movie_quotes") }}
         </h2>
         <mobile-navbar />
-        <section class="flex justify-center items-center gap-8">
-          <mobile-search />
+        <section class="flex items-center justify-center gap-8">
+          <mobile-search v-if="!haveUser" />
           <notifiactions-container />
           <language-dropdown />
           <base-button

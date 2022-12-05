@@ -6,9 +6,9 @@ import PostsSearch from "@/components/layout/news-feed/post/PostsSearch.vue";
 <template>
   <div class="w-3/4">
     <div
-      class="hidden md:flex flex-row items-center relative overflow-x-hidden"
+      class="relative hidden flex-row items-center overflow-x-hidden md:flex"
     >
-      <search-icon class="absolute w-4 h-4" />
+      <search-icon class="absolute h-4 w-4" />
       <posts-search :isMobile="false" />
     </div>
   </div>

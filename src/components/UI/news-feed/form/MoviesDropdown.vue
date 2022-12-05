@@ -17,7 +17,7 @@ const props = defineProps({
 const moviesStore = useMoviesStore();
 
 const open = ref(false);
-const selected = ref("Choose movie");
+const selected = ref("");
 
 const movies = computed(() => moviesStore.movies);
 const movie = computed(() => moviesStore.movie);
@@ -39,7 +39,7 @@ const setValue = (e) => {
 
 <template>
   <div
-    class="fixed w-screen h-screen top-0 left-0 z-40"
+    class="fixed top-0 left-0 z-40 h-screen w-screen"
     v-if="open"
     @click="open = false"
   ></div>
@@ -54,7 +54,7 @@ const setValue = (e) => {
 
       <section
         @click="onlyOne ? (open = false) : (open = !open)"
-        class="bg-[#000000] px-3 py-4 flex flex-row justify-between items-center rounded-lg"
+        class="flex flex-row items-center justify-between rounded-lg bg-[#000000] px-3 py-4"
         :class="[
           !meta.valid && meta.touched
             ? 'outline outline-1 outline-[#DC3545]'
@@ -66,7 +66,15 @@ const setValue = (e) => {
       >
         <div class="flex flex-row gap-3">
           <movie-icon />
-          <p>{{ onlyOne ? movie?.title[lang] : selected }}</p>
+          <p>
+            {{
+              onlyOne
+                ? movie?.title[lang]
+                : selected === ""
+                ? $t("movies.choose_movie")
+                : selected
+            }}
+          </p>
         </div>
         <down-arrow
           :class="open ? 'rotate-180' : 'rotate-0'"
@@ -76,7 +84,7 @@ const setValue = (e) => {
     </Field>
 
     <ul
-      class="w-full flex flex-col max-h-[8.5rem] overflow-y-auto bg-black mt-1 py-1 z-[42] rounded-lg"
+      class="z-[42] mt-1 flex max-h-[8.5rem] w-full flex-col overflow-y-auto rounded-lg bg-black py-1"
       v-if="open"
     >
       <li

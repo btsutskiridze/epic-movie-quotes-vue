@@ -1,0 +1,12 @@
+{
+  "view": "View",
+  "delete": "Delete",
+  "edit": "Edit",
+  "view_quote": "View quote",
+  "edit_quote": "Edit quote",
+  "save_changes": "Save changes",
+  "delete_quote": "Delete quote",
+  "want_to_delete": "Are you sure you want to delete",
+  "yes": "Yes",
+  "cancel": "Cancel"
+}

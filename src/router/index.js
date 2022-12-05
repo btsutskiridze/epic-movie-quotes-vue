@@ -3,8 +3,8 @@ import axios from "@/config/axios/authAxios.js";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useUserStore } from "@/stores/useUserStore";
 
-import landingView from "@/views/landingView/IndexView.vue";
-
+import LandingView from "@/views/Landing/IndexView.vue";
+import UserProfileView from "@/views/User/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
 
@@ -20,15 +20,16 @@ import DeleteQuoteView from "@/views/quotes/DeleteQuoteView.vue";
 import AddMovieQuoteView from "@/views/quotes/AddMovieQuoteView.vue";
 import EditQuoteView from "@/views/quotes/EditQuoteView.vue";
 
-import GoogleRedirect from "@/views/redirectView/GoogleRedirectView.vue";
-import { isAuthenticated } from "@/router/guards.js";
+import NotFoundView from "@/views/NotFound/IndexView.vue";
+import ForbiddenView from "@/views/Forbidden/IndexView.vue";
+import { isAuthenticated, isNotAuthenticated } from "@/router/guards.js";
 
-import RegistrationView from "@/views/landingView/registrationView/IndexView.vue";
-import VerificationView from "@/views/landingView/verificationView/IndexView.vue";
+import RegistrationView from "@/views/Landing/Registration/IndexView.vue";
+import VerificationView from "@/views/Landing/Verification/IndexView.vue";
 
-import LoginView from "@/views/landingView/loginView/IndexView.vue";
-import ForgetPasswordView from "@/views/landingView/forgetPasswordView/IndexView.vue";
-import ResetPasswordView from "@/views/landingView/resetPasswordView/IndexView.vue";
+import LoginView from "@/views/Landing/Login/IndexView.vue";
+import ForgetPasswordView from "@/views/Landing/ForgetPassword/IndexView.vue";
+import ResetPasswordView from "@/views/Landing/ResetPassword/IndexView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,10 +37,8 @@ const router = createRouter({
     {
       path: "/",
       name: "landing",
-      component: landingView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next({ name: "news-feed" }) : next();
-      },
+      component: LandingView,
+      beforeEnter: isNotAuthenticated,
       children: [
         {
           name: "registration",
@@ -60,19 +59,19 @@ const router = createRouter({
           name: "reset-password",
           path: "reset-password",
           component: ResetPasswordView,
-          // beforeEnter: (to, _2, next) => {
-          //   if (!to.query.reset_token) return next({ name: "landing" });
-          //   return next();
-          // },
+          beforeEnter: (to, _2, next) => {
+            if (!to.query.reset_token) return next({ name: "landing" });
+            return next();
+          },
         },
         {
           name: "verify",
           path: "verify",
           component: VerificationView,
-          // beforeEnter: (to, _2, next) => {
-          //   if (!to.query.token) return next({ name: "landing" });
-          //   return next();
-          // },
+          beforeEnter: (to, _2, next) => {
+            if (!to.query.token) return next({ name: "landing" });
+            return next();
+          },
         },
       ],
     },
@@ -81,9 +80,8 @@ const router = createRouter({
       path: "/news-feed",
       name: "news-feed",
       component: NewsFeedView,
-      beforeEnter: (_, _2, next) => {
-        return isAuthenticated() ? next() : next({ name: "landing" });
-      },
+      beforeEnter: isAuthenticated,
+
       children: [
         {
           path: "add-quote",
@@ -97,9 +95,7 @@ const router = createRouter({
       name: "movies",
       redirect: { name: "all-movies" },
       component: MoviesView,
-      // beforeEnter: (_, _2, next) => {
-      //   return isAuthenticated() ? next() : next({ name: "landing" });
-      // },
+      beforeEnter: isAuthenticated,
 
       children: [
         {
@@ -152,8 +148,14 @@ const router = createRouter({
         },
       ],
     },
-    { path: "/:pathMatch(.*)*", name: "NotFound", component: landingView },
-    { path: "/google-redirect", name: "redirect", component: GoogleRedirect },
+    {
+      path: "/user-profile",
+      name: "user-profile",
+      component: UserProfileView,
+      beforeEnter: isAuthenticated,
+    },
+    { path: "/:pathMatch(.*)*", name: "not-found", component: NotFoundView },
+    { path: "/forbidden", name: "forbidden", component: ForbiddenView },
   ],
 });
 
@@ -163,9 +165,7 @@ router.beforeEach(async (to, from, next) => {
 
   if (authStore.authenticated === null) {
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}me`
-      );
+      const response = await axios.get("me");
       userStore.user = response.data.user;
       authStore.authenticated = true;
     } catch (err) {

@@ -1,0 +1,20 @@
+{
+  "yes": "დიახ",
+  "cancel": "გაუქმება",
+  "edit": "შეცვლა",
+  "save_changes": "ცვლილებების შენახვა",
+  "want_to_change": "ნამდვილად გსურთ ცვლილებების განხორციელება",
+  "confirm": "დადასტურება",
+  "username": "სახელი",
+  "email": "ელ-ფოსტა",
+  "enter_new_username": "შეიყვანეთ ახალი სახელი",
+  "confirm_new_password": "ახალი პაროლის დადასტურება",
+  "new_password": "ახალი პაროლი",
+  "password": "პაროლი",
+  "password_should_contain": "პაროლი უნდა შეიცავდეს",
+  "8_or_more_char": "8 ან მეტ ასოს",
+  "15_lowercase_char": "15-ზე ნაკლებ პატარა ასოს",
+  "upload_new_photo": "ატვირთეთ ახალი ფოტო",
+  "my_profile": "ჩემი პროფილი",
+  "primary_email": "მთავარი ელფოსტა"
+}

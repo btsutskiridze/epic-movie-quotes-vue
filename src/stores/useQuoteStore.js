@@ -7,6 +7,7 @@ export const useQuoteStore = defineStore("Quote", {
   state: () => {
     return {
       quotes: [],
+      searchedQuotes: [],
       quote: {},
       url: import.meta.env.VITE_API_BASE_IMAGES_URL,
       loading: false,

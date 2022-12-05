@@ -4,12 +4,16 @@ import HomeIcon from "@/components/icons/news-feed/HomeIcon.vue";
 import LogoutIcon from "@/components/icons/news-feed/LogoutIcon.vue";
 import BurgerMenu from "@/components/icons/news-feed/BurgerMenuIcon.vue";
 
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useAuthStore } from "@/stores/useAuthStore";
 import axios from "@/config/axios/authAxios.js";
 import router from "@/router/index.js";
+import { useRouter } from "vue-router";
 
+import { useUserStore } from "@/stores/useUserStore";
+const user = computed(() => useUserStore().user);
 const showMenu = ref(false);
+const routePath = ref(useRouter().currentRoute.value.path);
 
 const closeMenu = (e) => {
   if (e.target == document.getElementById("container")) showMenu.value = false;
@@ -18,11 +22,9 @@ const closeMenu = (e) => {
 const authStore = useAuthStore();
 const handleLogout = async () => {
   try {
-    const response = await axios.get("logout");
+    await axios.get("logout");
     authStore.authenticated = false;
     router.push({ name: "news-feed" });
-
-    console.log(response);
   } catch (err) {
     console.log(err);
   }
@@ -33,7 +35,7 @@ const handleLogout = async () => {
 
 <template>
   <burger-menu
-    class="font-bold uppercase block md:hidden relative cursor-pointer"
+    class="relative block cursor-pointer font-bold uppercase md:hidden"
     @click="showMenu = !showMenu"
   />
 
@@ -41,41 +43,48 @@ const handleLogout = async () => {
     v-if="showMenu"
     @click="closeMenu"
     id="container"
-    class="w-screen h-screen top-0 left-0 backdrop-blur-sm z-30 fixed block md:hidden"
+    class="fixed top-0 left-0 z-30 block h-screen w-screen cursor-default backdrop-blur-sm md:hidden"
   >
     <div
-      class="absolute top-0 left-0 bg-[#0D0C15] w-[80vw] h-[80vh] z-40 pt-10 pl-10 rounded-lg"
+      class="absolute top-0 left-0 z-40 h-[80vh] w-[80vw] rounded-lg bg-[#0D0C15] pt-10 pl-10"
     >
       <ul class="flex flex-col gap-8">
         <div class="flex flex-row gap-4">
           <img
-            src="@/assets/images/news-feed/avatar.png"
+            :src="useUserStore().user?.avatar"
             alt="avatar"
-            width="40"
-            height="40"
+            class="h-10 w-10 rounded-full object-cover"
+            :class="
+              routePath.includes('user-profile')
+                ? 'outline outline-2 -outline-offset-1 outline-[#E31221]'
+                : ''
+            "
           />
           <div>
-            <h1>Brad Piti</h1>
-            <p class="text-gray-400 text-sm">
+            <h1>{{ user.name }}</h1>
+            <p
+              class="cursor-pointer text-sm text-gray-400"
+              @click="$router.push({ name: 'user-profile' })"
+            >
               {{ $t("newsFeed.edit_your_profile") }}
             </p>
           </div>
         </div>
         <router-link
           :to="{ name: 'news-feed' }"
-          class="flex flex-row gap-3 cursor-pointer"
+          class="flex cursor-pointer flex-row gap-3"
         >
           <home-icon />
           <h1>{{ $t("newsFeed.news_feed") }}</h1>
         </router-link>
         <router-link
           :to="{ name: 'all-movies' }"
-          class="flex flex-row gap-3 cursor-pointer"
+          class="flex cursor-pointer flex-row gap-3"
         >
           <movies-icon />
           <h1>{{ $t("newsFeed.list_of_movies") }}</h1>
         </router-link>
-        <div class="flex flex-row gap-3 cursor-pointer" @click="handleLogout">
+        <div class="flex cursor-pointer flex-row gap-3" @click="handleLogout">
           <logout-icon />
           <h1>{{ $t("newsFeed.logout") }}</h1>
         </div>

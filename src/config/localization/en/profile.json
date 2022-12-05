@@ -1,0 +1,20 @@
+{
+  "yes": "Yes",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "save_changes": "Save changes",
+  "want_to_change": "Are you sure to make changes",
+  "confirm": "Confirm",
+  "username": "username",
+  "email": "Email",
+  "enter_new_username": "Enter new username",
+  "confirm_new_password": "Confirm new password",
+  "new_password": "New password",
+  "password": "Password",
+  "password_should_contain": "Password should contain",
+  "8_or_more_char": "8 or more characters",
+  "15_lowercase_char": "15 lowercase characters",
+  "upload_new_photo": "Upload new photo",
+  "my_profile": "My profile",
+  "primary_email": "Primary email"
+}

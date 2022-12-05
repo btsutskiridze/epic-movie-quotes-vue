@@ -10,10 +10,12 @@ defineProps({
 
 <template>
   <div class="flex flex-row items-center gap-6">
-    <h1>quotes (total {{ quotesNumber }})</h1>
+    <h1>
+      {{ $t("movies.quotes") }} ({{ $t("movies.total") }} {{ quotesNumber }})
+    </h1>
     <router-link :to="{ name: 'add-movie-quote' }">
       <base-button
-        class="flex flex-row items-center gap-3 bg-red-600 whitespace-nowrap"
+        class="flex flex-row items-center gap-3 whitespace-nowrap bg-red-600"
       >
         <plus-icon /> {{ $t("newsFeed.write_new_quote") }}
       </base-button>
