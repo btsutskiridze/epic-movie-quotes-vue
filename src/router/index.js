@@ -3,7 +3,7 @@ import axios from "@/config/axios/authAxios.js";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useUserStore } from "@/stores/useUserStore";
 
-import landingView from "@/views/Landing/IndexView.vue";
+import LandingView from "@/views/Landing/IndexView.vue";
 import UserProfileView from "@/views/User/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
@@ -37,7 +37,7 @@ const router = createRouter({
     {
       path: "/",
       name: "landing",
-      component: landingView,
+      component: LandingView,
       beforeEnter: isNotAuthenticated,
       // beforeEnter: (_, _2, next) => {
       //   return isAuthenticated() ? next({ name: "news-feed" }) : next();
