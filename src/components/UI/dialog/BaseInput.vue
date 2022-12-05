@@ -2,7 +2,6 @@
 import { Field } from "vee-validate";
 import { ref } from "vue";
 
-// import { ref } from "vue";
 const props = defineProps({
   name: {
     type: String,
@@ -42,7 +41,7 @@ const value = ref(props.model);
         :id="name"
         :type="type"
         :placeholder="!lang ? $t(placeholder) : placeholder"
-        class="relative bg-transparent resize-none overflow-y-hidden border rounded-[0.25rem] border-[#6C757D] pl-2 pr-12 py-2 text-base focus:outline-none hover:outline-none placeholder-[#6C757D] w-full"
+        class="relative w-full resize-none overflow-y-hidden rounded-[0.25rem] border border-[#6C757D] bg-transparent py-2 pl-2 pr-12 text-base placeholder-[#6C757D] hover:outline-none focus:outline-none"
         :class="[
           !meta.valid && meta.touched ? 'border-[#DC3545]' : '',
           meta.valid && meta.touched ? 'border-[#198754]' : '',

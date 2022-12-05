@@ -13,7 +13,6 @@ import { useRoute } from "vue-router";
 
 const store = useMoviesStore();
 
-// const url = store.url;
 const movie = computed(() => store.movie);
 const movieGenres = store.genres;
 const movieId = ref(useRoute().params.movieId);

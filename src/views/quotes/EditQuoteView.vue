@@ -1,6 +1,5 @@
 <script setup>
 import DeleteIcon from "@/components/icons/movies/DeleteIcon.vue";
-// import BaseFileInput from "@/components/UI/news-feed/form/BaseFileInput.vue";
 import MoviesDropdown from "@/components/UI/news-feed/form/MoviesDropdown.vue";
 import BaseTextarea from "@/components/UI/form/BaseTextarea.vue";
 import QuotesFileInput from "@/components/UI/quotes/BaseQuotesFileInput.vue";

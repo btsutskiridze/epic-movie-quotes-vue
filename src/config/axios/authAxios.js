@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useAuthStore } from "@/stores/useAuthStore";
-// import router from "@/router";
 
 const authAxios = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -17,8 +16,6 @@ authAxios.interceptors.response.use(
     if (error.response.status == 401) {
       const authStore = useAuthStore();
       authStore.authenticated = false;
-      // this should redirect on 401 error page
-      // router.push("/");
     }
     return Promise.reject(error);
   }

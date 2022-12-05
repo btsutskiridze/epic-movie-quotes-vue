@@ -39,9 +39,6 @@ const router = createRouter({
       name: "landing",
       component: LandingView,
       beforeEnter: isNotAuthenticated,
-      // beforeEnter: (_, _2, next) => {
-      //   return isAuthenticated() ? next({ name: "news-feed" }) : next();
-      // },
       children: [
         {
           name: "registration",

@@ -12,10 +12,6 @@ const props = defineProps({
 });
 const timeStore = useTimeStore();
 const time = ref(timeStore.timeAgo(props.notif.created_at));
-// const interval = setInterval(() => {
-//   if (time.value === "59 seconds ago") clearInterval(interval);
-//   time.value = timeStore.timeAgo(props.notif.created_at);
-// }, 1000);
 </script>
 <template>
   <div
