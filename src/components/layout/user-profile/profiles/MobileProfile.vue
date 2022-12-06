@@ -5,6 +5,9 @@ import { Form as VeeForm } from "vee-validate";
 import { computed } from "vue";
 import axios from "@/config/axios/index.js";
 
+import NextArrow from "@/components/icons/profile/NextArrowIcon.vue";
+
+import MobileEmailsContainer from "@/components/layout/user-profile/MobileEmailsContainer.vue";
 import ChangeDialog from "@/components/layout/user-profile/inputs/mobile/ChangeDialog.vue";
 import UserImage from "@/components/layout/user-profile/inputs/UserImage.vue";
 import UserName from "@/components/layout/user-profile/inputs/mobile/UserName.vue";
@@ -43,14 +46,24 @@ const handleImage = (values) => {
 </script>
 
 <template>
-  <VeeForm v-if="!profileStore.openDialog" @submit="handleImage">
+  <VeeForm
+    v-if="!profileStore.openDialog && !profileStore.showAllEmails"
+    @submit="handleImage"
+  >
     <div class="flex w-full flex-col gap-6">
       <section class="relative mt-24 w-full rounded-xl bg-[#11101A]">
         <user-image />
-        <div class="mx-10 flex flex-col gap-9 pb-14">
+        <div class="mx-10 flex flex-col gap-10 pb-14">
           <user-name />
-          <user-email :email="user.email" />
+          <user-email :email="user.email" v-if="user.google_id" />
           <user-password v-if="!user.google_id" />
+          <section
+            class="flex w-full cursor-pointer justify-between"
+            v-if="!user.google_id"
+            @click="profileStore.showAllEmails = true"
+          >
+            <span>EMAIL</span> <next-arrow />
+          </section>
         </div>
       </section>
       <div class="relative">
@@ -68,5 +81,9 @@ const handleImage = (values) => {
       </div>
     </div>
   </VeeForm>
-  <change-dialog v-else :type="profileStore.dialogType" />
+  <mobile-emails-container v-if="profileStore.showAllEmails" />
+  <change-dialog
+    v-if="profileStore.openDialog"
+    :type="profileStore.dialogType"
+  />
 </template>

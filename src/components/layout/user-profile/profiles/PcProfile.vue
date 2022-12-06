@@ -7,7 +7,7 @@ import { setRegisterApiError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 
 import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
-import MessagePopup from "@/components/layout/user-profile/MessagePopup.vue";
+import MessagePopup from "@/components/layout/user-profile/popups/PcMessagePopup.vue";
 
 import UserImage from "@/components/layout/user-profile/inputs/UserImage.vue";
 import UserName from "@/components/layout/user-profile/inputs/pc/UserName.vue";

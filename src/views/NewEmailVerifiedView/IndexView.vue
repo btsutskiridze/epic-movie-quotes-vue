@@ -1,6 +1,5 @@
 <script setup>
 import MessageSent from "@/components/icons/MessageSentIcon.vue";
-import BackArrowIcon from "@/components/icons/BackArrowIcon.vue";
 import { useUserStore } from "@/stores/useUserStore";
 
 import { onBeforeMount, ref } from "vue";
@@ -34,12 +33,6 @@ onBeforeMount(async () => {
   <div class="h-screen w-screen bg-[#1c173b]">
     <!-- needs to be only '/' because it is either news feed or landing -->
     <news-feed-dialog @close="$router.push({ name: 'user-profile' })" top="">
-      <router-link
-        to="/"
-        class="absolute top-[4%] block cursor-pointer pr-2 sm:hidden"
-      >
-        <back-arrow-icon />
-      </router-link>
       <loading-circle v-if="loading" />
       <div v-else>
         <div class="flex flex-col items-center justify-center gap-8 py-2">
