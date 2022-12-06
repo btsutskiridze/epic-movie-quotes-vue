@@ -6,7 +6,7 @@ import { computed, ref } from "vue";
 import { setRegisterApiError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 
-import ChangePassword from "@/views/User/Inputs/Mobile/ChangePassword.vue";
+import ChangePassword from "@/components/layout/user-profile/inputs/mobile/ChangePassword.vue";
 
 defineProps({});
 const profileStore = useProfileStore();

@@ -1,7 +1,7 @@
 <script setup>
 import { useProfileStore } from "@/stores/useProfileStore";
 
-import ChangePassword from "@/views/User/Inputs/Pc/ChangePassword.vue";
+import ChangePassword from "@/components/layout/user-profile/inputs/pc/ChangePassword.vue";
 defineProps({});
 
 const profileStore = useProfileStore();

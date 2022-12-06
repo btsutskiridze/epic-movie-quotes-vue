@@ -5,11 +5,11 @@ import { Form as VeeForm } from "vee-validate";
 import { computed } from "vue";
 import axios from "@/config/axios/index.js";
 
-import ChangeDialog from "@/views/User/Inputs/Mobile/ChangeDialog.vue";
-import UserImage from "@/views/User/Inputs/UserImage.vue";
-import UserName from "@/views/User/Inputs/Mobile/UserName.vue";
-import UserEmail from "@/views/User/Inputs/Mobile/UserEmail.vue";
-import UserPassword from "@/views/User/Inputs/Mobile/UserPassword.vue";
+import ChangeDialog from "@/components/layout/user-profile/inputs/mobile/ChangeDialog.vue";
+import UserImage from "@/components/layout/user-profile/inputs/UserImage.vue";
+import UserName from "@/components/layout/user-profile/inputs/mobile/UserName.vue";
+import UserEmail from "@/components/layout/user-profile/inputs/mobile/UserEmail.vue";
+import UserPassword from "@/components/layout/user-profile/inputs/mobile/UserPassword.vue";
 
 const profileStore = useProfileStore();
 const user = computed(() => useUserStore().user);

@@ -9,10 +9,10 @@ import axios from "@/config/axios/index.js";
 import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
 import MessagePopup from "@/components/layout/user-profile/MessagePopup.vue";
 
-import UserImage from "@/views/User/Inputs/UserImage.vue";
-import UserName from "@/views/User/Inputs/Pc/UserName.vue";
-import UserEmail from "@/views/User/Inputs/Pc/UserEmail.vue";
-import UserPassword from "@/views/User/Inputs/Pc/UserPassword.vue";
+import UserImage from "@/components/layout/user-profile/inputs/UserImage.vue";
+import UserName from "@/components/layout/user-profile/inputs/pc/UserName.vue";
+import UserEmail from "@/components/layout/user-profile/inputs/pc/UserEmail.vue";
+import UserPassword from "@/components/layout/user-profile/inputs/pc/UserPassword.vue";
 const profileStore = useProfileStore();
 const user = computed(() => useUserStore().user);
 

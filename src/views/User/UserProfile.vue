@@ -1,6 +1,6 @@
 <script setup>
-import MobileProfile from "@/views/User/Responsive/MobileProfile.vue";
-import PcProfile from "@/views/User/Responsive/PcProfile.vue";
+import MobileProfile from "@/components/layout/user-profile/profiles/MobileProfile.vue";
+import PcProfile from "@/components/layout/user-profile/profiles/PcProfile.vue";
 import { ref } from "vue";
 
 const pageWidth = ref(window.innerWidth);
