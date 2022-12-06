@@ -29,6 +29,7 @@ const goBack = () => {
 
 const editQuote = async (values) => {
   const data = {
+    movie_id: movieId.value,
     title_en: values.title_en,
     title_ka: values.title_ka,
   };
@@ -41,9 +42,9 @@ const editQuote = async (values) => {
     .post(`quotes/${quote.value.id}/update`, data, {
       headers: { "content-type": "multipart/form-data" },
     })
-    .then(() => {
+    .then((response) => {
       goBack();
-      useMoviesStore().getMovie(movieId.value);
+      useMoviesStore().movie = response.data.movie;
     })
     .catch((e) => console.log(e));
 };

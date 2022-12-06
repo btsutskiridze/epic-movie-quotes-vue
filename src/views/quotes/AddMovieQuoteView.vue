@@ -36,8 +36,9 @@ const addQuote = async (values) => {
         headers: { "content-type": "multipart/form-data" },
       }
     )
-    .then(() => {
-      useMoviesStore().getMovie(movieId.value);
+    .then((response) => {
+      // useMoviesStore().getMovie(movieId.value);
+      useMoviesStore().movie = response.data.movie;
       goBack();
     });
 };

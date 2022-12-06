@@ -13,9 +13,8 @@ const movieId = ref(useRoute().params.movieId);
 
 const deleteMovie = () => {
   axios
-    .delete("movies/" + movieId.value + "/destroy")
+    .delete("movies/" + movieId.value + "")
     .then(() => {
-      store.getMovies();
       router.replace({ name: "all-movies" });
     })
     .catch((error) => {
