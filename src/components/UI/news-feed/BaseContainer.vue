@@ -26,7 +26,7 @@ defineProps({
       class="flex w-full flex-col md:gap-4"
       :class="[
         haveMovies ? '' : 'md:w-[64%] lg:w-[50%]',
-        haveUser ? 'lg:w-[60%]' : '',
+        haveUser ? 'lg:w-[80%]' : '',
       ]"
     >
       <slot></slot>

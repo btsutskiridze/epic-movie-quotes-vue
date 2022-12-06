@@ -46,8 +46,8 @@ const eye = (option) => {
 </script>
 
 <template>
-  <div class="my-4 relative pb-1">
-    <label for="name" class="text-white relative capitalize"
+  <div class="relative my-4 pb-1">
+    <label for="name" class="relative capitalize text-white"
       >{{ $t(labelName) }} <span class="text-[#DC3545]">*</span></label
     >
     <Field :name="name" v-slot="{ field, meta }" :rules="rules">
@@ -56,7 +56,7 @@ const eye = (option) => {
         :id="name"
         :type="type === 'password' ? passwordType : type"
         :placeholder="$t(placeholder)"
-        class="w-full relative placeholder-[#6C757D] text-[#212529] bg-[#CED4DA] px-3 py-2 my-2 rounded-[0.25rem] disabled:bg-white disabled:placeholder-[#B7BBC0] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
+        class="relative my-2 w-full rounded-[0.25rem] bg-[#CED4DA] px-3 py-2 text-[#212529] placeholder-[#6C757D] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF] disabled:bg-white disabled:placeholder-[#B7BBC0]"
         :class="[
           !meta.valid && meta.touched
             ? 'outline-2 -outline-offset-2 outline-[#DC3545]'
@@ -77,7 +77,7 @@ const eye = (option) => {
 
     <ErrorMessage
       :name="name"
-      class="absolute left-0 top-[4.6rem] text-[#DC3545] text-xs sm:text-sm font-normal"
+      class="absolute left-0 top-[4.6rem] text-xs font-normal text-[#DC3545] sm:text-sm"
     />
     <p
       v-if="type === 'password'"

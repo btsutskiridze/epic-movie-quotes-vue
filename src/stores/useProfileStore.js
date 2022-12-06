@@ -14,6 +14,7 @@ export const useProfileStore = defineStore("Profile", {
       passwordDisabled: true,
       passwordValue: "garbagehahahaa",
       changePassword: false,
+      newEmailAdded: false,
     };
   },
 });

@@ -6,6 +6,9 @@ import { Form as VeeForm } from "vee-validate";
 import { setRegisterApiError } from "@/helpers/api-error-message";
 import axios from "@/config/axios/index.js";
 
+import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
+import MessagePopup from "@/components/layout/user-profile/MessagePopup.vue";
+
 import UserImage from "@/views/User/Inputs/UserImage.vue";
 import UserName from "@/views/User/Inputs/Pc/UserName.vue";
 import UserEmail from "@/views/User/Inputs/Pc/UserEmail.vue";
@@ -71,7 +74,38 @@ const updateProfile = (values, actions) => {
         <user-image />
         <div class="mx-20 flex flex-col gap-9 2xl:mx-40">
           <user-name />
-          <user-email :email="user.email" :google-id="user.google_id" />
+          <user-email
+            :email="user.email"
+            :google-id="user.google_id"
+            :id="user.id"
+            :primary="true"
+          />
+          <div class="mb-4 flex flex-col gap-4" v-if="!user.google_id">
+            <user-email
+              v-for="email in user.emails"
+              :key="email.id"
+              :email="email.email"
+              :id="email.id"
+              :verified="email.email_verified_at ? true : false"
+            />
+            <!-- <user-email
+              :email="user.email"
+              :google-id="user.google_id"
+              :verified="true"
+            /> -->
+            <div class="w-[64%] border-b border-[#40414A]">
+              <router-link :to="{ name: 'add-email' }">
+                <base-button
+                  class="mt-2 mb-8 flex w-max flex-row items-center gap-2"
+                  type="button"
+                  :outline="true"
+                >
+                  <plus-icon />
+                  Add new email
+                </base-button>
+              </router-link>
+            </div>
+          </div>
           <user-password v-if="!user.google_id" />
         </div>
       </section>
@@ -89,5 +123,7 @@ const updateProfile = (values, actions) => {
         </div>
       </div>
     </div>
+    <message-popup />
   </VeeForm>
+  <router-view></router-view>
 </template>
