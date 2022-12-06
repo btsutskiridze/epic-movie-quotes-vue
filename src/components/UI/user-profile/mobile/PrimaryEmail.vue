@@ -23,7 +23,7 @@ defineProps({
 <template>
   <section class="relative flex flex-col justify-center gap-1">
     <label for="email" class="top-[-1.3rem] text-sm capitalize text-white">
-      PRIMARY EMAIL
+      {{ $t("profile.primary_email") }}
     </label>
     <div class="relative w-full border-b border-[#40414A] pb-4">
       <!-- :class="[googleId ? '' : 'border-b border-[#40414A]']" -->

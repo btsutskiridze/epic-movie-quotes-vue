@@ -58,7 +58,7 @@ const submitChange = (_, actions) => {
         >
           <div class="relative">
             <label for="name" class="top-[-1.3rem] text-base text-white">
-              Add new email
+              {{ $t("profile.add_new_email") }}
             </label>
             <input
               v-bind="field"

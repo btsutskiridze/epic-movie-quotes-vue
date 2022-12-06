@@ -85,17 +85,19 @@ const makePrimary = () => {
             v-else-if="!verified"
             class="absolute top-4 left-0 flex cursor-pointer flex-row gap-3 whitespace-nowrap text-base"
           >
-            <span class="border-r border-[#6C757D] pr-3">Not verified </span>
-            <span @click="handleRemove">Remove</span>
+            <span class="border-r border-[#6C757D] pr-3"
+              >{{ $t("profile.not_verified") }}
+            </span>
+            <span @click="handleRemove">{{ $t("profile.remove") }}</span>
           </p>
           <p
             v-else
             class="absolute top-4 left-0 flex cursor-pointer flex-row gap-3 whitespace-nowrap text-base"
           >
             <span class="border-r border-[#6C757D] pr-3" @click="makePrimary"
-              >Make this primary
+              >{{ $t("profile.make_this_primary") }}
             </span>
-            <span @click="handleRemove">Remove</span>
+            <span @click="handleRemove">{{ $t("profile.remove") }}</span>
           </p>
         </div>
         <div class="absolute top-[1.4rem] right-6">

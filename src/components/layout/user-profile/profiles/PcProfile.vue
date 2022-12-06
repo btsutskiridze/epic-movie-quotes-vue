@@ -101,7 +101,7 @@ const updateProfile = (values, actions) => {
                   :outline="true"
                 >
                   <plus-icon />
-                  Add new email
+                  {{ $t("profile.add_new_email") }}
                 </base-button>
               </router-link>
             </div>

@@ -62,7 +62,7 @@ const handleImage = (values) => {
             v-if="!user.google_id"
             @click="profileStore.showAllEmails = true"
           >
-            <span>EMAIL</span> <next-arrow />
+            <span>{{ $t("profile.email") }}</span> <next-arrow />
           </section>
         </div>
       </section>

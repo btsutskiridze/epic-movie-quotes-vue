@@ -31,7 +31,7 @@ const profileStore = useProfileStore();
         :primary="true"
       />
       <div class="my-12 flex w-full flex-col">
-        <!-- <h1 class="text-sm font-light">CHANGE PRIMARY EMAIL</h1> -->
+        <!-- <h1 class="text-sm font-light">{{$t("profile.change_primary_email")}}</h1> -->
 
         <div class="flex w-full flex-col gap-6">
           <common-email
@@ -44,7 +44,7 @@ const profileStore = useProfileStore();
         </div>
       </div>
       <div class="flex flex-col gap-4">
-        <h1>ADD NEW EMAIL</h1>
+        <h1>{{ $t("profile.add_new_email") }}</h1>
         <base-button
           class="mt-2 mb-8 flex w-full flex-row items-center justify-center gap-2"
           type="button"
@@ -52,7 +52,7 @@ const profileStore = useProfileStore();
           @click="profileStore.openEmailDialog = true"
         >
           <plus-icon />
-          Add
+          {{ $t("profile.add") }}
         </base-button>
       </div>
     </div>

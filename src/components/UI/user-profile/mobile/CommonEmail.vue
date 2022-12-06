@@ -65,18 +65,22 @@ const makePrimary = () => {
               class="flex flex-row items-center gap-2 italic text-[#EC9524]"
             >
               <warning-icon />
-              <span class=""> Not verified </span>
+              <span class=""> {{ $t("profile.not_verified") }} </span>
             </span>
-            <span @click="handleRemove" class="text-[#CED4DA]">Remove</span>
+            <span @click="handleRemove" class="text-[#CED4DA]">{{
+              $t("profile.remove")
+            }}</span>
           </p>
           <p
             v-else
             class="flex cursor-pointer flex-row items-center justify-between gap-3 whitespace-nowrap text-base"
           >
             <base-button :outline="true" @click="makePrimary"
-              >Make this primary
+              >{{ $t("profile.make_this_primary") }}
             </base-button>
-            <span @click="handleRemove" class="text-[#CED4DA]">Remove</span>
+            <span @click="handleRemove" class="text-[#CED4DA]">{{
+              $t("profile.remove")
+            }}</span>
           </p>
         </div>
       </div>
