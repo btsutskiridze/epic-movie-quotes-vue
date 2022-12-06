@@ -1,10 +1,20 @@
+<script setup>
+defineProps({
+  height: {
+    type: String,
+    required: false,
+    default: "min-h-[26rem]",
+  },
+});
+</script>
+
 <template>
-  <div class="min-h-[26rem] flex justify-center items-center">
+  <div class="flex items-center justify-center" :class="height">
     <div class="flex space-x-2">
       <div
         aria-label="Loading..."
         role="status"
-        class="flex justify-center items-center"
+        class="flex items-center justify-center"
       >
         <svg class="h-max w-2/4 animate-spin" viewBox="3 3 18 18">
           <path

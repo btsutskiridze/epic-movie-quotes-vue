@@ -1,6 +1,13 @@
 <script setup>
 import CloseIcon from "@/components/icons/dialog/CloseIcon.vue";
 
+defineProps({
+  top: {
+    type: String,
+    required: false,
+    default: "top-0 md:top-[5%]",
+  },
+});
 const emit = defineEmits(["close"]);
 
 const closeDialog = (e) => {
@@ -26,7 +33,8 @@ const closeDialog = (e) => {
       >
         <dialog
           open
-          class="top-0 z-30 mb-10 w-full overflow-x-hidden bg-[#11101A] p-0 md:top-[5%] md:h-min md:min-h-[auto] md:min-w-[37.5rem] md:max-w-[32%] md:rounded-xl"
+          class="z-30 mb-10 w-full overflow-x-hidden bg-[#11101A] p-0 md:h-min md:min-h-[auto] md:min-w-[37.5rem] md:max-w-[32%] md:rounded-xl"
+          :class="top"
         >
           <div
             class="relative border-b border-[#efefef4d] px-9 py-6 text-center md:px-[1.2rem]"

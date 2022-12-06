@@ -5,8 +5,11 @@ import { useUserStore } from "@/stores/useUserStore";
 
 import LandingView from "@/views/Landing/IndexView.vue";
 import UserProfileView from "@/views/User/IndexView.vue";
+import AddEmailView from "@/views/User/AddEmailView/IndexView.vue";
 import NewsFeedView from "@/views/newsFeedView/IndexView.vue";
 import AddQuteView from "@/views/newsFeedView/addQuoteView/IndexView.vue";
+
+import NewEmailVerifiedView from "@/views/NewEmailVerifiedView/IndexView.vue";
 
 import MoviesView from "@/views/moviesView/IndexView.vue";
 import AddMovieView from "@/views/moviesView/addMovieView/IndexView.vue";
@@ -153,6 +156,14 @@ const router = createRouter({
       name: "user-profile",
       component: UserProfileView,
       beforeEnter: isAuthenticated,
+      children: [
+        { name: "add-email", path: "add-email", component: AddEmailView },
+      ],
+    },
+    {
+      name: "new-email-verified",
+      path: "/new-email-verified",
+      component: NewEmailVerifiedView,
     },
     { path: "/:pathMatch(.*)*", name: "not-found", component: NotFoundView },
     { path: "/forbidden", name: "forbidden", component: ForbiddenView },
