@@ -24,14 +24,14 @@ const props = defineProps({
     default: true,
   },
   id: {
-    type: String,
+    type: Number,
     required: true,
   },
 });
 
 const handleRemove = () => {
   axios
-    .post("delete/" + props.id)
+    .delete("email/" + props.id)
     .then(() => {
       useUserStore().getUser();
     })
