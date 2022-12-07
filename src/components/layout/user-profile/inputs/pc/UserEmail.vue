@@ -67,7 +67,7 @@ const makePrimary = () => {
           class="relative my-2 w-full rounded-[0.25rem] border px-3 py-2 text-white placeholder-[#6C757D] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
           :class="[
             googleId ? 'mb-20 border-[#fff] bg-[#fff] text-black' : '',
-            primary ? 'border-[#198754] bg-[#132826]' : '',
+            primary && !googleId ? 'border-[#198754] bg-[#132826]' : '',
             !verified ? 'border-[#EC9524] bg-[#3D2B1C]' : '',
             verified && !primary ? 'border-[#fff] bg-[#fff] text-black' : '',
           ]"
