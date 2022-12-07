@@ -82,9 +82,6 @@ const rule = () => {
           <span @click="removeChip(i)" class="chip-remove cursor-pointer p-2">
             <remove-icon />
           </span>
-          <!-- <p class="flex flex-row items-center gap-2 cursor-default">
-
-          </p> -->
         </div>
         <input
           v-bind="field"

@@ -57,8 +57,6 @@ const makePrimary = () => {
       {{ $t("profile.email") }}
     </label>
     <div class="relative w-[67%] 2xl:w-[65%]">
-      <!-- :class="[googleId ? '' : 'border-b border-[#40414A]']" -->
-
       <div class="flex flex-row gap-4">
         <input
           :id="id"

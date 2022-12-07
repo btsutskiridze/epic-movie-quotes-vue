@@ -37,7 +37,6 @@ const addQuote = async (values) => {
       }
     )
     .then((response) => {
-      // useMoviesStore().getMovie(movieId.value);
       useMoviesStore().movie = response.data.movie;
       goBack();
     });

@@ -31,8 +31,6 @@ const profileStore = useProfileStore();
         :primary="true"
       />
       <div class="my-12 flex w-full flex-col">
-        <!-- <h1 class="text-sm font-light">{{$t("profile.change_primary_email")}}</h1> -->
-
         <div class="flex w-full flex-col gap-6">
           <common-email
             v-for="email in userStore.user.emails"

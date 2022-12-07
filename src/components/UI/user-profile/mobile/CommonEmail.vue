@@ -45,8 +45,6 @@ const makePrimary = () => {
 <template>
   <section class="relative flex flex-col justify-center gap-1">
     <div class="relative w-full border-b border-[#40414A] pb-4">
-      <!-- :class="[googleId ? '' : 'border-b border-[#40414A]']" -->
-
       <div class="flex flex-col gap-4">
         <input
           :id="id"
