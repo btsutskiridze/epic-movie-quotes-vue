@@ -8,7 +8,7 @@ const confShow = ref(false);
 </script>
 
 <template>
-  <div class="mb-6 w-[67%] rounded border border-[#373740] p-6">
+  <div class="mb-6 w-[65%] rounded border border-[#373740] p-6 2xl:w-[63%]">
     <h1 class="text-base">
       {{ $t("profile.password_should_contain") }}
     </h1>
@@ -29,7 +29,7 @@ const confShow = ref(false);
     <label for="password" class="top-[-1.3rem] text-base capitalize text-white">
       {{ $t("profile.new_password") }}
     </label>
-    <div class="relative w-[67%] 2xl:w-[65%]">
+    <div class="relative w-[65%] 2xl:w-[63%]">
       <input
         v-bind="field"
         :type="passShow ? 'text' : 'password'"
@@ -57,7 +57,7 @@ const confShow = ref(false);
     >
       {{ $t("profile.confirm_new_password") }}
     </label>
-    <div class="relative w-[67%] 2xl:w-[65%]">
+    <div class="relative w-[65%] 2xl:w-[63%]">
       <input
         v-bind="field"
         :type="confShow ? 'text' : 'password'"

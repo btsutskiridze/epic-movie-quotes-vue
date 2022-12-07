@@ -93,7 +93,7 @@ const updateProfile = (values, actions) => {
               :google-id="user.google_id"
               :verified="true"
             /> -->
-            <div class="w-[64%] border-b border-[#40414A]">
+            <div class="w-[65%] border-b border-[#40414A] 2xl:w-[63%]">
               <router-link :to="{ name: 'add-email' }">
                 <base-button
                   class="mt-2 mb-8 flex w-max flex-row items-center gap-2"
