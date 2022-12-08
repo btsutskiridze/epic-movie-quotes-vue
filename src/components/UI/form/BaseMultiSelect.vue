@@ -5,7 +5,7 @@ import { Field } from "vee-validate";
 import { onMounted, ref } from "vue";
 const chips = ref([]);
 const open = ref(false);
-const genres = ref();
+const genres = ref([]);
 
 const props = defineProps({
   name: {
@@ -40,6 +40,7 @@ const removeChip = (index) => {
     .getElementById(chips.value[index].trim())
     .classList.remove("bg-gray-800");
   chips.value.splice(index, 1);
+  genres.value = chips.value;
 };
 
 const toggleGenres = (e) => {

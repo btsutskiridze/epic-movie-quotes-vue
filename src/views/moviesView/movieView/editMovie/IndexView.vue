@@ -42,6 +42,7 @@ const updateMovie = (values) => {
     })
     .then((response) => {
       store.movie = response.data.movie;
+      store.genres = JSON.parse(store.movie.genre);
       goBack();
     })
     .catch((e) => console.log(e));
