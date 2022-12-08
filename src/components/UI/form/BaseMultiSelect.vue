@@ -50,7 +50,7 @@ const toggleGenres = (e) => {
 };
 
 const rule = () => {
-  if (genres.value.length === 0) {
+  if (chips.value.length === 0) {
     return false;
   } else {
     return true;
