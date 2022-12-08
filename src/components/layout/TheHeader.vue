@@ -3,10 +3,10 @@ import LanguageDropdown from "@/components/layout/LanguageDropdown.vue";
 </script>
 
 <template>
-  <header class="w-4/5 m-auto">
-    <div class="flex justify-between items-center py-6 text-base">
+  <header class="m-auto w-4/5">
+    <div class="flex items-center justify-between py-6 text-base">
       <h2 class="font-bold uppercase">{{ $t("landingView.movie_quotes") }}</h2>
-      <div class="flex justify-center items-center gap-4">
+      <div class="flex items-center justify-center gap-4 text-white">
         <language-dropdown />
         <router-link :to="{ name: 'registration' }">
           <base-button :orange="true" class="hidden md:block">
