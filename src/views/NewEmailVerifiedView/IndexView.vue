@@ -31,7 +31,6 @@ onBeforeMount(async () => {
 
 <template>
   <div class="h-screen w-screen bg-[#1c173b]">
-    <!-- needs to be only '/' because it is either news feed or landing -->
     <news-feed-dialog @close="$router.push({ name: 'user-profile' })" top="">
       <loading-circle v-if="loading" />
       <div v-else>

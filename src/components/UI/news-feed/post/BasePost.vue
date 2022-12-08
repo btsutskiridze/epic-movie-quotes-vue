@@ -35,8 +35,11 @@ const staticComments = computed(() =>
       </div>
       <div class="flex flex-row gap-3">
         <p class="break-words break-all">"{{ quote.title[lang] }}”</p>
-        <p>
-          <span class="text-[#DDCCAA]">{{ quote.movie.title[lang] }}</span>
+        <p class="break-words break-all">
+          <span class="mr-2 text-[#DDCCAA]"
+            >{{ quote.movie.title[lang] }}.</span
+          >
+          <span>({{ quote.movie.year }})</span>
         </p>
       </div>
       <div>

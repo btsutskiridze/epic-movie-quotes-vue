@@ -17,7 +17,7 @@ const profileStore = useProfileStore();
       <div class="flex flex-row justify-between">
         <section class="flex flex-row gap-4 text-[#0F5132]">
           <success-icon class="h-6 w-6" />
-          <span>New email Added succsessfully</span>
+          <span>{{ $t("profile.new_email_added_successfully") }}</span>
         </section>
         <close-icon
           @click="profileStore.newEmailAdded = false"
@@ -25,7 +25,7 @@ const profileStore = useProfileStore();
         />
       </div>
       <h1 class="py-4 text-center text-black">
-        Please check email to verify new address
+        {{ $t("profile.please_check_email_to_verify_new_address") }}
       </h1>
     </div>
   </div>

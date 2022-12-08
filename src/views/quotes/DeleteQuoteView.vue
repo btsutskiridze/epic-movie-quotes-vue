@@ -23,10 +23,10 @@ onBeforeMount(() => {
 
 const deleteQuote = () => {
   axios
-    .delete("quotes/" + quoteId.value + "/destroy")
-    .then(() => {
+    .delete("quotes/" + quoteId.value + "?movie_id=" + movieId.value)
+    .then((response) => {
+      store.movie = response.data.movie;
       goBack();
-      store.getMovie(movieId.value);
     })
     .catch((error) => {
       console.log(error);

@@ -40,9 +40,9 @@ const updateMovie = (values) => {
     .post(`movies/${movieId.value}/update`, data, {
       headers: { "content-type": "multipart/form-data" },
     })
-    .then(() => {
+    .then((response) => {
+      store.movie = response.data.movie;
       goBack();
-      store.getMovie(movieId.value);
     })
     .catch((e) => console.log(e));
 };

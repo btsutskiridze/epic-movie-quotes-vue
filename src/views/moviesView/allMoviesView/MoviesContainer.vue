@@ -2,7 +2,7 @@
 import PlusIcon from "@/components/icons/movies/PlusIcon.vue";
 import BaseSearch from "@/components/UI/form/BaseSearch.vue";
 import BaseMovieItem from "@/components/UI/Movies/BaseMovieItem.vue";
-import { computed, onBeforeMount } from "vue";
+import { computed, onMounted } from "vue";
 import { useMoviesStore } from "@/stores/useMoviesStore";
 import { useSearchStore } from "@/stores/useSearchStore";
 import i18n from "@/i18n";
@@ -16,7 +16,7 @@ const movies = computed(() =>
     movie.title[lang.value].toLowerCase().startsWith(searchValue.value)
   )
 );
-onBeforeMount(() => {
+onMounted(() => {
   store.getMovies();
   useSearchStore().search = "";
 });

@@ -31,7 +31,6 @@ const addMovie = (values) => {
     )
     .then(() => {
       router.push({ name: "all-movies" });
-      useMoviesStore().getMovies();
     });
 };
 </script>

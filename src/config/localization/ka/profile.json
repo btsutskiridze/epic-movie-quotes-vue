@@ -16,5 +16,14 @@
   "15_lowercase_char": "15-ზე ნაკლებ პატარა ასოს",
   "upload_new_photo": "ატვირთეთ ახალი ფოტო",
   "my_profile": "ჩემი პროფილი",
-  "primary_email": "მთავარი ელფოსტა"
+  "primary_email": "მთავარი ელ-ფოსტა",
+  "not_verified": "გასააქტიურებელი",
+  "make_this_primary": "გახადე მთავარი",
+  "remove": "წაშლა",
+  "add_new_email": "დაამატე ახალი ელ-ფოსტა",
+  "new_email": "ახალი ელ-ფოსტა",
+  "enter_new_email": "შეიყვანე ახალი ელ-ფოსტა",
+  "add": "დამატება",
+  "new_email_added_successfully": "ახალი ელ-ფოსტა დაემატა წარმატებით",
+  "please_check_email_to_verify_new_address": "შეამოწმე მეილი გასააქტიურებლად"
 }

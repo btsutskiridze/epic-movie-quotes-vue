@@ -34,7 +34,7 @@ const handleSubmit = (values, actions) => {
 <template>
   <news-feed-dialog top="" @close="$router.push({ name: 'user-profile' })">
     <template #header>
-      <span class="flex w-full">Add new Email</span>
+      <span class="flex w-full">{{ $t("profile.add_new_email") }}</span>
     </template>
     <VeeForm
       v-show="!loading"

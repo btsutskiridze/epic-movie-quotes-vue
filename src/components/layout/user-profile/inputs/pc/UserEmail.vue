@@ -57,8 +57,6 @@ const makePrimary = () => {
       {{ $t("profile.email") }}
     </label>
     <div class="relative w-[67%] 2xl:w-[65%]">
-      <!-- :class="[googleId ? '' : 'border-b border-[#40414A]']" -->
-
       <div class="flex flex-row gap-4">
         <input
           :id="id"
@@ -69,7 +67,7 @@ const makePrimary = () => {
           class="relative my-2 w-full rounded-[0.25rem] border px-3 py-2 text-white placeholder-[#6C757D] outline-none focus:outline-2 focus:outline-offset-0 focus:outline-[#A9B5BF]"
           :class="[
             googleId ? 'mb-20 border-[#fff] bg-[#fff] text-black' : '',
-            primary ? 'border-[#198754] bg-[#132826]' : '',
+            primary && !googleId ? 'border-[#198754] bg-[#132826]' : '',
             !verified ? 'border-[#EC9524] bg-[#3D2B1C]' : '',
             verified && !primary ? 'border-[#fff] bg-[#fff] text-black' : '',
           ]"
@@ -85,17 +83,19 @@ const makePrimary = () => {
             v-else-if="!verified"
             class="absolute top-4 left-0 flex cursor-pointer flex-row gap-3 whitespace-nowrap text-base"
           >
-            <span class="border-r border-[#6C757D] pr-3">Not verified </span>
-            <span @click="handleRemove">Remove</span>
+            <span class="border-r border-[#6C757D] pr-3"
+              >{{ $t("profile.not_verified") }}
+            </span>
+            <span @click="handleRemove">{{ $t("profile.remove") }}</span>
           </p>
           <p
             v-else
             class="absolute top-4 left-0 flex cursor-pointer flex-row gap-3 whitespace-nowrap text-base"
           >
             <span class="border-r border-[#6C757D] pr-3" @click="makePrimary"
-              >Make this primary
+              >{{ $t("profile.make_this_primary") }}
             </span>
-            <span @click="handleRemove">Remove</span>
+            <span @click="handleRemove">{{ $t("profile.remove") }}</span>
           </p>
         </div>
         <div class="absolute top-[1.4rem] right-6">

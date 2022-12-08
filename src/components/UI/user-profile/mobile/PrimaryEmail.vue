@@ -1,8 +1,5 @@
 <script setup>
 import SuccessIcon from "@/components/icons/profile/SuccessIcon.vue";
-// import WarningIcon from "@/components/icons/profile/WarningIcon.vue";
-// import axios from "@/config/axios/index.js";
-// import { useUserStore } from "@/stores/useUserStore";
 
 defineProps({
   email: {
@@ -23,11 +20,9 @@ defineProps({
 <template>
   <section class="relative flex flex-col justify-center gap-1">
     <label for="email" class="top-[-1.3rem] text-sm capitalize text-white">
-      PRIMARY EMAIL
+      {{ $t("profile.primary_email") }}
     </label>
     <div class="relative w-full border-b border-[#40414A] pb-4">
-      <!-- :class="[googleId ? '' : 'border-b border-[#40414A]']" -->
-
       <div class="flex flex-row gap-4">
         <input
           :id="id"
