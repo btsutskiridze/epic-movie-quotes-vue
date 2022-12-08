@@ -35,7 +35,6 @@ const updateMovie = (values) => {
   if (values.genre !== undefined) {
     data["genre"] = values.genre;
   }
-
   axios
     .post(`movies/${movieId.value}/update`, data, {
       headers: { "content-type": "multipart/form-data" },
@@ -115,13 +114,13 @@ const goBack = () => {
           rules="required|numeric"
           name="year"
           placeholder="movies.year"
-          :model="JSON.stringify(movie.year)"
+          :model="movie.year"
         />
         <base-dialog-input
           rules="required|numeric"
           name="budget"
           placeholder="movies.budget"
-          :model="JSON.stringify(movie.budget)"
+          :model="movie.budget"
         />
         <base-file-input name="thumbnail" rules="" />
         <base-button class="w-full bg-[#E31221]">{{

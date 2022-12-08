@@ -50,7 +50,7 @@ const toggleGenres = (e) => {
 };
 
 const rule = () => {
-  if (chips.value.length === 0) {
+  if (genres.value.length === 0) {
     return false;
   } else {
     return true;
@@ -65,7 +65,7 @@ const rule = () => {
     @click="open = false"
   ></div>
   <div class="z-[50]">
-    <Field v-slot="{ field, meta }" :name="name" :rules="rule" v-model="genres">
+    <Field v-slot="{ field, meta }" :name="name" :rules="rule" v-model="chips">
       <div
         @click="toggleGenres"
         class="flex w-full cursor-pointer flex-wrap content-between gap-y-2 rounded-[0.25rem] border border-[#6C757D] py-2 pr-12 text-base"
