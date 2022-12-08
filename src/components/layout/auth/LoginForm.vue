@@ -95,7 +95,7 @@ function ValidateEmail(inputText) {
       </div>
     </div>
     <base-button :orange="true" class="mb-4 w-full text-white">{{
-      $t("landingView.get_started")
+      $t("landingView.sign_in")
     }}</base-button>
   </VeeForm>
 </template>

@@ -8,11 +8,11 @@ import LoginForm from "@/components/layout/auth/LoginForm.vue";
     <base-dialog @close="$router.push({ name: 'landing' })">
       <login-form />
       <google-authorisation />
-      <span class="text-[#6C757D] text-base flex justify-center py-8"
-        >{{ $t("landingView.already_have_an_account") }}
+      <span class="flex justify-center py-8 text-base text-[#6C757D]"
+        >{{ $t("landingView.dont_have_account") }}
         <router-link
           :to="{ name: 'registration' }"
-          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+          class="cursor-pointer pl-1 text-[#0D6EFD] underline"
         >
           {{ $t("landingView.sign_up") }}
         </router-link>

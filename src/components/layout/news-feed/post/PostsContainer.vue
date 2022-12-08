@@ -45,7 +45,7 @@ setTimeout(() => {
       useNotificationStore().getNotifications();
     }
   );
-}, 200);
+}, 500);
 </script>
 
 <template>
