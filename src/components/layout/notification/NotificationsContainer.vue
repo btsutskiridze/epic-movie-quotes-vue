@@ -32,7 +32,7 @@ const notifications = computed(() => notificationStore.notifications);
   </div>
   <div
     v-if="show"
-    class="absolute top-[4rem] right-0 z-[50] flex w-screen cursor-default flex-col gap-6 rounded-[0.25rem] bg-[#000] px-6 py-10 md:top-[5.6rem] md:right-[7%] md:w-auto md:min-w-[24rem]"
+    class="absolute top-[4rem] right-0 z-[50] flex w-screen cursor-default flex-col gap-6 rounded-[0.25rem] bg-[#000] px-6 py-10 md:top-[5.6rem] md:right-[7%] md:w-auto md:min-w-[40rem]"
   >
     <section
       @click="notificationStore.readAll()"
