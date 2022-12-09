@@ -5,7 +5,7 @@ import { Field } from "vee-validate";
 import { onMounted, ref } from "vue";
 const chips = ref([]);
 const open = ref(false);
-const genres = ref();
+const genres = ref([]);
 
 const props = defineProps({
   name: {
@@ -40,6 +40,7 @@ const removeChip = (index) => {
     .getElementById(chips.value[index].trim())
     .classList.remove("bg-gray-800");
   chips.value.splice(index, 1);
+  genres.value = chips.value;
 };
 
 const toggleGenres = (e) => {
@@ -64,7 +65,7 @@ const rule = () => {
     @click="open = false"
   ></div>
   <div class="z-[50]">
-    <Field v-slot="{ field, meta }" :name="name" :rules="rule" v-model="genres">
+    <Field v-slot="{ field, meta }" :name="name" :rules="rule" v-model="chips">
       <div
         @click="toggleGenres"
         class="flex w-full cursor-pointer flex-wrap content-between gap-y-2 rounded-[0.25rem] border border-[#6C757D] py-2 pr-12 text-base"

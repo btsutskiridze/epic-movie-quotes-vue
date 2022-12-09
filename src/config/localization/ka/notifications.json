@@ -1,6 +1,7 @@
 {
   "notifications": "შეტყობინებები",
-  "mark_as_all_read": "ყველას წაკითხულად მონიშვნა",
+  "no_notifications": "შეტყობინებები არ არის",
+  "mark_as_all_read": "ყველას წაკითხულად \n მონიშვნა",
   "commented_to_your_movie_quote": "დააკომენტარა თქვენი ფილმის ციტატაზე",
   "commented_to_your_quote": "დააკომენტარა თქვენს ციტატაზე",
   "reacted_to_your_quote": "გამოხატა ემოცია თქვენს ციტატაზე",
