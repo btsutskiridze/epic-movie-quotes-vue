@@ -3,9 +3,6 @@ import RemoveIcon from "@/components/icons/dialog/RemoveIcon.vue";
 import genresJson from "@/config/genres/genres.json";
 import { Field } from "vee-validate";
 import { onMounted, ref } from "vue";
-const chips = ref([]);
-const open = ref(false);
-const genres = ref([]);
 
 const props = defineProps({
   name: {
@@ -18,6 +15,11 @@ const props = defineProps({
   },
 });
 
+const chips = ref([]);
+const open = ref(false);
+const genres = ref([]);
+const wasTouched = ref(false);
+
 onMounted(() => {
   if (props.values) {
     props.values.forEach((chip) => {
@@ -29,6 +31,7 @@ onMounted(() => {
 
 const movieGenres = genresJson;
 const saveChip = (e) => {
+  if (!wasTouched.value) wasTouched.value = true;
   if (!chips.value.includes(e.target.id)) {
     e.target.classList.add("bg-gray-800");
     chips.value.push(e.target.id);
@@ -36,6 +39,7 @@ const saveChip = (e) => {
   }
 };
 const removeChip = (index) => {
+  if (!wasTouched.value) wasTouched.value = true;
   document
     .getElementById(chips.value[index].trim())
     .classList.remove("bg-gray-800");
@@ -70,8 +74,8 @@ const rule = () => {
         @click="toggleGenres"
         class="flex w-full cursor-pointer flex-wrap content-between gap-y-2 rounded-[0.25rem] border border-[#6C757D] py-2 pr-12 text-base"
         :class="[
-          !meta.valid && meta.touched ? 'border-[#DC3545]' : '',
-          meta.valid ? 'border-[#198754]' : '',
+          !meta.valid && wasTouched ? 'border-[#DC3545]' : '',
+          meta.valid && wasTouched ? 'border-[#198754]' : '',
         ]"
       >
         <div
