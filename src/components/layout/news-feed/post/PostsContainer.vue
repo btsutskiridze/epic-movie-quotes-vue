@@ -2,9 +2,7 @@
 import BasePost from "@/components/UI/news-feed/post/BasePost.vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useCommentStore } from "@/stores/useCommentStore";
-import { useUserStore } from "@/stores/useUserStore";
 import { useSearchStore } from "@/stores/useSearchStore";
-import { useNotificationStore } from "@/stores/useNotificationStore";
 import { computed, onBeforeMount } from "vue";
 
 const quoteStore = useQuoteStore();
@@ -37,15 +35,6 @@ window.onscroll = function () {
     }
   }
 };
-
-setTimeout(() => {
-  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
-    ".new-notification",
-    () => {
-      useNotificationStore().getNotifications();
-    }
-  );
-}, 500);
 </script>
 
 <template>
