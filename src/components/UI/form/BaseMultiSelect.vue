@@ -76,6 +76,12 @@ const rule = () => {
         :class="[
           !meta.valid && wasTouched ? 'border-[#DC3545]' : '',
           meta.valid && wasTouched ? 'border-[#198754]' : '',
+          meta.validated && meta.touched && chips.length
+            ? 'border-[#198754]'
+            : '',
+          meta.validated && meta.touched && !chips.length
+            ? 'border-[#DC3545]'
+            : '',
         ]"
       >
         <div
