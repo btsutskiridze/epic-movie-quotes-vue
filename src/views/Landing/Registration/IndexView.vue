@@ -12,10 +12,15 @@ const loading = computed(() => store.loading);
 
 <template>
   <div>
-    <base-dialog @close="$router.push({ name: 'landing' })">
+    <base-dialog
+      @close="
+        $router.push({ name: 'landing' });
+        store.loading = null;
+      "
+    >
       <router-link
         :to="{ name: 'landing' }"
-        class="block sm:hidden absolute top-[4%] cursor-pointer py-2 pr-2"
+        class="absolute top-[4%] block cursor-pointer py-2 pr-2 sm:hidden"
         v-if="loading === null || loading === false"
       >
         <back-arrow-icon />
@@ -23,12 +28,12 @@ const loading = computed(() => store.loading);
       <register-form v-show="loading === null" />
       <google-authorisation v-if="loading === null" />
       <span
-        class="text-[#6C757D] text-base flex justify-center py-8"
+        class="flex justify-center py-8 text-base text-[#6C757D]"
         v-if="loading === null"
         >{{ $t("landingView.already_have_an_account") }}
         <router-link
           :to="{ name: 'login' }"
-          class="text-[#0D6EFD] underline cursor-pointer pl-1"
+          class="cursor-pointer pl-1 text-[#0D6EFD] underline"
         >
           {{ $t("landingView.log_in") }}
         </router-link>
