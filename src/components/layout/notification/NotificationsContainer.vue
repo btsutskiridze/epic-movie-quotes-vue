@@ -13,7 +13,7 @@ const notifications = computed(() => notificationStore.notifications);
 
 <template>
   <div
-    class="fixed top-0 left-0 z-40 h-screen w-screen backdrop-blur-[2px]"
+    class="fixed top-0 left-0 z-40 h-screen w-screen bg-[#00000046]"
     v-if="show"
     @click="show = false"
   ></div>
