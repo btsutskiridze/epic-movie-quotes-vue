@@ -18,6 +18,7 @@ const close = (e) => {
   <search-icon
     class="block cursor-pointer md:hidden"
     @click="showSearch = true"
+    v-if="routePath.includes('all-movies') || routePath.includes('news-feed')"
   />
   <section
     v-show="showSearch"
