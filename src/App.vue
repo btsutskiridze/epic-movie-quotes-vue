@@ -10,7 +10,6 @@ html {
   overflow-y: overlay;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar {
   width: 2px;
