@@ -25,7 +25,7 @@ defineProps({
     <div
       class="flex w-full flex-col md:gap-4"
       :class="[
-        haveMovies ? '' : 'lg:w-[76%] xl:w-[60%]',
+        haveMovies ? '' : 'lg:w-[76%] xl:w-[50%]',
         haveUser ? 'lg:w-[80%]' : '',
       ]"
     >
