@@ -28,6 +28,14 @@ onBeforeMount(() => {
   });
 });
 
+// window.onscroll = function () {
+//   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//     if (!(quotes.value.length < quoteStore.page)) {
+//       quoteStore.getQuotes("paginate");
+//     }
+//   }
+// };
+
 window.addEventListener("scroll", () => {
   let bottomOfWindow =
     Math.floor(
@@ -37,8 +45,11 @@ window.addEventListener("scroll", () => {
         document.body.scrollTop
       ) + window.innerHeight
     ) === Math.floor(document.documentElement.offsetHeight);
+
   if (bottomOfWindow) {
-    quoteStore.getQuotes("paginate");
+    if (!(quotes.value.length < quoteStore.page)) {
+      quoteStore.getQuotes("paginate");
+    }
   }
 });
 </script>
