@@ -24,7 +24,10 @@ defineProps({
     </div>
     <div
       class="flex w-full flex-col md:gap-4"
-      :class="[haveMovies ? '' : 'lg:w-[50%]', haveUser ? 'lg:w-[80%]' : '']"
+      :class="[
+        haveMovies ? '' : 'lg:w-[76%] xl:w-[60%]',
+        haveUser ? 'lg:w-[80%]' : '',
+      ]"
     >
       <slot></slot>
     </div>
