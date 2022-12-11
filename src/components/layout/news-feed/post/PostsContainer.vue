@@ -28,11 +28,17 @@ onBeforeMount(() => {
   });
 });
 
-window.onscroll = function () {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    if (!(quotes.value.length < quoteStore.page)) {
-      quoteStore.getQuotes("paginate");
-    }
+window.onscroll = () => {
+  let bottomOfWindow =
+    Math.floor(
+      Math.max(
+        window.pageYOffset,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      ) + window.innerHeight
+    ) === Math.floor(document.documentElement.offsetHeight);
+  if (bottomOfWindow) {
+    quoteStore.getQuotes("paginate");
   }
 };
 </script>
