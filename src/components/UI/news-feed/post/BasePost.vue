@@ -38,7 +38,7 @@ onMounted(() => {
         />
         <h1>{{ quote.user.name }}</h1>
       </div>
-      <div class="flex flex-row gap-3">
+      <div class="flex flex-wrap gap-3">
         <p class="break-words break-all">"{{ quote.title[lang] }}”</p>
         <p class="break-words break-all">
           <span class="mr-2 text-[#DDCCAA]"
