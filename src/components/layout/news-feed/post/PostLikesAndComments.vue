@@ -67,10 +67,8 @@ window.Echo.channel("like-channel").listen(".toggle-like", (e) => {
   if (isCorrectQuote) {
     if (e.like.was_liked) {
       likesNumber.value++;
-      console.log("liked");
     } else {
       likesNumber.value--;
-      console.log("unliked");
     }
   }
 });
@@ -78,17 +76,17 @@ window.Echo.channel("like-channel").listen(".toggle-like", (e) => {
 
 <template>
   <div class="flex flex-row gap-6 border-b border-[#efefef4d] pb-1">
-    <div class="flex flex-row gap-2 items-center">
+    <div class="flex flex-row items-center gap-2">
       <span class="md:text-xl">{{ comments }}</span>
-      <comment-icon class="w-[60%] h-[60%]" />
+      <comment-icon class="h-[60%] w-[60%]" />
     </div>
     <div
-      class="flex flex-row gap-2 items-center cursor-pointer"
+      class="flex cursor-pointer flex-row items-center gap-2"
       @click="toggleLike()"
     >
       <span class="md:text-xl">{{ likesNumber }}</span>
-      <like-icon class="w-[67%] h-[67%]" v-if="likable" />
-      <liked-icon class="w-[67%] h-[67%]" v-else />
+      <like-icon class="h-[67%] w-[67%]" v-if="likable" />
+      <liked-icon class="h-[67%] w-[67%]" v-else />
     </div>
   </div>
 </template>

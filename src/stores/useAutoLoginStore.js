@@ -29,9 +29,8 @@ export const useAutoLoginStore = defineStore("AutoLogin", {
       data[key] = value;
       axios
         .post("auto-login", data)
-        .then((response) => {
+        .then(() => {
           window.location.reload();
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);

@@ -9,7 +9,6 @@ import { useProfileStore } from "@/stores/useProfileStore";
 
 const loading = ref(false);
 const handleSubmit = (values, actions) => {
-  console.log(values);
   loading.value = true;
   axios
     .post("emails/store", {

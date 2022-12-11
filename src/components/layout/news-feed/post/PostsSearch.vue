@@ -36,7 +36,6 @@ const search = (e) => {
       })
       .then((response) => {
         useQuoteStore().searchedQuotes = response.data;
-        console.log("triggered");
       });
   }
 };
