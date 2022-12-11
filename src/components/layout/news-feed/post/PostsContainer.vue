@@ -28,7 +28,7 @@ onBeforeMount(() => {
   });
 });
 
-window.onscroll = () => {
+window.addEventListener("scroll", () => {
   let bottomOfWindow =
     Math.floor(
       Math.max(
@@ -40,7 +40,7 @@ window.onscroll = () => {
   if (bottomOfWindow) {
     quoteStore.getQuotes("paginate");
   }
-};
+});
 </script>
 
 <template>
