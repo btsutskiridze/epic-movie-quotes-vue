@@ -43,7 +43,7 @@ const setImage = (e) => {
         alt="avatar"
         class="h-44 w-44 rounded-full object-cover"
       />
-      <p class="cursor-pointer text-xl" @click="getImage">
+      <p class="cursor-pointer select-none text-xl" @click="getImage">
         {{ $t("profile.upload_new_photo") }}
       </p>
       <input

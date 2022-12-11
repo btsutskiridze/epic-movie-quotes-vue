@@ -9,8 +9,7 @@ html {
   overflow-y: scroll;
   overflow-y: overlay;
 }
-::-webkit-scrollbar-track {
-}
+
 ::-webkit-scrollbar {
   width: 2px;
   height: 10px;
