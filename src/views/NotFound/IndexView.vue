@@ -8,9 +8,11 @@ import GhostIcon from "@/components/icons/GhostIcon.vue";
     <section class="flex flex-col items-center gap-4">
       <ghost-icon />
       <h1 class="text-5xl">Whoops!</h1>
-      <p>We can't see the page you are looking for</p>
+      <p>{{ $t("forbidden.not_found") }}</p>
       <router-link to="/">
-        <base-button :orange="true" class="mt-4">Return home</base-button>
+        <base-button :orange="true" class="mt-4">{{
+          $t("forbidden.return_home")
+        }}</base-button>
       </router-link>
     </section>
   </div>

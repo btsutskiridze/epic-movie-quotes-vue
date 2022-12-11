@@ -1,4 +1,15 @@
-<script setup></script>
+<script setup>
+import i18n from "@/i18n.js";
+import { setLocale } from "@vee-validate/i18n";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  if (localStorage.locale) {
+    i18n.global.locale = localStorage.locale;
+    setLocale(localStorage.locale);
+  }
+});
+</script>
 
 <template>
   <router-view />

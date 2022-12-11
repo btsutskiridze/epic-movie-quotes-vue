@@ -1,15 +1,8 @@
 <script setup>
 import DropdownArrowIcon from "@/components/icons/DropdownArrowIcon.vue";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import i18n from "@/i18n.js";
 import { setLocale } from "@vee-validate/i18n";
-
-onMounted(() => {
-  if (localStorage.locale) {
-    i18n.global.locale = localStorage.locale;
-    setLocale(localStorage.locale);
-  }
-});
 
 let show = ref(false);
 
