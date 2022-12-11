@@ -52,7 +52,7 @@ const dragFile = (e) => {
         meta.valid && meta.touched ? 'border-[#198754]' : '',
       ]"
     >
-      <p class="flex flex-row gap-3">
+      <p class="flex flex-row gap-3 break-words break-all">
         <camera-icon />
         {{ img !== "" ? img : $t("fileInput.upload_image") }}
       </p>
