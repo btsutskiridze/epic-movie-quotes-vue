@@ -45,12 +45,12 @@ const closeDialog = (e) => {
     v-if="show"
     @click="closeDialog"
     id="container"
-    class="h-screen w-screen fixed top-0 left-0 z-30 flex justify-center items-center"
+    class="fixed top-0 left-0 z-[25] flex h-screen w-screen items-center justify-center"
   ></div>
 
-  <ul id="dropdown" class="relative text-center hidden md:block z-30">
+  <ul id="dropdown" class="relative z-[25] text-center">
     <li
-      class="gap-3 cursor-pointer relative flex flex-row justify-between items-center"
+      class="relative flex cursor-pointer flex-row items-center justify-between gap-3"
       @click="toggleMenu"
     >
       {{ activeLang }}
@@ -59,7 +59,7 @@ const closeDialog = (e) => {
     <li
       v-if="show"
       @click="toggleMenu(), setTextLocale(locale)"
-      class="pl-2 pr-1 py-1 -left-2 gap-3 top-8 absolute cursor-pointer flex flex-row justify-between mr-2 items-center bg-[#2a263d] rounded-xl hover:bg-[#322b57] active:bg-[#473f6e]"
+      class="absolute -left-2 top-8 mr-2 flex cursor-pointer flex-row items-center justify-between gap-3 rounded-xl bg-[#2a263d] py-1 pl-2 pr-1 hover:bg-[#322b57] active:bg-[#473f6e]"
     >
       {{ inactiveLang }}
       <DropdownArrowIcon class="invisible" />
