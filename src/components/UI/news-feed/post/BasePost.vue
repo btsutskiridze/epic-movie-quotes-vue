@@ -51,7 +51,7 @@ onMounted(() => {
         <img
           :src="url + quote.thumbnail"
           alt="post-image"
-          class="min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
+          class="max-h-[60vh] min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
         />
       </div>
       <likes-and-comments
