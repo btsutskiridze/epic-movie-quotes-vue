@@ -23,10 +23,11 @@ const close = (e) => {
   <section
     v-show="showSearch"
     @click="close"
+    id="container"
     class="fixed top-0 left-0 z-30 block h-screen w-screen backdrop-blur-sm md:hidden"
   >
     <div
-      class="absolute top-0 left-0 z-40 h-[80vh] w-full rounded-lg bg-[#12101A]"
+      class="absolute top-0 left-0 z-40 h-max w-full rounded-lg bg-[#12101A]"
     >
       <div
         class="flex w-full flex-row items-center justify-start gap-8 border-b border-[#efefef4d] py-6 pl-10"
