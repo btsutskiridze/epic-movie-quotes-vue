@@ -11,6 +11,7 @@ import movies from "@/config/localization/ka/movies.json";
 import genres from "@/config/localization/ka/genres.json";
 import profile from "@/config/localization/ka/profile.json";
 import notif from "@/config/localization/ka/notifications.json";
+import forbidden from "@/config/localization/ka/forbidden.json";
 
 const translations = {
   landingView,
@@ -26,5 +27,6 @@ const translations = {
   genres,
   profile,
   notif,
+  forbidden,
 };
 export default translations;

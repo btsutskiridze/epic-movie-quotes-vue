@@ -21,7 +21,7 @@ const time = ref(timeStore.timeAgo(props.notif.created_at));
       <img
         :src="notif.from.avatar"
         alt="avatar"
-        class="h-[3.75rem] w-[3.75rem] rounded-full"
+        class="h-[3.75rem] w-[3.75rem] rounded-full object-cover"
         :class="
           !notif.read
             ? 'outline outline-2 -outline-offset-1 outline-green-600'

@@ -35,7 +35,7 @@ const handleLogout = async () => {
       <div
         class="m-auto flex w-[86%] items-center justify-between py-5 text-base md:w-[94%] lg:w-[86%]"
       >
-        <h2 class="hidden font-medium uppercase text-[#DDCCAA] md:block">
+        <h2 class="hidden font-medium uppercase text-[#DDCCAA] lg:block">
           {{ $t("landingView.movie_quotes") }}
         </h2>
         <mobile-navbar />

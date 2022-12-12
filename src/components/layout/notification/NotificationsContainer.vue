@@ -3,17 +3,30 @@ import NotificationIcon from "@/components/icons/news-feed/NotificationIcon.vue"
 import NotificationItem from "@/components/layout/notification/NotificationItem.vue";
 import { computed, onBeforeMount, ref } from "vue";
 import { useNotificationStore } from "@/stores/useNotificationStore";
+import { useUserStore } from "@/stores/useUserStore";
+
 const show = ref(false);
 const notificationStore = useNotificationStore();
 onBeforeMount(() => {
   notificationStore.getNotifications();
 });
 const notifications = computed(() => notificationStore.notifications);
+
+setTimeout(() => {
+  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
+    ".new-notification",
+    (e) => {
+      notificationStore.notifications.unshift(e.notification);
+      notificationStore.unRead += 1;
+      notificationStore.allRead = false;
+    }
+  );
+}, 500);
 </script>
 
 <template>
   <div
-    class="fixed top-0 left-0 z-40 h-screen w-screen backdrop-blur-[2px]"
+    class="fixed top-0 left-0 z-40 h-screen w-screen bg-[#00000046]"
     v-if="show"
     @click="show = false"
   ></div>

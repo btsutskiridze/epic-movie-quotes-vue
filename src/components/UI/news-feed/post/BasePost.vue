@@ -3,7 +3,7 @@ import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
 import CommentTextarea from "@/components/UI/news-feed/post/CommentTextarea.vue";
 import LikesAndComments from "@/components/layout/news-feed/post/PostLikesAndComments.vue";
 import i18n from "@/i18n";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useUserStore } from "@/stores/useUserStore";
 import { useCommentStore } from "@/stores/useCommentStore";
@@ -17,9 +17,14 @@ const quoteStore = useQuoteStore();
 const commentStore = useCommentStore();
 const url = quoteStore.url;
 const lang = computed(() => i18n.global.locale);
-const staticComments = computed(() =>
-  commentStore.comments.filter((com) => com.quote_id === props.quote.id)
-);
+
+const staticComments = computed(() => {
+  return commentStore.comments.filter((com) => com.quote_id === props.quote.id);
+});
+
+onMounted(() => {
+  commentStore.scrollToBottom();
+});
 </script>
 
 <template>
@@ -33,7 +38,7 @@ const staticComments = computed(() =>
         />
         <h1>{{ quote.user.name }}</h1>
       </div>
-      <div class="flex flex-row gap-3">
+      <div class="flex flex-wrap gap-3">
         <p class="break-words break-all">"{{ quote.title[lang] }}”</p>
         <p class="break-words break-all">
           <span class="mr-2 text-[#DDCCAA]"
@@ -46,7 +51,7 @@ const staticComments = computed(() =>
         <img
           :src="url + quote.thumbnail"
           alt="post-image"
-          class="min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
+          class="max-h-[60vh] min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
         />
       </div>
       <likes-and-comments
@@ -56,7 +61,10 @@ const staticComments = computed(() =>
         :comments="quote.comments.length + staticComments.length"
       ></likes-and-comments>
       <div id="comments" class="flex flex-col gap-6">
-        <div class="flex max-h-[20rem] flex-col gap-6 overflow-auto">
+        <div
+          class="flex max-h-[20rem] flex-col gap-6 overflow-auto"
+          id="comments-container"
+        >
           <base-comment
             v-for="comment in quote.comments"
             :key="comment.id"

@@ -1,10 +1,30 @@
-# front-movie-quotes-advanced
+# Epic movie quotes
 
-This template should help get you started developing with Vue 3 in Vite.
+### Table of Contents
+
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Tech Stack](#tech-stack)
+
+## Introduction
+
+---
+
+Epic movie quotes is a social network where people can find any quote in millions of movie lines. Express their feelings opinions about different movies and more...
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+#
+
+### Tech Stack
+
+- [Vue 3](https://vuejs.org/) - front-end framework
+- [i18n](https://kazupon.github.io/vue-i18n/) - internationalization plugin for Vue.js
+- [vee-validate](https://vee-validate.logaretm.com/v4/) - form library for validation, errors, submissions and more.
+- [pusher](https://laravel.com/docs/9.x/broadcasting#pusher-channels) - Powering realtime experiences for mobile and web
+- [laravel echo](https://laravel.com/docs/9.x/broadcasting#listening-for-events) - a JavaScript library that makes it painless to subscribe to channels and listen for events broadcast by your server-side broadcasting driver
 
 ## Customize configuration
 
@@ -26,32 +46,4 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```

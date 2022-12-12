@@ -18,14 +18,16 @@ const close = (e) => {
   <search-icon
     class="block cursor-pointer md:hidden"
     @click="showSearch = true"
+    v-if="routePath.includes('all-movies') || routePath.includes('news-feed')"
   />
   <section
     v-show="showSearch"
     @click="close"
-    class="fixed top-0 left-0 z-30 block h-screen w-screen backdrop-blur-sm md:hidden"
+    id="container"
+    class="fixed top-0 left-0 z-30 block h-screen w-screen bg-[#00000075] md:hidden"
   >
     <div
-      class="absolute top-0 left-0 z-40 h-[80vh] w-full rounded-lg bg-[#12101A]"
+      class="absolute top-0 left-0 z-40 h-max min-h-[20vh] w-full rounded-lg bg-[#12101A]"
     >
       <div
         class="flex w-full flex-row items-center justify-start gap-8 border-b border-[#efefef4d] py-6 pl-10"

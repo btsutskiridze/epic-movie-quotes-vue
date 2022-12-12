@@ -2,9 +2,7 @@
 import BasePost from "@/components/UI/news-feed/post/BasePost.vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useCommentStore } from "@/stores/useCommentStore";
-import { useUserStore } from "@/stores/useUserStore";
 import { useSearchStore } from "@/stores/useSearchStore";
-import { useNotificationStore } from "@/stores/useNotificationStore";
 import { computed, onBeforeMount } from "vue";
 
 const quoteStore = useQuoteStore();
@@ -30,22 +28,22 @@ onBeforeMount(() => {
   });
 });
 
-window.onscroll = function () {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+window.addEventListener("scroll", () => {
+  let bottomOfWindow =
+    Math.floor(
+      Math.max(
+        window.pageYOffset,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      ) + window.innerHeight
+    ) === Math.floor(document.documentElement.offsetHeight);
+
+  if (bottomOfWindow) {
     if (!(quotes.value.length < quoteStore.page)) {
       quoteStore.getQuotes("paginate");
     }
   }
-};
-
-setTimeout(() => {
-  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
-    ".new-notification",
-    () => {
-      useNotificationStore().getNotifications();
-    }
-  );
-}, 500);
+});
 </script>
 
 <template>

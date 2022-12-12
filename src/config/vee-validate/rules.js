@@ -39,14 +39,14 @@ defineRule("eng", (value) => {
 });
 
 defineRule("geo-textarea", (value) => {
-  if (!/^[ა-ჰა-ჰ0-9-_.,'"\s]*$/.test(value)) {
+  if (!/^[ა-ჰა-ჰ0-9-_';?!:.,"\s]*$/.test(value)) {
     return false;
   }
   return true;
 });
 
 defineRule("eng-textarea", (value) => {
-  if (!/^[a-zA-Z0-9-_.,'"\s]*$/.test(value)) {
+  if (!/^[a-zA-Z0-9-_';?!:.,"\s]*$/.test(value)) {
     return false;
   }
   return true;

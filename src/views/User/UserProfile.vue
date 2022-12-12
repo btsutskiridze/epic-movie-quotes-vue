@@ -11,6 +11,6 @@ window.addEventListener("resize", () => {
 </script>
 
 <template>
-  <pc-profile v-if="pageWidth > 768" />
+  <pc-profile v-if="pageWidth > 1022" />
   <mobile-profile v-else />
 </template>

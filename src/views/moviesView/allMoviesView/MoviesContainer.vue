@@ -23,7 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container mx-auto flex flex-col gap-6 py-6 px-[7%] md:px-5">
+  <div class="mx-auto flex w-full flex-col gap-6 py-6 px-[7%] md:px-0 lg:px-5">
     <section
       class="flex w-full flex-row justify-between gap-3 md:flex-col lg:flex-row lg:items-center xs:flex-col"
     >
@@ -50,7 +50,7 @@ onMounted(() => {
     <loading-circle v-if="store.loading" />
     <div
       v-else-if="movies.length"
-      class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+      class="grid grid-cols-1 justify-center gap-6 md:grid-cols-2 lg:grid-cols-3"
     >
       <base-movie-item
         v-for="movie in movies"

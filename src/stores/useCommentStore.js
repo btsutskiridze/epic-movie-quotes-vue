@@ -13,5 +13,9 @@ export const useCommentStore = defineStore("Comment", {
         body: body,
       });
     },
+    scrollToBottom() {
+      const nestedElement = document.getElementById("comments-container");
+      nestedElement.scrollTo(0, nestedElement.scrollHeight);
+    },
   },
 });

@@ -1,4 +1,15 @@
-<script setup></script>
+<script setup>
+import i18n from "@/i18n.js";
+import { setLocale } from "@vee-validate/i18n";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  if (localStorage.locale) {
+    i18n.global.locale = localStorage.locale;
+    setLocale(localStorage.locale);
+  }
+});
+</script>
 
 <template>
   <router-view />
@@ -9,9 +20,7 @@ html {
   overflow-y: scroll;
   overflow-y: overlay;
 }
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-}
+
 ::-webkit-scrollbar {
   width: 2px;
   height: 10px;

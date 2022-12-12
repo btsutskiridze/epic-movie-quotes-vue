@@ -35,11 +35,11 @@ const handleRegistration = async (values, actions) => {
     class="font-helvetica"
     v-show="loading === null"
   >
-    <div class="text-center mt-14 sm:mt-8 mb-10">
-      <h1 class="text-white text-2xl sm:text-4xl font-medium mb-3">
+    <div class="mt-14 mb-10 text-center sm:mt-8">
+      <h1 class="mb-3 text-2xl font-medium text-white sm:text-4xl">
         {{ $t("landingView.create_account") }}
       </h1>
-      <p class="text-[#6C757D] font-normal">
+      <p class="font-normal text-[#6C757D]">
         {{ $t("landingView.start_your_journey") }}
       </p>
     </div>
@@ -71,7 +71,7 @@ const handleRegistration = async (values, actions) => {
       rules="required|confirmed:@password"
     />
 
-    <base-button :orange="true" class="text-white w-full mb-4">{{
+    <base-button :orange="true" class="mb-4 w-full text-white">{{
       $t("landingView.get_started")
     }}</base-button>
   </VeeForm>

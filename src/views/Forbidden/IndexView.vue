@@ -5,12 +5,20 @@ import GendalfIcon from "@/components/icons/GendalfIcon.vue";
   <div
     class="font-helvetica flex h-screen items-center justify-center bg-[#11101A] text-white"
   >
-    <section class="z-40 flex w-full flex-col items-center gap-4">
+    <section
+      class="z-40 flex w-full flex-col items-center justify-center gap-4"
+    >
       <gendalf-icon />
-      <h1 class="text-5xl">You shall not pass!</h1>
-      <p>Sorry, but you don't have permission to access this page</p>
+      <h1 class="text-center text-5xl">
+        {{ $t("forbidden.you_shall_not_pass") }}!
+      </h1>
+      <p class="text-center">
+        {{ $t("forbidden.no_permission") }}
+      </p>
       <router-link to="/">
-        <base-button :orange="true" class="mt-4">Return home</base-button>
+        <base-button :orange="true" class="mt-4">{{
+          $t("forbidden.return_home")
+        }}</base-button>
       </router-link>
     </section>
   </div>

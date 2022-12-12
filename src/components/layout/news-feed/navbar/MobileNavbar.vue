@@ -35,7 +35,7 @@ const handleLogout = async () => {
 
 <template>
   <burger-menu
-    class="relative block cursor-pointer font-bold uppercase md:hidden"
+    class="relative block cursor-pointer font-bold uppercase lg:hidden"
     @click="showMenu = !showMenu"
   />
 
@@ -43,7 +43,7 @@ const handleLogout = async () => {
     v-if="showMenu"
     @click="closeMenu"
     id="container"
-    class="fixed top-0 left-0 z-30 block h-screen w-screen cursor-default backdrop-blur-sm md:hidden"
+    class="fixed top-0 left-0 z-30 block h-screen w-screen cursor-default backdrop-blur-sm lg:hidden"
   >
     <div
       class="absolute top-0 left-0 z-40 h-[80vh] w-[80vw] rounded-lg bg-[#0D0C15] pt-10 pl-10"
@@ -84,7 +84,10 @@ const handleLogout = async () => {
           <movies-icon />
           <h1>{{ $t("newsFeed.list_of_movies") }}</h1>
         </router-link>
-        <div class="flex cursor-pointer flex-row gap-3" @click="handleLogout">
+        <div
+          class="flex cursor-pointer flex-row gap-3 md:hidden"
+          @click="handleLogout"
+        >
           <logout-icon />
           <h1>{{ $t("newsFeed.logout") }}</h1>
         </div>

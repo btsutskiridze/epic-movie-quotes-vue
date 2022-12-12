@@ -13,7 +13,7 @@ const profileStore = useProfileStore();
 </script>
 
 <template>
-  <div class="py-6 px-[7%]">
+  <div class="py-6 px-[7%] md:px-0">
     <go-back-arrow
       class="cursor-pointer"
       @click="profileStore.showAllEmails = false"

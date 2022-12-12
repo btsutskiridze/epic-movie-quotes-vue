@@ -11,6 +11,7 @@ import movies from "@/config/localization/en/movies.json";
 import genres from "@/config/localization/en/genres.json";
 import profile from "@/config/localization/en/profile.json";
 import notif from "@/config/localization/en/notifications.json";
+import forbidden from "@/config/localization/en/forbidden.json";
 
 const translations = {
   landingView,
@@ -26,5 +27,6 @@ const translations = {
   genres,
   profile,
   notif,
+  forbidden,
 };
 export default translations;

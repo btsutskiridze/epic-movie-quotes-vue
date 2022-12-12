@@ -9,7 +9,7 @@ const profileStore = useProfileStore();
 <template>
   <div
     v-if="profileStore.newEmailAdded"
-    class="fixed top-0 z-[42] flex h-screen w-screen justify-center bg-[#00000080]"
+    class="fixed top-0 left-0 z-[42] flex h-screen w-screen justify-center bg-[#00000080]"
   >
     <div
       class="mt-[7rem] flex h-max w-[80%] flex-col gap-8 rounded-[0.25rem] bg-[#D1E7DD] p-4 font-normal md:fixed md:right-[4rem] md:translate-x-0"
