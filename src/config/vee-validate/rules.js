@@ -26,7 +26,7 @@ defineRule("lowercase", (value) => {
 
 defineRule("name-or-email", (value) => {
   if (
-    !/^(?:[A-Z\d][A-Z\d_-]{5,10}|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})$/i.test(
+    !/^(?:[A-Z\d][A-Z\d_-]{3,10}|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})$/i.test(
       value
     )
   ) {
