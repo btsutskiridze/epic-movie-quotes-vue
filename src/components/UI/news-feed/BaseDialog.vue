@@ -8,16 +8,16 @@ defineProps({
     default: "top-0 md:top-[5%]",
   },
 });
-const emit = defineEmits(["close"]);
+const emits = defineEmits(["close"]);
 
 const closeDialog = (e) => {
-  if (document.getElementById("container") === e.target) {
-    emit("close");
+  if ("container" === e.target.id) {
+    emits("close");
     return;
   }
 
   if (e.target.classList.contains("closebtn")) {
-    emit("close");
+    emits("close");
     return;
   }
 };
@@ -33,7 +33,7 @@ const closeDialog = (e) => {
       >
         <dialog
           open
-          class="z-30 mb-10 w-full overflow-x-hidden bg-[#11101A] p-0 md:h-min md:min-h-[auto] md:min-w-[37.5rem] md:max-w-[32%] md:rounded-xl"
+          class="z-[31] mb-10 w-full overflow-x-hidden bg-[#11101A] p-0 md:h-min md:min-h-[auto] md:min-w-[37.5rem] md:max-w-[32%] md:rounded-xl"
           :class="top"
         >
           <div

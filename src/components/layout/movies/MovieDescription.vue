@@ -17,9 +17,9 @@ const lang = computed(() => i18n.global.locale);
     class="flex flex-col gap-8 rounded-lg bg-black p-4 sm:bg-transparent sm:p-0"
   >
     <div class="flex flex-row gap-6">
-      <div id="image">
+      <div id="image" class="w-[40%]">
         <img
-          class="h-full max-h-[9.8rem] w-full max-w-[18.1rem] flex-shrink-0 rounded-xl object-cover object-center"
+          class="h-full w-full flex-shrink-0 rounded-xl object-cover object-center"
           :src="movie?.thumbnail && url + movie?.thumbnail"
           :alt="movie?.name"
         />
