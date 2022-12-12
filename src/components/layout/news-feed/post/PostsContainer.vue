@@ -3,7 +3,7 @@ import BasePost from "@/components/UI/news-feed/post/BasePost.vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useCommentStore } from "@/stores/useCommentStore";
 import { useSearchStore } from "@/stores/useSearchStore";
-import { computed, onBeforeMount } from "vue";
+import { computed, onBeforeMount, onUnmounted } from "vue";
 
 const quoteStore = useQuoteStore();
 const searchValue = computed(() => useSearchStore().search.trim());
@@ -20,29 +20,30 @@ const quotes = computed(() => {
   }
 });
 
-onBeforeMount(() => {
-  quoteStore.getQuotes("", true);
-  useSearchStore().search = "";
-  useCommentStore().$patch({
-    comments: [],
-  });
-});
-
-window.addEventListener("scroll", () => {
-  let bottomOfWindow =
-    Math.floor(
-      Math.max(
-        window.pageYOffset,
-        document.documentElement.scrollTop,
-        document.body.scrollTop
-      ) + window.innerHeight
-    ) === Math.floor(document.documentElement.offsetHeight);
-
-  if (bottomOfWindow) {
+const handlePagination = () => {
+  if (
+    document.documentElement.clientHeight + window.scrollY >=
+    (document.documentElement.scrollHeight ||
+      document.documentElement.clientHeight)
+  ) {
     if (!(quotes.value.length < quoteStore.page)) {
       quoteStore.getQuotes("paginate");
     }
   }
+};
+
+onBeforeMount(() => {
+  quoteStore.getQuotes("-", true);
+  useSearchStore().search = "";
+  useCommentStore().$patch({
+    comments: [],
+  });
+
+  window.addEventListener("scroll", handlePagination);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handlePagination);
 });
 </script>
 
