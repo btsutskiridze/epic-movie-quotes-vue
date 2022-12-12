@@ -63,7 +63,7 @@ function ValidateEmail(inputText) {
       name="email"
       labelName="form.email"
       placeholder="form.enter_your_email"
-      rules="required|min:3|lowercase"
+      rules="required|min:3|name-or-email"
       type="email"
     />
     <base-input
