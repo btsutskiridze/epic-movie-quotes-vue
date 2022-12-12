@@ -24,7 +24,7 @@ const close = (e) => {
     v-show="showSearch"
     @click="close"
     id="container"
-    class="fixed top-0 left-0 z-30 block h-screen w-screen backdrop-blur-sm md:hidden"
+    class="fixed top-0 left-0 z-30 block h-screen w-screen bg-[#00000075] md:hidden"
   >
     <div
       class="absolute top-0 left-0 z-40 h-max w-full rounded-lg bg-[#12101A]"
