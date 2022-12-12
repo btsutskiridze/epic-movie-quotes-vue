@@ -18,7 +18,7 @@ defineRule("alpha", alpha);
 defineRule("numeric", numeric);
 
 defineRule("lowercase", (value) => {
-  if (!/^[a-z0-9]+$/.test(value)) {
+  if (!/^[a-z0-9.@]+$/.test(value)) {
     return false;
   }
   return true;
