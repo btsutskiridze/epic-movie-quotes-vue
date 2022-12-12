@@ -12,12 +12,6 @@
 
 Epic movie quotes is a social network where people can find any quote in millions of movie lines. Express their feelings opinions about different movies and more...
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-#
-
 ### Tech Stack
 
 - [Vue 3](https://vuejs.org/) - front-end framework
