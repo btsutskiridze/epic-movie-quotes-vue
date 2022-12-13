@@ -27,7 +27,7 @@ const setTextLocale = (val) => {
   localStorage.setItem("locale", val);
 };
 const closeDialog = (e) => {
-  if (document.getElementById("container") === e.target) {
+  if ("container" === e.target.id) {
     show.value = false;
   }
 };

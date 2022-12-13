@@ -44,10 +44,9 @@ export const useQuoteStore = defineStore("Quote", {
       }
 
       axios
-        .get("quotes?page=" + this.page)
+        .get("quotes?page=" + this.page++)
         .then((response) => {
           this.quotes.push(...response.data.data);
-          this.page++;
         })
         .catch((e) => {
           console.log(e);
