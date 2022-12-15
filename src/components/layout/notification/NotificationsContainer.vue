@@ -1,27 +1,33 @@
 <script setup>
 import NotificationIcon from "@/components/icons/news-feed/NotificationIcon.vue";
 import NotificationItem from "@/components/layout/notification/NotificationItem.vue";
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, onBeforeMount, onUnmounted, ref } from "vue";
 import { useNotificationStore } from "@/stores/useNotificationStore";
 import { useUserStore } from "@/stores/useUserStore";
 
 const show = ref(false);
 const notificationStore = useNotificationStore();
-onBeforeMount(() => {
-  notificationStore.getNotifications();
-});
 const notifications = computed(() => notificationStore.notifications);
 
-setTimeout(() => {
-  window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
-    ".new-notification",
-    (e) => {
-      notificationStore.notifications.unshift(e.notification);
-      notificationStore.unRead += 1;
-      notificationStore.allRead = false;
-    }
-  );
-}, 500);
+onBeforeMount(() => {
+  notificationStore.getNotifications();
+  setTimeout(() => {
+    window.Echo.private(`user-notification.${useUserStore().user.id}`).listen(
+      ".new-notification",
+      (e) => {
+        notificationStore.notifications.unshift(e.notification);
+        notificationStore.unRead += 1;
+        notificationStore.allRead = false;
+      }
+    );
+  }, 500);
+});
+
+onUnmounted(() => {
+  window.Echo.private(
+    `user-notification.${useUserStore().user.id}`
+  ).stopListening(".new-notification");
+});
 </script>
 
 <template>
