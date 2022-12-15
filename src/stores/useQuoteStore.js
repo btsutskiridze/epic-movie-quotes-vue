@@ -13,6 +13,7 @@ export const useQuoteStore = defineStore("Quote", {
       loading: false,
       isFetched: false,
       page: 1,
+      lastPage: false,
     };
   },
   actions: {
@@ -47,6 +48,10 @@ export const useQuoteStore = defineStore("Quote", {
         .get("quotes?page=" + this.page++)
         .then((response) => {
           this.quotes.push(...response.data.data);
+          this.lastPage =
+            response.data.current_page === response.data.last_page
+              ? true
+              : false;
         })
         .catch((e) => {
           console.log(e);

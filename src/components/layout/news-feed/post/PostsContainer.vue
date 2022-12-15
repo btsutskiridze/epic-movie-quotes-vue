@@ -7,7 +7,6 @@ import { computed, onBeforeMount, onUnmounted } from "vue";
 
 const quoteStore = useQuoteStore();
 const searchValue = computed(() => useSearchStore().search.trim());
-
 const quotes = computed(() => {
   if (
     searchValue.value === "" ||
@@ -26,7 +25,7 @@ const handlePagination = () => {
     (document.documentElement.scrollHeight ||
       document.documentElement.clientHeight)
   ) {
-    if (!(quotes.value.length < quoteStore.page)) {
+    if (!quoteStore.lastPage) {
       quoteStore.getQuotes("paginate");
     }
   }
