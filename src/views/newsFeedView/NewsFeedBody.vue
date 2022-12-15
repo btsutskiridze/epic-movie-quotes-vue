@@ -9,7 +9,7 @@ import PcSearch from "@/components/layout/news-feed/search-bar/PcSearch.vue";
 
 <template>
   <base-container>
-    <div class="flex-row items-center hidden md:flex gap-4">
+    <div class="hidden flex-row items-center gap-4 md:flex">
       <pc-quote-button />
       <pc-search />
     </div>

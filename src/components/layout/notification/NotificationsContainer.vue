@@ -46,12 +46,12 @@ onUnmounted(() => {
     >
     <div
       v-if="show"
-      class="absolute top-[1.9rem] h-0 w-0 border-l-[10px] border-b-[15px] border-r-[10px] border-l-transparent border-b-black border-r-transparent md:top-[2.3rem] md:border-b-[25px]"
+      class="absolute top-[2rem] h-0 w-0 border-l-[10px] border-b-[20px] border-r-[10px] border-l-transparent border-b-black border-r-transparent md:top-[2.2rem] md:border-b-[25px]"
     ></div>
   </div>
   <div
     v-if="show"
-    class="absolute top-[4rem] right-0 z-[50] flex w-screen cursor-default flex-col gap-6 rounded-[0.25rem] bg-[#000] px-6 py-10 md:top-[5.6rem] md:right-[7%] md:w-auto md:min-w-[40rem]"
+    class="absolute top-[4.2rem] right-0 z-[50] flex w-screen cursor-default flex-col gap-6 rounded-[0.25rem] bg-[#000] px-6 py-10 md:top-[4.8rem] md:right-[7%] md:w-auto md:min-w-[40rem]"
   >
     <section
       @click="notificationStore.readAll()"

@@ -46,7 +46,7 @@ const handleLogout = async () => {
     class="fixed top-0 left-0 z-30 block h-screen w-screen cursor-default backdrop-blur-sm lg:hidden"
   >
     <div
-      class="absolute top-0 left-0 z-40 h-[80vh] w-[80vw] rounded-lg bg-[#0D0C15] pt-10 pl-10"
+      class="absolute top-0 left-0 z-40 h-full w-[80vw] rounded-lg bg-[#0D0C15] pt-10 pl-10 md:w-[60vw]"
     >
       <ul class="flex flex-col gap-8">
         <div class="flex flex-row gap-4">

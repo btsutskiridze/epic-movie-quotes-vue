@@ -31,9 +31,9 @@ const handleLogout = async () => {
 
 <template>
   <div>
-    <header class="m-auto w-full bg-[#1F1D2A] text-white">
+    <header class="fixed z-[30] m-auto w-full bg-[#1F1D2A] text-white">
       <div
-        class="m-auto flex w-[86%] items-center justify-between py-5 text-base md:w-[94%] lg:w-[86%]"
+        class="m-auto flex w-[86%] items-center justify-between py-5 text-base md:w-[94%] md:py-3 lg:w-[86%]"
       >
         <h2 class="hidden font-medium uppercase text-[#DDCCAA] lg:block">
           {{ $t("landingView.movie_quotes") }}

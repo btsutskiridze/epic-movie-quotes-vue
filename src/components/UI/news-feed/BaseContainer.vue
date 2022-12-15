@@ -17,13 +17,13 @@ defineProps({
 <template>
   <div class="pb-auto flex w-full items-start justify-start text-white md:pt-8">
     <div
-      class="sticky top-10 hidden w-[30%] lg:block"
+      class="sticky top-24 hidden w-[30%] lg:block"
       :class="haveUser ? 'md:w-[40%] lg:w-[25%]' : ''"
     >
       <pc-navbar />
     </div>
     <div
-      class="flex w-full flex-col md:gap-4"
+      class="mt-16 flex w-full flex-col md:mt-14 md:gap-4"
       :class="[
         haveMovies ? '' : 'lg:w-[76%] xl:w-[50%]',
         haveUser ? 'lg:w-[80%]' : '',
