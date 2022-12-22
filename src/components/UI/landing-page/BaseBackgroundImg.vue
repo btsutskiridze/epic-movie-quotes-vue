@@ -23,21 +23,21 @@ defineProps({
 
 <template>
   <div
-    class="bg-no-repeat h-96 bg-cover md:h-screen"
+    class="h-96 bg-cover bg-no-repeat md:h-screen"
     :class="[fixed ? 'md:bg-fixed' : '', url, `bg-center md:bg-${position}`]"
   >
     <div
-      class="h-full flex justify-center flex-row items-center text-white font-montserrat font-bold"
+      class="font-montserrat flex h-full flex-row items-center justify-center font-bold text-white"
       :class="first ? 'bg-linear-top-left' : ' media-bg-linear-top-left'"
     >
-      <div class="w-[72%] md:w-[70%] -top-5 md:-top-20 relative mx-auto">
+      <div class="relative -top-5 mx-auto w-[72%] md:-top-20 md:w-[70%]">
         <div>
           <article
-            class="text-xl md:text-[3.1rem] relative leading-normal whitespace-pre-wrap"
+            class="relative whitespace-pre-wrap text-xl leading-normal md:text-[3.1rem]"
           >
             <slot name="quote"></slot>
             <div
-              class="h-[0.125rem] bg-white w-4 md:w-14 absolute top-4 md:top-10 -left-6 md:left-[-4.2rem]"
+              class="absolute top-4 -left-6 h-[0.125rem] w-4 bg-white md:top-10 md:left-[-4.2rem] md:w-14"
             ></div>
           </article>
 

@@ -3,7 +3,7 @@ import BaseComment from "@/components/UI/news-feed/post/BaseComment.vue";
 import CommentTextarea from "@/components/UI/news-feed/post/CommentTextarea.vue";
 import LikesAndComments from "@/components/layout/news-feed/post/PostLikesAndComments.vue";
 import i18n from "@/i18n";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useQuoteStore } from "@/stores/useQuoteStore";
 import { useUserStore } from "@/stores/useUserStore";
 import { useCommentStore } from "@/stores/useCommentStore";
@@ -16,6 +16,7 @@ const props = defineProps({
 const quoteStore = useQuoteStore();
 const commentStore = useCommentStore();
 const url = quoteStore.url;
+const image = ref(null);
 const lang = computed(() => i18n.global.locale);
 
 const staticComments = computed(() => {
@@ -35,6 +36,7 @@ onMounted(() => {
           :src="quote.user?.avatar"
           alt="avatar"
           class="h-10 w-10 rounded-full object-cover"
+          ref="image"
         />
         <h1>{{ quote.user.name }}</h1>
       </div>
@@ -47,11 +49,16 @@ onMounted(() => {
           <span>({{ quote.movie.year }})</span>
         </p>
       </div>
-      <div>
+      <div class="relative z-[20] overflow-hidden rounded-[0.6rem]">
         <img
           :src="url + quote.thumbnail"
           alt="post-image"
-          class="max-h-[60vh] min-h-[30vh] w-full rounded-[0.6rem] object-cover object-center"
+          class="z-[10] max-h-[60vh] min-h-[30vh] w-full object-contain object-center"
+        />
+        <img
+          :src="url + quote.thumbnail"
+          alt="post-image"
+          class="absolute top-0 z-[-1] max-h-[60vh] min-h-[30vh] w-full object-fill object-center blur-lg"
         />
       </div>
       <likes-and-comments

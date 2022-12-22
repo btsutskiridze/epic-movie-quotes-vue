@@ -18,29 +18,29 @@ const lang = computed(() => i18n.global.locale);
 
 <template>
   <div
-    class="w-full md:w-[78%] px-[7%] md:px-8 pt-6 pb-5 rounded-[0.6rem] bg-[#11101A]"
+    class="w-full rounded-[0.6rem] bg-[#11101A] px-[7%] pt-6 pb-5 md:w-[78%] md:px-8"
   >
     <section class="relative flex flex-col gap-5">
-      <div class="flex flex-col lg:flex-row gap-6 items-center">
+      <div class="flex flex-col items-center gap-6 lg:flex-row">
         <img
-          class="w-full lg:w-[14.1rem] h-[12.4rem] md:h-[8.7rem] object-cover object-center object-center rounded-sm"
+          class="h-[12.4rem] w-full rounded-sm object-cover object-center md:h-[8.7rem] lg:w-[14.1rem]"
           :src="url + quote?.thumbnail"
           alt="quote"
         />
         <h1
-          class="text-[#CED4DA] italic font-normal break-words break-all text-2xl"
+          class="break-words break-all text-2xl font-normal italic text-[#CED4DA]"
         >
           "{{ quote?.title[lang] }}"
         </h1>
       </div>
       <div class="flex flex-row gap-6 border-t border-[#efefef4d] pt-4">
-        <div class="flex flex-row gap-2 items-center leading-none">
+        <div class="flex flex-row items-center gap-2 leading-none">
           <span class="md:text-xl">{{ quote.comments.length }}</span>
-          <comment-icon class="w-[60%] h-[60%]" />
+          <comment-icon class="h-[60%] w-[60%]" />
         </div>
-        <div class="flex flex-row gap-2 items-center">
+        <div class="flex flex-row items-center gap-2">
           <span class="md:text-xl">{{ quote?.likes.length }}</span>
-          <like-icon class="w-[67%] h-[67%]" />
+          <like-icon class="h-[67%] w-[67%]" />
         </div>
       </div>
       <quotes-dropdown :id="quote.id" />

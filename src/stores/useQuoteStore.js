@@ -25,6 +25,7 @@ export const useQuoteStore = defineStore("Quote", {
         .then((response) => {
           this.quote = response.data;
           this.isFetched = true;
+          console.log(response);
         })
         .catch((e) => {
           console.log(e);
